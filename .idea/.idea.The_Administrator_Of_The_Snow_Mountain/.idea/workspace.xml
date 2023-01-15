@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93d6d0c8-824f-486a-bd13-67e5f0ce983d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Player.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Player.png.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="93d6d0c8-824f-486a-bd13-67e5f0ce983d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
