@@ -9,12 +9,20 @@ public class PlayerAttack : MonoBehaviour
     public bool canAttack;
 
     private Animator _animator;
+    private PlayerBehavior _playerBehavior;
+    private Rigidbody2D _rigidbody2D;
     
     private int _normalAttackNumber;
+    
+    //tmp
+    public float go;
 
     private void Start()
     {
+        _playerBehavior = GetComponentInParent<PlayerBehavior>();
         _animator = GetComponent<Animator>();
+        _rigidbody2D = GetComponentInParent<Rigidbody2D>();
+        
         _normalAttackNumber = 0;
         canAttack = true;
     }
@@ -23,6 +31,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack)
         {
+            // tmp : go to forward while attack!!
+            _rigidbody2D.AddForce(go * transform.localScale.x * Vector2.left, ForceMode2D.Impulse);
             canAttack = false;
             _animator.SetTrigger("attack");
         }

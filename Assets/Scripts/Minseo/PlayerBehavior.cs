@@ -42,6 +42,7 @@ public class PlayerBehavior : MonoBehaviour
     // tmp
     public float down;
     public float footRadius;
+    public float go;
     
     // tmp variable
     private Vector3 _graphicLocalScale;
@@ -155,7 +156,7 @@ public class PlayerBehavior : MonoBehaviour
      */
     private void UpdateVelocity()
     {
-        if (!_inSlope) _speed = _rigidbody.velocity.x;
+        if (!_inSlope || (_inSlope && _isAttack)) _speed = _rigidbody.velocity.x;
         if (_playerInputHandler.movement.x != 0 && !_isAttack)
         {
             _speed += accel * _playerInputHandler.movement.x;
