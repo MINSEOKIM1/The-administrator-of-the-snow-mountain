@@ -11,6 +11,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     // Test
     [SerializeField] private PhysicsMaterial2D little, zero;
+    [SerializeField] private Transform playerGraphicTransform;
     
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accel;
@@ -26,18 +27,24 @@ public class PlayerBehavior : MonoBehaviour
     private PlayerInputHandler _playerInputHandler;
     private CapsuleCollider2D _capsuleCollider;
     private SpriteRenderer _sprite;
+    private PlayerAttack _playerAttack;
 
     public float _speed;
     public bool _isGround;
     private bool _canJump;
     public bool _inSlope;
+    private bool _isAttack;
+    private bool _canAttack;
 
     private Vector2 _velocity;
     private Vector2 _groundNormalPerp;
-    
+
     // tmp
     public float down;
     public float footRadius;
+    
+    // tmp variable
+    private Vector3 _graphicLocalScale;
 
     private void OnDrawGizmos()
     {
@@ -53,6 +60,12 @@ public class PlayerBehavior : MonoBehaviour
         _playerInputHandler = GetComponent<PlayerInputHandler>();
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
+        _playerAttack = GetComponentInChildren<PlayerAttack>();
+    }
+
+    private void Update()
+    {
+        AttackCheck();
     }
 
     private void FixedUpdate()
@@ -61,6 +74,11 @@ public class PlayerBehavior : MonoBehaviour
         CheckGround();
         UpdateVelocity();
         Move(_groundNormalPerp, _speed);
+    }
+
+    private void AttackCheck()
+    {
+        _isAttack = _animator.GetCurrentAnimatorStateInfo(0).IsTag("attack");
     }
 
     private void ApplyAnimation()
@@ -138,11 +156,12 @@ public class PlayerBehavior : MonoBehaviour
     private void UpdateVelocity()
     {
         if (!_inSlope) _speed = _rigidbody.velocity.x;
-        if (_playerInputHandler.movement.x != 0)
+        if (_playerInputHandler.movement.x != 0 && !_isAttack)
         {
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
-            _sprite.flipX = _speed >= 0;
+            _graphicLocalScale.Set( _speed >= 0 ? -1 : 1, 1, 1);
+            playerGraphicTransform.localScale = _graphicLocalScale;
         }
         else
         {
@@ -196,5 +215,10 @@ public class PlayerBehavior : MonoBehaviour
             _canJump = false;
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
+    }
+
+    public void Attack()
+    {
+        _playerAttack.NormalAttack();
     }
 }

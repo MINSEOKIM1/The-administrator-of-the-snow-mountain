@@ -26,4 +26,12 @@ public class PlayerInputHandler : MonoBehaviour
             _playerBehavior.Jump();
         }
     }
+    
+    public void OnAttack(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            _playerBehavior.Attack();
+        }
+    }
 }
