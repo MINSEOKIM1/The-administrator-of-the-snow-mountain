@@ -9,7 +9,6 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    // Test
     [SerializeField] private PhysicsMaterial2D little, zero;
     [SerializeField] private Transform playerGraphicTransform;
     
@@ -29,23 +28,31 @@ public class PlayerBehavior : MonoBehaviour
     private SpriteRenderer _sprite;
     private PlayerAttack _playerAttack;
 
+    // public will be private ... (for debuging, it is public now)
     public float _speed;
     public bool _isGround;
     private bool _canJump;
     public bool _inSlope;
     private bool _isAttack;
     private bool _canAttack;
+    public bool _isKnockback;
 
-    private Vector2 _velocity;
-    private Vector2 _groundNormalPerp;
-
-    // tmp
+    // tmp (will be removed maybe...)
     public float down;
     public float footRadius;
     public float go;
+    public Vector2 knockback;
     
     // tmp variable
     private Vector3 _graphicLocalScale;
+    private Vector2 _velocity;
+    private Vector2 _groundNormalPerp;
+    
+    public float playerDashSpeed;
+    public float externalSpeed;
+
+    // input detect variable
+    private bool _normalAttackDetect;
 
     private void OnDrawGizmos()
     {
@@ -69,11 +76,14 @@ public class PlayerBehavior : MonoBehaviour
         AttackCheck();
     }
 
+    // Physics logic...
     private void FixedUpdate()
     {
         ApplyAnimation();
-        CheckGround();
+        CheckGround();                      
         UpdateVelocity();
+        AttackInputDetect();
+        UpdateExternalVelocity();
         Move(_groundNormalPerp, _speed);
     }
 
@@ -156,7 +166,12 @@ public class PlayerBehavior : MonoBehaviour
      */
     private void UpdateVelocity()
     {
-        if (!_inSlope || (_inSlope && _isAttack)) _speed = _rigidbody.velocity.x;
+        // if condition (!_inSlope) is omitted... player slide down a slope...
+        if (!_inSlope || (_inSlope && _isAttack))
+        {
+            _speed = _rigidbody.velocity.x;
+        }
+
         if (_playerInputHandler.movement.x != 0 && !_isAttack)
         {
             _speed += accel * _playerInputHandler.movement.x;
@@ -174,9 +189,28 @@ public class PlayerBehavior : MonoBehaviour
         _speed = Mathf.Clamp(_speed, -maxSpeed, maxSpeed);
     }
     
+    private void AttackInputDetect()
+    {
+        // Normal Attack
+        if (_normalAttackDetect)
+        {
+            _capsuleCollider.sharedMaterial = little;
+            _normalAttackDetect = false;
+            
+            // player stop moving (_speed = 0), and dash while attacking (in _playerAttack.NormalAttack);
+            _speed = 0;
+            _playerAttack.NormalAttack();
+        }
+    }
+
+    private void UpdateExternalVelocity()
+    {
+        playerDashSpeed = Mathf.Lerp(playerDashSpeed, 0, friction * Time.fixedDeltaTime);
+        if (_isGround) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
+    }
     /*
-     * according to _speed, groundChecking...
-     * update rigid.velocity
+     * according to _speed, playerDashSpeed, externalSpeed, ground checking condition...
+     * update rigid.velocity -> apply change on real player's movement;
      */
     private void Move(Vector2 direction, float speed)
     {
@@ -186,20 +220,20 @@ public class PlayerBehavior : MonoBehaviour
             if (_inSlope)
             {
                 _velocity.Set(
-                    -speed * direction.x,
-                    Mathf.Clamp(-direction.y * speed, -10, Single.PositiveInfinity));
+                    -(speed + playerDashSpeed + externalSpeed) * direction.x,
+                    Mathf.Clamp(-direction.y * (speed + playerDashSpeed + externalSpeed), -10, Single.PositiveInfinity));
             }
             else
             {
                 _velocity.Set(
-                    speed,
+                    speed + playerDashSpeed + externalSpeed,
                     Mathf.Clamp(_rigidbody.velocity.y, -10, Single.PositiveInfinity));
             }
         }
         else
         {
             _velocity.Set(
-                speed, 
+                speed + playerDashSpeed + externalSpeed, 
                 Mathf.Clamp(_rigidbody.velocity.y, -10, Single.PositiveInfinity));
         }
 
@@ -209,8 +243,9 @@ public class PlayerBehavior : MonoBehaviour
 
     public void Jump()
     {
-        if (_canJump)
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
         {
+            externalSpeed = 0;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _isGround = false;
             _canJump = false;
@@ -220,6 +255,44 @@ public class PlayerBehavior : MonoBehaviour
 
     public void Attack()
     {
-        _playerAttack.NormalAttack();
+        _normalAttackDetect = true;
+    }
+
+    public void KnockBack()
+    {
+        _speed = 0;
+        _isKnockback = true;
+        _isGround = false;
+        _canJump = false;
+        _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
+        externalSpeed = knockback.x * _playerAttack.transform.localScale.x;
+    }
+
+    
+    // OnCollision Methods..
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Ground") )
+        {
+            if (col.contacts[0].normal.y > 0.7) _isGround = true;
+            else externalSpeed = 0;
+        }
+    }
+    
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Ground"))
+        {
+            if (col.contacts[0].normal.y > 0.7) _isGround = true;
+            else externalSpeed = 0;
+        }
+    }
+
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
+        {
+            _isGround = false;
+        }
     }
 }

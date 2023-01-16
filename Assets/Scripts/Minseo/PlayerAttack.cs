@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack)
         {
             // tmp : go to forward while attack!!
-            _rigidbody2D.AddForce(go * transform.localScale.x * Vector2.left, ForceMode2D.Impulse);
+            _playerBehavior.playerDashSpeed = -go * transform.localScale.x;
             canAttack = false;
             _animator.SetTrigger("attack");
         }
