@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 81452568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.47, y: -1.64, z: 0}
-  m_LocalScale: {x: 17.14793, y: 1, z: 1}
+  m_LocalScale: {x: 144.68565, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1596060346}
@@ -2222,9 +2222,13 @@ MonoBehaviour:
   _speed: 0
   _isGround: 0
   _inSlope: 0
+  _isKnockback: 0
   down: 0.12
   footRadius: 0.12
   go: 2.55
+  knockback: {x: 4.04, y: 2.92}
+  playerDashSpeed: 0
+  externalSpeed: 0
 --- !u!114 &1036717072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,7 +2974,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1036717071}
         m_TargetAssemblyTypeName: PlayerBehavior, Assembly-CSharp
-        m_MethodName: Knockback
+        m_MethodName: KnockBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
