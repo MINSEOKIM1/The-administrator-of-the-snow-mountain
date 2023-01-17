@@ -130,18 +130,6 @@ public class PlayerBehavior : Entity
      */
     // Method Move() is inherited from Entity class, and no override
 
-    public void Jump()
-    {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
-        {
-            externalSpeed = 0;
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-            _isGround = false;
-            _canJump = false;
-            _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-        }
-    }
-
     public void Attack()
     {
         _normalAttackDetect = true;
@@ -169,42 +157,6 @@ public class PlayerBehavior : Entity
             _canJump = false;
             _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
             dashSpeed = backStepPower.x * _playerAttack.transform.localScale.x;
-        }
-    }
-
-    
-    // OnCollision Methods..
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag.Equals("Ground") )
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
-    
-    private void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag.Equals("Ground"))
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
-
-    private void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
-        {
-            _isGround = false;
         }
     }
 }
