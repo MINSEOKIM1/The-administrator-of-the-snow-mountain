@@ -10,12 +10,18 @@ public class Monster : Entity
 
     // Entity's info (will be replaced by PlayerInfo Class object later)
     [SerializeField] private float stateChangeInterval;
+    public float maxHp;
+    public float maxMp;
+    public float exp;
     
     // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
 
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
     public GameObject _target;
+    public float hp;
+    public float mp;
+    
 
     // 0 : idle, -1 : to left, 1 : to right - attack is independent...
     public int moveState;
@@ -72,7 +78,7 @@ public class Monster : Entity
             _speed = _rigidbody.velocity.x;
         }
 
-        if (moveState != 0 && !_isAttack)
+        if (moveState != 0 && !_isAttack && Mathf.Abs(externalSpeed) < 1)
         {
             _speed += accel * moveState;
             _capsuleCollider.sharedMaterial = zero;
@@ -96,39 +102,4 @@ public class Monster : Entity
      * update rigid.velocity -> apply change on real player's movement;
      */
     // Method Move() is inherited from Entity class and no override
-    
-    
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag.Equals("Ground") )
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
-    
-    private void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag.Equals("Ground"))
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
-
-    private void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
-        {
-            _isGround = false;
-        }
-    }
 }

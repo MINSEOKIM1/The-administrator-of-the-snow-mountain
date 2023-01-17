@@ -15,6 +15,8 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected float accel;
     [SerializeField] protected float jumpPower;
     [SerializeField] protected Vector2 backStepPower;
+    [SerializeField] protected float atk;
+    [SerializeField] protected float def;
     
     // Entity's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     [SerializeField] protected Transform footPos;
@@ -33,7 +35,6 @@ public abstract class Entity : MonoBehaviour
     protected bool _canJump;
     public bool _inSlope;
     protected bool _isAttack;
-    protected bool _canAttack;
     public float dashSpeed;
     public float externalSpeed;
     
@@ -49,6 +50,12 @@ public abstract class Entity : MonoBehaviour
     protected Vector3 _graphicLocalScale;
     protected Vector2 _velocity;
     protected Vector2 _groundNormalPerp;
+
+    // Damage calculation formula
+    public static float CalculateDamage(float damage, float def)
+    {
+        return damage * 100 * (1 / (100 + def));
+    }
 
     private void OnDrawGizmos()
     {
@@ -221,7 +228,47 @@ public abstract class Entity : MonoBehaviour
         _speed = 0;
         _isGround = false;
         _canJump = false;
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
         externalSpeed = knockback.x;
+    }
+
+    public virtual void Hit(float damage, Vector2 knockback, float stunTime)
+    {
+        return;
+    }
+    
+    protected void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Ground") )
+        {
+            if (col.contacts[0].normal.y > 0.7) CheckGround();
+            else
+            {
+                externalSpeed = 0;
+                dashSpeed = 0;
+            }
+        }
+    }
+    
+    protected void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Ground"))
+        {
+            if (col.contacts[0].normal.y > 0.7) CheckGround();
+            else
+            {
+                externalSpeed = 0;
+                dashSpeed = 0;
+            }
+        }
+    }
+
+    protected void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
+        {
+            _isGround = false;
+        }
     }
 }
