@@ -7,67 +7,27 @@ using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
-public class PlayerBehavior : MonoBehaviour
+public class PlayerBehavior : Entity
 {
-    // for apply appropriate friction to player
-    [SerializeField] private PhysicsMaterial2D little, zero;
-
-    // Player's info (will be replaced by PlayerInfo Class object later)
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float accel;
-    [SerializeField] private float jumpPower;
-    [SerializeField] private Vector2 backStepPower;
-
-    // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
-    [SerializeField] private Transform footPos;
-    [SerializeField] private Transform playerGraphicTransform;
-
     // Player gameObject's components
-    private Rigidbody2D _rigidbody;
-    private Animator _animator;
     private PlayerInputHandler _playerInputHandler;
-    private CapsuleCollider2D _capsuleCollider;
-    private SpriteRenderer _sprite;
     private PlayerAttack _playerAttack;
 
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
-    public float _speed;
-    public bool _isGround;
-    private bool _canJump;
-    public bool _inSlope;
-    private bool _isAttack;
-    private bool _canAttack;
-    public bool _isKnockback;
-    public float playerDashSpeed;
-    public float externalSpeed;
+    
 
     // tmp (will be removed maybe...)
-    public float down;
-    public float footRadius;
-    public Vector2 knockback;
-    public float friction;
-    public LayerMask ground;
     public float dashElapsed;
     
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
-    private Vector3 _graphicLocalScale;
-    private Vector2 _velocity;
-    private Vector2 _groundNormalPerp;
-    
 
     // input detect variable
     private bool _normalAttackDetect;
 
     // For debugging in editor (not play mode)
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(footPos.position, Vector3.down * down);
-        Gizmos.DrawWireSphere(footPos.position, footRadius);
-    }
-    
-    private void Start()
+
+    protected override void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
@@ -77,13 +37,13 @@ public class PlayerBehavior : MonoBehaviour
         _playerAttack = GetComponentInChildren<PlayerAttack>();
     }
 
-    private void Update()
+    protected override void Update()
     {
         AttackCheck();
     }
 
     // Physics logic...
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
         ApplyAnimation();
         CheckGround();                      
@@ -98,7 +58,7 @@ public class PlayerBehavior : MonoBehaviour
         _isAttack = _animator.GetCurrentAnimatorStateInfo(0).IsTag("attack");
     }
 
-    private void ApplyAnimation()
+    protected override void ApplyAnimation()
     {
         _animator.SetFloat("speed", _speed);
         _animator.SetBool("isGround", _isGround);
@@ -110,70 +70,16 @@ public class PlayerBehavior : MonoBehaviour
      * 1. isGround?
      * 2. Slope?
      */
-    private void CheckGround()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(footPos.position, Vector2.down, down, ground);
-        Debug.DrawRay(hit.point, _groundNormalPerp);
-        if (hit)
-        {
-            _groundNormalPerp = Vector2.Perpendicular(hit.normal);
-            if (_isGround)
-            {
-                // no slope
-                if (_groundNormalPerp.y == 0)
-                {
-                    _inSlope = false;
-                    _isGround = true;
-                    _canJump = true;
-                }
-                // available slope
-                else if (Vector2.Angle(Vector2.up, hit.normal) < 45)
-                {
-                    _inSlope = true;
-                    _isGround = true;
-                    _canJump = true;
-                }
-                // over maximum slope angle
-                else
-                {
-                    _inSlope = false;
-                    _isGround = false;
-                    _canJump = false;
-                }
-            } else if (_rigidbody.velocity.y <= 0)
-            {
-                // no slope
-                if (_groundNormalPerp.y == 0)
-                {
-                    _inSlope = false;
-                    _isGround = true;
-                    _canJump = true;
-                }
-                // available slope
-                else if (Vector2.Angle(Vector2.up, hit.normal) < 45)
-                {
-                    _inSlope = true;
-                    _isGround = true;
-                    _canJump = true;
-                }
-            }
-        }
-        else
-        {
-            _inSlope = false;
-            _isGround = false;
-            _canJump = false;
-        }
-    }
+    // CheckGround() is inherited... and no override
 
     /*
      * according to Input...
      * update _speed
      */
-    private void UpdateVelocity()
+    protected override void UpdateVelocity()
     {
         // if condition (!_inSlope) is omitted... player slide down a slope...
-        if (!_inSlope || (_inSlope && Mathf.Abs(playerDashSpeed) > 1))
+        if (!_inSlope || (_inSlope && Mathf.Abs(dashSpeed) > 1))
         {
             _speed = _rigidbody.velocity.x;
         }
@@ -183,7 +89,7 @@ public class PlayerBehavior : MonoBehaviour
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
             _graphicLocalScale.Set( _speed >= 0 ? -1 : 1, 1, 1);
-            if (Mathf.Abs(externalSpeed) < 0.1f && Mathf.Abs(playerDashSpeed) < 0.1f) playerGraphicTransform.localScale = _graphicLocalScale;
+            if (Mathf.Abs(externalSpeed) < 0.1f && Mathf.Abs(dashSpeed) < 0.1f) playerGraphicTransform.localScale = _graphicLocalScale;
         }
         else
         {
@@ -195,7 +101,7 @@ public class PlayerBehavior : MonoBehaviour
         _speed = Mathf.Clamp(_speed, -maxSpeed, maxSpeed);
     }
     
-    private void AttackInputDetect()
+    protected override void AttackInputDetect()
     {
         // Normal Attack
         if (_normalAttackDetect)
@@ -209,12 +115,12 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void UpdateExternalVelocity()
+    protected override void UpdateExternalVelocity()
     {
-        playerDashSpeed = Mathf.Lerp(playerDashSpeed, 0, friction * Time.fixedDeltaTime);
+        dashSpeed = Mathf.Lerp(dashSpeed, 0, friction * Time.fixedDeltaTime);
 
         dashElapsed -= Time.fixedDeltaTime;
-        if ((Mathf.Abs(playerDashSpeed) < 1 || dashElapsed <= 0) && gameObject.layer == 9) gameObject.layer = 7;
+        if ((Mathf.Abs(dashSpeed) < 1 || dashElapsed <= 0) && gameObject.layer == 9) gameObject.layer = 7;
         
         if (_isGround) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
     }
@@ -222,34 +128,7 @@ public class PlayerBehavior : MonoBehaviour
      * according to _speed, playerDashSpeed, externalSpeed, ground checking condition...
      * update rigid.velocity -> apply change on real player's movement;
      */
-    private void Move(Vector2 direction, float speed)
-    {
-        if (_isGround)
-        {
-            
-            if (_inSlope)
-            {
-                _velocity.Set(
-                    -(speed + playerDashSpeed + externalSpeed) * direction.x,
-                    Mathf.Clamp(-direction.y * (speed + playerDashSpeed + externalSpeed), -10, Single.PositiveInfinity));
-            }
-            else
-            {
-                _velocity.Set(
-                    speed + playerDashSpeed + externalSpeed,
-                    Mathf.Clamp(_rigidbody.velocity.y, -10, Single.PositiveInfinity));
-            }
-        }
-        else
-        {
-            _velocity.Set(
-                speed + playerDashSpeed + externalSpeed, 
-                Mathf.Clamp(_rigidbody.velocity.y, -10, Single.PositiveInfinity));
-        }
-
-
-        _rigidbody.velocity = _velocity;
-    }
+    // Method Move() is inherited from Entity class, and no override
 
     public void Jump()
     {
@@ -271,7 +150,6 @@ public class PlayerBehavior : MonoBehaviour
     public void KnockBack()
     {
         _speed = 0;
-        _isKnockback = true;
         _isGround = false;
         _canJump = false;
         _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
@@ -290,7 +168,7 @@ public class PlayerBehavior : MonoBehaviour
             _isGround = false;
             _canJump = false;
             _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
-            playerDashSpeed = backStepPower.x * _playerAttack.transform.localScale.x;
+            dashSpeed = backStepPower.x * _playerAttack.transform.localScale.x;
         }
     }
 
@@ -304,7 +182,7 @@ public class PlayerBehavior : MonoBehaviour
             else
             {
                 externalSpeed = 0;
-                playerDashSpeed = 0;
+                dashSpeed = 0;
             }
         }
     }
@@ -317,7 +195,7 @@ public class PlayerBehavior : MonoBehaviour
             else
             {
                 externalSpeed = 0;
-                playerDashSpeed = 0;
+                dashSpeed = 0;
             }
         }
     }

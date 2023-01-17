@@ -69,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
                 transform.localScale = _graphicLocalScale;
             }
             // tmp : go to forward while attack!!
-            _playerBehavior.playerDashSpeed = -go * transform.localScale.x;
+            _playerBehavior.dashSpeed = -go * transform.localScale.x;
             canAttack = false;
             _animator.SetTrigger("attack");
         }
