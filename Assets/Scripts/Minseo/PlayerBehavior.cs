@@ -9,18 +9,19 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerBehavior : MonoBehaviour
 {
+    // for apply appropriate friction to player
     [SerializeField] private PhysicsMaterial2D little, zero;
-    [SerializeField] private Transform playerGraphicTransform;
-    
+
+    // Player's info (will be replaced by PlayerInfo Class object later)
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accel;
-    [SerializeField] private float friction;
     [SerializeField] private float jumpPower;
 
+    // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     [SerializeField] private Transform footPos;
+    [SerializeField] private Transform playerGraphicTransform;
 
-    [SerializeField] private LayerMask ground;
-
+    // Player gameObject's components
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private PlayerInputHandler _playerInputHandler;
@@ -28,7 +29,8 @@ public class PlayerBehavior : MonoBehaviour
     private SpriteRenderer _sprite;
     private PlayerAttack _playerAttack;
 
-    // public will be private ... (for debuging, it is public now)
+    // for below variable, public will be private ... (for debuging, it is public now)
+    // for record current state
     public float _speed;
     public bool _isGround;
     private bool _canJump;
@@ -36,20 +38,22 @@ public class PlayerBehavior : MonoBehaviour
     private bool _isAttack;
     private bool _canAttack;
     public bool _isKnockback;
+    public float playerDashSpeed;
+    public float externalSpeed;
 
     // tmp (will be removed maybe...)
     public float down;
     public float footRadius;
     public float go;
     public Vector2 knockback;
+    public float friction;
+    public LayerMask ground;
     
-    // tmp variable
+    // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     private Vector3 _graphicLocalScale;
     private Vector2 _velocity;
     private Vector2 _groundNormalPerp;
     
-    public float playerDashSpeed;
-    public float externalSpeed;
 
     // input detect variable
     private bool _normalAttackDetect;
@@ -177,7 +181,7 @@ public class PlayerBehavior : MonoBehaviour
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
             _graphicLocalScale.Set( _speed >= 0 ? -1 : 1, 1, 1);
-            playerGraphicTransform.localScale = _graphicLocalScale;
+            if (Mathf.Abs(externalSpeed) < 0.1f) playerGraphicTransform.localScale = _graphicLocalScale;
         }
         else
         {
@@ -266,6 +270,16 @@ public class PlayerBehavior : MonoBehaviour
         _canJump = false;
         _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
         externalSpeed = knockback.x * _playerAttack.transform.localScale.x;
+    }
+    
+    public void Backstep()
+    {
+        _speed = 0;
+        _isKnockback = true;
+        _isGround = false;
+        _canJump = false;
+        _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
+        playerDashSpeed = knockback.x * _playerAttack.transform.localScale.x;
     }
 
     
