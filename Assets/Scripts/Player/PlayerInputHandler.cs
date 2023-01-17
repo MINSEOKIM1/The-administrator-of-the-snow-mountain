@@ -34,4 +34,12 @@ public class PlayerInputHandler : MonoBehaviour
             _playerBehavior.Attack();
         }
     }
+
+    public void OnBackstep(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            _playerBehavior.Backstep();
+        }
+    }
 }

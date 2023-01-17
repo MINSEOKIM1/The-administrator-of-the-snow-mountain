@@ -16,6 +16,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accel;
     [SerializeField] private float jumpPower;
+    [SerializeField] private Vector2 backStepPower;
 
     // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     [SerializeField] private Transform footPos;
@@ -44,10 +45,10 @@ public class PlayerBehavior : MonoBehaviour
     // tmp (will be removed maybe...)
     public float down;
     public float footRadius;
-    public float go;
     public Vector2 knockback;
     public float friction;
     public LayerMask ground;
+    public float dashElapsed;
     
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     private Vector3 _graphicLocalScale;
@@ -58,6 +59,7 @@ public class PlayerBehavior : MonoBehaviour
     // input detect variable
     private bool _normalAttackDetect;
 
+    // For debugging in editor (not play mode)
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -171,7 +173,7 @@ public class PlayerBehavior : MonoBehaviour
     private void UpdateVelocity()
     {
         // if condition (!_inSlope) is omitted... player slide down a slope...
-        if (!_inSlope || (_inSlope && _isAttack))
+        if (!_inSlope || (_inSlope && Mathf.Abs(playerDashSpeed) > 1))
         {
             _speed = _rigidbody.velocity.x;
         }
@@ -181,7 +183,7 @@ public class PlayerBehavior : MonoBehaviour
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
             _graphicLocalScale.Set( _speed >= 0 ? -1 : 1, 1, 1);
-            if (Mathf.Abs(externalSpeed) < 0.1f) playerGraphicTransform.localScale = _graphicLocalScale;
+            if (Mathf.Abs(externalSpeed) < 0.1f && Mathf.Abs(playerDashSpeed) < 0.1f) playerGraphicTransform.localScale = _graphicLocalScale;
         }
         else
         {
@@ -210,6 +212,10 @@ public class PlayerBehavior : MonoBehaviour
     private void UpdateExternalVelocity()
     {
         playerDashSpeed = Mathf.Lerp(playerDashSpeed, 0, friction * Time.fixedDeltaTime);
+
+        dashElapsed -= Time.fixedDeltaTime;
+        if ((Mathf.Abs(playerDashSpeed) < 1 || dashElapsed <= 0) && gameObject.layer == 9) gameObject.layer = 7;
+        
         if (_isGround) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
     }
     /*
@@ -271,15 +277,21 @@ public class PlayerBehavior : MonoBehaviour
         _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
         externalSpeed = knockback.x * _playerAttack.transform.localScale.x;
     }
-    
+
     public void Backstep()
     {
-        _speed = 0;
-        _isKnockback = true;
-        _isGround = false;
-        _canJump = false;
-        _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
-        playerDashSpeed = knockback.x * _playerAttack.transform.localScale.x;
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
+        {
+            dashElapsed = 1;
+            gameObject.layer = 9;
+            _speed = 0;
+            externalSpeed = 0;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+            _isGround = false;
+            _canJump = false;
+            _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
+            playerDashSpeed = backStepPower.x * _playerAttack.transform.localScale.x;
+        }
     }
 
     
@@ -289,7 +301,11 @@ public class PlayerBehavior : MonoBehaviour
         if (col.gameObject.tag.Equals("Ground") )
         {
             if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else externalSpeed = 0;
+            else
+            {
+                externalSpeed = 0;
+                playerDashSpeed = 0;
+            }
         }
     }
     
@@ -298,7 +314,11 @@ public class PlayerBehavior : MonoBehaviour
         if (col.gameObject.tag.Equals("Ground"))
         {
             if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else externalSpeed = 0;
+            else
+            {
+                externalSpeed = 0;
+                playerDashSpeed = 0;
+            }
         }
     }
 
