@@ -24,8 +24,9 @@ public class White : Monster
         _attackMethods[1] = Attack0;
     }
 
-    protected void Update()
+    protected override void Update()
     {
+        base.Update();
         AttackCheck();
     }
 
@@ -63,7 +64,10 @@ public class White : Monster
             tmp = Physics2D.OverlapBoxAll(transform.position, attackDetectBoxes[i], 0);
             foreach (var j in tmp)
             {
-                if (j.CompareTag("Player")) _attackMethods[i]();
+                if (j.CompareTag("Player"))
+                {
+                    _attackMethods[i]();
+                }
             }
         }
     }

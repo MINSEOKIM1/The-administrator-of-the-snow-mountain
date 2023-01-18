@@ -2472,7 +2472,7 @@ MonoBehaviour:
   maxSpeed: 4
   accel: 1
   jumpPower: 8.7
-  backStepPower: {x: -5, y: 0}
+  backStepPower: {x: 3, y: 3}
   maxHp: 1000
   maxMp: 0
   atk: 0
@@ -2500,6 +2500,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   dashElapsed: 0
+  _normalAttackDetect: 0
 --- !u!114 &1036717072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,6 +2736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttack: 0
   canAttack: 0
+  _normalAttackNumber: 0
   boxSize: {x: 2.24, y: 1.78}
   boxOffset: {x: -1.05, y: 0}
   go: 2
@@ -3886,8 +3888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   little: {fileID: 6200000, guid: 12b2c0fb2f62f4911bb62c0d1b1bc2d6, type: 2}
   zero: {fileID: 6200000, guid: ff0f2a450bdc14b3c86d8ae0c52218bc, type: 2}
-  maxSpeed: 0
-  accel: 0
+  maxSpeed: 1
+  accel: 1
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
   maxHp: 1000
@@ -3909,22 +3911,22 @@ MonoBehaviour:
   isDie: 0
   touchMonster: 0
   hitAirTime: 0
-  down: 0
-  footRadius: 0
+  down: 0.12
+  footRadius: 0.12
   knockback: {x: 0, y: 0}
   friction: 5
   ground:
     serializedVersion: 2
     m_Bits: 64
-  stateChangeInterval: 0
-  boxSize: {x: 3.8, y: 1.6}
-  boxOffset: {x: 0, y: 0}
+  stateChangeInterval: 2
+  boxSize: {x: 4.76, y: 3.08}
+  boxOffset: {x: -2.43, y: 0}
   _target: {fileID: 0}
   moveState: 0
   stateChangeElapsed: 0
   hpbar: {fileID: 8893795402582813929}
   attackDetectBoxes:
-  - {x: 4.86, y: 2.52}
+  - {x: 2.53, y: 0.81}
   attackBoundaryBoxes:
   - {x: 1.93, y: 1.13}
   attackBoundaryOffsets:

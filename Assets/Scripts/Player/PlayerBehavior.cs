@@ -23,7 +23,7 @@ public class PlayerBehavior : Entity
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
 
     // input detect variable
-    private bool _normalAttackDetect;
+    public bool _normalAttackDetect;
 
     // For debugging in editor (not play mode)
 
@@ -146,8 +146,14 @@ public class PlayerBehavior : Entity
 
     public void Backstep()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
+        if (_canJump && Mathf.Abs(externalSpeed) < 1)
         {
+            if (_isAttack)
+            {
+                _animator.SetTrigger("attackCancel");
+                _playerAttack.ResetNormalAttack();
+            }
+
             dashElapsed = 1;
             gameObject.layer = 9;
             _speed = 0;
