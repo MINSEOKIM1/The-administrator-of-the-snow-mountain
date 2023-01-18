@@ -10,7 +10,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] private SceneInfo sceneInfo;
     [SerializeField] private GameObject[] points;
     [SerializeField] private TextMeshProUGUI[] texts;
-    private void Awake()
+    private void Start()
     {
          // # UI Update
          TurnOnPoint(sceneInfo.currentSceneName);
