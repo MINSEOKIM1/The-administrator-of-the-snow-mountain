@@ -152,6 +152,7 @@ public class PlayerBehavior : Entity
             {
                 _animator.SetTrigger("attackCancel");
                 _playerAttack.ResetNormalAttack();
+                StartCoroutine(MotionCancel());
             }
 
             dashElapsed = 1;
@@ -164,5 +165,13 @@ public class PlayerBehavior : Entity
             _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
             dashSpeed = backStepPower.x * _playerAttack.transform.localScale.x;
         }
+    }
+
+    IEnumerator MotionCancel()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        Time.timeScale = 1;
     }
 }
