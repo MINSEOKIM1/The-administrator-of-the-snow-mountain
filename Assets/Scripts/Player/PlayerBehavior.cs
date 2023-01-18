@@ -130,7 +130,7 @@ public class PlayerBehavior : Entity
      */
     // Method Move() is inherited from Entity class, and no override
 
-    public void Jump()
+    public override void Jump()
     {
         if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
         {
