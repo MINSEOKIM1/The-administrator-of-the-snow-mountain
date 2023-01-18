@@ -151,9 +151,10 @@ public class PlayerBehavior : Entity
             if (_isAttack)
             {
                 _animator.SetTrigger("attackCancel");
-                _playerAttack.ResetNormalAttack();
                 StartCoroutine(MotionCancel());
             }
+            
+            _playerAttack.ResetNormalAttack();
 
             dashElapsed = 1;
             gameObject.layer = 9;
