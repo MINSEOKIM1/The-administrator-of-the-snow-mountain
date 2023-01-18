@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="93d6d0c8-824f-486a-bd13-67e5f0ce983d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The_Administrator_Of_The_Snow_Mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The_Administrator_Of_The_Snow_Mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Graphic.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Graphic.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minseo/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minseo/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/White.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/White.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673685488822</updated>
       <workItem from="1673685502609" duration="19892000" />
-      <workItem from="1673958365720" duration="13581000" />
+      <workItem from="1673958365720" duration="16878000" />
     </task>
     <servers />
   </component>

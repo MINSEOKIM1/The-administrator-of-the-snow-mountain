@@ -267,6 +267,7 @@ public abstract class Entity : MonoBehaviour
     public virtual void KnockBack(Vector2 knockback)
     {
         _speed = 0;
+        dashSpeed = 0;
         _isGround = false;
         _canJump = false;
         _hitAir = true;

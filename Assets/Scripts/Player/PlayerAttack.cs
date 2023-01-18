@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInputHandler _playerInputHandler;
     private Rigidbody2D _rigidbody2D;
     
-    private int _normalAttackNumber;
+    public int _normalAttackNumber;
     
     // tmp variable
     private Vector3 _graphicLocalScale;
@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
                 transform.localScale = _graphicLocalScale;
             }
             // tmp : go to forward while attack!!
-            _playerBehavior.dashSpeed = -go * transform.localScale.x;
+            if (!_playerBehavior._hitAir) _playerBehavior.dashSpeed = -go * transform.localScale.x;
             canAttack = false;
             _animator.SetTrigger("attack");
         }
