@@ -37,7 +37,7 @@ public abstract class Entity : MonoBehaviour
     public bool _isGround;
     protected bool _canJump;
     public bool _inSlope;
-    protected bool _isAttack;
+    public bool _isAttack;
     public float dashSpeed;
     public float externalSpeed;
     public float stunTimeElapsed;
@@ -49,6 +49,8 @@ public abstract class Entity : MonoBehaviour
     public bool isDie;
 
     public bool touchMonster;
+
+    public float hitAirTime;
     
 
     // tmp (will be removed maybe...)
@@ -58,12 +60,15 @@ public abstract class Entity : MonoBehaviour
     public float friction;
     public LayerMask ground;
 
-    public Slider hpbar;
-    
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     protected Vector3 _graphicLocalScale;
     protected Vector2 _velocity;
     protected Vector2 _groundNormalPerp;
+
+    public bool CanAttackLogic()
+    {
+        return !_isAttack && !_hitAir; 
+    }
 
     // Damage calculation formula
     public static float CalculateDamage(float damage, float def)
@@ -71,7 +76,7 @@ public abstract class Entity : MonoBehaviour
         return damage * 100 * (1 / (100 + def));
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(footPos.position, Vector3.down * down);
@@ -104,8 +109,7 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void ValueClamp()
     {
-        hp = Mathf.Clamp(hp, 0, maxHp);
-        mp = Mathf.Clamp(mp, 0, maxMp);
+        return;
     }
     
     protected virtual void ApplyAnimation()
@@ -122,12 +126,13 @@ public abstract class Entity : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(footPos.position, Vector2.down, down, ground);
         Debug.DrawRay(hit.point, _groundNormalPerp);
+        hitAirTime -= Time.fixedDeltaTime;
         if (hit)
         {
             _groundNormalPerp = Vector2.Perpendicular(hit.normal);
             if (_isGround)
             {
-                if (_hitAir) _hitAir = false;
+                if (_hitAir && hitAirTime <= 0) _hitAir = false;
                 // no slope
                 if (_groundNormalPerp.y == 0)
                 {
@@ -151,7 +156,7 @@ public abstract class Entity : MonoBehaviour
                 }
             } else 
             {
-                if (_hitAir) _hitAir = false;
+                if (_hitAir && hitAirTime <= 0) _hitAir = false;
                 // no slope
                 if (_groundNormalPerp.y == 0)
                 {
@@ -190,12 +195,19 @@ public abstract class Entity : MonoBehaviour
         return;
     }
 
+    /*
+     * This method process the speed about knockback, dash, etc... 
+     */
     protected virtual void UpdateExternalVelocity()
     {
         dashSpeed = Mathf.Lerp(dashSpeed, 0, friction * Time.fixedDeltaTime);
         if (!_hitAir || touchMonster) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
     }
 
+    /*
+     * player : input detect -> attack!
+     * monster : if the player is detected -> attack!
+     */
     protected virtual void AttackInputDetect()
     {
         return;
@@ -261,12 +273,12 @@ public abstract class Entity : MonoBehaviour
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
         externalSpeed = knockback.x;
+        hitAirTime = 0.1f;
     }
 
     public virtual void Hit(float damage, Vector2 knockback, float stunTime)
     {
         hp -= CalculateDamage(damage, def);
-        hpbar.value = hp / maxHp;
         if (hp <= 0)
         {
             Die();
@@ -313,18 +325,6 @@ public abstract class Entity : MonoBehaviour
                     dashSpeed = 0;
                 }
             }
-        }
-    }
-
-    protected void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
-        {
-            _isGround = false;
-        }
-        else if (col.gameObject.tag.Equals("Monster"))
-        {
-            touchMonster = false;
         }
     }
 }

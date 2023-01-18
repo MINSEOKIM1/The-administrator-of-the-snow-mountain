@@ -18,13 +18,12 @@ public class PlayerAttack : MonoBehaviour
     // tmp variable
     private Vector3 _graphicLocalScale;
     private Vector2 _boxOffsetWithLocalscale;
+    public Vector2 boxSize;
+    public Vector2 boxOffset;
     
     // tmp
     public float go;
-
-    public Vector2 boxSize;
-    public Vector2 boxOffset;
-
+    
     private void OnDrawGizmos()
     {
         _boxOffsetWithLocalscale.Set(boxOffset.x * transform.localScale.x, boxOffset.y);
@@ -52,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (i.CompareTag("Monster"))
             {
-                i.GetComponent<Monster>().Hit(10, ((i.transform.position - transform.position)*2), 1);
+                i.GetComponent<Monster>().Hit(10, ((i.transform.position - transform.position)*2 + Vector3.up*4), 1);
             }
         }
     }
