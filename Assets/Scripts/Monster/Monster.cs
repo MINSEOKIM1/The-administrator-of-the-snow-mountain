@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Monster : Entity
@@ -10,36 +11,54 @@ public class Monster : Entity
 
     // Entity's info (will be replaced by PlayerInfo Class object later)
     [SerializeField] private float stateChangeInterval;
-    
+    public Vector2 boxSize;
+    public Vector2 boxOffset;
+
     // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
 
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
     public GameObject _target;
 
+
     // 0 : idle, -1 : to left, 1 : to right - attack is independent...
     public int moveState;
     public float stateChangeElapsed;
     
     // tmp (will be removed maybe...)
+    public Slider hpbar;
 
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
+    private Vector2 _boxOffsetWithLocalscale;
     
-    
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        _boxOffsetWithLocalscale.Set(boxOffset.x * playerGraphicTransform.localScale.x, boxOffset.y);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube((Vector2)transform.position + _boxOffsetWithLocalscale, boxSize);
+    }
     protected override void Start()
     {
+        hp = maxHp;
+        mp = maxMp;
+        
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
-
     // FixedUpdated is inherited from Entity class and no override
+    // protected override void FixedUpdate() { ... }
     
-    protected override void ApplyAnimation()
+    /*
+     * Method Clamping hp, mp, etc.
+     */
+    protected override void ValueClamp()
     {
-        return;
+        hp = Mathf.Clamp(hp, 0, maxHp);
+        mp = Mathf.Clamp(mp, 0, maxMp);
     }
 
     /*
@@ -51,14 +70,45 @@ public class Monster : Entity
 
     protected override void DetermineNextMove()
     {
+        // try to detect Player
+        _boxOffsetWithLocalscale.Set(boxOffset.x * playerGraphicTransform.localScale.x, boxOffset.y);
+        var colliders = Physics2D.OverlapBoxAll(
+            transform.position + (Vector3)_boxOffsetWithLocalscale,
+            boxSize,
+            0);
+
+        foreach (var i in colliders)
+        {
+            if (i.CompareTag("Player")) _target = i.gameObject;
+        }
+
         stateChangeElapsed -= Time.fixedDeltaTime;
 
+        // there is no _target, choose next move randomly
         if (stateChangeElapsed <= 0)
         {
-            stateChangeElapsed = stateChangeInterval;
-            moveState = Random.Range(0, 3) - 1;
+            if (_target == null)
+            {
+                stateChangeElapsed = stateChangeInterval;
+                moveState = Random.Range(0, 3) - 1;
+
+            }
+            else
+            {
+                if (_target.transform.position.x < transform.position.x)
+                {
+                    stateChangeElapsed = stateChangeInterval / 2;
+                    moveState = -1;
+                }
+                else
+                {
+                    stateChangeElapsed = stateChangeInterval / 2;
+                    moveState = 1;
+                }
+            }
         }
     }
+
 
     /*
      * according to Input...
@@ -72,7 +122,7 @@ public class Monster : Entity
             _speed = _rigidbody.velocity.x;
         }
 
-        if (moveState != 0 && !_isAttack)
+        if (moveState != 0 && !_isAttack && !_hitAir)
         {
             _speed += accel * moveState;
             _capsuleCollider.sharedMaterial = zero;
@@ -96,39 +146,10 @@ public class Monster : Entity
      * update rigid.velocity -> apply change on real player's movement;
      */
     // Method Move() is inherited from Entity class and no override
-    
-    
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag.Equals("Ground") )
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
-    
-    private void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag.Equals("Ground"))
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
 
-    private void OnCollisionExit(Collision col)
+    public override void Hit(float damage, Vector2 knockback, float stunTime)
     {
-        if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
-        {
-            _isGround = false;
-        }
+        base.Hit(damage, knockback, stunTime);
+        hpbar.value = hp / maxHp;
     }
 }

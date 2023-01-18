@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public abstract class Entity : MonoBehaviour
@@ -15,6 +16,10 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected float accel;
     [SerializeField] protected float jumpPower;
     [SerializeField] protected Vector2 backStepPower;
+    [SerializeField] protected float maxHp;
+    [SerializeField] protected float maxMp;
+    [SerializeField] protected float atk;
+    [SerializeField] protected float def;
     
     // Entity's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     [SerializeField] protected Transform footPos;
@@ -32,10 +37,20 @@ public abstract class Entity : MonoBehaviour
     public bool _isGround;
     protected bool _canJump;
     public bool _inSlope;
-    protected bool _isAttack;
-    protected bool _canAttack;
+    public bool _isAttack;
     public float dashSpeed;
     public float externalSpeed;
+    public float stunTimeElapsed;
+    public bool _hitAir;
+
+    public float hp;
+    public float mp;
+
+    public bool isDie;
+
+    public bool touchMonster;
+
+    public float hitAirTime;
     
 
     // tmp (will be removed maybe...)
@@ -44,13 +59,24 @@ public abstract class Entity : MonoBehaviour
     public Vector2 knockback;
     public float friction;
     public LayerMask ground;
-    
+
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     protected Vector3 _graphicLocalScale;
     protected Vector2 _velocity;
     protected Vector2 _groundNormalPerp;
 
-    private void OnDrawGizmos()
+    public bool CanAttackLogic()
+    {
+        return !_isAttack && !_hitAir; 
+    }
+
+    // Damage calculation formula
+    public static float CalculateDamage(float damage, float def)
+    {
+        return damage * 100 * (1 / (100 + def));
+    }
+
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(footPos.position, Vector3.down * down);
@@ -67,7 +93,7 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
-        return;
+        ValueClamp();
     }
     
     protected virtual void FixedUpdate()
@@ -79,6 +105,11 @@ public abstract class Entity : MonoBehaviour
         AttackInputDetect();
         UpdateExternalVelocity();
         Move(_groundNormalPerp, _speed);
+    }
+
+    protected virtual void ValueClamp()
+    {
+        return;
     }
     
     protected virtual void ApplyAnimation()
@@ -95,11 +126,13 @@ public abstract class Entity : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(footPos.position, Vector2.down, down, ground);
         Debug.DrawRay(hit.point, _groundNormalPerp);
+        hitAirTime -= Time.fixedDeltaTime;
         if (hit)
         {
             _groundNormalPerp = Vector2.Perpendicular(hit.normal);
             if (_isGround)
             {
+                if (_hitAir && hitAirTime <= 0) _hitAir = false;
                 // no slope
                 if (_groundNormalPerp.y == 0)
                 {
@@ -121,8 +154,9 @@ public abstract class Entity : MonoBehaviour
                     _isGround = false;
                     _canJump = false;
                 }
-            } else if (_rigidbody.velocity.y <= 0)
+            } else 
             {
+                if (_hitAir && hitAirTime <= 0) _hitAir = false;
                 // no slope
                 if (_groundNormalPerp.y == 0)
                 {
@@ -161,12 +195,19 @@ public abstract class Entity : MonoBehaviour
         return;
     }
 
+    /*
+     * This method process the speed about knockback, dash, etc... 
+     */
     protected virtual void UpdateExternalVelocity()
     {
         dashSpeed = Mathf.Lerp(dashSpeed, 0, friction * Time.fixedDeltaTime);
-        if (_isGround) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
+        if (!_hitAir || touchMonster) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
     }
 
+    /*
+     * player : input detect -> attack!
+     * monster : if the player is detected -> attack!
+     */
     protected virtual void AttackInputDetect()
     {
         return;
@@ -183,9 +224,16 @@ public abstract class Entity : MonoBehaviour
             
             if (_inSlope)
             {
-                _velocity.Set(
-                    -(speed + dashSpeed + externalSpeed) * direction.x,
-                    Mathf.Clamp(-direction.y * (speed + dashSpeed + externalSpeed), -10, Single.PositiveInfinity));
+                if (Mathf.Abs(_rigidbody.velocity.y) <= Mathf.Abs(-direction.y * (speed + dashSpeed + externalSpeed))) {
+                    _velocity.Set(
+                        -(speed + dashSpeed + externalSpeed) * direction.x,
+                        Mathf.Clamp(-direction.y * (speed + dashSpeed + externalSpeed), -10, Single.PositiveInfinity));
+                } else
+                {
+                    _velocity.Set(
+                        -(speed + dashSpeed + externalSpeed) * direction.x,
+                        Mathf.Clamp(_rigidbody.velocity.y, -10, Single.PositiveInfinity));
+                }
             }
             else
             {
@@ -219,9 +267,65 @@ public abstract class Entity : MonoBehaviour
     public virtual void KnockBack(Vector2 knockback)
     {
         _speed = 0;
+        dashSpeed = 0;
         _isGround = false;
         _canJump = false;
+        _hitAir = true;
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
         externalSpeed = knockback.x;
+        hitAirTime = 0.1f;
+    }
+
+    public virtual void Hit(float damage, Vector2 knockback, float stunTime)
+    {
+        hp -= CalculateDamage(damage, def);
+        if (hp <= 0)
+        {
+            Die();
+            return;
+        }
+        KnockBack(knockback);
+    }
+
+    public virtual void Die()
+    {
+        isDie = true;
+        Destroy(gameObject);
+    }
+    
+    protected void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Ground") )
+        {
+            if (col.contacts[0].normal.y > 0.7) CheckGround();
+            else
+            {
+                if (Mathf.Abs(col.contacts[0].normal.x) == 1)
+                {
+                    externalSpeed = 0;
+                    dashSpeed = 0;
+                }
+            }
+        } else if (col.gameObject.tag.Equals("Monster"))
+        {
+            touchMonster = true;
+        }
+    }
+    
+    protected void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Ground"))
+        {
+            if (col.contacts[0].normal.y > 0.7) CheckGround();
+            else
+            {
+                if (Mathf.Abs(col.contacts[0].normal.x) == 1)
+                {
+                    externalSpeed = 0;
+                    dashSpeed = 0;
+                }
+            }
+        }
     }
 }

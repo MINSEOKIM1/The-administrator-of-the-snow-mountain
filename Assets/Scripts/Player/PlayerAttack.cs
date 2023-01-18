@@ -13,18 +13,17 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInputHandler _playerInputHandler;
     private Rigidbody2D _rigidbody2D;
     
-    private int _normalAttackNumber;
+    public int _normalAttackNumber;
     
     // tmp variable
     private Vector3 _graphicLocalScale;
     private Vector2 _boxOffsetWithLocalscale;
+    public Vector2 boxSize;
+    public Vector2 boxOffset;
     
     // tmp
     public float go;
-
-    public Vector2 boxSize;
-    public Vector2 boxOffset;
-
+    
     private void OnDrawGizmos()
     {
         _boxOffsetWithLocalscale.Set(boxOffset.x * transform.localScale.x, boxOffset.y);
@@ -52,8 +51,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (i.CompareTag("Monster"))
             {
-                Debug.Log("HIT!");
-                i.GetComponent<Monster>().KnockBack((i.transform.position - transform.position)*2 + Vector3.up*3);
+                i.GetComponent<Monster>().Hit(10, ((i.transform.position - transform.position)*2 + Vector3.up*4), 1);
             }
         }
     }
@@ -69,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
                 transform.localScale = _graphicLocalScale;
             }
             // tmp : go to forward while attack!!
-            _playerBehavior.dashSpeed = -go * transform.localScale.x;
+            if (!_playerBehavior._hitAir) _playerBehavior.dashSpeed = -go * transform.localScale.x;
             canAttack = false;
             _animator.SetTrigger("attack");
         }

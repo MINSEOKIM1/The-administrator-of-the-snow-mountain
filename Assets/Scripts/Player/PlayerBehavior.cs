@@ -23,7 +23,7 @@ public class PlayerBehavior : Entity
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
 
     // input detect variable
-    private bool _normalAttackDetect;
+    public bool _normalAttackDetect;
 
     // For debugging in editor (not play mode)
 
@@ -84,7 +84,7 @@ public class PlayerBehavior : Entity
             _speed = _rigidbody.velocity.x;
         }
 
-        if (_playerInputHandler.movement.x != 0 && !_isAttack)
+        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir)
         {
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
@@ -130,18 +130,6 @@ public class PlayerBehavior : Entity
      */
     // Method Move() is inherited from Entity class, and no override
 
-    public override void Jump()
-    {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
-        {
-            externalSpeed = 0;
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-            _isGround = false;
-            _canJump = false;
-            _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-        }
-    }
-
     public void Attack()
     {
         _normalAttackDetect = true;
@@ -158,8 +146,15 @@ public class PlayerBehavior : Entity
 
     public void Backstep()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
+        if (_canJump && Mathf.Abs(externalSpeed) < 1)
         {
+            if (_isAttack)
+            {
+                _animator.SetTrigger("attackCancel");
+                _playerAttack.ResetNormalAttack();
+                StartCoroutine(MotionCancel());
+            }
+
             dashElapsed = 1;
             gameObject.layer = 9;
             _speed = 0;
@@ -172,39 +167,11 @@ public class PlayerBehavior : Entity
         }
     }
 
-    
-    // OnCollision Methods..
-    private void OnCollisionEnter2D(Collision2D col)
+    IEnumerator MotionCancel()
     {
-        if (col.gameObject.tag.Equals("Ground") )
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
-    
-    private void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag.Equals("Ground"))
-        {
-            if (col.contacts[0].normal.y > 0.7) _isGround = true;
-            else
-            {
-                externalSpeed = 0;
-                dashSpeed = 0;
-            }
-        }
-    }
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.2f);
 
-    private void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
-        {
-            _isGround = false;
-        }
+        Time.timeScale = 1;
     }
 }
