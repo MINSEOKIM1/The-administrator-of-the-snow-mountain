@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public abstract class Entity : MonoBehaviour
@@ -15,6 +16,8 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected float accel;
     [SerializeField] protected float jumpPower;
     [SerializeField] protected Vector2 backStepPower;
+    [SerializeField] protected float maxHp;
+    [SerializeField] protected float maxMp;
     [SerializeField] protected float atk;
     [SerializeField] protected float def;
     
@@ -37,6 +40,15 @@ public abstract class Entity : MonoBehaviour
     protected bool _isAttack;
     public float dashSpeed;
     public float externalSpeed;
+    public float stunTimeElapsed;
+    public bool _hitAir;
+
+    public float hp;
+    public float mp;
+
+    public bool isDie;
+
+    public bool touchMonster;
     
 
     // tmp (will be removed maybe...)
@@ -45,6 +57,8 @@ public abstract class Entity : MonoBehaviour
     public Vector2 knockback;
     public float friction;
     public LayerMask ground;
+
+    public Slider hpbar;
     
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     protected Vector3 _graphicLocalScale;
@@ -74,7 +88,7 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
-        return;
+        ValueClamp();
     }
     
     protected virtual void FixedUpdate()
@@ -86,6 +100,12 @@ public abstract class Entity : MonoBehaviour
         AttackInputDetect();
         UpdateExternalVelocity();
         Move(_groundNormalPerp, _speed);
+    }
+
+    protected virtual void ValueClamp()
+    {
+        hp = Mathf.Clamp(hp, 0, maxHp);
+        mp = Mathf.Clamp(mp, 0, maxMp);
     }
     
     protected virtual void ApplyAnimation()
@@ -107,6 +127,7 @@ public abstract class Entity : MonoBehaviour
             _groundNormalPerp = Vector2.Perpendicular(hit.normal);
             if (_isGround)
             {
+                if (_hitAir) _hitAir = false;
                 // no slope
                 if (_groundNormalPerp.y == 0)
                 {
@@ -128,8 +149,9 @@ public abstract class Entity : MonoBehaviour
                     _isGround = false;
                     _canJump = false;
                 }
-            } else if (_rigidbody.velocity.y <= 0)
+            } else 
             {
+                if (_hitAir) _hitAir = false;
                 // no slope
                 if (_groundNormalPerp.y == 0)
                 {
@@ -171,7 +193,7 @@ public abstract class Entity : MonoBehaviour
     protected virtual void UpdateExternalVelocity()
     {
         dashSpeed = Mathf.Lerp(dashSpeed, 0, friction * Time.fixedDeltaTime);
-        if (_isGround) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
+        if (!_hitAir || touchMonster) externalSpeed = Mathf.Lerp(externalSpeed, 0, friction * Time.fixedDeltaTime);
     }
 
     protected virtual void AttackInputDetect()
@@ -190,9 +212,16 @@ public abstract class Entity : MonoBehaviour
             
             if (_inSlope)
             {
-                _velocity.Set(
-                    -(speed + dashSpeed + externalSpeed) * direction.x,
-                    Mathf.Clamp(-direction.y * (speed + dashSpeed + externalSpeed), -10, Single.PositiveInfinity));
+                if (Mathf.Abs(_rigidbody.velocity.y) <= Mathf.Abs(-direction.y * (speed + dashSpeed + externalSpeed))) {
+                    _velocity.Set(
+                        -(speed + dashSpeed + externalSpeed) * direction.x,
+                        Mathf.Clamp(-direction.y * (speed + dashSpeed + externalSpeed), -10, Single.PositiveInfinity));
+                } else
+                {
+                    _velocity.Set(
+                        -(speed + dashSpeed + externalSpeed) * direction.x,
+                        Mathf.Clamp(_rigidbody.velocity.y, -10, Single.PositiveInfinity));
+                }
             }
             else
             {
@@ -228,6 +257,7 @@ public abstract class Entity : MonoBehaviour
         _speed = 0;
         _isGround = false;
         _canJump = false;
+        _hitAir = true;
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
         externalSpeed = knockback.x;
@@ -235,7 +265,20 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Hit(float damage, Vector2 knockback, float stunTime)
     {
-        return;
+        hp -= CalculateDamage(damage, def);
+        hpbar.value = hp / maxHp;
+        if (hp <= 0)
+        {
+            Die();
+            return;
+        }
+        KnockBack(knockback);
+    }
+
+    public virtual void Die()
+    {
+        isDie = true;
+        Destroy(gameObject);
     }
     
     protected void OnCollisionEnter2D(Collision2D col)
@@ -245,9 +288,15 @@ public abstract class Entity : MonoBehaviour
             if (col.contacts[0].normal.y > 0.7) CheckGround();
             else
             {
-                externalSpeed = 0;
-                dashSpeed = 0;
+                if (Mathf.Abs(col.contacts[0].normal.x) == 1)
+                {
+                    externalSpeed = 0;
+                    dashSpeed = 0;
+                }
             }
+        } else if (col.gameObject.tag.Equals("Monster"))
+        {
+            touchMonster = true;
         }
     }
     
@@ -258,8 +307,11 @@ public abstract class Entity : MonoBehaviour
             if (col.contacts[0].normal.y > 0.7) CheckGround();
             else
             {
-                externalSpeed = 0;
-                dashSpeed = 0;
+                if (Mathf.Abs(col.contacts[0].normal.x) == 1)
+                {
+                    externalSpeed = 0;
+                    dashSpeed = 0;
+                }
             }
         }
     }
@@ -269,6 +321,10 @@ public abstract class Entity : MonoBehaviour
         if (col.gameObject.tag.Equals("Ground") && col.contacts[0].normal.y > 0.7)
         {
             _isGround = false;
+        }
+        else if (col.gameObject.tag.Equals("Monster"))
+        {
+            touchMonster = false;
         }
     }
 }
