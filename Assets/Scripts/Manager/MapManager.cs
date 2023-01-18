@@ -56,9 +56,11 @@ public class MapManager : MonoBehaviour
 
     private void MopNumUpdate()
     {
+        texts[0].text = "" + sceneInfo.village.curMob + "/" + sceneInfo.village.maxMob;
         for (int index = 0; index < sceneInfo.dungeons.Length; index++)
         {
-            texts[index].text = "" + sceneInfo.dungeons[index].curMob + "/" + sceneInfo.dungeons[index].maxMob;
+            texts[index+1].text = "" + sceneInfo.dungeons[index].curMob + "/" + sceneInfo.dungeons[index].maxMob;
         }
+        
     }
 }

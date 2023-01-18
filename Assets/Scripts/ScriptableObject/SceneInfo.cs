@@ -8,4 +8,5 @@ public class SceneInfo : ScriptableObject
     public string beforeSceneName;
     public string currentSceneName;
     public DungeonInfo[] dungeons;
+    public VillageInfo village;
 }

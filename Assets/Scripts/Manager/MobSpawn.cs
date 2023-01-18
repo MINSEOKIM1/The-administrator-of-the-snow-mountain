@@ -9,16 +9,17 @@ public class MobSpawn : MonoBehaviour
     private float timeA;
     private float timeB;
     [SerializeField] private SceneInfo sceneInfo;
+    [SerializeField] private RespawnTimeInfo respawnTimeInfo;
     private void Update()
     {
         timeA += Time.deltaTime;
         timeB += Time.deltaTime;
-        if (timeA > 2.3f)
+        if (timeA > respawnTimeInfo.respawnTime[0])
         {
             SpawnA();
         }
 
-        if (timeB > 1.5f)
+        if (timeB >  respawnTimeInfo.respawnTime[1])
         {
             SpawnB();
         }
@@ -28,21 +29,48 @@ public class MobSpawn : MonoBehaviour
             Reset();
         }
     }
-
+    private void SpawnVillage()
+    {
+        if (sceneInfo.village.maxMob > sceneInfo.village.curMob)
+        {
+            sceneInfo.village.curMob++;    
+        }
+        else
+        {
+            Debug.Log("GameOver");
+        }
+        
+    }
     private void SpawnA()
     {
         timeA = 0;
-        sceneInfo.dungeons[0].curMob++;
+        if (sceneInfo.dungeons[0].maxMob > sceneInfo.dungeons[0].curMob)
+        {
+            sceneInfo.dungeons[0].curMob++;    
+        }
+        else
+        {
+            SpawnVillage();
+        }
+        
     }
 
     private void SpawnB()
     {
         timeB = 0;
-        sceneInfo.dungeons[1].curMob++;
+        if (sceneInfo.dungeons[1].maxMob > sceneInfo.dungeons[1].curMob)
+        {
+            sceneInfo.dungeons[1].curMob++;    
+        }
+        else
+        {
+            SpawnA();
+        }
     }
 
     private void Reset()
     {
+        sceneInfo.village.curMob = 0;
         for (int index = 0; index < sceneInfo.dungeons.Length; index++)
         {
             sceneInfo.dungeons[index].curMob = 0;
