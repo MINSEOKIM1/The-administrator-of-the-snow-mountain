@@ -52,8 +52,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (i.CompareTag("Monster"))
             {
-                Debug.Log("HIT!");
-                i.GetComponent<Monster>().KnockBack((i.transform.position - transform.position)*2 + Vector3.up*3);
+                i.GetComponent<Monster>().Hit(10, ((i.transform.position - transform.position)*2), 1);
             }
         }
     }

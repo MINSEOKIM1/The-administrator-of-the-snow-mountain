@@ -10,18 +10,13 @@ public class Monster : Entity
 
     // Entity's info (will be replaced by PlayerInfo Class object later)
     [SerializeField] private float stateChangeInterval;
-    public float maxHp;
-    public float maxMp;
-    public float exp;
-    
+
     // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
 
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
     public GameObject _target;
-    public float hp;
-    public float mp;
-    
+
 
     // 0 : idle, -1 : to left, 1 : to right - attack is independent...
     public int moveState;
@@ -34,6 +29,9 @@ public class Monster : Entity
     
     protected override void Start()
     {
+        hp = maxHp;
+        mp = maxMp;
+        
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -78,7 +76,7 @@ public class Monster : Entity
             _speed = _rigidbody.velocity.x;
         }
 
-        if (moveState != 0 && !_isAttack && Mathf.Abs(externalSpeed) < 1)
+        if (moveState != 0 && !_isAttack && !_hitAir)
         {
             _speed += accel * moveState;
             _capsuleCollider.sharedMaterial = zero;

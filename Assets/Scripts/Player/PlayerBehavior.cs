@@ -84,7 +84,7 @@ public class PlayerBehavior : Entity
             _speed = _rigidbody.velocity.x;
         }
 
-        if (_playerInputHandler.movement.x != 0 && !_isAttack)
+        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir)
         {
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
