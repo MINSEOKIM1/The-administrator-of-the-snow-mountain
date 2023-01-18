@@ -88,6 +88,7 @@ public class PlayerAttack : MonoBehaviour
     {
         CanAttack();
         _normalAttackNumber = 0;
+        _animator.ResetTrigger("attack");
         _animator.SetInteger("normalAttack", _normalAttackNumber);
     }
 }
