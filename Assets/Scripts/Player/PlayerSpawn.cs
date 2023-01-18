@@ -12,6 +12,11 @@ public class PlayerSpawn : MonoBehaviour
     // # player spawn point setting by sceneInfo (currentScene and beforeScene)
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().name == "Village")
+        {
+            sceneInfo.currentSceneName = "Village";
+            sceneInfo.beforeSceneName = "DungeonA";
+        }
         switch (sceneInfo.currentSceneName)
         {
             case "Village":
