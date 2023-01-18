@@ -1544,7 +1544,7 @@ GameObject:
   - component: {fileID: 334784626}
   - component: {fileID: 334784625}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DungeonB Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1854,6 +1854,7 @@ MonoBehaviour:
   - {fileID: 2051611943}
   - {fileID: 116538744}
   texts:
+  - {fileID: 927696260}
   - {fileID: 912792347}
   - {fileID: 334784625}
 --- !u!4 &768908676
@@ -1994,7 +1995,7 @@ GameObject:
   - component: {fileID: 912792348}
   - component: {fileID: 912792347}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DungeonA Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,7 +2130,7 @@ GameObject:
   - component: {fileID: 927696261}
   - component: {fileID: 927696260}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Village Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2175,7 +2176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 00/00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2794,6 +2795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneInfo: {fileID: 11400000, guid: c6747b784363aa6429be67f2e4b56274, type: 2}
+  respawnTimeInfo: {fileID: 11400000, guid: a15db9bc2861b404c84d089958a62bb7, type: 2}
 --- !u!4 &1857161954
 Transform:
   m_ObjectHideFlags: 0
