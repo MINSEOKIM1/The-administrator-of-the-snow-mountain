@@ -16,7 +16,7 @@ MonoBehaviour:
   accel: 0.5
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
-  maxHp: 2000
+  maxHp: 1000
   maxMp: 100
   atk: 80
   def: 20
@@ -24,7 +24,7 @@ MonoBehaviour:
   boxSize: {x: 3.53, y: 3.16}
   boxOffset: {x: -1.77, y: 0}
   attackDetectBoxes:
-  - {x: 2.95, y: 1.44}
+  - {x: 2.35, y: 1.44}
   attackBoundaryBoxes:
   - {x: 1.57, y: 0.9}
   attackBoundaryOffsets:
