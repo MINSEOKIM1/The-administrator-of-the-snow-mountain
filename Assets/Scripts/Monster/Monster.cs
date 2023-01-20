@@ -10,9 +10,10 @@ public class Monster : Entity
     // for apply appropriate friction to player
 
     // Entity's info (will be replaced by PlayerInfo Class object later)
-    [SerializeField] private float stateChangeInterval;
-    public Vector2 boxSize;
-    public Vector2 boxOffset;
+    protected float stateChangeInterval => ((MonsterInfo)entityInfo).stateChangeInterval;
+    public Vector2 boxSize => ((MonsterInfo)entityInfo).boxSize;
+    public Vector2 boxOffset => ((MonsterInfo)entityInfo).boxOffset; 
+    
 
     // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
 

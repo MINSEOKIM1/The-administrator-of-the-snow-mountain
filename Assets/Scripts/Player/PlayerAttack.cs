@@ -51,7 +51,8 @@ public class PlayerAttack : MonoBehaviour
         {
             if (i.CompareTag("Monster"))
             {
-                i.GetComponent<Monster>().Hit(10, ((i.transform.position - transform.position)*2 + Vector3.up*4), 1);
+                i.GetComponent<Monster>().Hit(_playerBehavior.atk
+                    , ((i.transform.position - transform.position)*2 + Vector3.up*4), 1);
             }
         }
     }

@@ -12,14 +12,16 @@ public abstract class Entity : MonoBehaviour
     public PhysicsMaterial2D little, zero;
     
     // Entity's info (will be replaced by PlayerInfo Class object later)
-    [SerializeField] protected float maxSpeed;
-    [SerializeField] protected float accel;
-    [SerializeField] protected float jumpPower;
-    [SerializeField] protected Vector2 backStepPower;
-    [SerializeField] protected float maxHp;
-    [SerializeField] protected float maxMp;
-    [SerializeField] protected float atk;
-    [SerializeField] protected float def;
+    [SerializeField] protected EntityInfo entityInfo;
+    
+    protected float maxSpeed => entityInfo.maxSpeed;
+    protected float accel => entityInfo.accel;
+    protected float jumpPower => entityInfo.jumpPower;
+    protected Vector2 backStepPower => entityInfo.backStepPower;
+    protected float maxHp => entityInfo.maxHp;
+    protected float maxMp => entityInfo.maxMp;
+    public float atk => entityInfo.atk;
+    public float def => entityInfo.def;
     
     // Entity's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     [SerializeField] protected Transform footPos;
