@@ -7,6 +7,6 @@ public class SceneInfo : ScriptableObject
     // # scriptable objects
     public string beforeSceneName;
     public string currentSceneName;
-    public DungeonInfo[] dungeons;
-    public VillageInfo village;
+    public DungeonData[] dungeons;
+    public VillageData village;
 }

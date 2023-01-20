@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MobSpawn : MonoBehaviour
 {
@@ -9,17 +10,16 @@ public class MobSpawn : MonoBehaviour
     private float timeA;
     private float timeB;
     [SerializeField] private SceneInfo sceneInfo;
-    [SerializeField] private RespawnTimeInfo respawnTimeInfo;
     private void Update()
     {
         timeA += Time.deltaTime;
         timeB += Time.deltaTime;
-        if (timeA > respawnTimeInfo.respawnTime[0])
+        if (timeA > sceneInfo.dungeons[0].respawnTime)
         {
             SpawnA();
         }
 
-        if (timeB >  respawnTimeInfo.respawnTime[1])
+        if (timeB >  sceneInfo.dungeons[1].respawnTime)
         {
             SpawnB();
         }
@@ -38,6 +38,7 @@ public class MobSpawn : MonoBehaviour
         else
         {
             Debug.Log("GameOver");
+            SceneManager.LoadScene("GameOver");
         }
         
     }
