@@ -13,8 +13,19 @@ MonoBehaviour:
   m_Name: SceneInfo
   m_EditorClassIdentifier: 
   beforeSceneName: DungeonA
-  currentSceneName: Village
+  currentSceneName: DungeonB
   dungeons:
-  - {fileID: 11400000, guid: 7c2a9c097ff828d4fbe023413144a270, type: 2}
-  - {fileID: 11400000, guid: ba93ef596448be144b8c318e17dbc745, type: 2}
-  village: {fileID: 11400000, guid: 99343efaf92bf26459a8bd29b3c7e193, type: 2}
+  - id: 0
+    name: dungeonA
+    respawnTime: 2.5
+    maxMob: 20
+    curMob: 3
+  - id: 1
+    name: dungeonB
+    respawnTime: 0.7
+    maxMob: 15
+    curMob: 11
+  village:
+    name: village
+    maxMob: 5
+    curMob: 0
