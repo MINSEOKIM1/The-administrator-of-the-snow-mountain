@@ -25,7 +25,7 @@ public abstract class Entity : MonoBehaviour
     
     // Entity's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     [SerializeField] protected Transform footPos;
-    [SerializeField] protected Transform playerGraphicTransform;
+    [SerializeField] protected Transform graphicTransform;
     
     // Entity gameObject's components
     protected Rigidbody2D _rigidbody;
