@@ -37,7 +37,7 @@ public abstract class Entity : MonoBehaviour
     // for record current state
     public float _speed;
     public bool _isGround;
-    protected bool _canJump;
+    public bool _canJump;
     public bool _inSlope;
     public bool _isAttack;
     public float dashSpeed;
@@ -156,22 +156,26 @@ public abstract class Entity : MonoBehaviour
                     _isGround = false;
                     _canJump = false;
                 }
-            } else 
+            }
+            else
             {
-                if (_hitAir && hitAirTime <= 0) _hitAir = false;
-                // no slope
-                if (_groundNormalPerp.y == 0)
+                if (hit.collider.GetComponent<PlatformEffector2D>() == null || _rigidbody.velocity.y < 0)
                 {
-                    _inSlope = false;
-                    _isGround = true;
-                    _canJump = true;
-                }
-                // available slope
-                else if (Vector2.Angle(Vector2.up, hit.normal) < 45)
-                {
-                    _inSlope = true;
-                    _isGround = true;
-                    _canJump = true;
+                    if (_hitAir && hitAirTime <= 0) _hitAir = false;
+                    // no slope
+                    if (_groundNormalPerp.y == 0)
+                    {
+                        _inSlope = false;
+                        _isGround = true;
+                        _canJump = true;
+                    }
+                    // available slope
+                    else if (Vector2.Angle(Vector2.up, hit.normal) < 45)
+                    {
+                        _inSlope = true;
+                        _isGround = true;
+                        _canJump = true;
+                    }
                 }
             }
         }
@@ -315,7 +319,7 @@ public abstract class Entity : MonoBehaviour
         }
     }
     
-    protected void OnCollisionStay2D(Collision2D col)
+    protected virtual void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
