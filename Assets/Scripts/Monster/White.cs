@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class White : Monster
 {
-    public Vector2[] attackDetectBoxes;
-
     private delegate void Attack();
     private Attack[] _attackMethods;
 
     private MonsterAttack _monsterAttack;
     
     // from Monster's info... (MonsterInfo class will be made later)
-    public Vector2[] attackBoundaryBoxes;
-    public Vector2[] attackBoundaryOffsets;
+    public Vector2[] attackDetectBoxes => ((MonsterInfo)entityInfo).attackDetectBoxes;
+    public Vector2[] attackBoundaryBoxes => ((MonsterInfo)entityInfo).attackBoundaryBoxes;
+    public Vector2[] attackBoundaryOffsets => ((MonsterInfo)entityInfo).attackBoundaryOffsets;
 
     protected override void Start()
     {
@@ -66,6 +65,17 @@ public class White : Monster
             {
                 if (j.CompareTag("Player"))
                 {
+                    if (_target == null) _target = j.gameObject;
+                    if (_target.transform.position.x < transform.position.x)
+                    {
+                        _graphicLocalScale.Set(1, 1, 1);
+                        playerGraphicTransform.localScale = _graphicLocalScale;
+                    }
+                    else
+                    {
+                        _graphicLocalScale.Set(-1, 1, 1);
+                        playerGraphicTransform.localScale = _graphicLocalScale;
+                    }
                     _attackMethods[i]();
                 }
             }

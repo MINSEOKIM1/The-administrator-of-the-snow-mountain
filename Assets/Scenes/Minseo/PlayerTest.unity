@@ -3270,6 +3270,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6430485222588318234, guid: 3d803f0a6949a431691402dccf68d716, type: 3}
+      propertyPath: entityInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ae39f5afa7a942268b9bcb196bd97c0, type: 2}
     - target: {fileID: 6430485222588318238, guid: 3d803f0a6949a431691402dccf68d716, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3408,14 +3412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   little: {fileID: 6200000, guid: 12b2c0fb2f62f4911bb62c0d1b1bc2d6, type: 2}
   zero: {fileID: 6200000, guid: ff0f2a450bdc14b3c86d8ae0c52218bc, type: 2}
-  maxSpeed: 1
-  accel: 1
-  jumpPower: 0
-  backStepPower: {x: 0, y: 0}
-  maxHp: 1000
-  maxMp: 0
-  atk: 0
-  def: 0
+  entityInfo: {fileID: 11400000, guid: c348671da136b4db58a8d1351c6db98f, type: 2}
   footPos: {fileID: 8893795402503352495}
   playerGraphicTransform: {fileID: 1928126734}
   _speed: 0
@@ -3438,19 +3435,10 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  stateChangeInterval: 2
-  boxSize: {x: 4.76, y: 3.08}
-  boxOffset: {x: -2.43, y: 0}
   _target: {fileID: 0}
   moveState: 0
   stateChangeElapsed: 0
   hpbar: {fileID: 8893795402582813929}
-  attackDetectBoxes:
-  - {x: 2.53, y: 0.81}
-  attackBoundaryBoxes:
-  - {x: 1.93, y: 1.13}
-  attackBoundaryOffsets:
-  - {x: -0.56, y: 0}
 --- !u!1 &8893795402503352494
 GameObject:
   m_ObjectHideFlags: 0
