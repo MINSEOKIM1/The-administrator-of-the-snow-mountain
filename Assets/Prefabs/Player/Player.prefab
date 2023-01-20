@@ -117,9 +117,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3512680031481061195}
   - {fileID: 6430485222620280290}
   - {fileID: 6430485223067358388}
+  - {fileID: 3512680031481061195}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -268,11 +268,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   little: {fileID: 6200000, guid: 12b2c0fb2f62f4911bb62c0d1b1bc2d6, type: 2}
   zero: {fileID: 6200000, guid: ff0f2a450bdc14b3c86d8ae0c52218bc, type: 2}
-  entityInfo: {fileID: 0}
+  entityInfo: {fileID: 11400000, guid: 8ae39f5afa7a942268b9bcb196bd97c0, type: 2}
   footPos: {fileID: 6430485223067358388}
-  playerGraphicTransform: {fileID: 6430485222620280290}
+  graphicTransform: {fileID: 6430485222620280290}
   _speed: 0
   _isGround: 0
+  _canJump: 0
   _inSlope: 0
   _isAttack: 0
   dashSpeed: 0
@@ -291,8 +292,12 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
+  wallCheckPos: {fileID: 3512680031481061195}
   isClimb: 0
   dashElapsed: 0
+  wallJump: 0
+  wallJumpPower: 0
+  leftDis: 0.5
   _normalAttackDetect: 0
 --- !u!114 &6430485222588318213
 MonoBehaviour:
@@ -425,7 +430,7 @@ Transform:
   - {fileID: 6430485222613934211}
   - {fileID: 6430485222585228322}
   m_Father: {fileID: 6430485222588318238}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6430485222620280291
 SpriteRenderer:
@@ -546,7 +551,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6430485222588318238}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7384954448175095752
 GameObject:
@@ -577,5 +582,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6430485222588318238}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -35,7 +35,7 @@ public class Monster : Entity
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-        _boxOffsetWithLocalscale.Set(boxOffset.x * playerGraphicTransform.localScale.x, boxOffset.y);
+        _boxOffsetWithLocalscale.Set(boxOffset.x * graphicTransform.localScale.x, boxOffset.y);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube((Vector2)transform.position + _boxOffsetWithLocalscale, boxSize);
     }
@@ -72,7 +72,7 @@ public class Monster : Entity
     protected override void DetermineNextMove()
     {
         // try to detect Player
-        _boxOffsetWithLocalscale.Set(boxOffset.x * playerGraphicTransform.localScale.x, boxOffset.y);
+        _boxOffsetWithLocalscale.Set(boxOffset.x * graphicTransform.localScale.x, boxOffset.y);
         var colliders = Physics2D.OverlapBoxAll(
             transform.position + (Vector3)_boxOffsetWithLocalscale,
             boxSize,
@@ -128,7 +128,7 @@ public class Monster : Entity
             _speed += accel * moveState;
             _capsuleCollider.sharedMaterial = zero;
             _graphicLocalScale.Set( _speed >= 0 ? -1 : 1, 1, 1);
-            if (Mathf.Abs(externalSpeed) < 0.1f && Mathf.Abs(dashSpeed) < 0.1f) playerGraphicTransform.localScale = _graphicLocalScale;
+            if (Mathf.Abs(externalSpeed) < 0.1f && Mathf.Abs(dashSpeed) < 0.1f) graphicTransform.localScale = _graphicLocalScale;
         }
         else
         {

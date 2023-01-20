@@ -23,6 +23,7 @@ public class PlayerBehavior : Entity
     public float dashElapsed;
     public float wallJump;
     public float wallJumpPower;
+    public float wallTime;
     
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     public float leftDis;
@@ -85,14 +86,16 @@ public class PlayerBehavior : Entity
      */
     private void CheckWall()
     {
+        wallTime -= Time.fixedDeltaTime;
+        
         var hits = Physics2D.RaycastAll(
             wallCheckPos.position,
-            Vector2.left * playerGraphicTransform.localScale.x,
+            Vector2.left * graphicTransform.localScale.x,
             leftDis
         );
         
         Debug.DrawRay(wallCheckPos.position,
-            Vector2.left * playerGraphicTransform.localScale.x * leftDis* playerGraphicTransform.localScale.x,
+            Vector2.left * graphicTransform.localScale.x * leftDis* graphicTransform.localScale.x,
             Color.black
             );
 
@@ -102,27 +105,36 @@ public class PlayerBehavior : Entity
             {
                 if (hit.collider.gameObject.CompareTag("Ground"))
                 {
-                    if (!isClimb &&
-                        (int)_playerInputHandler.movement.x == -(int)playerGraphicTransform.localScale.x &&
-                        !_isGround &&
+                    if (!_isGround &&
                         !_isAttack &&
                         hit.collider.gameObject.GetComponent<PlatformEffector2D>() == null &&
                         wallJump <= 0 &&
                         _rigidbody.velocity.y < 0)
                     {
-                        _canJump = true;
-                        isClimb = true;
-                        _speed = 0;
+                        if ((int)_playerInputHandler.movement.x == -(int)graphicTransform.localScale.x)
+                        {
+                            _canJump = true;
+                            isClimb = true;
+                            _speed = 0;
+                            wallTime = 0.4f;
+                        } else if (wallTime > 0)
+                        {
+                            _canJump = true;
+                            isClimb = true;
+                            _speed = 0;
+                        }
                     }
-                    else
+                    else if (isClimb && wallTime < 0)
                     {
+                        Debug.Log("ASDG");
                         isClimb = false;
-                    }
+                    } 
 
                     break;
                 }
                 else
                 {
+                    Debug.Log("ASDG");
                     isClimb = false;
                 }
             }
@@ -143,12 +155,12 @@ public class PlayerBehavior : Entity
             if (wallJump<0) _speed = _rigidbody.velocity.x;
         }
 
-        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir)
+        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir && !isClimb)
         {
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
             _graphicLocalScale.Set( _speed >= 0 ? -1 : 1, 1, 1);
-            if (Mathf.Abs(externalSpeed) < 0.1f && Mathf.Abs(dashSpeed) < 0.1f) playerGraphicTransform.localScale = _graphicLocalScale;
+            if (Mathf.Abs(externalSpeed) < 0.1f && Mathf.Abs(dashSpeed) < 0.1f) graphicTransform.localScale = _graphicLocalScale;
         }
         else
         {

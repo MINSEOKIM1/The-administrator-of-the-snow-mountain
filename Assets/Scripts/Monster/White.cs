@@ -70,12 +70,12 @@ public class White : Monster
                     if (_target.transform.position.x < transform.position.x)
                     {
                         _graphicLocalScale.Set(1, 1, 1);
-                        playerGraphicTransform.localScale = _graphicLocalScale;
+                        graphicTransform.localScale = _graphicLocalScale;
                     }
                     else
                     {
                         _graphicLocalScale.Set(-1, 1, 1);
-                        playerGraphicTransform.localScale = _graphicLocalScale;
+                        graphicTransform.localScale = _graphicLocalScale;
                     }
                     _attackMethods[i]();
                 }
