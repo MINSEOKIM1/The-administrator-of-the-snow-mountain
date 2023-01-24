@@ -14,6 +14,9 @@ public class PlayerBehavior : Entity
     private PlayerInputHandler _playerInputHandler;
     private PlayerAttack _playerAttack;
     
+    // Entity's info (will be replaced by PlayerInfo Class object later)
+    public PlayerInfo EntityInfo => (PlayerInfo) entityInfo;
+    
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
     public bool isClimb;
@@ -45,12 +48,14 @@ public class PlayerBehavior : Entity
 
     protected override void Update()
     {
+        base.Update();
         AttackCheck();
     }
 
     // Physics logic...
     protected override void FixedUpdate()
     {
+        if (stunTimeElapsed > 0) stunTimeElapsed -= Time.fixedDeltaTime;
         ApplyAnimation();
         CheckGround();
         CheckWall();
@@ -87,7 +92,7 @@ public class PlayerBehavior : Entity
     private void CheckWall()
     {
         wallTime -= Time.fixedDeltaTime;
-        
+
         var hits = Physics2D.RaycastAll(
             wallCheckPos.position,
             Vector2.left * graphicTransform.localScale.x,
@@ -105,11 +110,10 @@ public class PlayerBehavior : Entity
             {
                 if (hit.collider.gameObject.CompareTag("Ground"))
                 {
-                    if (!_isGround &&
+                    if (stunTimeElapsed <= 0 && !_isGround &&
                         !_isAttack &&
                         hit.collider.gameObject.GetComponent<PlatformEffector2D>() == null &&
-                        wallJump <= 0 &&
-                        _rigidbody.velocity.y < 0)
+                        wallJump <= 0 )
                     {
                         if ((int)_playerInputHandler.movement.x == -(int)graphicTransform.localScale.x)
                         {
@@ -126,7 +130,6 @@ public class PlayerBehavior : Entity
                     }
                     else if (isClimb && wallTime < 0)
                     {
-                        Debug.Log("ASDG");
                         isClimb = false;
                     } 
 
@@ -134,7 +137,6 @@ public class PlayerBehavior : Entity
                 }
                 else
                 {
-                    Debug.Log("ASDG");
                     isClimb = false;
                 }
             }
@@ -149,13 +151,14 @@ public class PlayerBehavior : Entity
      */
     protected override void UpdateVelocity()
     {
+        if (touchMonster) _capsuleCollider.sharedMaterial = zero;
         // if condition (!_inSlope) is omitted... player slide down a slope...
         if (!_inSlope || (_inSlope && Mathf.Abs(dashSpeed) > 1))
         {
             if (wallJump<0) _speed = _rigidbody.velocity.x;
         }
 
-        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir && !isClimb)
+        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir && !isClimb && stunTimeElapsed <= 0)
         {
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
@@ -175,9 +178,9 @@ public class PlayerBehavior : Entity
     protected override void AttackInputDetect()
     {
         // Normal Attack
-        if (_normalAttackDetect)
+        if (_normalAttackDetect && stunTimeElapsed <= 0)
         {
-            _capsuleCollider.sharedMaterial = little;
+            if (!touchMonster) _capsuleCollider.sharedMaterial = little;
             _normalAttackDetect = false;
             
             // player stop moving (_speed = 0), and dash while attacking (in _playerAttack.NormalAttack);
@@ -213,6 +216,7 @@ public class PlayerBehavior : Entity
 
     public override void Jump()
     {
+        if (stunTimeElapsed >= 0) return;
         if (!isClimb)
         {
             base.Jump();
@@ -237,7 +241,7 @@ public class PlayerBehavior : Entity
 
     public void Backstep()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1)
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0)
         {
             if (_isAttack)
             {
@@ -262,7 +266,7 @@ public class PlayerBehavior : Entity
     IEnumerator MotionCancel()
     {
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.01f);
 
         Time.timeScale = 1;
     }

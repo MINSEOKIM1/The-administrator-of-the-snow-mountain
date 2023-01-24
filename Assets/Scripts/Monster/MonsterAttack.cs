@@ -10,6 +10,9 @@ public class MonsterAttack : MonoBehaviour
     private Vector2 _boxOffsetWithLocalscale;
     public Vector2 boxSize;
     public Vector2 boxOffset;
+    public float damage;
+    public Vector2 atkKnockback;
+    public float atkStunTime;
 
     public void AttackBoxCheck()
     {
@@ -21,7 +24,12 @@ public class MonsterAttack : MonoBehaviour
         {
             if (i.CompareTag("Player"))
             {
-                i.GetComponent<PlayerBehavior>().Hit(10, ((i.transform.position - transform.position)*2 + Vector3.up*4), 1);
+                var k = atkKnockback;
+                k.Set(i.transform.position.x < transform.parent.position.x ? -k.x : k.x, k.y);
+                i.GetComponent<PlayerBehavior>().Hit(
+                    damage,
+                    (k), 
+                    atkStunTime);
             }
         }
     }
@@ -40,5 +48,12 @@ public class MonsterAttack : MonoBehaviour
     {
         this.boxSize = boxSize;
         this.boxOffset = boxOffset;
+    }
+
+    public void SetAttackInfo(Vector2 knockback, float damage, float stunTime)
+    {
+        this.atkKnockback = knockback;
+        this.damage = damage;
+        this.atkStunTime = stunTime;
     }
 }

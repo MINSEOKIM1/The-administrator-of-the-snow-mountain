@@ -271,6 +271,7 @@ MonoBehaviour:
   entityInfo: {fileID: 11400000, guid: 8ae39f5afa7a942268b9bcb196bd97c0, type: 2}
   footPos: {fileID: 6430485223067358388}
   graphicTransform: {fileID: 6430485222620280290}
+  stunEffect: {fileID: 0}
   _speed: 0
   _isGround: 0
   _canJump: 0
@@ -279,6 +280,7 @@ MonoBehaviour:
   dashSpeed: 0
   externalSpeed: 0
   stunTimeElapsed: 0
+  stunTime: 0
   _hitAir: 0
   hp: 1000
   mp: 0
@@ -297,6 +299,7 @@ MonoBehaviour:
   dashElapsed: 0
   wallJump: 0
   wallJumpPower: 0
+  wallTime: 0
   leftDis: 0.5
   _normalAttackDetect: 0
 --- !u!114 &6430485222588318213
@@ -472,7 +475,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -595176847
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1693399381, guid: f8e8ee3fad70349398f84e2de09541f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -519,8 +522,11 @@ MonoBehaviour:
   isAttack: 0
   canAttack: 0
   _normalAttackNumber: 0
-  boxSize: {x: 2.24, y: 1.78}
-  boxOffset: {x: -1.05, y: 0}
+  boxSize: {x: 3.24, y: 1.21}
+  boxOffset: {x: -0.76, y: 0}
+  atkKnockback: {x: 0, y: 0}
+  atkCoefficient: 0
+  atkStunTime: 0
   go: 2
 --- !u!1 &6430485223067358389
 GameObject:

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class White : Monster
 {
+    private MonsterInfo _monsterInfo;
     private delegate void Attack();
     private Attack[] _attackMethods;
 
@@ -17,6 +18,7 @@ public class White : Monster
     protected override void Start()
     {
         base.Start();
+        _monsterInfo = (MonsterInfo)entityInfo;
         _monsterAttack = GetComponentInChildren<MonsterAttack>();
         _attackMethods = new Attack[2];
         _attackMethods[0] = Attack0;
@@ -100,6 +102,10 @@ public class White : Monster
             _animator.SetTrigger("attack");
             
             _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
+            _monsterAttack.SetAttackInfo(
+                _monsterInfo.attackKnockback[0], 
+                _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
+                _monsterInfo.attackStunTime[0]);
         }
     }
 

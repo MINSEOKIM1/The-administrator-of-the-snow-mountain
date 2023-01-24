@@ -9,8 +9,15 @@ public class EntityInfo : ScriptableObject
     public float accel;
     public float jumpPower;
     public Vector2 backStepPower;
+    
     public float maxHp;
     public float maxMp;
+
+    public float hpIncRate;
+    public float mpIncRate;
+    
     public float atk;
     public float def;
+
+    public float stance; 
 }

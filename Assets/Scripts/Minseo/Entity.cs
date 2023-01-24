@@ -26,6 +26,7 @@ public abstract class Entity : MonoBehaviour
     // Entity's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     [SerializeField] protected Transform footPos;
     [SerializeField] protected Transform graphicTransform;
+    [SerializeField] protected Slider stunEffect;
     
     // Entity gameObject's components
     protected Rigidbody2D _rigidbody;
@@ -43,6 +44,7 @@ public abstract class Entity : MonoBehaviour
     public float dashSpeed;
     public float externalSpeed;
     public float stunTimeElapsed;
+    public float stunTime;
     public bool _hitAir;
 
     public float hp;
@@ -96,15 +98,22 @@ public abstract class Entity : MonoBehaviour
     protected virtual void Update()
     {
         ValueClamp();
+        if (stunTimeElapsed > 0)
+        {
+            stunEffect.gameObject.SetActive(true);
+            stunEffect.value = stunTimeElapsed / stunTime;
+        }
+        else stunEffect.gameObject.SetActive(false);
     }
     
     protected virtual void FixedUpdate()
     {
+        if (stunTimeElapsed > 0) stunTimeElapsed -= Time.fixedDeltaTime;
         ApplyAnimation();
         CheckGround();
-        DetermineNextMove();
+        if (stunTimeElapsed <= 0) DetermineNextMove();
         UpdateVelocity();
-        AttackInputDetect();
+        if (stunTimeElapsed <= 0) AttackInputDetect();
         UpdateExternalVelocity();
         Move(_groundNormalPerp, _speed);
     }
@@ -285,7 +294,14 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Hit(float damage, Vector2 knockback, float stunTime)
     {
+        _capsuleCollider.sharedMaterial = zero;
         hp -= CalculateDamage(damage, def);
+        if (stunTime > stunTimeElapsed)
+        {
+            stunTimeElapsed = stunTime;
+            this.stunTime = stunTime;
+        }
+        _speed = 0;
         if (hp <= 0)
         {
             Die();
@@ -307,7 +323,7 @@ public abstract class Entity : MonoBehaviour
             if (col.contacts[0].normal.y > 0.7) CheckGround();
             else
             {
-                if (Mathf.Abs(col.contacts[0].normal.x) == 1)
+                if (Mathf.Abs(col.contacts[0].normal.x) == 1 && col.collider.GetComponent<PlatformEffector2D>() == null)
                 {
                     externalSpeed = 0;
                     dashSpeed = 0;
@@ -326,12 +342,20 @@ public abstract class Entity : MonoBehaviour
             if (col.contacts[0].normal.y > 0.7) CheckGround();
             else
             {
-                if (Mathf.Abs(col.contacts[0].normal.x) == 1)
+                if (Mathf.Abs(col.contacts[0].normal.x) == 1 && col.collider.GetComponent<PlatformEffector2D>() == null)
                 {
                     externalSpeed = 0;
                     dashSpeed = 0;
                 }
             }
+        }
+    }
+
+    protected void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Monster"))
+        {
+            touchMonster = false;
         }
     }
 }
