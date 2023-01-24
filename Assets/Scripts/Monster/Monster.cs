@@ -15,7 +15,8 @@ public class Monster : Entity
     public Vector2 boxOffset => ((MonsterInfo)entityInfo).boxOffset; 
     
 
-    // Player's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
+    // Monster's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
+    
 
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
@@ -49,7 +50,7 @@ public class Monster : Entity
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
     }
-
+    
     // FixedUpdated is inherited from Entity class and no override
     // protected override void FixedUpdate() { ... }
     
@@ -123,7 +124,7 @@ public class Monster : Entity
             _speed = _rigidbody.velocity.x;
         }
 
-        if (moveState != 0 && !_isAttack && !_hitAir)
+        if (moveState != 0 && !_isAttack && !_hitAir && stunTimeElapsed <= 0)
         {
             _speed += accel * moveState;
             _capsuleCollider.sharedMaterial = zero;

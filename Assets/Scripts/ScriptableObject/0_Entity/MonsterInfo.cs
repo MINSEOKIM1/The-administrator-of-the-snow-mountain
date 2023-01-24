@@ -23,4 +23,11 @@ public class MonsterInfo : EntityInfo
      */
     public Vector2[] attackBoundaryBoxes;
     public Vector2[] attackBoundaryOffsets;
+
+    /*
+     * Attack Info
+     */
+    public float[] attackCoefficient;
+    public float[] attackStunTime;
+    public Vector2[] attackKnockback;
 }

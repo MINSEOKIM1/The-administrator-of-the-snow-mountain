@@ -18,5 +18,37 @@ MonoBehaviour:
   backStepPower: {x: 5, y: 3}
   maxHp: 100
   maxMp: 100
+  hpIncRate: 0
+  mpIncRate: 0
   atk: 80
-  def: 30
+  def: 200
+  stance: 0
+  attackKnockback:
+  - {x: 2, y: 4}
+  - {x: 1, y: 6}
+  - {x: 3, y: 3}
+  attackBoundary:
+  - {x: 2.24, y: 1.61}
+  - {x: 2.24, y: 1.61}
+  - {x: 3.24, y: 1.21}
+  attackOffset:
+  - {x: -0.75, y: 0}
+  - {x: -0.75, y: 0}
+  - {x: -0.75, y: 0}
+  attackCoefficient:
+  - 1
+  - 1
+  - 1.5
+  attackStunTime:
+  - 1
+  - 1
+  - 1
+  - 1
+  attackMp:
+  - 0
+  - 0
+  - 0
+  utilMp:
+  - 0
+  - 0
+  - 0

@@ -20,6 +20,9 @@ public class PlayerAttack : MonoBehaviour
     private Vector2 _boxOffsetWithLocalscale;
     public Vector2 boxSize;
     public Vector2 boxOffset;
+    public Vector2 atkKnockback;
+    public float atkCoefficient;
+    public float atkStunTime;
     
     // tmp
     public float go;
@@ -27,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         _boxOffsetWithLocalscale.Set(boxOffset.x * transform.localScale.x, boxOffset.y);
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube((Vector2)transform.parent.position + _boxOffsetWithLocalscale, boxSize);
     }
     private void Start()
@@ -51,8 +54,12 @@ public class PlayerAttack : MonoBehaviour
         {
             if (i.CompareTag("Monster"))
             {
-                i.GetComponent<Monster>().Hit(_playerBehavior.atk
-                    , ((i.transform.position - transform.position)*2 + Vector3.up*4), 1);
+                var k = atkKnockback;
+                k.Set(i.transform.position.x < transform.parent.position.x ? -k.x : k.x, k.y);
+                i.GetComponent<Monster>().Hit(
+                    _playerBehavior.atk * atkCoefficient
+                    , k, 
+                    atkStunTime);
             }
         }
     }
@@ -67,6 +74,13 @@ public class PlayerAttack : MonoBehaviour
                 _graphicLocalScale.Set(-_playerInputHandler.movement.x, 1, 1);
                 transform.localScale = _graphicLocalScale;
             }
+
+            boxSize = _playerBehavior.EntityInfo.attackBoundary[_normalAttackNumber];
+            boxOffset = _playerBehavior.EntityInfo.attackOffset[_normalAttackNumber];
+            atkCoefficient = _playerBehavior.EntityInfo.attackCoefficient[_normalAttackNumber];
+            atkKnockback = _playerBehavior.EntityInfo.attackKnockback[_normalAttackNumber];
+            atkStunTime = _playerBehavior.EntityInfo.attackStunTime[_normalAttackNumber];
+
             // tmp : go to forward while attack!!
             if (!_playerBehavior._hitAir) _playerBehavior.dashSpeed = -go * transform.localScale.x;
             canAttack = false;

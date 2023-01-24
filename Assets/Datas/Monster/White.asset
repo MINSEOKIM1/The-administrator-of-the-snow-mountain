@@ -16,10 +16,13 @@ MonoBehaviour:
   accel: 0.5
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
-  maxHp: 1000
+  maxHp: 1000000
   maxMp: 100
+  hpIncRate: 0
+  mpIncRate: 0
   atk: 80
   def: 20
+  stance: 0
   stateChangeInterval: 2
   boxSize: {x: 3.53, y: 1.46}
   boxOffset: {x: -1.77, y: 0}
@@ -29,3 +32,9 @@ MonoBehaviour:
   - {x: 1.65, y: 0.9}
   attackBoundaryOffsets:
   - {x: -0.62, y: 0}
+  attackCoefficient:
+  - 1
+  attackStunTime:
+  - 1
+  attackKnockback:
+  - {x: 1, y: 2}
