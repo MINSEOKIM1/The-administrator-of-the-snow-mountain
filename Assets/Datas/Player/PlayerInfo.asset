@@ -38,7 +38,7 @@ MonoBehaviour:
   attackCoefficient:
   - 1
   - 1
-  - 1.5
+  - 1.2
   attackStunTime:
   - 1
   - 1

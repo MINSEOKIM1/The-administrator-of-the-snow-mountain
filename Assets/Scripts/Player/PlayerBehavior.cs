@@ -185,8 +185,15 @@ public class PlayerBehavior : Entity
             
             // player stop moving (_speed = 0), and dash while attacking (in _playerAttack.NormalAttack);
             _speed = 0;
+            if (_playerInputHandler.movement.y > 0)
+            {
+                _playerAttack._normalAttackNumber = 1;
+                _animator.SetInteger("normalAttack", 1);
+            }
             _playerAttack.NormalAttack();
         }
+        
+        _normalAttackDetect = false;
     }
 
     protected override void UpdateExternalVelocity()
@@ -216,7 +223,7 @@ public class PlayerBehavior : Entity
 
     public override void Jump()
     {
-        if (stunTimeElapsed >= 0) return;
+        if (stunTimeElapsed > 0) return;
         if (!isClimb)
         {
             base.Jump();
@@ -260,6 +267,35 @@ public class PlayerBehavior : Entity
             _canJump = false;
             _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
             dashSpeed = backStepPower.x * _playerAttack.transform.localScale.x;
+        }
+    }
+    
+    public void Dash()
+    {
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0)
+        {
+            if (_isAttack)
+            {
+                _animator.SetTrigger("attackCancel");
+                StartCoroutine(MotionCancel());
+            }
+            
+            _playerAttack.ResetNormalAttack();
+            
+            if (_playerInputHandler.movement.x != 0)
+            {
+                _graphicLocalScale.Set(-_playerInputHandler.movement.x, 1, 1);
+                graphicTransform.localScale = _graphicLocalScale;
+            }
+
+            dashElapsed = 1;
+            gameObject.layer = 9;
+            _speed = 0;
+            externalSpeed = 0;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+            _isGround = false;
+            _canJump = false;
+            dashSpeed = -backStepPower.x * _playerAttack.transform.localScale.x;
         }
     }
 
