@@ -8,15 +8,36 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public Vector2 movement;
     private PlayerBehavior _playerBehavior;
+    
+    // tmp
+    public float dashInputCheck;
+    public float dashTime;
+    public int dashCheck;
 
     private void Start()
     {
         _playerBehavior = GetComponent<PlayerBehavior>();
+        dashCheck = 0;
+    }
+
+    private void Update()
+    {
+        dashInputCheck -= Time.deltaTime;
+
+        if (dashInputCheck < 0) dashCheck = 0;
     }
 
     public void OnMove(InputAction.CallbackContext value)
     {
         movement = value.ReadValue<Vector2>();
+
+        if (value.started && movement.x != 0)
+        {
+            dashInputCheck = dashTime;
+            dashCheck++;
+
+            if (dashCheck == 2) _playerBehavior.Dash();
+        }
     }
     
     public void OnJump(InputAction.CallbackContext value)
