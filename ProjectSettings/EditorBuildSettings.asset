@@ -6,12 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: da4ac15394a5e194ba1dbdd1c8458af9
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 72661ba9ec4c5e74d958202d465d7eed
+  - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 71729f9938927ac4cb94bbe713e3df37
   - enabled: 1
     path: Assets/Scenes/DungeonA.unity
-    guid: 190808012c77ade4e93f0a742c05b481
+    guid: bca58325d2c427e43a1dc3683bd20fb8
   - enabled: 1
     path: Assets/Scenes/DungeonB.unity
-    guid: ab6acd18d5aa8e04da140304e59c9e8e
+    guid: d803f848569a15b408451324fd3aceb1
+  - enabled: 1
+    path: Assets/Scenes/DungeonC.unity
+    guid: 7ce941bae93cbb243a7e7db25db57e75
+  - enabled: 1
+    path: Assets/Scenes/DungeonD.unity
+    guid: 2be55cdfb036a9a47b7d38fa1b748b97
+  - enabled: 1
+    path: Assets/Scenes/DungeonE.unity
+    guid: c9a40ab2950dbb2409d5bb055b144b7f
+  - enabled: 1
+    path: Assets/Scenes/DungeonF.unity
+    guid: 31d3db61430084c48b73da71508acac8
+  - enabled: 1
+    path: Assets/Scenes/DungeonG.unity
+    guid: c52cc2a7a34eb2c49a136a1002938bb0
+  - enabled: 1
+    path: Assets/Scenes/DungeonH.unity
+    guid: b66562beda3ef104c902be3dfecb7f06
+  - enabled: 1
+    path: Assets/Scenes/DungeonI.unity
+    guid: 08b268a2075525a4a8ea80475de4a9f9
+  - enabled: 1
+    path: Assets/Scenes/DungeonJ.unity
+    guid: bbf8b36a9fb49e74f96749c2766fdb12
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 466e392968f73684f9025c5d2a3d8ee8
   m_configObjects: {}

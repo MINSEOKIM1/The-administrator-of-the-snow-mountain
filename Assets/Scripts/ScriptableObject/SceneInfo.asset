@@ -17,4 +17,12 @@ MonoBehaviour:
   dungeons:
   - {fileID: 11400000, guid: 7c2a9c097ff828d4fbe023413144a270, type: 2}
   - {fileID: 11400000, guid: ba93ef596448be144b8c318e17dbc745, type: 2}
+  - {fileID: 11400000, guid: 2f34641712def8c4ea0fbc39cde76858, type: 2}
+  - {fileID: 11400000, guid: 9da844341e731fc418074a46cb1e78d9, type: 2}
+  - {fileID: 11400000, guid: b82ed15ec3cb3024f81f2427a9cfebe7, type: 2}
+  - {fileID: 11400000, guid: 0937cfef059290541baea47ab4c7b9cb, type: 2}
+  - {fileID: 11400000, guid: 70e146a4b40203842b4da0822bc4cfe9, type: 2}
+  - {fileID: 11400000, guid: 4c08a2812f049f44f9f56c0171ccbcd1, type: 2}
+  - {fileID: 11400000, guid: 4c8d915ba3164cc438ca7544eabab70e, type: 2}
+  - {fileID: 11400000, guid: b0b6d601cd42e2d48b367c24bdaa3cd2, type: 2}
   village: {fileID: 11400000, guid: 99343efaf92bf26459a8bd29b3c7e193, type: 2}

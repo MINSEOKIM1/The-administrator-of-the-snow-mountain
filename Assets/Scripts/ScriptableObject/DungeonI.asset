@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69018242345fd4a48869395ed213ffc2, type: 3}
-  m_Name: VillageInfo
+  m_Script: {fileID: 11500000, guid: de18ff5dc386cd649982e832994cd51c, type: 3}
+  m_Name: DungeonI
   m_EditorClassIdentifier: 
-  maxMob: 5
-  curMob: 0
+  maxMob: 30
+  curMob: 1

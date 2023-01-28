@@ -10,6 +10,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] private SceneInfo sceneInfo;
     [SerializeField] private GameObject[] points;
     [SerializeField] private TextMeshProUGUI[] texts;
+    [SerializeField] private GameObject map;
     private void Start()
     {
          // # UI Update
@@ -20,6 +21,17 @@ public class MapManager : MonoBehaviour
     private void Update()
     {
         MopNumUpdate();
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (map.activeSelf)
+            {
+                map.SetActive(false);
+            }
+            else
+            {
+                map.SetActive(true);
+            }
+        }
     }
 
     private void TurnOnPoint(string state)
@@ -34,6 +46,30 @@ public class MapManager : MonoBehaviour
                 break;
             case "DungeonB":
                 points[2].SetActive(true);
+                break;
+            case "DungeonC":
+                points[3].SetActive(true);
+                break;
+            case "DungeonD":
+                points[4].SetActive(true);
+                break;
+            case "DungeonE":
+                points[5].SetActive(true);
+                break;
+            case "DungeonF":
+                points[6].SetActive(true);
+                break;
+            case "DungeonG":
+                points[7].SetActive(true);
+                break;
+            case "DungeonH":
+                points[8].SetActive(true);
+                break;
+            case "DungeonI":
+                points[9].SetActive(true);
+                break;
+            case "DungeonJ":
+                points[10].SetActive(true);
                 break;
         }
     }
@@ -50,6 +86,30 @@ public class MapManager : MonoBehaviour
                 break;
             case "DungeonB":
                 points[2].SetActive(false);
+                break;
+            case "DungeonC":
+                points[3].SetActive(false);
+                break;
+            case "DungeonD":
+                points[4].SetActive(false);
+                break;
+            case "DungeonE":
+                points[5].SetActive(false);
+                break;
+            case "DungeonF":
+                points[6].SetActive(false);
+                break;
+            case "DungeonG":
+                points[7].SetActive(false);
+                break;
+            case "DungeonH":
+                points[8].SetActive(false);
+                break;
+            case "DungeonI":
+                points[9].SetActive(false);
+                break;
+            case "DungeonJ":
+                points[10].SetActive(false);
                 break;
         }
     }
