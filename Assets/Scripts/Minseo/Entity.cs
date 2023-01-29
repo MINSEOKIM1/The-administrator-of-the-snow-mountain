@@ -353,6 +353,7 @@ public abstract class Entity : MonoBehaviour
 
     protected void OnCollisionExit2D(Collision2D col)
     {
+        if (col.gameObject.CompareTag("Ground")) _capsuleCollider.sharedMaterial = zero;
         if (col.gameObject.CompareTag("Monster"))
         {
             touchMonster = false;

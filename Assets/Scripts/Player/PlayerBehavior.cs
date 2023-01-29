@@ -21,20 +21,53 @@ public class PlayerBehavior : Entity
     // for record current state
     public bool isClimb;
     
-
     // tmp (will be removed maybe...)
     public float dashElapsed;
     public float wallJump;
     public float wallJumpPower;
     public float wallTime;
+
+    public bool canWall;
     
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     public float leftDis;
+
+    public new float hp { get => GameManager.Instance.PlayerDataManager.hp; set => GameManager.Instance.PlayerDataManager.hp = value; }
+    public new float mp { get => GameManager.Instance.PlayerDataManager.mp; set => GameManager.Instance.PlayerDataManager.mp = value; }
 
     // input detect variable
     public bool _normalAttackDetect;
 
     // For debugging in editor (not play mode)
+
+    public static bool CanAttackCondition(int index)
+    {
+        return GameManager.Instance.PlayerDataManager.mp >= GameManager.Instance.PlayerDataManager.playerInfo.attackMp[index];
+    }
+    
+    public static bool CanUtilCondition(int index)
+    {
+        return GameManager.Instance.PlayerDataManager.mp >= GameManager.Instance.PlayerDataManager.playerInfo.utilMp[index];
+    }
+    
+    public static bool CanUtilCondition(int index, float rate)
+    {
+        return GameManager.Instance.PlayerDataManager.mp >= GameManager.Instance.PlayerDataManager.playerInfo.utilMp[index] * rate;
+    }
+
+    public static void UseAttackSkill(int index)
+    {
+        GameManager.Instance.PlayerDataManager.mp -= GameManager.Instance.PlayerDataManager.playerInfo.attackMp[index];
+    }
+    
+    public static void UseUtilSkill(int index)
+    {
+        GameManager.Instance.PlayerDataManager.mp -= GameManager.Instance.PlayerDataManager.playerInfo.utilMp[index];
+    }
+    public static void UseUtilSkill(int index, float rate)
+    {
+        GameManager.Instance.PlayerDataManager.mp -= GameManager.Instance.PlayerDataManager.playerInfo.utilMp[index] * rate;
+    }
 
     protected override void Start()
     {
@@ -113,14 +146,16 @@ public class PlayerBehavior : Entity
                     if (stunTimeElapsed <= 0 && !_isGround &&
                         !_isAttack &&
                         hit.collider.gameObject.GetComponent<PlatformEffector2D>() == null &&
-                        wallJump <= 0 )
+                        wallJump <= 0 &&
+                        CanUtilCondition(1, Time.deltaTime) && canWall)
                     {
+                        UseUtilSkill(1, Time.deltaTime);
                         if ((int)_playerInputHandler.movement.x == -(int)graphicTransform.localScale.x)
                         {
                             _canJump = true;
                             isClimb = true;
                             _speed = 0;
-                            wallTime = 0.4f;
+                            wallTime = 0.2f;
                         } else if (wallTime > 0)
                         {
                             _canJump = true;
@@ -128,6 +163,7 @@ public class PlayerBehavior : Entity
                             _speed = 0;
                         }
                     }
+                    if (!CanUtilCondition(1, Time.deltaTime)) canWall = false;
                     else if (isClimb && wallTime < 0)
                     {
                         isClimb = false;
@@ -190,7 +226,15 @@ public class PlayerBehavior : Entity
                 _playerAttack._normalAttackNumber = 1;
                 _animator.SetInteger("normalAttack", 1);
             }
-            _playerAttack.NormalAttack();
+
+            if (_playerInputHandler.dashCheck < 2)
+            {
+                _playerAttack.NormalAttack();
+            }
+            else
+            {
+                _playerAttack.DashAttack();
+            }
         }
         
         _normalAttackDetect = false;
@@ -215,6 +259,23 @@ public class PlayerBehavior : Entity
         base.Move(direction, speed);
         if (isClimb && wallJump <= 0) _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
     }
+    public override void Hit(float damage, Vector2 knockback, float stunTime)
+    {
+        _capsuleCollider.sharedMaterial = zero;
+        hp -= CalculateDamage(damage, def);
+        if (stunTime > stunTimeElapsed)
+        {
+            stunTimeElapsed = stunTime;
+            this.stunTime = stunTime;
+        }
+        _speed = 0;
+        if (hp <= 0)
+        {
+            Die();
+            return;
+        }
+        KnockBack(knockback);
+    }
 
     public void Attack()
     {
@@ -228,8 +289,9 @@ public class PlayerBehavior : Entity
         {
             base.Jump();
         }
-        else
+        else if (CanUtilCondition(4))
         {
+            UseUtilSkill(4);
             wallJump = 0.3f;
             _speed = maxSpeed * (_graphicLocalScale.x);
             dashSpeed = wallJumpPower * (_graphicLocalScale.x);
@@ -248,10 +310,13 @@ public class PlayerBehavior : Entity
 
     public void Backstep()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0)
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
         {
-            if (_isAttack)
+            UseUtilSkill(0);
+            
+            if (_isAttack && CanUtilCondition(3))
             {
+                UseUtilSkill(3);
                 _animator.SetTrigger("attackCancel");
                 StartCoroutine(MotionCancel());
             }
@@ -272,14 +337,9 @@ public class PlayerBehavior : Entity
     
     public void Dash()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0)
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && !_isAttack && CanUtilCondition(2))
         {
-            if (_isAttack)
-            {
-                _animator.SetTrigger("attackCancel");
-                StartCoroutine(MotionCancel());
-            }
-            
+            UseUtilSkill(2);
             _playerAttack.ResetNormalAttack();
             
             if (_playerInputHandler.movement.x != 0)
@@ -311,7 +371,11 @@ public class PlayerBehavior : Entity
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
-            if (col.contacts[0].normal.y > 0.7) CheckGround();
+            if (col.contacts[0].normal.y > 0.7)
+            {
+                canWall = true;
+                CheckGround();
+            }
             else
             {
                 if (Mathf.Abs(col.contacts[0].normal.x) == 1 && wallJump < 0)

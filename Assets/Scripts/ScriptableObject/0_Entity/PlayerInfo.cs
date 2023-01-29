@@ -10,7 +10,7 @@ public class PlayerInfo : EntityInfo
      * 0 : down bash        (normal attack 1)
      * 1 : upper bash       (normal attack 2)
      * 2 : turn smash       (normal attack 3)
-     * 3 : dash slash
+     * 3 : dash attack
      * 4 : counter attack   (parrying)
      */
     public Vector2[] attackKnockback;
@@ -25,6 +25,8 @@ public class PlayerInfo : EntityInfo
      * 0 : backStep
      * 1 : wall-climbing
      * 2 : dash
+     * 3 : attack cancel
+     * 4 : wall jump
      */
     public float[] utilMp;
 }

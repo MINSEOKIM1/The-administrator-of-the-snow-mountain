@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,17 +15,25 @@ public class PlayerDataManager : MonoBehaviour
     public float maxHp
     {
         get => playerInfo.maxHp + level * 10;
-        private set => maxHp = value;
+        set => maxHp = value;
     }
 
     public float maxMp
     {
         get => playerInfo.maxMp + level * 10;
-        private set => maxMp = value;
+        set => maxMp = value;
     }
 
-    public float hpIncRate;
-    public float mpIncRate;
+    public float hpIncRate
+    {
+        get => playerInfo.hpIncRate + level * 0.1f;
+        private set => hpIncRate = value;
+    }
+    public float mpIncRate
+    {
+        get => playerInfo.mpIncRate + level * 0.1f;
+        private set => mpIncRate = value;
+    }
     
     public int[] skillLevel;
     
@@ -40,4 +49,19 @@ public class PlayerDataManager : MonoBehaviour
     public float stance;
 
     public int weapon;
+
+    private void Start()
+    {
+        hp = maxHp;
+        mp = maxMp;
+    }
+
+    private void Update()
+    {
+        hp = Mathf.Clamp(hp, 0, maxHp);
+        mp = Mathf.Clamp(mp, 0, maxMp);
+
+        hp += hpIncRate * Time.deltaTime;
+        mp += mpIncRate * Time.deltaTime;
+    }
 }
