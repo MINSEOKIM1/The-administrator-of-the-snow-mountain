@@ -344,7 +344,7 @@ AnimationClip:
       value: {fileID: -143242357, guid: f8e8ee3fad70349398f84e2de09541f3, type: 3}
     - time: 0.25
       value: {fileID: 2035639522, guid: f8e8ee3fad70349398f84e2de09541f3, type: 3}
-    - time: 0.5
+    - time: 0.41666666
       value: {fileID: 2035639522, guid: f8e8ee3fad70349398f84e2de09541f3, type: 3}
     attribute: m_Sprite
     path: 
@@ -475,7 +475,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -1178,7 +1178,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.41666666
     functionName: ResetNormalAttack
     data: 
     objectReferenceParameter: {fileID: 0}

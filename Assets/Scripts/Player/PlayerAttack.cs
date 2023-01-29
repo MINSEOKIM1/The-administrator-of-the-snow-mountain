@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube((Vector2)transform.parent.position + _boxOffsetWithLocalscale, boxSize);
     }
+    
     private void Start()
     {
         _playerBehavior = GetComponentInParent<PlayerBehavior>();
@@ -42,6 +43,15 @@ public class PlayerAttack : MonoBehaviour
         
         _normalAttackNumber = 0;
         canAttack = true;
+    }
+
+    public void SetHitbox(int index)
+    {
+        boxSize = _playerBehavior.EntityInfo.attackBoundary[index];
+        boxOffset = _playerBehavior.EntityInfo.attackOffset[index];
+        atkCoefficient = _playerBehavior.EntityInfo.attackCoefficient[index];
+        atkKnockback = _playerBehavior.EntityInfo.attackKnockback[index];
+        atkStunTime = _playerBehavior.EntityInfo.attackStunTime[index];
     }
 
     public void HitCheck()
@@ -75,14 +85,35 @@ public class PlayerAttack : MonoBehaviour
                 transform.localScale = _graphicLocalScale;
             }
 
-            boxSize = _playerBehavior.EntityInfo.attackBoundary[_normalAttackNumber];
-            boxOffset = _playerBehavior.EntityInfo.attackOffset[_normalAttackNumber];
-            atkCoefficient = _playerBehavior.EntityInfo.attackCoefficient[_normalAttackNumber];
-            atkKnockback = _playerBehavior.EntityInfo.attackKnockback[_normalAttackNumber];
-            atkStunTime = _playerBehavior.EntityInfo.attackStunTime[_normalAttackNumber];
+            SetHitbox(_normalAttackNumber);
 
             // tmp : go to forward while attack!!
             if (!_playerBehavior._hitAir) _playerBehavior.dashSpeed = -go * transform.localScale.x;
+            canAttack = false;
+            _animator.SetTrigger("attack");
+        }
+    }
+
+    public void DashAttack()
+    {
+        if (canAttack && PlayerBehavior.CanAttackCondition(3))
+        {
+            // change attack direction according to arrow key
+            if (_playerInputHandler.movement.x != 0)
+            {
+                _graphicLocalScale.Set(-_playerInputHandler.movement.x, 1, 1);
+                transform.localScale = _graphicLocalScale;
+            }
+
+            PlayerBehavior.UseAttackSkill(3);
+            SetHitbox(3);
+
+            _normalAttackNumber = 3;
+            _animator.SetInteger("normalAttack", _normalAttackNumber);
+
+            // tmp : go to forward while attack!!
+            _rigidbody2D.MovePosition(transform.position -  (Vector3) new Vector2(transform.localScale.x, 0) * 3);
+            if (!_playerBehavior._hitAir) _playerBehavior.dashSpeed = -transform.localScale.x ;
             canAttack = false;
             _animator.SetTrigger("attack");
         }

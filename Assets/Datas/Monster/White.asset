@@ -35,6 +35,6 @@ MonoBehaviour:
   attackCoefficient:
   - 1
   attackStunTime:
-  - 1
+  - 0.4
   attackKnockback:
   - {x: 1, y: 2}

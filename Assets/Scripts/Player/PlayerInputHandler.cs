@@ -13,6 +13,7 @@ public class PlayerInputHandler : MonoBehaviour
     public float dashInputCheck;
     public float dashTime;
     public int dashCheck;
+    public bool dashDirection;
 
     private void Start()
     {
@@ -34,10 +35,14 @@ public class PlayerInputHandler : MonoBehaviour
         if (value.started && movement.x != 0)
         {
             dashInputCheck = dashTime;
-            dashCheck++;
-
+            if ((dashDirection && movement.x > 0) || (!dashDirection && movement.x < 0) || dashCheck == 0)
+            {
+                dashCheck++;
+            }
+            dashDirection = movement.x > 0;
             if (dashCheck == 2) _playerBehavior.Dash();
         }
+
     }
     
     public void OnJump(InputAction.CallbackContext value)
