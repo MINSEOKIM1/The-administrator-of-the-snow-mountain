@@ -6,21 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="93d6d0c8-824f-486a-bd13-67e5f0ce983d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The_Administrator_Of_The_Snow_Mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The_Administrator_Of_The_Snow_Mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Attack0.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Attack0.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Attack1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Attack1.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Attack2.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Attack2.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Graphic.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Graphic.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/PlayerDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/PlayerDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minseo/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minseo/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/0_Entity/PlayerInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/0_Entity/PlayerInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +90,7 @@
       <workItem from="1673685502609" duration="19892000" />
       <workItem from="1673958365720" duration="19026000" />
       <workItem from="1674552259274" duration="14683000" />
-      <workItem from="1674880883684" duration="6799000" />
+      <workItem from="1674880883684" duration="8469000" />
     </task>
     <servers />
   </component>
