@@ -35,10 +35,9 @@ public class PlayerDataManager : MonoBehaviour
         private set => mpIncRate = value;
     }
     
-    public int[] skillLevel;
-    
-    public int skillPoint;
-    
+    public int[] attackSkillLevel;
+    public int[] utilSkillLevel;
+
     public float maxSpeed;
     public float accel;
     public float jumpPower;
@@ -49,6 +48,8 @@ public class PlayerDataManager : MonoBehaviour
     public float stance;
 
     public int weapon;
+
+    public int money;
 
     private void Start()
     {
