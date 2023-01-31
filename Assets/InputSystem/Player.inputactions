@@ -152,6 +152,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TitleUI",
+            "id": "b00906d8-70f2-4560-81c0-e983b822d551",
+            "actions": [
+                {
+                    "name": "Selection",
+                    "type": "Button",
+                    "id": "0ac854fc-743a-4aae-84c2-747d394a7f73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fef89278-cfc8-4777-93f3-a91a2abc487a",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "Scale(factor=-1)",
+                    "groups": "",
+                    "action": "Selection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad5544bf-cfa7-4a23-88c8-7d407e93136d",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "Selection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
