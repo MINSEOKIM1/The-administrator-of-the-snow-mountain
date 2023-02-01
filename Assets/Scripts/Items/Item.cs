@@ -7,5 +7,5 @@ using UnityEngine.Serialization;
 
 public class Item
 {
-    public string name;
+    public ItemInfo ItemInfo;
 }
