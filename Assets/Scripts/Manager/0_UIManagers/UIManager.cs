@@ -9,5 +9,6 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         TitleUI = GetComponentInChildren<TitleUI>();
+        InventoryUI = GetComponentInChildren<InventoryUI>();
     }
 }
