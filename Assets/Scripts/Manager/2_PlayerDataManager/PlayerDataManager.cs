@@ -51,6 +51,8 @@ public class PlayerDataManager : MonoBehaviour
 
     public int money;
 
+    public Inventory inventory;
+
     private void Start()
     {
         hp = maxHp;

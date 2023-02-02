@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject _slotUiPrefab;     // 슬롯의 원본 프리팹
 
     private List<ItemSlotUI> _slotUIList;
+
+    public Image selectedItemImage;
+    public GameObject[] selectedItemOption;
+    public TMP_Text selectedItemName, selectedItemDescription;
     
 #if UNITY_EDITOR
     [SerializeField] private bool __showPreview = false;

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class TitleUI : MonoBehaviour
 {
-    public Transform selectionMark;
+    public RectTransform selectionMark;
     public Button[] buttons;
     public GameObject title;
 
@@ -20,14 +20,14 @@ public class TitleUI : MonoBehaviour
     private void Start()
     {
         selectionPos = selectionMark.transform.position;
-        targetPos = buttons[0].transform.position;
+        targetPos = buttons[0].GetComponent<RectTransform>().anchoredPosition;;
         selectionMark.position = targetPos;
     }
 
     private void Update()
     {
         selectionPos = Vector3.Lerp(selectionPos, targetPos, transitionSpeed * Time.deltaTime);
-        selectionMark.position = selectionPos;
+        selectionMark.anchoredPosition = selectionPos;
     }
 
     public void ChangeSelection(InputAction.CallbackContext value)
@@ -48,6 +48,6 @@ public class TitleUI : MonoBehaviour
         
         buttons[selection].GetComponent<ButtonTest>().SetHighlightOn();
 
-        targetPos = buttons[selection].transform.position;
+        targetPos = buttons[selection].GetComponent<RectTransform>().anchoredPosition;
     }
 }
