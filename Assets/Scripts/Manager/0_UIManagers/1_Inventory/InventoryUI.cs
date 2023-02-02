@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [Header("Options")]
     [Range(0, 20)]
@@ -26,7 +28,14 @@ public class InventoryUI : MonoBehaviour
     public Image selectedItemImage;
     public GameObject[] selectedItemOption;
     public TMP_Text selectedItemName, selectedItemDescription;
-    
+
+    private int _dragBeginSlotIndex, _dragEndSlotIndex;
+    private bool _isItemDragging;
+
+    [SerializeField] private GraphicRaycaster graphic;
+    [SerializeField] private Image dragImage;
+    [SerializeField] private RectTransform dragImagePos;
+
 #if UNITY_EDITOR
     [SerializeField] private bool __showPreview = false;
 
@@ -274,6 +283,56 @@ public class InventoryUI : MonoBehaviour
             rt.SetParent(_contentAreaRT);
 
             return rt;
+        }
+    }
+
+    public void OnPointerDown(PointerEventData pt)
+    {
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphic.Raycast(pt, results);
+
+        foreach (var i in results)
+        {
+            var isui = i.gameObject.GetComponent<ItemSlotUI>();
+            if (isui != null)
+            {
+                if (isui.item != null && isui.item.count > 0)
+                {
+                    _dragBeginSlotIndex = isui.index;
+                    _isItemDragging = true;
+
+                    dragImage.gameObject.SetActive(true);
+                    dragImage.sprite = isui.item.item.itemIcon;
+                    dragImage.rectTransform.pivot = new Vector2(0, 1);
+                }
+            }
+        }
+    }
+
+    public void OnPointerUp(PointerEventData pt)
+    {
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphic.Raycast(pt, results);
+        
+        foreach (var i in results)
+        {
+            var isui = i.gameObject.GetComponent<ItemSlotUI>();
+            if (isui != null && _isItemDragging)
+            {
+                _dragEndSlotIndex = isui.index;
+                GameManager.Instance.PlayerDataManager.inventory.Swap(_dragBeginSlotIndex, _dragEndSlotIndex);
+            }
+        }
+        
+        _isItemDragging = false;
+        dragImage.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (_isItemDragging)
+        {
+            dragImagePos.position = Input.mousePosition;
         }
     }
 }

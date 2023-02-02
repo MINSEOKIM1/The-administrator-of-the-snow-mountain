@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -10,73 +11,143 @@ public class Inventory : MonoBehaviour
     public List<ItemSlot> items;
 
     public ItemInfo test;
-    
+
+    public int usedSlotCount;
+
+    public delegate void InventoryUIUpdate();
+
+    public event InventoryUIUpdate InventoryUIUpdateEvent;
+
 
     private void Start()
     {
         items = new List<ItemSlot>(InventoryCapacity);
         
-        for (int i = 0; i < items.Capacity; i++)
+        for (int i = 0; i < InventoryCapacity; i++)
         {
             items.Add(null);
         }
-        for (int i = 0; i < items.Capacity; i++)
+        for (int i = 0; i < InventoryCapacity; i++)
         {
             Debug.Log("TEST");
             AddItem(test, 19);
         }
     }
-    
-    public void TestAddItem(int n) { AddItem(test, n);}
 
-    public void TestDeleteItem(int n)
+    public void UpdateInventoryState()
     {
-        DeleteItem(test, n);}
+        CountUsedSlot();
+    }
 
-    public void AddItem(ItemInfo item, int count)
+    private void CountUsedSlot()
     {
-        for (int j = 0; j < count; j++)
+        usedSlotCount = 0;
+        for (int i = 0; i < InventoryCapacity; i++)
         {
-            var has = HasItem(item, 1);
-            if (has == null)
-            {
-                for (int i = 0; i < items.Count; i++)
-                {
-                    if (items[i] == null || items[i].count <= 0)
-                    {
-                        items[i] = new ItemSlot(item, 1);
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                has.count += 1;
-            }
+            if (items[i].count > 0) usedSlotCount++;
+            else items[i] = null;
         }
     }
 
-    public bool DeleteItem(ItemInfo item, int count)
+    public void TestAddItem(int num)
     {
-        for (int i = 0; i < count; i++)
+        if (AddItem(test, num))
         {
-            var itemSlot = HasItem(item, 0);
+            Debug.Log("Success!");
+        }
+        else
+        {
+            Debug.Log("Fail... because there is no space...");
+        }
+    }
 
-            if (itemSlot == null || itemSlot.count == 0) return false;
-            itemSlot.count--;
+    public void TestDeleteItem(int num)
+    {
+        if (DeleteItem(test, num))
+        {
+            Debug.Log("Success!");
+        }
+        else
+        {
+            Debug.Log("Fail... there is no items as you said");
+        }
+    }
+    
+    /// <summary>
+    /// Add Item...
+    /// </summary>
+    /// <param name="item"> what item to add </param>
+    /// <param name="count"> how many items </param>
+    /// <returns> true if succeed, false if there is no space </returns>
+    public bool AddItem(ItemInfo item, int count)
+    {
+        int leftSpace = 0;
+        for (int i = 0; i < InventoryCapacity; i++)
+        {
+            if (items[i] == null) leftSpace += item.maxCount;
+            else if (items[i].count == 0) leftSpace += item.maxCount;
+            else if (items[i].item.itemNum == item.itemNum) leftSpace += item.maxCount - items[i].count;
+        }
+
+        if (leftSpace < count) return false;
+
+        for (int j = 0; j < count; j++)
+        {
+            for (int i = 0; i < InventoryCapacity; i++)
+            {
+                if (items[i] == null || items[i].count == 0)
+                {
+                    items[i] = new ItemSlot(item, 1);
+                    break;
+                } else if (items[i].item.itemNum == item.itemNum && items[i].count < items[i].item.maxCount)
+                {
+                    items[i].count++;
+                    break;
+                }
+            }
         }
 
         return true;
     }
 
-    public ItemSlot HasItem(ItemInfo item, int count)
+    public bool DeleteItem(ItemInfo item, int count)
     {
-        foreach (var i in items)
+        int itemCount = CountItem(item);
+
+        if (itemCount < count) return false;
+        else
         {
-            if (i == null) continue;
-            if (i.item.itemNum == item.itemNum && i.count + count <= i.item.maxCount && i.count > 0) return i;
+            for (int j = 0; j < count; j++)
+            {
+                for (int i = InventoryCapacity - 1; i >= 0; i--)
+                {
+                    if (items[i] != null && items[i].count > 0 && items[i].item.itemNum == item.itemNum)
+                    {
+                        items[i].count--;
+                        break;
+                    }
+                }
+            }
+
+            return true;
+        }
+    }
+
+    public int CountItem(ItemInfo item)
+    {
+        int count = 0;
+        
+        for (int i = 0; i < InventoryCapacity; i++)
+        {
+            if (items[i] == null) continue;
+            if (items[i].count > 0 && items[i].item.itemNum == item.itemNum) count += items[i].count;
         }
 
-        return null;
+        return count;
+    }
+
+    public void Swap(int index0, int index1)
+    {
+        (items[index0], items[index1]) = (items[index1], items[index0]);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlotUI : MonoBehaviour, IPointerDownHandler
+public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
 {
     [Tooltip("아이템 아이콘 이미지")]
     [SerializeField] private Image _iconImage;
@@ -24,7 +24,7 @@ public class ItemSlotUI : MonoBehaviour, IPointerDownHandler
 
     public void SetSlotIndex(int index) => this.index = index;
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (HasItem)
         {
