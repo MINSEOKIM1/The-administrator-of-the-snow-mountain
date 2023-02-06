@@ -16,6 +16,11 @@ public class PlayerBehavior : Entity
     
     // Entity's info (will be replaced by PlayerInfo Class object later)
     public PlayerInfo EntityInfo => (PlayerInfo) entityInfo;
+    public PlayerDataManager PlayerDataManager
+    {
+        get => GameManager.Instance.PlayerDataManager;
+        set => PlayerDataManager = value;
+    }
     
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
@@ -83,6 +88,7 @@ public class PlayerBehavior : Entity
     {
         base.Update();
         AttackCheck();
+        _animator.SetFloat("attackSpeed", PlayerDataManager.attackSpeed);
     }
 
     // Physics logic...
@@ -213,6 +219,11 @@ public class PlayerBehavior : Entity
     
     protected override void AttackInputDetect()
     {
+        if (PlayerDataManager.attackSpeed == 0)
+        {
+            _normalAttackDetect = false;
+            return;
+        }
         // Normal Attack
         if (_normalAttackDetect && stunTimeElapsed <= 0)
         {
@@ -262,7 +273,7 @@ public class PlayerBehavior : Entity
     public override void Hit(float damage, Vector2 knockback, float stunTime)
     {
         _capsuleCollider.sharedMaterial = zero;
-        hp -= CalculateDamage(damage, def);
+        hp -= CalculateDamage(damage, PlayerDataManager.def);
         if (stunTime > stunTimeElapsed)
         {
             stunTimeElapsed = stunTime;

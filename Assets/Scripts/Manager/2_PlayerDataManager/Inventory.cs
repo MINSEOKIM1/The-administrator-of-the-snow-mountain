@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     
     public List<ItemSlot> items;
 
-    public ItemInfo test;
+    public ItemInfo[] test;
 
     public int usedSlotCount;
 
@@ -27,10 +27,10 @@ public class Inventory : MonoBehaviour
         {
             items.Add(null);
         }
-        for (int i = 0; i < InventoryCapacity; i++)
+
+        for (int i = 0; i < test.Length; i++)
         {
-            Debug.Log("TEST");
-            AddItem(test, 19);
+            AddItem(test[i],1);
         }
     }
 
@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
 
     public void TestAddItem(int num)
     {
-        if (AddItem(test, num))
+        if (AddItem(test[0], num))
         {
             Debug.Log("Success!");
         }
@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour
 
     public void TestDeleteItem(int num)
     {
-        if (DeleteItem(test, num))
+        if (DeleteItem(test[0], num))
         {
             Debug.Log("Success!");
         }
@@ -130,6 +130,19 @@ public class Inventory : MonoBehaviour
             }
 
             return true;
+        }
+    }
+    
+    public bool DeleteItem(int index, int count)
+    {
+        if (items[index].count >= count)
+        {
+            items[index].count -= count;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

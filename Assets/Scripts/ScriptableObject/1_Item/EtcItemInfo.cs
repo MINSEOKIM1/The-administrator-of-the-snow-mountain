@@ -1,18 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EtcItemInfo : MonoBehaviour
+[Serializable]
+[CreateAssetMenu(fileName = "EtcItemInfo", menuName = "ScriptableObjects/EtcItemInfo", order = 1)]
+public class EtcItemInfo : ItemInfo
 {
-    // Start is called before the first frame update
-    void Start()
+    public override int GetUseOption()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return ETC;
     }
 }

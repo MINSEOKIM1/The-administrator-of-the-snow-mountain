@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
                 var k = atkKnockback;
                 k.Set(i.transform.position.x < transform.parent.position.x ? -k.x : k.x, k.y);
                 i.GetComponent<Monster>().Hit(
-                    _playerBehavior.atk * atkCoefficient
+                    _playerBehavior.PlayerDataManager.atk * atkCoefficient
                     , k, 
                     atkStunTime);
             }

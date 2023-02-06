@@ -26,11 +26,10 @@ public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("!!");
         if (HasItem)
         {
-            GameManager.Instance.UIManager.InventoryUI.selectedItemImage.sprite = item.item.itemIcon;
-            GameManager.Instance.UIManager.InventoryUI.selectedItemName.text = item.item.itemName;
-            GameManager.Instance.UIManager.InventoryUI.selectedItemDescription.text = item.item.itemDescription;
+            GameManager.Instance.UIManager.InventoryUI.SelectItem(item, index);
         }
     }
 
