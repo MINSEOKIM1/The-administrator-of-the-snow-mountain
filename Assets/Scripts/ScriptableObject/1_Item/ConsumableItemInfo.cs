@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsumableItemInfo : MonoBehaviour
+[Serializable]
+[CreateAssetMenu(fileName = "ConsumableItemInfo", menuName = "ScriptableObjects/ConsumableItemInfo", order = 1)]
+public class ConsumableItemInfo : ItemInfo
 {
-    // Start is called before the first frame update
-    void Start()
+    public float hpRecovery;
+    public float mpRecovery;
+    public float saturationRecovery;
+    
+    public override int GetUseOption()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return Consumable;
     }
 }

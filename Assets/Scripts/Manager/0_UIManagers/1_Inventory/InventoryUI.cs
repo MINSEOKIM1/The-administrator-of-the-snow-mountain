@@ -25,12 +25,17 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private List<ItemSlotUI> _slotUIList;
 
+    [SerializeField] private TMP_Text optionText;
+
+    public int selectedItemIndex;
     public Image selectedItemImage;
     public GameObject[] selectedItemOption;
     public TMP_Text selectedItemName, selectedItemDescription;
 
     private int _dragBeginSlotIndex, _dragEndSlotIndex;
     private bool _isItemDragging;
+
+    private int _useOption;
 
     [SerializeField] private GraphicRaycaster graphic;
     [SerializeField] private Image dragImage;
@@ -55,6 +60,9 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void Start()
     {
         InitSlots();
+        selectedItemImage.sprite = null;
+        selectedItemName.text = "";
+        selectedItemDescription.text = "";
     }
 
     private void OnValidate()
@@ -298,6 +306,7 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 if (isui.item != null && isui.item.count > 0)
                 {
+                    SelectItem(isui.item, isui.index);
                     _dragBeginSlotIndex = isui.index;
                     _isItemDragging = true;
 
@@ -321,11 +330,136 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 _dragEndSlotIndex = isui.index;
                 GameManager.Instance.PlayerDataManager.inventory.Swap(_dragBeginSlotIndex, _dragEndSlotIndex);
+                SelectItem(GameManager.Instance.PlayerDataManager.inventory.items[_dragEndSlotIndex], _dragEndSlotIndex);
             }
         }
         
         _isItemDragging = false;
         dragImage.gameObject.SetActive(false);
+    }
+
+    public void SelectItem(ItemSlot item, int index)
+    {
+        if (item == null || item.count == 0)
+        {
+            selectedItemIndex = index;
+            selectedItemImage.sprite = null;
+            selectedItemImage.color = new Color(0, 0, 0, 0);
+            selectedItemName.text = "";
+            selectedItemDescription.text = "";
+            optionText.text = "";
+        }
+        else
+        {
+            selectedItemIndex = index;
+            selectedItemImage.sprite = item.item.itemIcon;
+            selectedItemImage.color = new Color(1, 1, 1, 1);
+            selectedItemName.text = item.item.itemName;
+            selectedItemDescription.text = item.item.itemDescription;
+            switch (item.item.GetUseOption())
+            {
+                case 0 :
+                    optionText.text = "장착";
+                    break;
+                case 1 :
+                    optionText.text = "사용";
+                    break;
+                default:
+                    optionText.text = "";
+                    break;
+            }
+        }
+    }
+
+    public void Use()
+    {
+        int index = selectedItemIndex;
+        var item = GameManager.Instance.PlayerDataManager.inventory.items[index];
+
+        if (item != null && item.count > 0 && item.item != null)
+        {
+            switch (item.item.GetUseOption())
+            {
+                case 0:
+                    Equip();
+                    return;
+                case 1:
+                    Consume();
+                    return;
+                case 2:
+                    return;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+    public void Equip()
+    {
+        int index = selectedItemIndex;
+        var item = GameManager.Instance.PlayerDataManager.inventory.items[index];
+        
+        GameManager.Instance.UIManager.EquipmentUI.UpdateUI();
+        
+        if (item != null && item.count > 0 && item.item != null)
+        {
+            int part = ((EquipmentItemInfo)item.item).equipmentPart;
+            var equipment = GameManager.Instance.PlayerDataManager.equipment.items[part];
+            if (equipment == null)
+            {
+                GameManager.Instance.PlayerDataManager.inventory.items[index] = null;
+                GameManager.Instance.PlayerDataManager.equipment.items[part] = (EquipmentItemInfo)item.item;
+                SelectItem(null, index);
+            }
+            else
+            {
+                EquipmentItemInfo tmp = equipment;
+                GameManager.Instance.PlayerDataManager.equipment.items[part] = (EquipmentItemInfo)item.item;
+                item.item = tmp;
+                item.count = 1;
+                SelectItem(item, index);
+            }
+        }
+    }
+
+    public void Consume()
+    {
+        int index = selectedItemIndex;
+        var item = GameManager.Instance.PlayerDataManager.inventory.items[index];
+        
+        GameManager.Instance.UIManager.EquipmentUI.UpdateUI();
+        
+        if (item != null && item.count > 0 && item.item != null)
+        {
+            var consumable = (ConsumableItemInfo)item.item;
+            float hp = consumable.hpRecovery;
+            float mp = consumable.mpRecovery;
+            float saturation = consumable.saturationRecovery;
+
+            GameManager.Instance.PlayerDataManager.hp += hp;
+            GameManager.Instance.PlayerDataManager.mp += mp;
+            GameManager.Instance.PlayerDataManager.saturation += saturation;
+
+            GameManager.Instance.PlayerDataManager.inventory.DeleteItem(selectedItemIndex, 1);
+            SelectItem(item, selectedItemIndex);
+        }
+    }
+
+    public void DropItem()
+    {
+        DropItem(1);
+    }
+    
+    public void DropItem(int count)
+    {
+        if (GameManager.Instance.PlayerDataManager.inventory.DeleteItem(selectedItemIndex, count))
+        {
+            SelectItem(GameManager.Instance.PlayerDataManager.inventory.items[selectedItemIndex], selectedItemIndex);
+            Debug.Log("Success to Drop");
+        }
+        else
+        {
+            Debug.Log("Fail to Drop");
+        }
     }
 
     private void Update()

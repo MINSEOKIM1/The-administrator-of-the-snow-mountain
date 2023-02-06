@@ -11,29 +11,87 @@ public class PlayerDataManager : MonoBehaviour
     
     public float hp;
     public float mp;
+    public float saturation;
+
+    public float attackSpeed
+    {
+        get
+        {
+            if (equipment.items[3] != null)
+            {
+                return equipment.items[3].atkSpeed;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        set => attackSpeed = value;
+    }
 
     public float maxHp
     {
-        get => playerInfo.maxHp + level * 10;
+        get
+        {
+            float total = 0;
+            for (int i = 0; i < equipment.items.Length; i++)
+            {
+                if (equipment.items[i] != null) total += equipment.items[i].hp;
+            }
+            return playerInfo.maxHp + level * 10 + total;
+        }
         set => maxHp = value;
     }
 
     public float maxMp
     {
-        get => playerInfo.maxMp + level * 10;
+        get
+        {
+            float total = 0;
+            for (int i = 0; i < equipment.items.Length; i++)
+            {
+                if (equipment.items[i] != null) total += equipment.items[i].mp;
+            }
+            return playerInfo.maxMp + level * 10 + total;
+        }
         set => maxMp = value;
     }
 
     public float hpIncRate
     {
-        get => playerInfo.hpIncRate + level * 0.1f;
+        get
+        {
+            float total = 0;
+            for (int i = 0; i < equipment.items.Length; i++)
+            {
+                if (equipment.items[i] != null) total += equipment.items[i].hpIncRate;
+            }
+            return playerInfo.hpIncRate + level * 0.1f + total;
+        }
         private set => hpIncRate = value;
     }
+
     public float mpIncRate
     {
-        get => playerInfo.mpIncRate + level * 0.1f;
+        get
+        {
+            float total = 0;
+            for (int i = 0; i < equipment.items.Length; i++)
+            {
+                if (equipment.items[i] != null) total += equipment.items[i].mpIncRate;
+            }
+            return playerInfo.mpIncRate + level * 0.1f + total;
+        }
         private set => mpIncRate = value;
     }
+
+    public float maxSaturation
+    {
+        get => 10;
+        set => maxSaturation = value;
+    }
+    
     
     public int[] attackSkillLevel;
     public int[] utilSkillLevel;
@@ -42,16 +100,51 @@ public class PlayerDataManager : MonoBehaviour
     public float accel;
     public float jumpPower;
 
-    public float atk;
-    public float def;
+    public float atk 
+    {
+        get
+        {
+            float total = 0;
+            for (int i = 0; i < equipment.items.Length; i++)
+            {
+                if (equipment.items[i] != null) total += equipment.items[i].atk;
+            }
+            return playerInfo.atk + level * 0.1f + total;
+        }
+        private set => atk = value;
+    }
+    public float def 
+    {
+        get
+        {
+            float total = 0;
+            for (int i = 0; i < equipment.items.Length; i++)
+            {
+                if (equipment.items[i] != null) total += equipment.items[i].def;
+            }
+            return playerInfo.def + level * 0.1f + total;
+        }
+        private set => def = value;
+    }
 
-    public float stance;
-
-    public int weapon;
-
+    public float stance
+    {
+        get
+        {
+            float total = 0;
+            for (int i = 0; i < equipment.items.Length; i++)
+            {
+                if (equipment.items[i] != null) total += equipment.items[i].stance;
+            }
+            return playerInfo.stance + level * 0.1f + total;
+        }
+        private set => stance = value;
+    }
+    
     public int money;
 
     public Inventory inventory;
+    public Equipment equipment;
 
     private void Start()
     {

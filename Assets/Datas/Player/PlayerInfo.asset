@@ -16,10 +16,10 @@ MonoBehaviour:
   accel: 1
   jumpPower: 8
   backStepPower: {x: 5, y: 3}
-  maxHp: 1000
+  maxHp: 100
   maxMp: 100
   hpIncRate: 3
-  mpIncRate: 100100104
+  mpIncRate: 3
   atk: 80
   def: 200
   stance: 0
