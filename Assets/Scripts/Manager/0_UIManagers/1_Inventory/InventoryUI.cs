@@ -27,6 +27,11 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     [SerializeField] private TMP_Text optionText;
 
+    [SerializeField] private GameObject dropItemUI;
+    [SerializeField] private Slider dropItemCountSlider;
+    [SerializeField] private TMP_Text dropItemCountText;
+    [SerializeField] private bool isDropping;
+
     public int selectedItemIndex;
     public Image selectedItemImage;
     public GameObject[] selectedItemOption;
@@ -446,20 +451,49 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void DropItem()
     {
-        DropItem(1);
+        if (GameManager.Instance.PlayerDataManager.inventory.items[selectedItemIndex].count <= 1)
+        {
+            DropItem(1);
+        }
+        else
+        {
+            if (!dropItemUI.activeSelf)
+            {
+                isDropping = true;
+                dropItemUI.SetActive(true);
+                DropItemCountChanged();
+            }
+            else
+            {
+                int num = Mathf.Clamp(
+                    (int) (dropItemCountSlider.value * _slotUIList[selectedItemIndex].item.count), 
+                    0, _slotUIList[selectedItemIndex].item.count);
+                DropItem(num);
+            }
+        }
     }
     
     public void DropItem(int count)
     {
+        dropItemUI.SetActive(false);
         if (GameManager.Instance.PlayerDataManager.inventory.DeleteItem(selectedItemIndex, count))
         {
-            SelectItem(GameManager.Instance.PlayerDataManager.inventory.items[selectedItemIndex], selectedItemIndex);
+            SelectItem(GameManager.Instance.PlayerDataManager.inventory.items[selectedItemIndex],
+                selectedItemIndex);
             Debug.Log("Success to Drop");
         }
         else
         {
             Debug.Log("Fail to Drop");
         }
+    }
+
+    public void DropItemCountChanged()
+    {
+        int num = Mathf.Clamp(
+            (int) (dropItemCountSlider.value * _slotUIList[selectedItemIndex].item.count), 
+            0, _slotUIList[selectedItemIndex].item.count);
+        dropItemCountText.text = "" + num + " / " + _slotUIList[selectedItemIndex].item.count;
     }
 
     private void Update()

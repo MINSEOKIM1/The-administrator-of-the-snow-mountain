@@ -30,4 +30,6 @@ public class MonsterInfo : EntityInfo
     public float[] attackCoefficient;
     public float[] attackStunTime;
     public Vector2[] attackKnockback;
+
+    public ItemInfo[] dropItems;
 }

@@ -31,6 +31,8 @@ public class PlayerBehavior : Entity
     public float wallJump;
     public float wallJumpPower;
     public float wallTime;
+    public float hitTimeElapsed;
+    public bool isHitMotion;
 
     public bool canWall;
     
@@ -94,6 +96,7 @@ public class PlayerBehavior : Entity
     // Physics logic...
     protected override void FixedUpdate()
     {
+        hitTimeElapsed -= Time.fixedDeltaTime;
         if (stunTimeElapsed > 0) stunTimeElapsed -= Time.fixedDeltaTime;
         ApplyAnimation();
         CheckGround();
@@ -102,11 +105,13 @@ public class PlayerBehavior : Entity
         AttackInputDetect();
         UpdateExternalVelocity();
         Move(_groundNormalPerp, _speed);
+        if (_isGround && hitTimeElapsed < 0 && isHitMotion) _animator.SetTrigger("notHit");
     }
 
     private void AttackCheck()
     {
         _isAttack = _animator.GetCurrentAnimatorStateInfo(0).IsTag("attack");
+        isHitMotion = _animator.GetCurrentAnimatorStateInfo(0).IsTag("hit");
     }
 
     protected override void ApplyAnimation()
@@ -130,6 +135,7 @@ public class PlayerBehavior : Entity
      */
     private void CheckWall()
     {
+        if (isDie || isHitMotion) return;
         wallTime -= Time.fixedDeltaTime;
 
         var hits = Physics2D.RaycastAll(
@@ -219,7 +225,7 @@ public class PlayerBehavior : Entity
     
     protected override void AttackInputDetect()
     {
-        if (PlayerDataManager.attackSpeed == 0)
+        if (PlayerDataManager.attackSpeed == 0 || isHitMotion || isDie)
         {
             _normalAttackDetect = false;
             return;
@@ -272,6 +278,7 @@ public class PlayerBehavior : Entity
     }
     public override void Hit(float damage, Vector2 knockback, float stunTime)
     {
+        if (isDie) return;
         _capsuleCollider.sharedMaterial = zero;
         hp -= CalculateDamage(damage, PlayerDataManager.def);
         if (stunTime > stunTimeElapsed)
@@ -285,7 +292,16 @@ public class PlayerBehavior : Entity
             Die();
             return;
         }
+        hitTimeElapsed = 0.2f;
+        _animator.SetTrigger("hit");
+        _playerAttack.ResetNormalAttack();
         KnockBack(knockback);
+    }
+
+    public override void Die()
+    {
+        isDie = true;
+        PlayerDataManager.isDie = true;
     }
 
     public void Attack()
@@ -321,7 +337,17 @@ public class PlayerBehavior : Entity
 
     public void Backstep()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
+        if (isHitMotion && CanUtilCondition(3) && stunTimeElapsed <= 0)
+        {
+            externalSpeed = 0;
+            _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
+            _hitAir = false;
+            _animator.SetTrigger("notHit");
+            UseUtilSkill(3);
+            _animator.SetTrigger("attackCancel");
+            StartCoroutine(MotionCancel());
+        }
+        else if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
         {
             UseUtilSkill(0);
             
@@ -389,7 +415,7 @@ public class PlayerBehavior : Entity
             }
             else
             {
-                if (Mathf.Abs(col.contacts[0].normal.x) == 1 && wallJump < 0)
+                if (Mathf.Abs(col.contacts[0].normal.x) == 1 && col.collider.GetComponent<PlatformEffector2D>() == null && wallJump < 0)
                 {
                     externalSpeed = 0;
                     dashSpeed = 0;

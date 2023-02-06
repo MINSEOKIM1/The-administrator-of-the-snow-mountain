@@ -143,6 +143,8 @@ public class PlayerDataManager : MonoBehaviour
     
     public int money;
 
+    public bool isDie;
+
     public Inventory inventory;
     public Equipment equipment;
 
@@ -157,7 +159,10 @@ public class PlayerDataManager : MonoBehaviour
         hp = Mathf.Clamp(hp, 0, maxHp);
         mp = Mathf.Clamp(mp, 0, maxMp);
 
-        hp += hpIncRate * Time.deltaTime;
-        mp += mpIncRate * Time.deltaTime;
+        if (!isDie)
+        {
+            hp += hpIncRate * Time.deltaTime;
+            mp += mpIncRate * Time.deltaTime;
+        }
     }
 }

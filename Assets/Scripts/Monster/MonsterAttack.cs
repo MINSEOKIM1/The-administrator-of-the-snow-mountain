@@ -56,4 +56,9 @@ public class MonsterAttack : MonoBehaviour
         this.damage = damage;
         this.atkStunTime = stunTime;
     }
+
+    public void Die()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 }

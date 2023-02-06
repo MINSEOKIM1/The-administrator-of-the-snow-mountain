@@ -59,7 +59,7 @@ public class White : Monster
 
     protected override void AttackInputDetect()
     {
-        if (_isAttack) return;
+        if (_isAttack || isDie) return;
         Collider2D[] tmp;
         for(int i = 0; i<attackDetectBoxes.Length; i++)
         {

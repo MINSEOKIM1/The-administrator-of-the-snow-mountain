@@ -108,12 +108,13 @@ public abstract class Entity : MonoBehaviour
     
     protected virtual void FixedUpdate()
     {
-        if (stunTimeElapsed > 0) stunTimeElapsed -= Time.fixedDeltaTime;
+        if (isDie) return;
+        if (stunTimeElapsed > 0 && !isDie) stunTimeElapsed -= Time.fixedDeltaTime;
         ApplyAnimation();
         CheckGround();
-        if (stunTimeElapsed <= 0) DetermineNextMove();
+        if (stunTimeElapsed <= 0 && !isDie) DetermineNextMove();
         UpdateVelocity();
-        if (stunTimeElapsed <= 0) AttackInputDetect();
+        if (stunTimeElapsed <= 0 && !isDie) AttackInputDetect();
         UpdateExternalVelocity();
         Move(_groundNormalPerp, _speed);
     }
@@ -294,6 +295,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Hit(float damage, Vector2 knockback, float stunTime)
     {
+        if (isDie) return;
         _capsuleCollider.sharedMaterial = zero;
         hp -= CalculateDamage(damage, def);
         if (stunTime > stunTimeElapsed)
