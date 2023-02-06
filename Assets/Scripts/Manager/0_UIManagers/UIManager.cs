@@ -21,13 +21,26 @@ public class UIManager : MonoBehaviour
 
     public void ToInventoryUI()
     {
-        uiCanvas[0].SetActive(true);
-        uiCanvas[1].SetActive(false);
+        AccessUICanvas(0);
     }
     
     public void ToEquipmentUI()
     {
-        uiCanvas[0].SetActive(false);
-        uiCanvas[1].SetActive(true);
+        AccessUICanvas(1);
+    }
+
+    public void AccessUICanvas(int index)
+    {
+        for (int i = 0; i < uiCanvas.Length; i++)
+        {
+            if (i == index)
+            {
+                uiCanvas[i].SetActive(!uiCanvas[i].activeSelf);
+            }
+            else
+            {
+                uiCanvas[i].SetActive(false);
+            }
+        }
     }
 }

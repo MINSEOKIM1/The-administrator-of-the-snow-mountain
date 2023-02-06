@@ -119,7 +119,7 @@ public class Monster : Entity
     protected override void UpdateVelocity()
     {
         // if condition (!_inSlope) is omitted... player slide down a slope...
-        if (!_inSlope || (_inSlope && _isAttack))
+        if (!_inSlope || (_inSlope && _isAttack) || isDie)
         {
             _speed = _rigidbody.velocity.x;
         }
@@ -153,5 +153,16 @@ public class Monster : Entity
     {
         base.Hit(damage, knockback, stunTime);
         hpbar.value = hp / maxHp;
+    }
+
+    public override void Die()
+    {
+        if (isDie) return;
+        _animator.SetTrigger("die");
+        _speed = 0;
+        dashSpeed = 0;
+        gameObject.layer = 10;
+        _capsuleCollider.sharedMaterial = little;
+        isDie = true;
     }
 }
