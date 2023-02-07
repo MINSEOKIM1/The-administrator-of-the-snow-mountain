@@ -69,7 +69,8 @@ public class PlayerAttack : MonoBehaviour
                 i.GetComponent<Monster>().Hit(
                     _playerBehavior.PlayerDataManager.atk * atkCoefficient
                     , k, 
-                    atkStunTime);
+                    atkStunTime,
+                    transform.parent.position);
             }
         }
     }

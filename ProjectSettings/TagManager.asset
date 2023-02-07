@@ -18,7 +18,7 @@ TagManager:
   - Player
   - Monster
   - Player_dash
-  - 
+  - Monster_Dead
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3699790449
+    locked: 0
+  - name: Effect
+    uniqueID: 3323315891
     locked: 0

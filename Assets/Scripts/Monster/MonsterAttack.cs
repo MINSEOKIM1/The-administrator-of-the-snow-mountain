@@ -29,7 +29,8 @@ public class MonsterAttack : MonoBehaviour
                 i.GetComponent<PlayerBehavior>().Hit(
                     damage,
                     (k), 
-                    atkStunTime);
+                    atkStunTime,
+                    transform.parent.position);
             }
         }
     }
