@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7768e07093a40859a7e64b2e40fa4d, type: 3}
   m_Name: TestHat
   m_EditorClassIdentifier: 
+  useOption: 0
   itemNum: 2
   itemName: 
   itemDescription: 
@@ -27,9 +28,10 @@ MonoBehaviour:
   - 0
   - 0
   atk: 0
-  def: 0
-  hp: 1525
-  mp: 21
+  def: 10
+  hp: 10
+  mp: 10
   hpIncRate: 0
   mpIncRate: 0
   stance: 0
+  atkSpeed: 0

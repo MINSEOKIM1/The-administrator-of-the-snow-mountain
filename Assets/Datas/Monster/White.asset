@@ -16,7 +16,7 @@ MonoBehaviour:
   accel: 0.5
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
-  maxHp: 10000
+  maxHp: 1000000
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 0
@@ -35,6 +35,7 @@ MonoBehaviour:
   attackCoefficient:
   - 1
   attackStunTime:
-  - 0.4
+  - 0
   attackKnockback:
-  - {x: 1, y: 2}
+  - {x: 1, y: 8}
+  dropItems: []

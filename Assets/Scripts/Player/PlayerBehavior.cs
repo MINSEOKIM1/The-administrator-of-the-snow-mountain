@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -280,6 +282,34 @@ public class PlayerBehavior : Entity
     {
         if (isDie) return;
         _capsuleCollider.sharedMaterial = zero;
+        GameManager.Instance.EffectManager.CreateEffect(1, transform.position,
+            Quaternion.AngleAxis(Random.Range(-180f, 180f), Vector3.forward));
+        hp -= CalculateDamage(damage, PlayerDataManager.def);
+        if (stunTime > stunTimeElapsed)
+        {
+            stunTimeElapsed = stunTime;
+            this.stunTime = stunTime;
+        }
+        _speed = 0;
+        if (hp <= 0)
+        {
+            Die();
+            return;
+        }
+        hitTimeElapsed = 0.2f;
+        _animator.SetTrigger("hit");
+        _playerAttack.ResetNormalAttack();
+        KnockBack(knockback);
+    }
+
+    public void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
+    {
+        if (isDie) return;
+        _capsuleCollider.sharedMaterial = zero;
+        GameManager.Instance.EffectManager.CreateEffect(1, transform.position,
+            Quaternion.AngleAxis(
+                Mathf.Atan2((opponent-transform.position).y, (opponent-transform.position).x) * Mathf.Rad2Deg, 
+                Vector3.forward));
         hp -= CalculateDamage(damage, PlayerDataManager.def);
         if (stunTime > stunTimeElapsed)
         {
@@ -346,6 +376,8 @@ public class PlayerBehavior : Entity
             UseUtilSkill(3);
             _animator.SetTrigger("attackCancel");
             StartCoroutine(MotionCancel());
+            GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+            _playerAttack.ResetNormalAttack();
         }
         else if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
         {
@@ -353,6 +385,7 @@ public class PlayerBehavior : Entity
             
             if (_isAttack && CanUtilCondition(3))
             {
+                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
                 UseUtilSkill(3);
                 _animator.SetTrigger("attackCancel");
                 StartCoroutine(MotionCancel());
@@ -378,6 +411,7 @@ public class PlayerBehavior : Entity
         {
             UseUtilSkill(2);
             _playerAttack.ResetNormalAttack();
+            GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
             
             if (_playerInputHandler.movement.x != 0)
             {

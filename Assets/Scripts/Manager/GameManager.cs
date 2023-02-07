@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public PlayerDataManager PlayerDataManager { get; private set; }
     public UIManager UIManager { get; private set; }
     public AudioManager AudioManager { get; private set; }
+    public EffectManager EffectManager { get; private set; }
     /*
     public GameStateManager GameStateManager { get; private set; }
 
@@ -31,5 +32,6 @@ public class GameManager : MonoBehaviour
         PlayerDataManager = GetComponentInChildren<PlayerDataManager>();
         UIManager = GetComponentInChildren<UIManager>();
         AudioManager = GetComponentInChildren<AudioManager>();
+        EffectManager = GetComponentInChildren<EffectManager>();
     }
 }

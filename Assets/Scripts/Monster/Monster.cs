@@ -151,7 +151,21 @@ public class Monster : Entity
 
     public override void Hit(float damage, Vector2 knockback, float stunTime)
     {
+        if (isDie) return;
         base.Hit(damage, knockback, stunTime);
+        GameManager.Instance.EffectManager.CreateEffect(1, transform.position,
+            Quaternion.AngleAxis(Random.Range(-180f, 180f), Vector3.forward));
+        hpbar.value = hp / maxHp;
+    }
+    
+    public void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
+    {
+        if (isDie) return;
+        base.Hit(damage, knockback, stunTime);
+        GameManager.Instance.EffectManager.CreateEffect(1, transform.position,
+            Quaternion.AngleAxis(
+                Mathf.Atan2((opponent-transform.position).y, (opponent-transform.position).x) * Mathf.Rad2Deg, 
+                Vector3.forward));
         hpbar.value = hp / maxHp;
     }
 
