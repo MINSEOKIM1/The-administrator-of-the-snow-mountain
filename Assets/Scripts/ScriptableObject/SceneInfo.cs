@@ -9,4 +9,6 @@ public class SceneInfo : ScriptableObject
     public string currentSceneName;
     public DungeonData[] dungeons;
     public VillageData village;
+    public ForkData fork;
+    public BastionData bastion;
 }

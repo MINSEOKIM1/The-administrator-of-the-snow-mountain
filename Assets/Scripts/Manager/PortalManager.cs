@@ -24,11 +24,35 @@ public class PortalManager : MonoBehaviour
             case "Village":
                 SceneManager.LoadScene("Village");
                 break;
-            case "DungeonA":
-                SceneManager.LoadScene("DungeonA");
+            case "Bastion":
+                SceneManager.LoadScene("Bastion");
                 break;
-            case "DungeonB":
-                SceneManager.LoadScene("DungeonB");
+            case "Fork":
+                SceneManager.LoadScene("Fork");
+                break;
+            case "WolfA":
+                SceneManager.LoadScene("WolfA");
+                break;
+            case "WolfB":
+                SceneManager.LoadScene("WolfB");
+                break;
+            case "WhiteA":
+                SceneManager.LoadScene("WhiteA");
+                break;
+            case "WhiteB":
+                SceneManager.LoadScene("WhiteB");
+                break;
+            case "StoneA":
+                SceneManager.LoadScene("StoneA");
+                break;
+            case "StoneB":
+                SceneManager.LoadScene("StoneB");
+                break;
+            case "ZombieA":
+                SceneManager.LoadScene("ZombieA");
+                break;
+            case "ZombieB":
+                SceneManager.LoadScene("ZombieB");
                 break;
         }
     }

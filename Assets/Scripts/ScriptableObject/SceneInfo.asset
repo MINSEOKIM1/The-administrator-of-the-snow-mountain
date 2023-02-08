@@ -16,16 +16,80 @@ MonoBehaviour:
   currentSceneName: DungeonB
   dungeons:
   - id: 0
-    name: dungeonA
+    name: WolfA
+    time: 0.2927263
+    respawnTime: 1
+    maxMob: 20
+    curMob: 20
+  - id: 1
+    name: WolfB
+    time: 0.2107687
+    respawnTime: 0.5
+    maxMob: 20
+    curMob: 20
+  - id: 1
+    name: WhiteA
+    time: 0.9415684
+    respawnTime: 2
+    maxMob: 20
+    curMob: 14
+  - id: 1
+    name: WhiteB
+    time: 0.9507703
+    respawnTime: 1.5
+    maxMob: 20
+    curMob: 18
+  - id: 1
+    name: StoneA
+    time: 0.9679308
+    respawnTime: 3
+    maxMob: 20
+    curMob: 9
+  - id: 1
+    name: StoneB
+    time: 0.9679308
     respawnTime: 2.5
     maxMob: 20
-    curMob: 3
-  - id: 1
-    name: dungeonB
-    respawnTime: 0.7
-    maxMob: 15
     curMob: 11
+  - id: 1
+    name: ZombieA
+    time: 2.9742038
+    respawnTime: 4
+    maxMob: 20
+    curMob: 7
+  - id: 1
+    name: ZombieB
+    time: 2.9742038
+    respawnTime: 3.5
+    maxMob: 20
+    curMob: 7
   village:
-    name: village
-    maxMob: 5
-    curMob: 0
+    name: Village
+    maxMob: 10
+    curMob: 10
+    white: 0
+    wolf: 0
+    stone: 0
+    zombie: 0
+  fork:
+    id: 0
+    name: Fork
+    time: 0
+    respawnTime: 0
+    maxMob: 10
+    curMob: 10
+    white: 2
+    wolf: 20
+    stone: 0
+    zombie: 0
+  bastion:
+    id: 0
+    name: Bastion
+    time: 0
+    respawnTime: 0
+    maxMob: 10
+    curMob: 10
+    white: 0
+    wolf: 10
+    stone: 0
+    zombie: 0
