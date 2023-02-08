@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private SceneInfo sceneInfo;
+    [SerializeField] private PortalManager portalManager;
 
     // # player spawn point setting by sceneInfo (currentScene and beforeScene)
     private void Awake()
@@ -27,6 +28,13 @@ public class PlayerSpawn : MonoBehaviour
             case "DungeonB":
                 gameObject.transform.position = new Vector3(-7, 0, 0);
                 break;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.CompareTag("Portal") && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            portalManager.ChangeScene(col.name);    
         }
     }
 }

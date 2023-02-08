@@ -10,6 +10,11 @@ public class PortalManager : MonoBehaviour
     // # sceneInfo : scriptable objects
     [SerializeField] private SceneInfo sceneInfo;
 
+    public void Update()
+    {
+        
+    }
+
     public void ChangeScene(string portalName)
     {
         
