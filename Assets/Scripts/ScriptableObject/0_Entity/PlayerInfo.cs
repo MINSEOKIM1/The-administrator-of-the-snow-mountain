@@ -29,4 +29,15 @@ public class PlayerInfo : EntityInfo
      * 4 : wall jump
      */
     public float[] utilMp;
+    
+    /*
+     *  0 : backStep
+     *  1 : dash Attack
+     *  2 : motion cancel
+     *  3 : hit
+     */
+    [Tooltip("0:backstep\n1:dashAttack\n2:motionCancel\n3:hit")]
+    public float[] invincibilityTime;
+
+    public float saturationDecrementRate;
 }

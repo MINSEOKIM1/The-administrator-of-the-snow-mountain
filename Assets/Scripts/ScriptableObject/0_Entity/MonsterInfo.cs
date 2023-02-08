@@ -32,4 +32,8 @@ public class MonsterInfo : EntityInfo
     public Vector2[] attackKnockback;
 
     public ItemInfo[] dropItems;
+    public float[] itemDropProbability;
+    [Range(1, 30)] public int[] itemDropCount;
+
+    public float exp;
 }

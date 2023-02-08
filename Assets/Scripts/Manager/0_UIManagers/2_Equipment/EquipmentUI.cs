@@ -22,11 +22,6 @@ public class EquipmentUI : MonoBehaviour
         set => Equipment = value;
     }
 
-    private void Start()
-    {
-        UpdateUI();
-    }
-
     private void OnEnable()
     {
         UpdateUI();
@@ -36,15 +31,22 @@ public class EquipmentUI : MonoBehaviour
     {
         for (int i = 0; i < itemImages.Count; i++)
         {
-            var item = GameManager.Instance.PlayerDataManager.equipment.items[i];
-            if (item == null)
+            try
             {
-                itemImages[i].gameObject.SetActive(false);
+                var item = GameManager.Instance.PlayerDataManager.equipment.items[i];
+                if (item == null)
+                {
+                    itemImages[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    itemImages[i].gameObject.SetActive(true);
+                    itemImages[i].sprite = item.itemIcon;
+                }
             }
-            else
+            catch (NullReferenceException e)
             {
-                itemImages[i].gameObject.SetActive(true);
-                itemImages[i].sprite = item.itemIcon;
+                return;
             }
         }
         
@@ -73,13 +75,13 @@ public class EquipmentUI : MonoBehaviour
             }
         }
 
-        if (atk > 0) total += "ATK +" + atk + "\n";
-        if (def > 0) total += "DEF +" + def + "\n";
-        if (hp > 0) total += "HP +" + hp + "\n";
-        if (mp > 0) total += "MP +" + mp + "\n";
-        if (hpIncRate > 0) total += "HP 회복 +" + hpIncRate + "\n";
-        if (mpIncRate > 0) total += "MP 회복 +" + mpIncRate + "\n";
-        if (stance > 0) total += "STANCE +" + stance + "\n";
+        total += "ATK +" + atk + "\n";
+        total += "DEF +" + def + "\n";
+        total += "HP +" + hp + "\n";
+        total += "MP +" + mp + "\n";
+        total += "HP 회복 +" + hpIncRate + "\n";
+        total += "MP 회복 +" + mpIncRate + "\n";
+        total += "STANCE +" + stance + "\n";
 
         totalInfo.text = total;
     }

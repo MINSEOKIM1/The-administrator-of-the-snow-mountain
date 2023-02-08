@@ -11,6 +11,7 @@ public class ItemInfo : ScriptableObject
     public int useOption;
     public int itemNum;
     public string itemName;
+    [Multiline(7)]
     public string itemDescription;
     public Sprite itemIcon;
     public int maxCount;

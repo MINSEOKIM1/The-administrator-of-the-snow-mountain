@@ -20,7 +20,7 @@ MonoBehaviour:
   maxMp: 100
   hpIncRate: 3
   mpIncRate: 3
-  atk: 80
+  atk: 0
   def: 200
   stance: 0
   attackKnockback:
@@ -47,7 +47,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 1
+  - 0.2
   - 1
   attackMp:
   - 0
@@ -60,3 +60,9 @@ MonoBehaviour:
   - 20
   - 10
   - 10
+  invincibilityTime:
+  - 0.2
+  - 0.2
+  - 0.1
+  - 0.3
+  saturationDecrementRate: 0.01
