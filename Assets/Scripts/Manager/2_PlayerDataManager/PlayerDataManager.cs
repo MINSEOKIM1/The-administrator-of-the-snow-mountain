@@ -12,6 +12,7 @@ public class PlayerDataManager : MonoBehaviour
     public float hp;
     public float mp;
     public float saturation;
+    public float exp;
 
     public float attackSpeed
     {
@@ -91,6 +92,11 @@ public class PlayerDataManager : MonoBehaviour
         get => 10;
         set => maxSaturation = value;
     }
+
+    public float maxExp
+    {
+        get => 100 * (1 + 0.02f * (level-1));
+    }
     
     
     public int[] attackSkillLevel;
@@ -99,6 +105,12 @@ public class PlayerDataManager : MonoBehaviour
     public float maxSpeed;
     public float accel;
     public float jumpPower;
+
+    public bool canControl
+    {
+        get => !GameManager.Instance.UIManager.ConservationUI.gameObject.activeSelf;
+        set => canControl = value;
+    }
 
     public float atk 
     {
@@ -148,21 +160,38 @@ public class PlayerDataManager : MonoBehaviour
     public Inventory inventory;
     public Equipment equipment;
 
+    public Vector2 camOffset;
+
     private void Start()
     {
         hp = maxHp;
         mp = maxMp;
+        saturation = maxSaturation;
     }
 
     private void Update()
     {
         hp = Mathf.Clamp(hp, 0, maxHp);
         mp = Mathf.Clamp(mp, 0, maxMp);
+        saturation = Mathf.Clamp(saturation, 0, maxSaturation);
+
+        saturation -= Time.deltaTime * playerInfo.saturationDecrementRate;
 
         if (!isDie)
         {
             hp += hpIncRate * Time.deltaTime;
             mp += mpIncRate * Time.deltaTime;
         }
+
+        if (exp >= maxExp)
+        {
+            LevelUP();
+        }
+    }
+
+    private void LevelUP()
+    {
+        level++;
+        exp = 0;
     }
 }

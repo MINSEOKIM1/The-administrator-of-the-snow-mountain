@@ -50,7 +50,14 @@ public class Monster : Entity
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
     }
-    
+
+    protected override void Update()
+    {
+        base.Update();
+        if (_rigidbody.velocity.x < Mathf.Epsilon && _rigidbody.velocity.x > -Mathf.Epsilon)
+            _capsuleCollider.sharedMaterial = zero;
+    }
+
     // FixedUpdated is inherited from Entity class and no override
     // protected override void FixedUpdate() { ... }
     
@@ -161,7 +168,8 @@ public class Monster : Entity
     public void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
     {
         if (isDie) return;
-        base.Hit(damage, knockback, stunTime);
+        base.Hit(damage, GetKnockback(knockback, entityInfo.stance), stunTime);
+        GameManager.Instance.AudioManager.PlaySfx(4);
         GameManager.Instance.EffectManager.CreateEffect(1, transform.position,
             Quaternion.AngleAxis(
                 Mathf.Atan2((opponent-transform.position).y, (opponent-transform.position).x) * Mathf.Rad2Deg, 
@@ -172,11 +180,23 @@ public class Monster : Entity
     public override void Die()
     {
         if (isDie) return;
+        GameManager.Instance.PlayerDataManager.exp += ((MonsterInfo)entityInfo).exp;
         _animator.SetTrigger("die");
         _speed = 0;
         dashSpeed = 0;
         gameObject.layer = 10;
         _capsuleCollider.sharedMaterial = little;
+        for (int i = 0; i < ((MonsterInfo)entityInfo).dropItems.Length; i++)
+        {
+            if (Random.Range(0, 1) < ((MonsterInfo)entityInfo).itemDropProbability[i])
+            {
+                GameManager.Instance.EffectManager.CreateItem(
+                    ((MonsterInfo)entityInfo).dropItems[i],
+                    ((MonsterInfo)entityInfo).itemDropCount[i],
+                    transform.position,
+                    Quaternion.identity);
+            }
+        }
         isDie = true;
     }
 }

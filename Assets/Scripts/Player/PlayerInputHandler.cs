@@ -30,24 +30,31 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext value)
     {
-        movement = value.ReadValue<Vector2>();
-
-        if (value.started && movement.x != 0)
+        if (_playerBehavior.canControl)
         {
-            dashInputCheck = dashTime;
-            if ((dashDirection && movement.x > 0) || (!dashDirection && movement.x < 0) || dashCheck == 0)
-            {
-                dashCheck++;
-            }
-            dashDirection = movement.x > 0;
-            if (dashCheck == 2) _playerBehavior.Dash();
-        }
+            movement = value.ReadValue<Vector2>();
 
+            if (value.started && movement.x != 0)
+            {
+                dashInputCheck = dashTime;
+                if ((dashDirection && movement.x > 0) || (!dashDirection && movement.x < 0) || dashCheck == 0)
+                {
+                    dashCheck++;
+                }
+
+                dashDirection = movement.x > 0;
+                if (dashCheck == 2) _playerBehavior.Dash();
+            }
+        }
+        else
+        {
+            movement = Vector2.zero;
+        }
     }
     
     public void OnJump(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (value.started && _playerBehavior.canControl)
         {
             _playerBehavior.Jump();
         }
@@ -55,7 +62,7 @@ public class PlayerInputHandler : MonoBehaviour
     
     public void OnAttack(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (value.started && _playerBehavior.canControl)
         {
             _playerBehavior.Attack();
         }
@@ -63,9 +70,17 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnBackstep(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (value.started && _playerBehavior.canControl)
         {
             _playerBehavior.Backstep();
+        }
+    }
+
+    public void OnInteraction(InputAction.CallbackContext value)
+    {
+        if (value.started && _playerBehavior.canControl)
+        {
+            _playerBehavior.Interaction();
         }
     }
 }

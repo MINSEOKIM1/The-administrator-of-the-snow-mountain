@@ -99,6 +99,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack && PlayerBehavior.CanAttackCondition(3))
         {
+            _playerBehavior.invincibilityTimeElapsed = _playerBehavior.EntityInfo.invincibilityTime[1];
             // change attack direction according to arrow key
             if (_playerInputHandler.movement.x != 0)
             {
@@ -117,6 +118,7 @@ public class PlayerAttack : MonoBehaviour
             if (!_playerBehavior._hitAir) _playerBehavior.dashSpeed = -transform.localScale.x ;
             canAttack = false;
             _animator.SetTrigger("attack");
+            GameManager.Instance.EffectManager.CreateEffect(0, transform.parent.position, Quaternion.identity);
         }
     }
 
@@ -137,5 +139,10 @@ public class PlayerAttack : MonoBehaviour
         _normalAttackNumber = 0;
         _animator.ResetTrigger("attack");
         _animator.SetInteger("normalAttack", _normalAttackNumber);
+    }
+
+    public void PlaySFX(int index)
+    {
+        GameManager.Instance.AudioManager.PlaySfx(index);
     }
 }

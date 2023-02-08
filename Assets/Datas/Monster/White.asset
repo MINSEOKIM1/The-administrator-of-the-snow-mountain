@@ -16,7 +16,7 @@ MonoBehaviour:
   accel: 0.5
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
-  maxHp: 1000000
+  maxHp: 100
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 0
@@ -38,4 +38,9 @@ MonoBehaviour:
   - 0
   attackKnockback:
   - {x: 1, y: 8}
-  dropItems: []
+  dropItems:
+  - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
+  itemDropProbability:
+  - 0.5
+  itemDropCount: 03000000
+  exp: 10

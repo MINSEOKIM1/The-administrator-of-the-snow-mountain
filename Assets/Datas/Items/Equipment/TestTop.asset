@@ -27,11 +27,11 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  atk: 0
-  def: 30
-  hp: 50
-  mp: 50
-  hpIncRate: 37.92
-  mpIncRate: 100
+  atk: 100
+  def: 10
+  hp: 1000
+  mp: 20
+  hpIncRate: 100
+  mpIncRate: 30.9
   stance: 0.1
   atkSpeed: 0
