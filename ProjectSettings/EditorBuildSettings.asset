@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Bastion.unity
     guid: 8071f6944d71c4d44a3b090eeb91b89c
   - enabled: 1
-    path: Assets/Scenes/WhiteA.unity
+    path: Assets/Scenes/Fork.unity
     guid: d803f848569a15b408451324fd3aceb1
   - enabled: 1
     path: Assets/Scenes/WhiteB.unity
