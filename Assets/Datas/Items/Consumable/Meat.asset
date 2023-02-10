@@ -21,3 +21,8 @@ MonoBehaviour:
   hpRecovery: 40
   mpRecovery: 50
   saturationRecovery: 10
+  IngredientCountPairs:
+  - item: {fileID: 11400000, guid: c49822574ec0642cf8b9b7c5fd1b2f71, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
+    count: 3

@@ -27,7 +27,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  atk: 100
+  atk: 0
   def: 10
   hp: 1000
   mp: 20
@@ -35,3 +35,4 @@ MonoBehaviour:
   mpIncRate: 30.9
   stance: 0.1
   atkSpeed: 0
+  IngredientCountPairs: []

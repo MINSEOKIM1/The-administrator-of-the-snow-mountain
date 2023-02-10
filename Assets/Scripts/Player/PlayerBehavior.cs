@@ -217,7 +217,7 @@ public class PlayerBehavior : Entity
             if (wallJump<0) _speed = _rigidbody.velocity.x;
         }
 
-        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir && !isClimb && stunTimeElapsed <= 0)
+        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir && !isClimb && stunTimeElapsed <= 0 && canControl)
         {
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
@@ -262,6 +262,7 @@ public class PlayerBehavior : Entity
             else
             {
                 _playerAttack.DashAttack();
+                _playerInputHandler.dashCheck = 0;
             }
         }
         
@@ -459,7 +460,8 @@ public class PlayerBehavior : Entity
 
     public void Interaction()
     {
-        var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.one, 0);
+        if (!canControl) return;
+        var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.one * 2, 0);
         foreach (var i in tmp)
         {
             if (i.CompareTag("NPC"))

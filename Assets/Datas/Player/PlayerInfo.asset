@@ -65,4 +65,4 @@ MonoBehaviour:
   - 0.2
   - 0.1
   - 0.3
-  saturationDecrementRate: 0.01
+  saturationDecrementRate: 0.5

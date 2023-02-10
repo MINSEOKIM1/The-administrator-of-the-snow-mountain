@@ -12,9 +12,9 @@ public class Monster : Entity
     // Entity's info (will be replaced by PlayerInfo Class object later)
     protected float stateChangeInterval => ((MonsterInfo)entityInfo).stateChangeInterval;
     public Vector2 boxSize => ((MonsterInfo)entityInfo).boxSize;
-    public Vector2 boxOffset => ((MonsterInfo)entityInfo).boxOffset; 
-    
+    public Vector2 boxOffset => ((MonsterInfo)entityInfo).boxOffset;
 
+    public new float maxSpeed;
     // Monster's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
     
 
@@ -44,7 +44,9 @@ public class Monster : Entity
     {
         hp = maxHp;
         mp = maxMp;
-        
+
+        maxSpeed = entityInfo.maxSpeed * (0.7f + Random.Range(0f, 1f) * 0.6f);
+
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider2D>();

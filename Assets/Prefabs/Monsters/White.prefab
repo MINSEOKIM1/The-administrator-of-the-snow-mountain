@@ -601,8 +601,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Stun!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d835144eb68de44c4a84e7e1bd72eac8, type: 2}
-  m_sharedMaterial: {fileID: -6269009787549988062, guid: d835144eb68de44c4a84e7e1bd72eac8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 878a54c881ad243128ca5f5aee497fff, type: 2}
+  m_sharedMaterial: {fileID: 2765819464424927603, guid: 878a54c881ad243128ca5f5aee497fff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -17.85
+  m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1045,6 +1045,7 @@ MonoBehaviour:
   entityInfo: {fileID: 11400000, guid: c348671da136b4db58a8d1351c6db98f, type: 2}
   footPos: {fileID: 7797286253160051205}
   graphicTransform: {fileID: 1682267382489162660}
+  stunEffect: {fileID: 3581738504264077677}
   _speed: 0
   _isGround: 0
   _canJump: 0
@@ -1067,7 +1068,6 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  stunEffect: {fileID: 3581738504264077677}
   _target: {fileID: 0}
   moveState: 0
   stateChangeElapsed: 0

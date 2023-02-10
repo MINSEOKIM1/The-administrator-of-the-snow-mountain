@@ -14,7 +14,18 @@ public abstract class Entity : MonoBehaviour
     // Entity's info (will be replaced by PlayerInfo Class object later)
     [SerializeField] protected EntityInfo entityInfo;
     
-    protected float maxSpeed => entityInfo.maxSpeed;
+    protected float maxSpeed
+    {
+        get
+        {
+            return entityInfo.maxSpeed;
+        }
+        set
+        {
+            maxSpeed = value;
+        }
+    }
+
     protected float accel => entityInfo.accel;
     protected float jumpPower => entityInfo.jumpPower;
     protected Vector2 backStepPower => entityInfo.backStepPower;
