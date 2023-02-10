@@ -89,7 +89,7 @@ public class PlayerDataManager : MonoBehaviour
 
     public float maxSaturation
     {
-        get => 10;
+        get => 100;
         set => maxSaturation = value;
     }
 
@@ -160,7 +160,7 @@ public class PlayerDataManager : MonoBehaviour
     public Inventory inventory;
     public Equipment equipment;
 
-    public Vector2 camOffset;
+    public Vector3 camOffset;
 
     private void Start()
     {

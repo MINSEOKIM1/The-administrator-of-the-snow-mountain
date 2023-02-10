@@ -48,6 +48,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
         else
         {
+            Debug.Log("ASGDDSASGDS");
             movement = Vector2.zero;
         }
     }

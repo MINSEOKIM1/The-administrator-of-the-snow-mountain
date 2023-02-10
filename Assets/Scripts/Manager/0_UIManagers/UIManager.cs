@@ -15,12 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject[] uiCanvas;
     private void Start()
     {
-        TitleUI = GetComponentInChildren<TitleUI>();
-        InventoryUI = GetComponentInChildren<InventoryUI>();
-        EquipmentUI = GetComponentInChildren<EquipmentUI>();
-        ConservationUI = GetComponentInChildren<ConversationUI>();
-        
-        ToEquipmentUI();
+        // ToEquipmentUI();
     }
 
     public void ToInventoryUI()
