@@ -18,11 +18,11 @@ public class CameraOffset : MonoBehaviour
     {
         if (GameManager.Instance.UIManager.ConservationUI.gameObject.activeSelf)
         {
-            cam.m_TrackedObjectOffset = offset[0];
+            cam.m_TrackedObjectOffset = offset[1];
         }
         else
         {
-            cam.m_TrackedObjectOffset = offset[1];
+            cam.m_TrackedObjectOffset = offset[0];
         }
     }
 }
