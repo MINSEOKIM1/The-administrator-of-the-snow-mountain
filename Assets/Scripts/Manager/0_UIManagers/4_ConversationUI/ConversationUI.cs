@@ -50,39 +50,66 @@ public class ConversationUI : MonoBehaviour
 
     public void OnNext()
     {
-        if (currentClip == null || currentConversationArray == null) return;
-        if (currentClip.nextClipIndex == -1)
+        if (!conversationWindow.activeSelf)
         {
-            gameObject.SetActive(false);
-        } 
-        else if (currentClip.nextClipIndex == -2)
-        {
-            conversationWindow.SetActive(false);
-            cookWindow.SetActive(true);
-        }
-        else if (currentClip.nextClipIndex == -3)
-        {
-            conversationWindow.SetActive(false);
-            smithyWindow.SetActive(true);
+            if (cookWindow.activeSelf)
+            {
+                cookWindow.GetComponent<CookUI>().OnMake();
+            } else if (smithyWindow.activeSelf)
+            {
+                smithyWindow.GetComponent<SmithyUI>().OnMake();
+            }
         }
         else
         {
-            currentClip = currentConversationArray[currentClip.nextClipIndex];
-            UIUpdate();
+            if (currentClip == null || currentConversationArray == null) return;
+            if (currentClip.nextClipIndex == -1)
+            {
+                gameObject.SetActive(false);
+            }
+            else if (currentClip.nextClipIndex == -2)
+            {
+                conversationWindow.SetActive(false);
+                cookWindow.SetActive(true);
+            }
+            else if (currentClip.nextClipIndex == -3)
+            {
+                conversationWindow.SetActive(false);
+                smithyWindow.SetActive(true);
+            }
+            else
+            {
+                currentClip = currentConversationArray[currentClip.nextClipIndex];
+                UIUpdate();
+            }
         }
     }
-    
+
     public void OnPrev()
     {
-        if (currentClip == null || currentConversationArray == null) return;
-        if (currentClip.prevClipIndex == -1)
+        if (!conversationWindow.activeSelf)
         {
-            gameObject.SetActive(false);
+            if (cookWindow.activeSelf)
+            {
+                cookWindow.GetComponent<CookUI>().OnCancel();
+            }
+            else if (smithyWindow.activeSelf)
+            {
+                smithyWindow.GetComponent<SmithyUI>().OnCancel();
+            }
         }
         else
         {
-            currentClip = currentConversationArray[currentClip.prevClipIndex];
-            UIUpdate();
+            if (currentClip == null || currentConversationArray == null) return;
+            if (currentClip.prevClipIndex == -1)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                currentClip = currentConversationArray[currentClip.prevClipIndex];
+                UIUpdate();
+            }
         }
     }
 }
