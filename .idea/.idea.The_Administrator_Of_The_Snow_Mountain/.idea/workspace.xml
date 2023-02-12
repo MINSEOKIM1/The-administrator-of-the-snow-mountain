@@ -6,10 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="93d6d0c8-824f-486a-bd13-67e5f0ce983d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The_Administrator_Of_The_Snow_Mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The_Administrator_Of_The_Snow_Mountain/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/Werewolf/Werewolf_Graphic.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/Werewolf/Werewolf_Graphic.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/Werewolf/Werewolf_Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/Werewolf/Werewolf_Jump.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/Werewolf/Werewolf_attack1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/Werewolf/Werewolf_attack1.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Attack1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Attack1.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/Sword.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/Sword.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestTop.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestTop.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Werewolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Werewolf.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Werewolf.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Werewolf.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monsters/White.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monsters/White.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/TutorialScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/TutorialScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraOffset.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraOffset.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/3_EffectManager/EffectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/3_EffectManager/EffectManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Werewolf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Werewolf.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/White.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/White.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/0_Entity/MonsterInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/0_Entity/MonsterInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +54,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Minseo/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/MonsterAttack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/MonsterProjectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/Werewolf.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/WerewolfAttackSignal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/White.cs" root0="FORCE_HIGHLIGHTING" />
@@ -121,7 +140,7 @@
       <workItem from="1675151421017" duration="21013000" />
       <workItem from="1675330585674" duration="38216000" />
       <workItem from="1675779098921" duration="21581000" />
-      <workItem from="1675870925010" duration="18238000" />
+      <workItem from="1675870925010" duration="29774000" />
     </task>
     <servers />
   </component>

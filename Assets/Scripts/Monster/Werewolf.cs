@@ -25,6 +25,8 @@ public class Werewolf : Monster
 
     public float atkDash;
 
+    public float jumpElpased;
+
     protected override void Start()
     {
         base.Start();
@@ -43,8 +45,9 @@ public class Werewolf : Monster
         AttackCheck();
         _animator.SetFloat("speed", _speed);
 
-
-        if (jumping && _rigidbody.velocity.y < 0 && !diving)
+        jumpElpased -= Time.deltaTime;
+        
+        if (jumping && _rigidbody.velocity.y < 0 && !diving && jumpElpased < 0)
         {
             StartCoroutine(Dive());
         }
@@ -93,21 +96,32 @@ public class Werewolf : Monster
             tmp = Physics2D.OverlapBoxAll(transform.position, attackDetectBoxes[i], 0);
             foreach (var j in tmp)
             {
-                if (j.CompareTag("Player"))
+                if (j.CompareTag("Player") && mp >= _monsterInfo.attackMp[i])
                 {
-                    if (_target == null) _target = j.gameObject;
-                    if (_target.transform.position.x < transform.position.x)
+                    if (_target == null)
                     {
-                        _graphicLocalScale.Set(1, 1, 1);
-                        graphicTransform.localScale = _graphicLocalScale;
-                    }
-                    else
-                    {
-                        _graphicLocalScale.Set(-1, 1, 1);
-                        graphicTransform.localScale = _graphicLocalScale;
+                        perceivePlayerTimeElapsed = _monsterInfo.perceiveTime;
+                        _target = j.gameObject;
                     }
 
                     if (i == 1 && _isAttack) return;
+                    if (i == 0)
+                    {
+                        int a = Random.Range(0, 2);
+                        if (mp >= _monsterInfo.attackMp[a])
+                        {
+                            mp -= _monsterInfo.attackMp[a];
+                            _attackMethods[a]();
+                            return;
+                        }
+                        else
+                        {
+                            mp -= _monsterInfo.attackMp[0];
+                            _attackMethods[0]();
+                            return;
+                        }
+                    }
+                    mp -= _monsterInfo.attackMp[i];
                     _attackMethods[i]();
                     return;
                 }
@@ -125,6 +139,16 @@ public class Werewolf : Monster
     {
         if (CanAttackLogic())
         {
+            if (_target.transform.position.x < transform.position.x)
+            {
+                _graphicLocalScale.Set(1, 1, 1);
+                graphicTransform.localScale = _graphicLocalScale;
+            }
+            else
+            {
+                _graphicLocalScale.Set(-1, 1, 1);
+                graphicTransform.localScale = _graphicLocalScale;
+            }
             _capsuleCollider.sharedMaterial = little;
             
             _speed = 0;
@@ -145,12 +169,22 @@ public class Werewolf : Monster
     {
         if (CanAttackLogic())
         {
-            Debug.Log("ASDG");
+            if (_target.transform.position.x < transform.position.x)
+            {
+                _graphicLocalScale.Set(1, 1, 1);
+                graphicTransform.localScale = _graphicLocalScale;
+            }
+            else
+            {
+                _graphicLocalScale.Set(-1, 1, 1);
+                graphicTransform.localScale = _graphicLocalScale;
+            }
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             _capsuleCollider.sharedMaterial = little;
             
             _speed = 0;
             _animator.SetTrigger("jump");
+            jumpElpased = 0.2f;
             _werewolfAttack.SetCanAttack(false);
             jumping = true;
             diving = false;

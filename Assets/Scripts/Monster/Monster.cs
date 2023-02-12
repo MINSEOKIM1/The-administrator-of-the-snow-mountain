@@ -21,14 +21,17 @@ public class Monster : Entity
     // for below variable, public will be private ... (for debuging, it is public now)
     // for record current state
     public GameObject _target;
+    public float[] groundCheckLength;
+    public float perceivePlayerTimeElapsed;
 
 
     // 0 : idle, -1 : to left, 1 : to right - attack is independent...
     public int moveState;
     public float stateChangeElapsed;
-    
+
     // tmp (will be removed maybe...)
     public Slider hpbar;
+    public Slider mpbar;
 
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
     private Vector2 _boxOffsetWithLocalscale;
@@ -39,13 +42,17 @@ public class Monster : Entity
         _boxOffsetWithLocalscale.Set(boxOffset.x * graphicTransform.localScale.x, boxOffset.y);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube((Vector2)transform.position + _boxOffsetWithLocalscale, boxSize);
+        Gizmos.DrawLine(
+            (Vector2)transform.position + _boxOffsetWithLocalscale*groundCheckLength[0], 
+            (Vector2)transform.position + _boxOffsetWithLocalscale*groundCheckLength[0] + Vector2.down*groundCheckLength[1]);
+        
     }
     protected override void Start()
     {
         hp = maxHp;
         mp = maxMp;
 
-        maxSpeed = entityInfo.maxSpeed * (0.7f + Random.Range(0f, 1f) * 0.6f);
+        maxSpeed = entityInfo.maxSpeed * (0.5f + Random.Range(0f, 1f) * 1.3f);
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
@@ -56,6 +63,11 @@ public class Monster : Entity
     protected override void Update()
     {
         base.Update();
+        mpbar.value = mp / maxMp;
+        hp += Time.deltaTime * entityInfo.hpIncRate;
+        hp = Mathf.Clamp(hp, 0, entityInfo.maxHp);
+        mp += Time.deltaTime * entityInfo.mpIncRate;
+        mp = Mathf.Clamp(mp, 0, entityInfo.maxMp);
         if (_rigidbody.velocity.x < Mathf.Epsilon && _rigidbody.velocity.x > -Mathf.Epsilon)
             _capsuleCollider.sharedMaterial = zero;
     }
@@ -81,19 +93,53 @@ public class Monster : Entity
 
     protected override void DetermineNextMove()
     {
+        stateChangeElapsed -= Time.fixedDeltaTime;
+        perceivePlayerTimeElapsed -= Time.fixedDeltaTime;
+
+        if (perceivePlayerTimeElapsed < 0) _target = null;
+        
         // try to detect Player
         _boxOffsetWithLocalscale.Set(boxOffset.x * graphicTransform.localScale.x, boxOffset.y);
-        var colliders = Physics2D.OverlapBoxAll(
-            transform.position + (Vector3)_boxOffsetWithLocalscale,
-            boxSize,
-            0);
 
-        foreach (var i in colliders)
+        if (_target == null)
         {
-            if (i.CompareTag("Player")) _target = i.gameObject;
+            var colliders = Physics2D.OverlapBoxAll(
+                transform.position + (Vector3)_boxOffsetWithLocalscale,
+                boxSize,
+                0);
+
+            foreach (var i in colliders)
+            {
+                if (i.CompareTag("Player"))
+                {
+                    _target = i.gameObject;
+                    perceivePlayerTimeElapsed = ((MonsterInfo)entityInfo).perceiveTime;
+                }
+            }
+        }
+        
+        // 안 떨어지게
+        bool ok = false;
+        var hits = Physics2D.RaycastAll(
+            (Vector2)transform.position + _boxOffsetWithLocalscale*groundCheckLength[0], 
+            Vector2.down, groundCheckLength[1]);
+        
+        
+
+        foreach (var VARIABLE in hits)
+        {
+            if (VARIABLE.collider.CompareTag("Ground")) ok = true;
         }
 
-        stateChangeElapsed -= Time.fixedDeltaTime;
+        if (!ok && !_isAttack)
+        {
+            if (moveState != 0 && _graphicLocalScale.x * moveState < 0)
+            {
+                stateChangeElapsed = stateChangeInterval / 2;
+                moveState = -moveState;
+            }
+        }
+        
 
         // there is no _target, choose next move randomly
         if (stateChangeElapsed <= 0)

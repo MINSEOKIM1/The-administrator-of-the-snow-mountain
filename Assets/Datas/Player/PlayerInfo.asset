@@ -21,8 +21,8 @@ MonoBehaviour:
   hpIncRate: 3
   mpIncRate: 3
   atk: 0
-  def: 200
-  stance: 0
+  def: 30
+  stance: 0.5
   attackKnockback:
   - {x: 2, y: 2}
   - {x: 1, y: 6}

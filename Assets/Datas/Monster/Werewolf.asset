@@ -18,9 +18,9 @@ MonoBehaviour:
   backStepPower: {x: 0, y: 0}
   maxHp: 1000
   maxMp: 100
-  hpIncRate: 0
-  mpIncRate: 0
-  atk: 500
+  hpIncRate: 2
+  mpIncRate: 5
+  atk: 30
   def: 20
   stance: 1
   stateChangeInterval: 0.3
@@ -47,9 +47,19 @@ MonoBehaviour:
   - {x: 6, y: 8}
   - {x: 4.93, y: 8}
   - {x: 8, y: 8}
+  attackMp:
+  - 0
+  - 30
   dropItems:
   - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
+  - {fileID: 11400000, guid: baf2a4da36e6f4b0a8c7ac6317ec7d35, type: 2}
+  - {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
+  - {fileID: 11400000, guid: fa148d41524ee4d198f55c9e0b37c937, type: 2}
   itemDropProbability:
   - 0.5
-  itemDropCount: 03000000
+  - 1
+  - 1
+  - 1
+  itemDropCount: 03000000030000000300000003000000
   exp: 100
+  perceiveTime: 30

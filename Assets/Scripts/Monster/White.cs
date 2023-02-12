@@ -9,6 +9,9 @@ public class White : Monster
     private Attack[] _attackMethods;
 
     private MonsterAttack _monsterAttack;
+
+    public GameObject projectile;
+    public float projSpeed;
     
     // from Monster's info... (MonsterInfo class will be made later)
     public Vector2[] attackDetectBoxes => ((MonsterInfo)entityInfo).attackDetectBoxes;
@@ -22,7 +25,8 @@ public class White : Monster
         _monsterAttack = GetComponentInChildren<MonsterAttack>();
         _attackMethods = new Attack[2];
         _attackMethods[0] = Attack0;
-        _attackMethods[1] = Attack0;
+        _attackMethods[1] = Attack1;
+        _monsterAttack.projectileMethod += (() => CloneProjectile0());
     }
 
     protected override void Update()
@@ -66,9 +70,13 @@ public class White : Monster
             tmp = Physics2D.OverlapBoxAll(transform.position, attackDetectBoxes[i], 0);
             foreach (var j in tmp)
             {
-                if (j.CompareTag("Player"))
+                if (j.CompareTag("Player") && mp >= _monsterInfo.attackMp[i])
                 {
-                    if (_target == null) _target = j.gameObject;
+                    if (_target == null)
+                    {
+                        perceivePlayerTimeElapsed = _monsterInfo.perceiveTime;
+                        _target = j.gameObject;
+                    }
                     if (_target.transform.position.x < transform.position.x)
                     {
                         _graphicLocalScale.Set(1, 1, 1);
@@ -79,7 +87,12 @@ public class White : Monster
                         _graphicLocalScale.Set(-1, 1, 1);
                         graphicTransform.localScale = _graphicLocalScale;
                     }
-                    _attackMethods[i]();
+
+                    if (Random.Range(0, 1f) < 0.6f)
+                    {
+                        mp -= _monsterInfo.attackMp[i];
+                        _attackMethods[i]();
+                    }
                 }
             }
         }
@@ -119,5 +132,17 @@ public class White : Monster
             _animator.SetFloat("attackNum", 1);
             _animator.SetTrigger("attack");
         }
+    }
+
+    public void CloneProjectile0()
+    {
+        var proj = Instantiate(projectile, transform.position, Quaternion.identity);
+        var dir = (_target.transform.position - transform.position).normalized;
+        proj.GetComponent<MonsterProjectile>().SetInfo(
+            false, 
+            dir * projSpeed,
+            _monsterInfo.attackKnockback[1],
+            _monsterInfo.atk * _monsterInfo.attackCoefficient[1],
+            _monsterInfo.attackStunTime[1]);
     }
 }
