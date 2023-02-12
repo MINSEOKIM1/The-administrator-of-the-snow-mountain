@@ -19,28 +19,41 @@ MonoBehaviour:
   maxHp: 100
   maxMp: 100
   hpIncRate: 0
-  mpIncRate: 0
-  atk: 80
+  mpIncRate: 5
+  atk: 50
   def: 20
   stance: 0
   stateChangeInterval: 2
   boxSize: {x: 3.53, y: 1.46}
   boxOffset: {x: -1.77, y: 0}
   attackDetectBoxes:
-  - {x: 2.35, y: 0.99}
+  - {x: 2.79, y: 0.99}
+  - {x: 8, y: 0.72}
   attackBoundaryBoxes:
   - {x: 1.65, y: 0.9}
   attackBoundaryOffsets:
   - {x: -0.62, y: 0}
+  - {x: -0.62, y: 0}
   attackCoefficient:
+  - 1
   - 1
   attackStunTime:
   - 0
+  - 0
   attackKnockback:
   - {x: 1, y: 8}
+  - {x: 1, y: 3}
+  attackMp:
+  - 0
+  - 50
   dropItems:
   - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
+  - {fileID: 11400000, guid: c49822574ec0642cf8b9b7c5fd1b2f71, type: 2}
+  - {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
   itemDropProbability:
   - 0.5
-  itemDropCount: 03000000
+  - 1
+  - 1
+  itemDropCount: 030000000a00000005000000
   exp: 10
+  perceiveTime: 10

@@ -82,15 +82,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
-    functionName: CanAttack
+  - time: 0.41666666
+    functionName: ResetConsecutiveAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.5
-    functionName: ResetConsecutiveAttack
+    functionName: CanAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

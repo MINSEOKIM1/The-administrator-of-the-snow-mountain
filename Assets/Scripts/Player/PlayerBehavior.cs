@@ -170,7 +170,7 @@ public class PlayerBehavior : Entity
                         !_isAttack &&
                         hit.collider.gameObject.GetComponent<PlatformEffector2D>() == null &&
                         wallJump <= 0 &&
-                        CanUtilCondition(1, Time.deltaTime) && canWall)
+                        CanUtilCondition(1, Time.deltaTime) && canWall && !_hitAir)
                     {
                         UseUtilSkill(1, Time.deltaTime);
                         if ((int)_playerInputHandler.movement.x == -(int)graphicTransform.localScale.x)
@@ -323,10 +323,10 @@ public class PlayerBehavior : Entity
                 Mathf.Atan2((opponent-transform.position).y, (opponent-transform.position).x) * Mathf.Rad2Deg, 
                 Vector3.forward));
         hp -= CalculateDamage(damage, PlayerDataManager.def);
-        if (stunTime > stunTimeElapsed)
+        if (stunTime * (1 - GameManager.Instance.PlayerDataManager.stance) > stunTimeElapsed)
         {
-            stunTimeElapsed = stunTime;
-            this.stunTime = stunTime;
+            stunTimeElapsed = stunTime * (1 - GameManager.Instance.PlayerDataManager.stance);
+            this.stunTime = stunTime * (1 - GameManager.Instance.PlayerDataManager.stance);
         }
         _speed = 0;
         if (hp <= 0)
@@ -335,8 +335,12 @@ public class PlayerBehavior : Entity
             return;
         }
         hitTimeElapsed = 0.2f;
-        _animator.SetTrigger("hit");
-        _playerAttack.ResetNormalAttack();
+        if (GetKnockback(knockback, entityInfo.stance).magnitude > 3 || stunTime > 0.5f)
+        {
+            _animator.SetTrigger("hit");
+            _playerAttack.ResetNormalAttack();
+        }
+
         KnockBack(GetKnockback(knockback, entityInfo.stance));
     }
 

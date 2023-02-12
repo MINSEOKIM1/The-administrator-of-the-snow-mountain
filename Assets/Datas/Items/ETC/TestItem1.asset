@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f61233c4c6814d02aa1dcf4580b30c0, type: 3}
   m_Name: TestItem1
   m_EditorClassIdentifier: 
+  useOption: 0
   itemNum: 0
   itemName: TestItem1
   itemDescription: "\uD14C\uC2A4\uD2B8 \uC544\uC774\uD15C1\uC785\uB2C8\uB2E4."
-  itemIcon: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  itemIcon: {fileID: 21300000, guid: c7aa62ae78ffca0498c89e5f45f94c0e, type: 3}
   maxCount: 300

@@ -35,3 +35,4 @@ MonoBehaviour:
   mpIncRate: 0
   stance: 0
   atkSpeed: 1
+  IngredientCountPairs: []
