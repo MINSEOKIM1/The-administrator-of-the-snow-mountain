@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using Redcode.Pools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +8,10 @@ public class MobSpawn : MonoBehaviour
 {
     private float playTime;
     [SerializeField] private SceneInfo sceneInfo;
+
     private void Update()
     {
-        for (int idx = 0; idx < 8; idx++)
+        for (int idx = 1; idx < 8; idx += 2)
         {
             sceneInfo.dungeons[idx].time += Time.deltaTime;
             if (sceneInfo.dungeons[idx].time > sceneInfo.dungeons[idx].respawnTime)

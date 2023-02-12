@@ -12,61 +12,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8889e4364f3f70d4fb236b086fc983ec, type: 3}
   m_Name: SceneInfo
   m_EditorClassIdentifier: 
-  beforeSceneName: DungeonA
-  currentSceneName: DungeonB
+  beforeSceneName: ZombieA
+  currentSceneName: ZombieB
   dungeons:
   - id: 0
     name: WolfA
-    time: 0.2927263
-    respawnTime: 1
-    maxMob: 20
-    curMob: 20
+    time: 0
+    respawnTime: 0
+    maxMob: 16
+    curMob: 0
   - id: 1
     name: WolfB
-    time: 0.2107687
-    respawnTime: 0.5
-    maxMob: 20
-    curMob: 20
+    time: 0.27807182
+    respawnTime: 5
+    maxMob: 12
+    curMob: 2
   - id: 1
     name: WhiteA
-    time: 0.9415684
-    respawnTime: 2
-    maxMob: 20
-    curMob: 14
+    time: 0
+    respawnTime: 0
+    maxMob: 11
+    curMob: 0
   - id: 1
     name: WhiteB
-    time: 0.9507703
-    respawnTime: 1.5
-    maxMob: 20
-    curMob: 18
+    time: 0.27807182
+    respawnTime: 5
+    maxMob: 10
+    curMob: 2
   - id: 1
     name: StoneA
-    time: 0.9679308
-    respawnTime: 3
-    maxMob: 20
-    curMob: 9
+    time: 0
+    respawnTime: 0
+    maxMob: 22
+    curMob: 0
   - id: 1
     name: StoneB
-    time: 0.9679308
-    respawnTime: 2.5
-    maxMob: 20
-    curMob: 11
+    time: 0.20868082
+    respawnTime: 5
+    maxMob: 10
+    curMob: 2
   - id: 1
     name: ZombieA
-    time: 2.9742038
-    respawnTime: 4
-    maxMob: 20
-    curMob: 7
+    time: 0
+    respawnTime: 0
+    maxMob: 13
+    curMob: 0
   - id: 1
     name: ZombieB
-    time: 2.9742038
-    respawnTime: 3.5
-    maxMob: 20
-    curMob: 7
+    time: 0.20868082
+    respawnTime: 5
+    maxMob: 10
+    curMob: 2
   village:
     name: Village
-    maxMob: 10
-    curMob: 10
+    maxMob: 1
+    curMob: 0
     white: 0
     wolf: 0
     stone: 0
@@ -76,10 +76,10 @@ MonoBehaviour:
     name: Fork
     time: 0
     respawnTime: 0
-    maxMob: 10
-    curMob: 10
+    maxMob: 19
+    curMob: 0
     white: 2
-    wolf: 20
+    wolf: 0
     stone: 0
     zombie: 0
   bastion:
@@ -88,8 +88,8 @@ MonoBehaviour:
     time: 0
     respawnTime: 0
     maxMob: 10
-    curMob: 10
+    curMob: 0
     white: 0
-    wolf: 10
+    wolf: 0
     stone: 0
     zombie: 0

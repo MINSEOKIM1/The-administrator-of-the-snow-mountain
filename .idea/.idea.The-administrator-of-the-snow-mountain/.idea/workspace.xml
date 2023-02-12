@@ -3,19 +3,35 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bastion.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bastion.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Fork.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Fork.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoneA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StoneA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoneB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StoneB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Village.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Village.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WhiteA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WhiteA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WhiteB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WhiteB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WolfA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WolfA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WolfB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WolfB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZombieA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ZombieA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZombieB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ZombieB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/PortalManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/PortalManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bastion.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bastion.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Fork.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Fork.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameOver.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameOver.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoneA.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoneA.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoneB.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StoneB.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Village.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Village.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WhiteA.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WhiteA.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WhiteB.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WhiteB.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WolfA.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WolfA.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WolfB.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WolfB.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZombieA.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZombieA.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZombieB.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZombieB.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/MobSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/MobSpawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/SceneInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObject/SceneInfo.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +46,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerPortal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScriptableObject/SceneInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Yongchan/AIPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Yongchan/MobSpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Yongchan/SimplePoolManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -105,7 +124,10 @@
       <workItem from="1674032656963" duration="12713000" />
       <workItem from="1674055045461" duration="263000" />
       <workItem from="1674191707474" duration="3628000" />
-      <workItem from="1675933271952" duration="2385000" />
+      <workItem from="1675933271952" duration="2981000" />
+      <workItem from="1676122831256" duration="812000" />
+      <workItem from="1676186186157" duration="13418000" />
+      <workItem from="1676215342031" duration="709000" />
     </task>
     <servers />
   </component>

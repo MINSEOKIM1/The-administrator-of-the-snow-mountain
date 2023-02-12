@@ -6,42 +6,42 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Yongchan/MainMenu.unity
     guid: 7cbaf55b0258b36459d81393837baf20
   - enabled: 1
-    path: Assets/Scenes/Village.unity
+    path: Assets/Scenes/Yongchan/Village.unity
     guid: ad67ad293a18cb54da31ea71b37e3ac8
   - enabled: 1
-    path: Assets/Scenes/Bastion.unity
+    path: Assets/Scenes/Yongchan/Bastion.unity
     guid: 8071f6944d71c4d44a3b090eeb91b89c
   - enabled: 1
-    path: Assets/Scenes/Fork.unity
+    path: Assets/Scenes/Yongchan/Fork.unity
     guid: d803f848569a15b408451324fd3aceb1
   - enabled: 1
-    path: Assets/Scenes/WolfA.unity
+    path: Assets/Scenes/Yongchan/WolfA.unity
     guid: 15576ef972e9afe4386026cd22d82e16
   - enabled: 1
-    path: Assets/Scenes/WolfB.unity
+    path: Assets/Scenes/Yongchan/WolfB.unity
     guid: 69820fa6581439d4897a6fd99d0ecd3b
   - enabled: 1
-    path: Assets/Scenes/WhiteA.unity
+    path: Assets/Scenes/Yongchan/WhiteA.unity
     guid: 36c59fd1b2c79d440b82aff6460d4421
   - enabled: 1
-    path: Assets/Scenes/WhiteB.unity
+    path: Assets/Scenes/Yongchan/WhiteB.unity
     guid: f9debcf6ad3c2714890d6013fdaa2ecf
   - enabled: 1
-    path: Assets/Scenes/StoneA.unity
+    path: Assets/Scenes/Yongchan/StoneA.unity
     guid: e5e72b4741897af4ba9a897395290e7a
   - enabled: 1
-    path: Assets/Scenes/StoneB.unity
+    path: Assets/Scenes/Yongchan/StoneB.unity
     guid: 4efd11060a3f8c84e97c9a7ff3debf4b
   - enabled: 1
-    path: Assets/Scenes/ZombieA.unity
+    path: Assets/Scenes/Yongchan/ZombieA.unity
     guid: eba1302ee69e9314d9bb7cafbcd2deee
   - enabled: 1
-    path: Assets/Scenes/ZombieB.unity
+    path: Assets/Scenes/Yongchan/ZombieB.unity
     guid: b8aaa96f9f0516f408bf78552c65fa86
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Scenes/Yongchan/GameOver.unity
     guid: 7f6f7a4647551654fbc733b3e7c8659a
   m_configObjects: {}
