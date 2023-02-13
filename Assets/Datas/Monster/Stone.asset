@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0cc3f0af58a46a4b22e6fce089368b, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  maxSpeed: 1
+  accel: 0.5
+  jumpPower: 2
+  backStepPower: {x: 0, y: 0}
+  maxHp: 100
+  maxMp: 100
+  hpIncRate: 0
+  mpIncRate: 5
+  atk: 50
+  def: 20
+  stance: 0
+  stateChangeInterval: 2
+  boxSize: {x: 15, y: 3}
+  boxOffset: {x: 0, y: 0}
+  attackDetectBoxes:
+  - {x: 3, y: 3.5}
+  - {x: 8, y: 0.54}
+  attackBoundaryBoxes:
+  - {x: 6, y: 2.5}
+  - {x: 3.5, y: 4}
+  attackBoundaryOffsets:
+  - {x: 0, y: 0.5}
+  - {x: 0, y: 1}
+  attackCoefficient:
+  - 1
+  - 1
+  attackStunTime:
+  - 0.5
+  - 0
+  attackKnockback:
+  - {x: 1, y: 8}
+  - {x: 5, y: 5}
+  attackMp:
+  - 0
+  - 60
+  dropItems:
+  - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
+  - {fileID: 11400000, guid: c49822574ec0642cf8b9b7c5fd1b2f71, type: 2}
+  - {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
+  itemDropProbability:
+  - 0.5
+  - 1
+  - 1
+  itemDropCount: 030000000a00000005000000
+  exp: 10
+  perceiveTime: 10
