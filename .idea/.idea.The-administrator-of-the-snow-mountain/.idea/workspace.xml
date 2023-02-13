@@ -6,16 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/cloud_lonely.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/cloud_lonely.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_bg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_bg.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1_lightened.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1_lightened.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/TutorialScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/TutorialScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains_lightened.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains_lightened.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky_lightened.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky_lightened.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +105,7 @@
       <workItem from="1674032656963" duration="12713000" />
       <workItem from="1674055045461" duration="263000" />
       <workItem from="1674191707474" duration="3628000" />
-      <workItem from="1676284638723" duration="828000" />
+      <workItem from="1676284638723" duration="3145000" />
     </task>
     <servers />
   </component>

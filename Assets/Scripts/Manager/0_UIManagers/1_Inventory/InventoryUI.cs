@@ -397,6 +397,7 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     Equip();
                     return;
                 case 1:
+                    Debug.Log("??");
                     Consume();
                     return;
                 case 2:
@@ -443,6 +444,7 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         
         if (item != null && item.count > 0 && item.item != null)
         {
+            Debug.Log("!!");
             var consumable = (ConsumableItemInfo)item.item;
             float hp = consumable.hpRecovery;
             float mp = consumable.mpRecovery;
