@@ -31,7 +31,7 @@ MonoBehaviour:
   def: 10
   hp: 10
   mp: 10
-  hpIncRate: 10000
+  hpIncRate: 1
   mpIncRate: 0
   stance: 0
   atkSpeed: 0
