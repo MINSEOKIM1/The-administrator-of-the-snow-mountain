@@ -16,6 +16,11 @@ public class Wolf : Monster
     public Vector2[] attackBoundaryBoxes => ((MonsterInfo)entityInfo).attackBoundaryBoxes;
     public Vector2[] attackBoundaryOffsets => ((MonsterInfo)entityInfo).attackBoundaryOffsets;
 
+    public bool dash;
+    public float dashAttack;
+    public float dashPower;
+    public float jumpElpased;
+
     protected override void Start()
     {
         base.Start();
@@ -30,6 +35,12 @@ public class Wolf : Monster
     {
         base.Update();
         AttackCheck();
+        jumpElpased -= Time.deltaTime;
+        
+        if (!dash && dashAttack > 0.0f)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     protected override void OnDrawGizmos()
@@ -125,9 +136,60 @@ public class Wolf : Monster
         {
             _capsuleCollider.sharedMaterial = little;
             
-            _speed = 0;
             _animator.SetFloat("attackNum", 1);
             _animator.SetTrigger("attack");
+            
+            Debug.Log("Attack1");
+            _rigidbody.AddForce(Vector2.up * 3, ForceMode2D.Impulse);
+            dash = false;
+            dashAttack += 1.0f;
+            jumpElpased = 0.5f;
+
+            _monsterAttack.SetAttackBox(attackBoundaryBoxes[1], attackBoundaryOffsets[1]);
+            _monsterAttack.SetAttackInfo(
+                _monsterInfo.attackKnockback[1], 
+                _monsterInfo.atk * _monsterInfo.attackCoefficient[1],
+                _monsterInfo.attackStunTime[1]);
+            
+            
+        }
+    }
+
+    IEnumerator Dash()
+    {
+        float tmp = _rigidbody.gravityScale;
+        _rigidbody.gravityScale = 0;
+        
+        Vector2 dir = (_target.transform.position - transform.position).normalized;
+
+        _rigidbody.gravityScale = tmp;
+        if (dir.x != 0)
+        {
+            dash = true;
+            while (dash && jumpElpased > 0.0f)
+            {
+                yield return new WaitForFixedUpdate();
+                _rigidbody.MovePosition(transform.position + (Vector3)dir * Time.fixedDeltaTime * dashPower);
+            }
+        }
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D col)
+    {
+        base.OnCollisionEnter2D(col);
+        if (col.collider.CompareTag("Player") && dash && dashAttack > 0.0f && jumpElpased> 0.0f)
+        {
+            dash = false;
+            dashAttack = 0.0f;
+            jumpElpased = 0.0f;
+            var i = col.collider.GetComponent<PlayerBehavior>();
+            var k = ((MonsterInfo)entityInfo).attackKnockback[1];
+            k.Set(i.transform.position.x < transform.position.x ? -k.x : k.x, k.y);
+            i.Hit(
+                ((MonsterInfo)entityInfo).atk * ((MonsterInfo)entityInfo).attackCoefficient[1],
+                (k), 
+                ((MonsterInfo)entityInfo).attackStunTime[1],
+                transform.position);
         }
     }
 

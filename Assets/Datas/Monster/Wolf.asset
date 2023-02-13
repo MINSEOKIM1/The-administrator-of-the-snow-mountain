@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0cc3f0af58a46a4b22e6fce089368b, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  maxSpeed: 1
-  accel: 0.5
+  maxSpeed: 2
+  accel: 1
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
   maxHp: 100
@@ -31,6 +31,7 @@ MonoBehaviour:
   - {x: 8, y: 0.72}
   attackBoundaryBoxes:
   - {x: 1.65, y: 0.9}
+  - {x: 1.65, y: 0.9}
   attackBoundaryOffsets:
   - {x: -0.62, y: 0}
   - {x: -0.62, y: 0}
@@ -38,7 +39,7 @@ MonoBehaviour:
   - 1
   - 1
   attackStunTime:
-  - 0
+  - 0.5
   - 0
   attackKnockback:
   - {x: 1, y: 8}

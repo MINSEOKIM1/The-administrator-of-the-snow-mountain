@@ -113,6 +113,7 @@ public class White : Monster
             _speed = 0;
             _animator.SetFloat("attackNum", 0);
             _animator.SetTrigger("attack");
+            Debug.Log("White Attack0");
             
             _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
             _monsterAttack.SetAttackInfo(
@@ -131,6 +132,7 @@ public class White : Monster
             _speed = 0;
             _animator.SetFloat("attackNum", 1);
             _animator.SetTrigger("attack");
+            Debug.Log("White Attack1");
         }
     }
 
