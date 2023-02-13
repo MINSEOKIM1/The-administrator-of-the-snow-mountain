@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0cc3f0af58a46a4b22e6fce089368b, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  maxSpeed: 3
+  maxSpeed: 2.5
   accel: 1
   jumpPower: 4
   backStepPower: {x: 0, y: 0}
@@ -27,8 +27,8 @@ MonoBehaviour:
   boxSize: {x: 3.53, y: 1.46}
   boxOffset: {x: -1.77, y: 0}
   attackDetectBoxes:
-  - {x: 2.79, y: 0.99}
-  - {x: 8, y: 0.72}
+  - {x: 2.84, y: 0.99}
+  - {x: 5.51, y: 0.54}
   attackBoundaryBoxes:
   - {x: 1.65, y: 0.9}
   - {x: 1.65, y: 0.9}

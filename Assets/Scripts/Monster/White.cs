@@ -92,6 +92,7 @@ public class White : Monster
                     {
                         mp -= _monsterInfo.attackMp[i];
                         _attackMethods[i]();
+                        return;
                     }
                 }
             }

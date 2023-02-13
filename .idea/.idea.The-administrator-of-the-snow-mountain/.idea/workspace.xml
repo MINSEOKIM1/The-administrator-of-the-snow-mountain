@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/Wolf/Wolf_Attack1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/Wolf/Wolf_Attack1.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestHat.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestHat.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jaemin/MobTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Jaemin/MobTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/White.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/White.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Wolf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Wolf.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

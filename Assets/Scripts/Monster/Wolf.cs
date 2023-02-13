@@ -53,6 +53,9 @@ public class Wolf : Monster
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireCube((Vector2)transform.position + attackBoundaryOffsets[i], attackBoundaryBoxes[i]);
         }
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireCube(transform.position, Vector3.one*50); 
     }
     
     private void AttackCheck()
@@ -80,6 +83,14 @@ public class Wolf : Monster
                     {
                         perceivePlayerTimeElapsed = _monsterInfo.perceiveTime;
                         _target = j.gameObject;
+                        if (i == 1)
+                        {
+                            _graphicLocalScale.Set(1, 1, 1);
+                            graphicTransform.localScale = _graphicLocalScale;
+                            mp -= _monsterInfo.attackMp[0];
+                            _attackMethods[0]();
+                            return;
+                        }
                     }
                     if (_target.transform.position.x < transform.position.x)
                     {
@@ -96,6 +107,7 @@ public class Wolf : Monster
                     {
                         mp -= _monsterInfo.attackMp[i];
                         _attackMethods[i]();
+                        return;
                     }
                 }
             }
@@ -117,6 +129,18 @@ public class Wolf : Monster
             _speed = 0;
             _animator.SetFloat("attackNum", 0);
             _animator.SetTrigger("attack");
+            
+            
+            var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.one*50, 0);
+            foreach (var j in tmp)
+            {
+                Wolf c;
+                if ((c = j.GetComponent<Wolf>()) != null)
+                {
+                    c.perceivePlayerTimeElapsed = _monsterInfo.perceiveTime;
+                    c._target = _target;
+                }
+            }
             
             _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
             _monsterAttack.SetAttackInfo(
