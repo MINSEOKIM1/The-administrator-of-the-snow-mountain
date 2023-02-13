@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0cc3f0af58a46a4b22e6fce089368b, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  maxSpeed: 2
+  maxSpeed: 3
   accel: 1
-  jumpPower: 0
+  jumpPower: 4
   backStepPower: {x: 0, y: 0}
   maxHp: 100
   maxMp: 100
@@ -46,7 +46,7 @@ MonoBehaviour:
   - {x: 1, y: 3}
   attackMp:
   - 0
-  - 50
+  - 3
   dropItems:
   - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
   - {fileID: 11400000, guid: c49822574ec0642cf8b9b7c5fd1b2f71, type: 2}

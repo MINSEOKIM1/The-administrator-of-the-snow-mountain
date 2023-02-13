@@ -308,7 +308,7 @@ MonoBehaviour:
   mpbar: {fileID: 8168843656953787348}
   dash: 0
   dashAttack: 0
-  dashPower: 7
+  dashPower: 5
   jumpElpased: 0
 --- !u!1 &3913580329139755869
 GameObject:

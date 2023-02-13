@@ -36,11 +36,7 @@ public class Wolf : Monster
         base.Update();
         AttackCheck();
         jumpElpased -= Time.deltaTime;
-        
-        if (!dash && dashAttack > 0.0f)
-        {
-            StartCoroutine(Dash());
-        }
+        dashAttack -= Time.deltaTime;
     }
 
     protected override void OnDrawGizmos()
@@ -140,10 +136,11 @@ public class Wolf : Monster
             _animator.SetTrigger("attack");
             
             Debug.Log("Attack1");
-            _rigidbody.AddForce(Vector2.up * 3, ForceMode2D.Impulse);
             dash = false;
-            dashAttack += 1.0f;
+            dashAttack = 1.0f;
             jumpElpased = 0.5f;
+            StartCoroutine(Dash());
+            
 
             _monsterAttack.SetAttackBox(attackBoundaryBoxes[1], attackBoundaryOffsets[1]);
             _monsterAttack.SetAttackInfo(
@@ -157,27 +154,30 @@ public class Wolf : Monster
 
     IEnumerator Dash()
     {
-        float tmp = _rigidbody.gravityScale;
-        _rigidbody.gravityScale = 0;
-        
+        Debug.Log("ASD");
         Vector2 dir = (_target.transform.position - transform.position).normalized;
-
-        _rigidbody.gravityScale = tmp;
+        dir.Set(dir.x, 0);
+        dir = dir.normalized;
+        _rigidbody.AddForce(Vector2.up * entityInfo.jumpPower, ForceMode2D.Impulse);
+        
         if (dir.x != 0)
         {
             dash = true;
-            while (dash && jumpElpased > 0.0f)
+            while (jumpElpased > 0.0f || !_isGround)
             {
                 yield return new WaitForFixedUpdate();
-                _rigidbody.MovePosition(transform.position + (Vector3)dir * Time.fixedDeltaTime * dashPower);
+                dashSpeed = dir.x  * dashPower;
             }
+
+            dash = false;
+            _animator.SetTrigger("land");
         }
     }
 
     protected override void OnCollisionEnter2D(Collision2D col)
     {
         base.OnCollisionEnter2D(col);
-        if (col.collider.CompareTag("Player") && dash && dashAttack > 0.0f && jumpElpased> 0.0f)
+        if (col.collider.CompareTag("Player") && dash)
         {
             dash = false;
             dashAttack = 0.0f;
