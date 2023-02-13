@@ -22,8 +22,7 @@ public class AIPlayer : MonoBehaviour
       if (col.CompareTag("Player"))
       {
          gameObject.SetActive(false);
-         _mobSpawnManager.curMob--;
-         _mobSpawnManager.count--;
+         _mobSpawnManager.MobDie(_mobSpawnManager.sceneinfo.currentSceneName, idName);
       }
    }
 

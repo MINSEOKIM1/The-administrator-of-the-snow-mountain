@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 889881625865370144}
   - component: {fileID: 8748770029382888247}
   m_Layer: 0
-  m_Name: Mob
+  m_Name: Mob 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c332a0dfc870c48875a8cf843b7296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: Wolf
+  idName: Zombie
   sceneinfo: {fileID: 11400000, guid: c6747b784363aa6429be67f2e4b56274, type: 2}
 --- !u!61 &8748770029382888247
 BoxCollider2D:

@@ -151,10 +151,19 @@ public class MobSpawn : MonoBehaviour
     {
         sceneInfo.village.curMob = 0;
         sceneInfo.village.wolf = 0;
+        sceneInfo.village.white = 0;
+        sceneInfo.village.stone = 0;
+        sceneInfo.village.zombie = 0;
         sceneInfo.bastion.curMob = 0;
         sceneInfo.bastion.wolf = 0;
+        sceneInfo.bastion.white = 0;
+        sceneInfo.bastion.stone = 0;
+        sceneInfo.bastion.zombie = 0;
         sceneInfo.fork.curMob = 0;
         sceneInfo.fork.wolf = 0;
+        sceneInfo.fork.white = 0;
+        sceneInfo.fork.stone = 0;
+        sceneInfo.fork.zombie = 0;
         
         
         for (int index = 0; index < sceneInfo.dungeons.Length; index++)

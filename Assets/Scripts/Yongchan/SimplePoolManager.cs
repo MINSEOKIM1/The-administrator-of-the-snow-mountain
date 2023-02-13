@@ -24,7 +24,6 @@ public class SimplePoolManager : MonoBehaviour
             {
                 GameObject select = Instantiate(prefabs[index], roots[index]);
                 select.SetActive(false);
-                select.transform.position = new Vector3(Random.Range(-2f, 2f), 0, 0);
                 pools[index].Add(select);
             }
         }

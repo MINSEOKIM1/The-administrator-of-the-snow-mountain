@@ -12,57 +12,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8889e4364f3f70d4fb236b086fc983ec, type: 3}
   m_Name: SceneInfo
   m_EditorClassIdentifier: 
-  beforeSceneName: ZombieA
-  currentSceneName: ZombieB
+  beforeSceneName: Bastion
+  currentSceneName: Fork
   dungeons:
   - id: 0
     name: WolfA
     time: 0
     respawnTime: 0
     maxMob: 16
-    curMob: 0
+    curMob: 16
   - id: 1
     name: WolfB
-    time: 0.27807182
-    respawnTime: 5
+    time: 0.20947838
+    respawnTime: 1
     maxMob: 12
-    curMob: 2
+    curMob: 12
   - id: 1
     name: WhiteA
     time: 0
     respawnTime: 0
-    maxMob: 11
-    curMob: 0
+    maxMob: 15
+    curMob: 15
   - id: 1
     name: WhiteB
-    time: 0.27807182
-    respawnTime: 5
-    maxMob: 10
-    curMob: 2
+    time: 0.20947838
+    respawnTime: 1
+    maxMob: 5
+    curMob: 5
   - id: 1
     name: StoneA
     time: 0
     respawnTime: 0
     maxMob: 22
-    curMob: 0
+    curMob: 22
   - id: 1
     name: StoneB
-    time: 0.20868082
-    respawnTime: 5
+    time: 0.20947838
+    respawnTime: 1
     maxMob: 10
-    curMob: 2
+    curMob: 10
   - id: 1
     name: ZombieA
     time: 0
     respawnTime: 0
     maxMob: 13
-    curMob: 0
+    curMob: 13
   - id: 1
     name: ZombieB
-    time: 0.20868082
-    respawnTime: 5
+    time: 0.20947838
+    respawnTime: 1
     maxMob: 10
-    curMob: 2
+    curMob: 10
   village:
     name: Village
     maxMob: 1
@@ -77,19 +77,19 @@ MonoBehaviour:
     time: 0
     respawnTime: 0
     maxMob: 19
-    curMob: 0
-    white: 2
-    wolf: 0
+    curMob: 19
+    white: 10
+    wolf: 2
     stone: 0
-    zombie: 0
+    zombie: 7
   bastion:
     id: 0
     name: Bastion
     time: 0
     respawnTime: 0
     maxMob: 10
-    curMob: 0
-    white: 0
-    wolf: 0
+    curMob: 6
+    white: 2
+    wolf: 2
     stone: 0
-    zombie: 0
+    zombie: 2
