@@ -134,6 +134,7 @@ public class Wolf : Monster
     {
         if (CanAttackLogic())
         {
+            
             _capsuleCollider.sharedMaterial = little;
             
             _animator.SetFloat("attackNum", 1);
