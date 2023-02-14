@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 1
   accel: 0.5
-  jumpPower: 2
+  jumpPower: 4
   backStepPower: {x: 0, y: 0}
   maxHp: 100
   maxMp: 100
@@ -28,10 +28,10 @@ MonoBehaviour:
   boxOffset: {x: 0, y: 0}
   attackDetectBoxes:
   - {x: 3, y: 3.5}
-  - {x: 8, y: 0.54}
+  - {x: 8, y: 1}
   attackBoundaryBoxes:
   - {x: 6, y: 2.5}
-  - {x: 3.5, y: 4}
+  - {x: 2.5, y: 4}
   attackBoundaryOffsets:
   - {x: 0, y: 0.5}
   - {x: 0, y: 1}

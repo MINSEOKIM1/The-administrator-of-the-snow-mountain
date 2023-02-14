@@ -9,6 +9,9 @@ public class Stone : Monster
     private Attack[] _attackMethods;
 
     private MonsterAttack _monsterAttack;
+    public GameObject projectile;
+    public float projSpeed;
+    public float projCount;
 
     
     // from Monster's info... (MonsterInfo class will be made later)
@@ -31,6 +34,7 @@ public class Stone : Monster
         _attackMethods = new Attack[2];
         _attackMethods[0] = Attack0;
         _attackMethods[1] = Attack1;
+        _monsterAttack.projectileMethod += (() => CloneProjectile0());
     }
 
     protected override void Update()
@@ -134,13 +138,6 @@ public class Stone : Monster
             hideAttack = true;
             random = Random.Range(3.0f,5.0f);
             hideElapsed = random;
-
-            
-            _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
-            _monsterAttack.SetAttackInfo(
-                _monsterInfo.attackKnockback[0], 
-                _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
-                _monsterInfo.attackStunTime[0]);
             
             StartCoroutine(Hide());
            
@@ -166,6 +163,7 @@ public class Stone : Monster
         }
 
         if(hideElapsed <= 0.0f && hide && hideAttack){
+            dashSpeed = 0;
             _animator.SetFloat("attackNum", 0);
             _animator.SetTrigger("attack");
             _rigidbody.AddForce(Vector2.up * entityInfo.jumpPower, ForceMode2D.Impulse);
@@ -178,8 +176,20 @@ public class Stone : Monster
         if(hideElapsed <= 0.0f && hide && !hideAttack){
             hide = false;
         }
+    }
 
-        
+    public void CloneProjectile0()
+    {
+        for(int i=0;i<projCount;i++){
+            var proj = Instantiate(projectile, transform.position, Quaternion.identity);
+            Vector2 dir = new Vector2(Random.Range(-1.0f,1.0f), Random.Range(0.0f,1.0f));
+            proj.GetComponent<MonsterProjectile>().SetInfo(
+                true, 
+                dir * projSpeed,
+                _monsterInfo.attackKnockback[0],
+                _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
+                _monsterInfo.attackStunTime[0]);
+        }
     }
 
     public void Attack1()
@@ -225,6 +235,7 @@ public class Stone : Monster
         }
 
         if(shakeElapsed <= 0.0f && hide && hideAttack){
+            dashSpeed = 0;
             _animator.SetTrigger("out");
             _rigidbody.AddForce(Vector2.up * entityInfo.jumpPower, ForceMode2D.Impulse);
             hideAttack = false;
