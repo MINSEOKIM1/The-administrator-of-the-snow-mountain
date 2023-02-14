@@ -43,7 +43,16 @@ public class MobSpawnManager : MonoBehaviour
                 if (curMobs[index] < maxMobs[index])
                 {
                     curMobs[index]++;
-                    Spawn(index);
+                    int pos = 0;
+                    if (curMobs[index] < 6)
+                    {
+                        pos = 0;    
+                    }
+                    else
+                    {
+                        pos = Random.Range(1, points.Length);
+                    }
+                    Spawn(index, pos);
                 }
             }
         }
@@ -74,11 +83,11 @@ public class MobSpawnManager : MonoBehaviour
         newMob.transform.position = new Vector3(points[index].position.x + Random.Range(-2f, 2f), points[index].position.y, 0);
     }
 
-    void Spawn(int idx)
+    void Spawn(int idx, int pos)
     {
         AIPlayer newMob = pooler.Get(idx).GetComponent<AIPlayer>();
         newMob.gameObject.SetActive(true);
-        newMob.transform.position = new Vector3(points[idx].position.x + Random.Range(-2f, 2f), points[idx].position.y, 0);
+        newMob.transform.position = new Vector3(points[pos].position.x + Random.Range(-2f, 2f), points[pos].position.y, 0);
     }
 
     private int[] BastionMobUpdate()
