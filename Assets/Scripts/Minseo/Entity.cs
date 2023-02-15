@@ -14,7 +14,18 @@ public abstract class Entity : MonoBehaviour
     // Entity's info (will be replaced by PlayerInfo Class object later)
     [SerializeField] protected EntityInfo entityInfo;
     
-    protected float maxSpeed => entityInfo.maxSpeed;
+    protected float maxSpeed
+    {
+        get
+        {
+            return entityInfo.maxSpeed;
+        }
+        set
+        {
+            maxSpeed = value;
+        }
+    }
+
     protected float accel => entityInfo.accel;
     protected float jumpPower => entityInfo.jumpPower;
     protected Vector2 backStepPower => entityInfo.backStepPower;
@@ -69,9 +80,13 @@ public abstract class Entity : MonoBehaviour
     protected Vector2 _velocity;
     protected Vector2 _groundNormalPerp;
 
+    public Vector2 GetKnockback(Vector2 knockback, float stance)
+    {
+        return knockback * (1 - stance);
+    }
     public bool CanAttackLogic()
     {
-        return !_isAttack && !_hitAir; 
+        return !_hitAir && stunTimeElapsed <= 0; 
     }
 
     // Damage calculation formula
@@ -169,7 +184,7 @@ public abstract class Entity : MonoBehaviour
             }
             else
             {
-                if (hit.collider.GetComponent<PlatformEffector2D>() == null || _rigidbody.velocity.y < 0)
+                if (hit.collider.GetComponent<PlatformEffector2D>() == null || _rigidbody.velocity.y <= 0)
                 {
                     if (_hitAir && hitAirTime <= 0) _hitAir = false;
                     // no slope
@@ -318,7 +333,7 @@ public abstract class Entity : MonoBehaviour
         Destroy(gameObject);
     }
     
-    protected void OnCollisionEnter2D(Collision2D col)
+    protected virtual void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag.Equals("Ground") )
         {

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -34,6 +36,8 @@ public class PlayerBehavior : Entity
     public float hitTimeElapsed;
     public bool isHitMotion;
 
+    public float invincibilityTimeElapsed;
+
     public bool canWall;
     
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
@@ -44,6 +48,12 @@ public class PlayerBehavior : Entity
 
     // input detect variable
     public bool _normalAttackDetect;
+
+    public bool canControl
+    {
+        get => GameManager.Instance.PlayerDataManager.canControl;
+        set => GameManager.Instance.PlayerDataManager.canControl = value;
+    }
 
     // For debugging in editor (not play mode)
 
@@ -97,6 +107,7 @@ public class PlayerBehavior : Entity
     protected override void FixedUpdate()
     {
         hitTimeElapsed -= Time.fixedDeltaTime;
+        invincibilityTimeElapsed -= Time.fixedDeltaTime;
         if (stunTimeElapsed > 0) stunTimeElapsed -= Time.fixedDeltaTime;
         ApplyAnimation();
         CheckGround();
@@ -159,7 +170,7 @@ public class PlayerBehavior : Entity
                         !_isAttack &&
                         hit.collider.gameObject.GetComponent<PlatformEffector2D>() == null &&
                         wallJump <= 0 &&
-                        CanUtilCondition(1, Time.deltaTime) && canWall)
+                        CanUtilCondition(1, Time.deltaTime) && canWall && !_hitAir)
                     {
                         UseUtilSkill(1, Time.deltaTime);
                         if ((int)_playerInputHandler.movement.x == -(int)graphicTransform.localScale.x)
@@ -206,7 +217,7 @@ public class PlayerBehavior : Entity
             if (wallJump<0) _speed = _rigidbody.velocity.x;
         }
 
-        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir && !isClimb && stunTimeElapsed <= 0)
+        if (_playerInputHandler.movement.x != 0 && !_isAttack && !_hitAir && !isClimb && stunTimeElapsed <= 0 && canControl)
         {
             _speed += accel * _playerInputHandler.movement.x;
             _capsuleCollider.sharedMaterial = zero;
@@ -251,6 +262,7 @@ public class PlayerBehavior : Entity
             else
             {
                 _playerAttack.DashAttack();
+                _playerInputHandler.dashCheck = 0;
             }
         }
         
@@ -279,7 +291,10 @@ public class PlayerBehavior : Entity
     public override void Hit(float damage, Vector2 knockback, float stunTime)
     {
         if (isDie) return;
+        invincibilityTimeElapsed = EntityInfo.invincibilityTime[3];
         _capsuleCollider.sharedMaterial = zero;
+        GameManager.Instance.EffectManager.CreateEffect(1, transform.position,
+            Quaternion.AngleAxis(Random.Range(-180f, 180f), Vector3.forward));
         hp -= CalculateDamage(damage, PlayerDataManager.def);
         if (stunTime > stunTimeElapsed)
         {
@@ -298,6 +313,37 @@ public class PlayerBehavior : Entity
         KnockBack(knockback);
     }
 
+    public void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
+    {
+        if (isDie || invincibilityTimeElapsed > 0) return;
+        invincibilityTimeElapsed = EntityInfo.invincibilityTime[3];
+        _capsuleCollider.sharedMaterial = zero;
+        GameManager.Instance.EffectManager.CreateEffect(1, transform.position,
+            Quaternion.AngleAxis(
+                Mathf.Atan2((opponent-transform.position).y, (opponent-transform.position).x) * Mathf.Rad2Deg, 
+                Vector3.forward));
+        hp -= CalculateDamage(damage, PlayerDataManager.def);
+        if (stunTime * (1 - GameManager.Instance.PlayerDataManager.stance) > stunTimeElapsed)
+        {
+            stunTimeElapsed = stunTime * (1 - GameManager.Instance.PlayerDataManager.stance);
+            this.stunTime = stunTime * (1 - GameManager.Instance.PlayerDataManager.stance);
+        }
+        _speed = 0;
+        if (hp <= 0)
+        {
+            Die();
+            return;
+        }
+        hitTimeElapsed = 0.2f;
+        if (GetKnockback(knockback, entityInfo.stance).magnitude > 3 || stunTime > 0.5f)
+        {
+            _animator.SetTrigger("hit");
+            _playerAttack.ResetNormalAttack();
+        }
+
+        KnockBack(GetKnockback(knockback, entityInfo.stance));
+    }
+
     public override void Die()
     {
         isDie = true;
@@ -314,7 +360,23 @@ public class PlayerBehavior : Entity
         if (stunTimeElapsed > 0) return;
         if (!isClimb)
         {
-            base.Jump();
+            if (isHitMotion && CanUtilCondition(3) && stunTimeElapsed <= 0)
+            {
+                invincibilityTimeElapsed = EntityInfo.invincibilityTime[2];
+                externalSpeed = 0;
+                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+                _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
+                _hitAir = false;
+                _animator.SetTrigger("notHit");
+                UseUtilSkill(3);
+                StartCoroutine(MotionCancel());
+                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                _playerAttack.ResetNormalAttack();
+            }
+            else
+            {
+                base.Jump();
+            }
         }
         else if (CanUtilCondition(4))
         {
@@ -339,20 +401,24 @@ public class PlayerBehavior : Entity
     {
         if (isHitMotion && CanUtilCondition(3) && stunTimeElapsed <= 0)
         {
+            invincibilityTimeElapsed = EntityInfo.invincibilityTime[2];
             externalSpeed = 0;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
             _hitAir = false;
             _animator.SetTrigger("notHit");
             UseUtilSkill(3);
-            _animator.SetTrigger("attackCancel");
             StartCoroutine(MotionCancel());
+            GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+            _playerAttack.ResetNormalAttack();
         }
         else if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
         {
             UseUtilSkill(0);
-            
+            invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
             if (_isAttack && CanUtilCondition(3))
             {
+                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
                 UseUtilSkill(3);
                 _animator.SetTrigger("attackCancel");
                 StartCoroutine(MotionCancel());
@@ -378,7 +444,7 @@ public class PlayerBehavior : Entity
         {
             UseUtilSkill(2);
             _playerAttack.ResetNormalAttack();
-            
+
             if (_playerInputHandler.movement.x != 0)
             {
                 _graphicLocalScale.Set(-_playerInputHandler.movement.x, 1, 1);
@@ -393,6 +459,22 @@ public class PlayerBehavior : Entity
             _isGround = false;
             _canJump = false;
             dashSpeed = -backStepPower.x * _playerAttack.transform.localScale.x;
+        }
+    }
+
+    public void Interaction()
+    {
+        if (!canControl) return;
+        var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.one * 2, 0);
+        foreach (var i in tmp)
+        {
+            if (i.CompareTag("NPC"))
+            {
+                var npc = i.GetComponent<NPC>();
+                GameManager.Instance.UIManager.ConservationUI.SetCurrentConservationArray(
+                    npc.conversationClips, 
+                    npc.GetConversationStart());
+            }
         }
     }
 

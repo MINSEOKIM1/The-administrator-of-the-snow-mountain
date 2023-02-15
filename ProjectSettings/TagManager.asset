@@ -7,22 +7,24 @@ TagManager:
   - Ground
   - Monster
   - Portal
+  - NPC
+  - MonsterProjectile
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Werewolf_Dive
   - Water
   - UI
   - Ground
   - Player
   - Monster
   - Player_dash
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Monster_Dead
+  - Item
+  - NPC
+  - Minimap
+  - MonsterProjectile
   - 
   - 
   - 
@@ -49,4 +51,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3699790449
+    locked: 0
+  - name: Effect
+    uniqueID: 3323315891
+    locked: 0
+  - name: Item Drop
+    uniqueID: 3423162841
     locked: 0

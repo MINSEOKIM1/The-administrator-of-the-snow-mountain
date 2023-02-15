@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public float bgmVolume;
+    public float changeSpeed;
+    
     [SerializeField] private AudioSource bgmPlayer;
     [SerializeField] private AudioSource sfxPlayer;
 
@@ -22,6 +25,11 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.Play();
     }
 
+    public void ChangeBgm(int index)
+    {
+        StartCoroutine(ChangeBGM(index));
+    }
+
     public void StopBGM()
     {
         bgmPlayer.Stop();
@@ -35,5 +43,24 @@ public class AudioManager : MonoBehaviour
     public void PlaySfx(int index)
     {
         sfxPlayer.PlayOneShot(sfxClips[index]);
+    }
+    
+    public void PlaySfx(AudioClip clip)
+    {
+        sfxPlayer.PlayOneShot(clip);
+    }
+    
+    IEnumerator ChangeBGM(int index)
+    {
+        while (bgmPlayer.volume > 0)
+        {
+            bgmPlayer.volume -= Time.fixedDeltaTime * changeSpeed;
+            yield return new WaitForFixedUpdate();
+        }
+    
+        StopBGM();
+        SetBGM(index);
+        PlayBGM();
+        bgmPlayer.volume = bgmVolume;
     }
 }

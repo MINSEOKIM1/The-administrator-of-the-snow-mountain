@@ -309,15 +309,23 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             var isui = i.gameObject.GetComponent<ItemSlotUI>();
             if (isui != null)
             {
-                if (isui.item != null && isui.item.count > 0)
+                if (pt.button == PointerEventData.InputButton.Left)
+                {
+                    if (isui.item != null && isui.item.count > 0)
+                    {
+                        SelectItem(isui.item, isui.index);
+                        _dragBeginSlotIndex = isui.index;
+                        _isItemDragging = true;
+
+                        dragImage.gameObject.SetActive(true);
+                        dragImage.sprite = isui.item.item.itemIcon;
+                        dragImage.rectTransform.pivot = new Vector2(0, 1);
+                    }
+                } else if (pt.button == PointerEventData.InputButton.Right)
                 {
                     SelectItem(isui.item, isui.index);
-                    _dragBeginSlotIndex = isui.index;
-                    _isItemDragging = true;
-
-                    dragImage.gameObject.SetActive(true);
-                    dragImage.sprite = isui.item.item.itemIcon;
-                    dragImage.rectTransform.pivot = new Vector2(0, 1);
+                    Use();
+                    SelectItem(isui.item, isui.index);
                 }
             }
         }

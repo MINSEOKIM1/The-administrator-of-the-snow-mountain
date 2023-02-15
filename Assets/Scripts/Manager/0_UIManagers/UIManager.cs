@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public TitleUI TitleUI { get; private set; }
-    public InventoryUI InventoryUI { get; private set; }
-    public EquipmentUI EquipmentUI { get; private set; }
+    [field: SerializeField] public TitleUI TitleUI { get; private set; }
+    [field: SerializeField] public InventoryUI InventoryUI { get; private set; }
+    [field: SerializeField] public EquipmentUI EquipmentUI { get; private set; }
+    [field: SerializeField] public ConversationUI ConservationUI { get; private set; }
+
+    public GameObject fadeCanvas;
 
     [Tooltip("0: inventory\n1: equipment")]
     public GameObject[] uiCanvas;
     private void Start()
     {
-        TitleUI = GetComponentInChildren<TitleUI>();
-        InventoryUI = GetComponentInChildren<InventoryUI>();
-        EquipmentUI = GetComponentInChildren<EquipmentUI>();
-        
-        ToEquipmentUI();
+        // ToEquipmentUI();
     }
 
     public void ToInventoryUI()

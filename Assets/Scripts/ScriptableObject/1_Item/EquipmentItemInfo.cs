@@ -21,6 +21,15 @@ public class EquipmentItemInfo : ItemInfo
     public float stance;
 
     public float atkSpeed;
+    
+    [Serializable]
+    public class IngredientCountPair
+    {
+        public ItemInfo item;
+        public int count;
+    }
+
+    public IngredientCountPair[] IngredientCountPairs;
 
     public override int GetUseOption()
     {

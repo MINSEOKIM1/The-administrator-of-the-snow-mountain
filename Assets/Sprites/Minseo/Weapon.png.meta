@@ -209,6 +209,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Weapon_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16bc67aa2863d4438b2657b5b3f8b571
+      internalID: 1840314340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapon_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba4969d7fcf4449fb322889aace4156
+      internalID: -1032551920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapon_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 156aa9976165c4f4690ed1a5bdb12f5b
+      internalID: -301208290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -221,7 +284,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Untitled 16_3: 114578743
+      Weapon_1: 1840314340
+      Weapon_2: -1032551920
       Untitled 16_1: 1039945258
+      Weapon_0: -265305200
       Untitled 16_4: -1482498256
       Untitled 16_0: 1578499741
       Untitled 16_2: 1029804397

@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Yongchan/MobSpawnManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Yongchan/MobSpawnManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Yongchan/MobSpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Yongchan/MobSpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/cloud_lonely.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/cloud_lonely.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_bg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_bg.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1_lightened.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_1_lightened.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/clouds_mg_3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains_lightened.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/glacial_mountains_lightened.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky_lightened.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/Background/sky_lightened.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/ForkData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Camera/BackGroundMoving.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/VillageData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,23 +43,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "rider.run.widget.enabled.cache": "false",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\jych1\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\jych1\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\jych1\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\jych1\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\jych1\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\jych1\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Unity Editor\2021.3.16f1\Editor\Unity.exe" />
@@ -60,7 +74,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity Editor\2021.3.16f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\jych1\NDM\The-administrator-of-the-snow-mountain -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\jych1\NDM\The-administrator-of-the-snow-mountain" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -99,19 +113,14 @@
       <workItem from="1674032656963" duration="12713000" />
       <workItem from="1674055045461" duration="263000" />
       <workItem from="1674191707474" duration="3628000" />
-      <workItem from="1675933271952" duration="2981000" />
-      <workItem from="1676122831256" duration="812000" />
-      <workItem from="1676186186157" duration="13418000" />
-      <workItem from="1676215342031" duration="3804000" />
-      <workItem from="1676252038401" duration="4804000" />
-      <workItem from="1676265454339" duration="4984000" />
-      <workItem from="1676372880091" duration="974000" />
+      <workItem from="1676284638723" duration="828000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">

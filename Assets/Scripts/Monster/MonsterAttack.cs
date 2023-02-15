@@ -5,6 +5,8 @@ using UnityEngine;
 public class MonsterAttack : MonoBehaviour
 {
     public delegate void ProjectileMethod();
+
+    public event ProjectileMethod projectileMethod;
     // tmp variable
     private Vector3 _graphicLocalScale;
     private Vector2 _boxOffsetWithLocalscale;
@@ -29,7 +31,8 @@ public class MonsterAttack : MonoBehaviour
                 i.GetComponent<PlayerBehavior>().Hit(
                     damage,
                     (k), 
-                    atkStunTime);
+                    atkStunTime,
+                    transform.parent.position);
             }
         }
     }
@@ -39,9 +42,9 @@ public class MonsterAttack : MonoBehaviour
         
     }
 
-    public void MakeProjectile(ProjectileMethod method)
+    public void MakeProjectile()
     {
-        method();
+        projectileMethod.Invoke();
     }
 
     public void SetAttackBox(Vector2 boxSize, Vector2 boxOffset)
