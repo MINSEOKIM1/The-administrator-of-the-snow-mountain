@@ -18,9 +18,9 @@ MonoBehaviour:
   backStepPower: {x: 5, y: 3}
   maxHp: 10000
   maxMp: 100
-  hpIncRate: 3
-  mpIncRate: 3
-  atk: 0
+  hpIncRate: 117.05
+  mpIncRate: 58.4
+  atk: 33.99
   def: 30
   stance: 0.5
   attackKnockback:

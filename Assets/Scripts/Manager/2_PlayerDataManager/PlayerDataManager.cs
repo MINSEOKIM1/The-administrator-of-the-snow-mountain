@@ -14,6 +14,8 @@ public class PlayerDataManager : MonoBehaviour
     public float saturation;
     public float exp;
 
+    public ConsumableItemInfo[] quickSlotItems;
+
     public float attackSpeed
     {
         get
@@ -188,6 +190,7 @@ public class PlayerDataManager : MonoBehaviour
             LevelUP();
         }
     }
+    
 
     private void LevelUP()
     {
