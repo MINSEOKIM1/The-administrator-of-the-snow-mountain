@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class White : Monster
+public class Zombie : Monster
 {
     private MonsterInfo _monsterInfo;
     private delegate void Attack();
@@ -146,4 +146,5 @@ public class White : Monster
             _monsterInfo.atk * _monsterInfo.attackCoefficient[1],
             _monsterInfo.attackStunTime[1]);
     }
+
 }
