@@ -1050,6 +1050,7 @@ GameObject:
   - component: {fileID: 7797286253167899214}
   - component: {fileID: 7797286253167899200}
   - component: {fileID: 7797286253167899201}
+  - component: {fileID: 6909232158011240125}
   m_Layer: 8
   m_Name: White
   m_TagString: Monster
@@ -1165,6 +1166,20 @@ MonoBehaviour:
   mpbar: {fileID: 3109667495848319629}
   projectile: {fileID: 5927682769530478440, guid: 5517d9b1b63dd4edf838a7f05be6a694, type: 3}
   projSpeed: 5
+--- !u!114 &6909232158011240125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7797286253167899210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c332a0dfc870c48875a8cf843b7296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idName: White
+  sceneinfo: {fileID: 0}
 --- !u!1 &7797286253357018689
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public abstract class Entity : MonoBehaviour
     public PhysicsMaterial2D little, zero;
     
     // Entity's info (will be replaced by PlayerInfo Class object later)
-    [SerializeField] protected EntityInfo entityInfo;
+    [SerializeField] public EntityInfo entityInfo;
     
     protected float maxSpeed
     {

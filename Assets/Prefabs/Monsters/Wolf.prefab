@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 3913580329065716503}
   - component: {fileID: 3913580329065716505}
   - component: {fileID: 3913580329065716504}
+  - component: {fileID: 594588397856527373}
   m_Layer: 8
   m_Name: Wolf
   m_TagString: Monster
@@ -273,7 +274,7 @@ MonoBehaviour:
   entityInfo: {fileID: 11400000, guid: 5e22bf28d7313d74ca002711c9d5da9c, type: 2}
   footPos: {fileID: 3913580329139755868}
   graphicTransform: {fileID: 5558232897261584451}
-  stunEffect: {fileID: 0}
+  stunEffect: {fileID: 7768346704353376308}
   _speed: 0
   _isGround: 0
   _canJump: 0
@@ -310,6 +311,20 @@ MonoBehaviour:
   dashAttack: 0
   dashPower: 5
   jumpElpased: 0
+--- !u!114 &594588397856527373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913580329065716499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c332a0dfc870c48875a8cf843b7296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idName: Wolf
+  sceneinfo: {fileID: 11400000, guid: c6747b784363aa6429be67f2e4b56274, type: 2}
 --- !u!1 &3913580329139755869
 GameObject:
   m_ObjectHideFlags: 0

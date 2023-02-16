@@ -9,7 +9,10 @@ using Random = UnityEngine.Random;
 public class MobSpawnManager : MonoBehaviour
 {
     public static MobSpawnManager instance;
-    public SceneInfo sceneinfo;
+    public MapManager sceneinfo
+    {
+        get => GameManager.Instance.MapManager;
+    }
 
     public int count;
     public Transform[] points;
@@ -31,6 +34,7 @@ public class MobSpawnManager : MonoBehaviour
     
     private void Update()
     {
+        if (pooler.poolReady == false) return;
         if (mix)
         {
             if(sceneinfo.currentSceneName == "Bastion")
@@ -66,7 +70,6 @@ public class MobSpawnManager : MonoBehaviour
                 Spawn();
             }    
         }
-
     }
 
     void Spawn()
@@ -74,10 +77,12 @@ public class MobSpawnManager : MonoBehaviour
         int index = Random.Range(0, pooler.prefabs.Length);
         while (pooler.Get(index) == null)
         {
+            Debug.Log(index);
             index++;
             if (index >= pooler.prefabs.Length)
                 index = 0;
         }
+        Debug.Log("SPAWN!");
         AIPlayer newMob = pooler.Get(index).GetComponent<AIPlayer>();
         newMob.gameObject.SetActive(true);
         newMob.transform.position = new Vector3(points[index].position.x + Random.Range(-2f, 2f), points[index].position.y, 0);

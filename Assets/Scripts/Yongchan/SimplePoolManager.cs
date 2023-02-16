@@ -8,6 +8,7 @@ public class SimplePoolManager : MonoBehaviour
     public Transform[] roots;
     public int[] counts;
     private List<GameObject>[] pools;
+    public bool poolReady;
 
     void Start()
     {
@@ -27,6 +28,8 @@ public class SimplePoolManager : MonoBehaviour
                 pools[index].Add(select);
             }
         }
+
+        poolReady = true;
     }
 
     public GameObject Get(int index)

@@ -7,122 +7,178 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    [SerializeField] private SceneInfo sceneInfo;
-    [SerializeField] private GameObject[] points;
-    [SerializeField] private TextMeshProUGUI[] texts;
-    [SerializeField] private GameObject map;
-    private void Start()
+    private float playTime;
+    public MapManager sceneInfo
     {
-         // # UI Update
-         TurnOnPoint(sceneInfo.currentSceneName);
-         TurnOffPoint(sceneInfo.beforeSceneName);
+        get => this;
     }
+    
+    public string beforeSceneName;
+    public string currentSceneName;
+    public DungeonData[] dungeons;
+    public VillageData village;
+    public ForkData fork;
+    public BastionData bastion;
+
+    public float globalRate;
 
     private void Update()
     {
-        MopNumUpdate();
-        if (Input.GetKeyDown(KeyCode.M))
+        for (int idx = 1; idx < 8; idx += 2)
         {
-            if (map.activeSelf)
+            sceneInfo.dungeons[idx].time += Time.deltaTime * globalRate;
+            if (sceneInfo.dungeons[idx].time > sceneInfo.dungeons[idx].respawnTime)
             {
-                map.SetActive(false);
-            }
-            else
-            {
-                map.SetActive(true);
+                sceneInfo.dungeons[idx].time = 0;
+                Spawn(idx);
             }
         }
     }
 
-    private void TurnOnPoint(string state)
+    private void SpawnVillage(int id)
     {
-        switch (state)
+        if (sceneInfo.village.maxMob > sceneInfo.village.curMob)
         {
-            case "Village":
-                points[0].SetActive(true);
-                break;
-            case "Bastion":
-                points[1].SetActive(true);
-                break;
-            case "Fork":
-                points[2].SetActive(true);
-                break;
-            case "WolfA":
-                points[3].SetActive(true);
-                break;
-            case "WolfB":
-                points[4].SetActive(true);
-                break;
-            case "WhiteA":
-                points[5].SetActive(true);
-                break;
-            case "WhiteB":
-                points[6].SetActive(true);
-                break;
-            case "StoneA":
-                points[7].SetActive(true);
-                break;
-            case "StoneB":
-                points[8].SetActive(true);
-                break;
-            case "ZombieA":
-                points[9].SetActive(true);
-                break;
-            case "ZombieB":
-                points[10].SetActive(true);
-                break;
+            sceneInfo.village.curMob++;
+            switch (id)
+            {
+                case 0:
+                    sceneInfo.fork.wolf++;
+                    break;
+                case 1:
+                    sceneInfo.fork.white++;
+                    break;
+                case 2:
+                    sceneInfo.fork.stone++;
+                    break;
+                case 3:
+                    sceneInfo.fork.zombie++;
+                    break;
+                    
+            }
+        }
+        else
+        {
+            Debug.Log("GameOver");
+        }
+    }
+    private void Spawn(int idx)
+    {
+        if (sceneInfo.dungeons[idx].maxMob > sceneInfo.dungeons[idx].curMob)
+        {
+            sceneInfo.dungeons[idx].curMob++;    
+        }
+        else
+        {
+            switch (idx)
+            {
+                case 0:
+                    SpawnFork(0);
+                    break;
+                case 1:
+                    Spawn(0);
+                    break;
+                case 2:
+                    SpawnFork(1);
+                    break;
+                case 3:
+                    Spawn(2);
+                    break;
+                case 4:
+                    SpawnFork(2);
+                    break;
+                case 5:
+                    Spawn(4);
+                    break;
+                case 6:
+                    SpawnFork(3);
+                    break;
+                case 7:
+                    Spawn(6);
+                    break;
+            }
+        }
+        
+    }
+
+    private void SpawnFork(int id)
+    {
+        if (sceneInfo.fork.maxMob > sceneInfo.fork.curMob)
+        {
+            sceneInfo.fork.curMob++;
+            switch (id)
+            {
+                case 0:
+                    sceneInfo.fork.wolf++;
+                    break;
+                case 1:
+                    sceneInfo.fork.white++;
+                    break;
+                case 2:
+                    sceneInfo.fork.stone++;
+                    break;
+                case 3:
+                    sceneInfo.fork.zombie++;
+                    break;
+                    
+            }
+        }
+        else
+        {
+            SpawnBastion(id);
         }
     }
     
-    private void TurnOffPoint(string state)
+    private void SpawnBastion(int id)
     {
-        switch (state)
+        if (sceneInfo.bastion.maxMob > sceneInfo.bastion.curMob)
         {
-            case "Village":
-                points[0].SetActive(false);
-                break;
-            case "Bastion":
-                points[1].SetActive(false);
-                break;
-            case "Fork":
-                points[2].SetActive(false);
-                break;
-            case "WolfA":
-                points[3].SetActive(false);
-                break;
-            case "WolfB":
-                points[4].SetActive(false);
-                break;
-            case "WhiteA":
-                points[5].SetActive(false);
-                break;
-            case "WhiteB":
-                points[6].SetActive(false);
-                break;
-            case "StoneA":
-                points[7].SetActive(false);
-                break;
-            case "StoneB":
-                points[8].SetActive(false);
-                break;
-            case "ZombieA":
-                points[9].SetActive(false);
-                break;
-            case "ZombieB":
-                points[10].SetActive(false);
-                break;
+            sceneInfo.bastion.curMob++;
+            switch (id)
+            {
+                case 0:
+                    sceneInfo.bastion.wolf++;
+                    break;
+                case 1:
+                    sceneInfo.bastion.white++;
+                    break;
+                case 2:
+                    sceneInfo.bastion.stone++;
+                    break;
+                case 3:
+                    sceneInfo.bastion.zombie++;
+                    break;
+                    
+            }
+        }
+        else
+        {
+            SpawnVillage(id);
         }
     }
 
-    private void MopNumUpdate()
+    private void Reset()
     {
-        texts[0].text = "" + sceneInfo.village.curMob + "/" + sceneInfo.village.maxMob;
-        texts[1].text = "" + sceneInfo.bastion.curMob + "/" + sceneInfo.bastion.maxMob;
-        texts[2].text = "" + sceneInfo.fork.curMob + "/" + sceneInfo.fork.maxMob;
+        sceneInfo.village.curMob = 0;
+        sceneInfo.village.wolf = 0;
+        sceneInfo.village.white = 0;
+        sceneInfo.village.stone = 0;
+        sceneInfo.village.zombie = 0;
+        sceneInfo.bastion.curMob = 0;
+        sceneInfo.bastion.wolf = 0;
+        sceneInfo.bastion.white = 0;
+        sceneInfo.bastion.stone = 0;
+        sceneInfo.bastion.zombie = 0;
+        sceneInfo.fork.curMob = 0;
+        sceneInfo.fork.wolf = 0;
+        sceneInfo.fork.white = 0;
+        sceneInfo.fork.stone = 0;
+        sceneInfo.fork.zombie = 0;
+        
+        
         for (int index = 0; index < sceneInfo.dungeons.Length; index++)
         {
-            texts[index+3].text = "" + sceneInfo.dungeons[index].curMob + "/" + sceneInfo.dungeons[index].maxMob;
+            sceneInfo.dungeons[index].curMob = 0;
         }
-        
     }
 }

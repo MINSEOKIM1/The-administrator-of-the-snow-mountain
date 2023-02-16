@@ -9,7 +9,11 @@ using Random = UnityEngine.Random;
 public class AIPlayer : MonoBehaviour
 {
    public string idName;
-   public SceneInfo sceneinfo;
+
+   public MapManager sceneinfo
+   {
+      get => GameManager.Instance.MapManager;
+   }
    private MobSpawnManager _mobSpawnManager;
 
    private void Awake()
@@ -29,6 +33,7 @@ public class AIPlayer : MonoBehaviour
    public void MobDie()
    {
       gameObject.SetActive(false);
+      _mobSpawnManager.MobDie(_mobSpawnManager.sceneinfo.currentSceneName, idName);
    }
 
    public void OnEnable()
@@ -38,6 +43,13 @@ public class AIPlayer : MonoBehaviour
 
    void Init()
    {
-      
+      var mon = GetComponent<Monster>();
+      mon._target = null;
+      mon.hpbar.value = 1;
+      mon.mpbar.value = 1;
+      mon.hp = mon.entityInfo.maxHp;
+      mon.mp = mon.entityInfo.maxMp;
+      mon.isDie = false;
+      StartCoroutine(mon.SpawnInit());
    }
 }

@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42ebfe4a63f44983aa5bb76d7509a5a, type: 3}
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxSpeed: 6
   accel: 1
   jumpPower: 8
   backStepPower: {x: 5, y: 3}
-  maxHp: 10000
+  maxHp: 100
   maxMp: 100
-  hpIncRate: 117.05
-  mpIncRate: 58.4
-  atk: 33.99
+  hpIncRate: 1
+  mpIncRate: 1
+  atk: 100
   def: 30
-  stance: 0.5
+  stance: 0
   attackKnockback:
   - {x: 2, y: 2}
   - {x: 1, y: 6}

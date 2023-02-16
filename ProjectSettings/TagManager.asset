@@ -58,3 +58,6 @@ TagManager:
   - name: Item Drop
     uniqueID: 3423162841
     locked: 0
+  - name: Portal
+    uniqueID: 3233031331
+    locked: 0

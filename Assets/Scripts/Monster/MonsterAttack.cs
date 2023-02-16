@@ -62,6 +62,6 @@ public class MonsterAttack : MonoBehaviour
 
     public void Die()
     {
-        Destroy(transform.parent.gameObject);
+        transform.parent.gameObject.SetActive(false);
     }
 }

@@ -229,6 +229,7 @@ public class Monster : Entity
     {
         if (isDie) return;
         GameManager.Instance.PlayerDataManager.exp += ((MonsterInfo)entityInfo).exp;
+        GetComponent<AIPlayer>().MobDie();
         _animator.SetTrigger("die");
         _speed = 0;
         dashSpeed = 0;
@@ -246,5 +247,18 @@ public class Monster : Entity
             }
         }
         isDie = true;
+    }
+
+    public IEnumerator SpawnInit()
+    {
+        if (_sprite == null) _sprite = GetComponentInChildren<SpriteRenderer>();
+        _sprite.material.color = new Color(1, 1, 1, 0);
+        var c = new Color(1, 1, 1, 0);
+        while (_sprite.material.color.a < 1)
+        {
+            c.a += 0.02f;
+            _sprite.material.color = c;
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

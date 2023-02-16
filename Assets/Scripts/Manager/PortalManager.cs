@@ -8,7 +8,10 @@ using UnityEngine.UI;
 public class PortalManager : MonoBehaviour
 {
     // # sceneInfo : scriptable objects
-    [SerializeField] private SceneInfo sceneInfo;
+    private MapManager sceneInfo
+    {
+        get => GameManager.Instance.MapManager;
+    }
     [SerializeField] private GameObject[] portals;
 
     public void ChangeScene(string portalName)
@@ -63,7 +66,13 @@ public class PortalManager : MonoBehaviour
         switch (curScene)
         {
             case "Village":
-                return portals[0].transform.position;
+                switch (prevScene)
+                {
+                    case "Bastion" :
+                        return portals[0].transform.position;
+                    default:
+                        return portals[1].transform.position;
+                }
             case "Bastion":
                 return prevScene == "Village" ? portals[0].transform.position : portals[1].transform.position;
             case "Fork":
@@ -102,6 +111,4 @@ public class PortalManager : MonoBehaviour
                 return new Vector3(0, 0, 0);
         }
     }
-
-
 }
