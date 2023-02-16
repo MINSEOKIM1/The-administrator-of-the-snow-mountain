@@ -34,7 +34,7 @@ public class Monster : Entity
     public Slider mpbar;
 
     // tmp variable (for avoiding creating a new object to set value like _rigid.velocity, _graphic.localScale)
-    private Vector2 _boxOffsetWithLocalscale;
+    public Vector2 _boxOffsetWithLocalscale;
     
     protected override void OnDrawGizmos()
     {

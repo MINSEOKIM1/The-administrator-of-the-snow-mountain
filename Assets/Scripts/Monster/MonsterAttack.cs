@@ -9,7 +9,7 @@ public class MonsterAttack : MonoBehaviour
     public event ProjectileMethod projectileMethod;
     // tmp variable
     private Vector3 _graphicLocalScale;
-    private Vector2 _boxOffsetWithLocalscale;
+    public Vector2 _boxOffsetWithLocalscale;
     public Vector2 boxSize;
     public Vector2 boxOffset;
     public float damage;

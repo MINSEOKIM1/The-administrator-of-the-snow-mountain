@@ -20,7 +20,7 @@ MonoBehaviour:
   maxMp: 100
   hpIncRate: 1
   mpIncRate: 1
-  atk: 100
+  atk: 0
   def: 30
   stance: 0
   attackKnockback:
