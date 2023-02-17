@@ -10,6 +10,7 @@ public class Stone : Monster
 
     private MonsterAttack _monsterAttack;
     public GameObject projectile;
+    public GameObject earthquake;
     public float projSpeed;
     public float projCount;
 
@@ -22,7 +23,14 @@ public class Stone : Monster
     public bool hide;
     public bool hideAttack;
     public float hideElapsed;
+    public float hideTime;
+    
     public float shakeElapsed;
+    public float shakeTime;
+
+    public float earthquakeInterval;
+    public float earthquakeElpased;
+    
     public float random;
     public float[] dashPower;
 
@@ -43,6 +51,7 @@ public class Stone : Monster
         AttackCheck();
         hideElapsed -= Time.deltaTime;
         shakeElapsed -= Time.deltaTime;
+        earthquakeElpased -= Time.deltaTime;
     }
 
     protected override void OnDrawGizmos()
@@ -89,14 +98,6 @@ public class Stone : Monster
                     {
                         perceivePlayerTimeElapsed = _monsterInfo.perceiveTime;
                         _target = j.gameObject;
-                        if (i == 1)
-                        {
-                            _graphicLocalScale.Set(1, 1, 1);
-                            graphicTransform.localScale = _graphicLocalScale;
-                            mp -= _monsterInfo.attackMp[0];
-                            _attackMethods[0]();
-                            return;
-                        }
                     }
                     if (_target.transform.position.x < transform.position.x)
                     {
@@ -109,15 +110,23 @@ public class Stone : Monster
                         graphicTransform.localScale = _graphicLocalScale;
                     }
 
-                    if (Random.Range(0, 1f) < 0.6f)
-                    {
-                        mp -= _monsterInfo.attackMp[i];
-                        _attackMethods[i]();
-                        return;
-                    }
+                    var r = Random.Range(0, 2);
+                    mp -= _monsterInfo.attackMp[r];
+                    _attackMethods[r]();
+                    return;
                 }
             }
         }
+    }
+
+    public override void Hit(float damage, Vector2 knockback, float stunTime)
+    {
+        if (!hide) base.Hit(damage, knockback, stunTime);
+    }
+    
+    public override void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
+    {
+        if (!hide) base.Hit(damage, knockback, stunTime, opponent);
     }
 
     public override void Die()
@@ -135,19 +144,16 @@ public class Stone : Monster
             _speed = 0;
             _animator.SetTrigger("hide");
             hide = true;
-            hideAttack = true;
             random = Random.Range(3.0f,5.0f);
             hideElapsed = random;
             
             StartCoroutine(Hide());
-           
-            
         }
     }
 
     IEnumerator Hide()
     {
-        
+        gameObject.layer = 10;
         while (hideElapsed > 0.0f && hide)
         {
             yield return new WaitForFixedUpdate();
@@ -155,26 +161,34 @@ public class Stone : Monster
                 Vector2 dir = (_target.transform.position - transform.position).normalized;
                 dir.Set(dir.x, 0);
                 dir = dir.normalized;
-                if(hideAttack){
-                    dashSpeed = dir.x  * dashPower[0];
-                }
+                dashSpeed = dir.x  * dashPower[0];
             }
-            Debug.Log(hideElapsed);
         }
 
-        if(hideElapsed <= 0.0f && hide && hideAttack){
+        if(hideElapsed <= 0.0f && hide)
+        {
+            _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
+            _monsterAttack.SetAttackInfo(
+                _monsterInfo.attackKnockback[0], 
+                _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
+                _monsterInfo.attackStunTime[0]);
+            gameObject.layer = 8;
             dashSpeed = 0;
             _animator.SetFloat("attackNum", 0);
             _animator.SetTrigger("attack");
-            _rigidbody.AddForce(Vector2.up * entityInfo.jumpPower, ForceMode2D.Impulse);
             Debug.Log("JUMP");
             hideAttack = false;
+            hide = false;
             _speed = 0;
             hideElapsed = 3.0f;
             StartCoroutine(Hide());
-        }
-        if(hideElapsed <= 0.0f && hide && !hideAttack){
-            hide = false;
+            
+            var proj = Instantiate(earthquake, transform.position, Quaternion.identity);
+            proj.GetComponentInChildren<EffectAttack>().SetInfo(
+                _monsterInfo.atk * _monsterInfo.attackCoefficient[1],
+                _monsterInfo.attackStunTime[1],
+                _monsterInfo.attackKnockback[1],
+                Vector3.one, true);
         }
     }
 
@@ -199,8 +213,7 @@ public class Stone : Monster
             _capsuleCollider.sharedMaterial = little;
             
             _speed = 0;
-            _animator.SetFloat("attackNum", 1);
-            _animator.SetTrigger("attack");
+            _animator.SetTrigger("hide");
             hide = true;
             hideAttack = true;
             random = 3.0f;
@@ -214,42 +227,40 @@ public class Stone : Monster
                 _monsterInfo.attackStunTime[1]);
             
             StartCoroutine(Earthquake());
-           
-            
         }
     }
 
     IEnumerator Earthquake()
     {
-    
+        yield return new WaitForSeconds(1f);
+        gameObject.layer = 10;
         Vector2 dir = (_target.transform.position - transform.position).normalized;
         dir.Set(dir.x, 0);
         dir = dir.normalized;
         while (shakeElapsed > 0.0f && hide)
         {
             yield return new WaitForFixedUpdate();
-                if(hideAttack){
-                    dashSpeed = dir.x  * dashPower[1];
-                }
-            Debug.Log(shakeElapsed);
+            dashSpeed = dir.x  * dashPower[1];
+            if (earthquakeElpased < 0)
+            {
+                earthquakeElpased = earthquakeInterval;
+                var proj = Instantiate(earthquake, transform.position, Quaternion.identity);
+                proj.GetComponentInChildren<EffectAttack>().SetInfo(
+                    _monsterInfo.atk * _monsterInfo.attackCoefficient[1],
+                    _monsterInfo.attackStunTime[1],
+                    _monsterInfo.attackKnockback[1],
+                    Vector3.one, true);
+            }
         }
 
-        if(shakeElapsed <= 0.0f && hide && hideAttack){
+        if(shakeElapsed <= 0.0f && hide){
+            gameObject.layer = 8;
             dashSpeed = 0;
             _animator.SetTrigger("out");
-            _rigidbody.AddForce(Vector2.up * entityInfo.jumpPower, ForceMode2D.Impulse);
             hideAttack = false;
+            hide = false;
             _speed = 0;
             shakeElapsed = 5.0f;
-            StartCoroutine(Earthquake());
         }
-        if(shakeElapsed <= 0.0f && hide && !hideAttack){
-            hide = false;
-        }
-
-        
     }
-
-
-
 }

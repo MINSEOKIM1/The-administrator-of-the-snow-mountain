@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1417861547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1417861548}
+  m_Layer: 8
+  m_Name: SpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1417861548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417861547}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.03, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2428826482283071766}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2428826481543143260
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +681,8 @@ Transform:
   m_LocalPosition: {x: 0.78, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1417861548}
   m_Father: {fileID: 2428826482317356094}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -738,6 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709017ace84d04660b280641635e4a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxOffsetWithLocalscale: {x: 0, y: 0}
   boxSize: {x: 0, y: 0}
   boxOffset: {x: 0, y: 0}
   damage: 0
@@ -1001,21 +1034,23 @@ MonoBehaviour:
   stateChangeElapsed: 0
   hpbar: {fileID: 2428826481959737888}
   mpbar: {fileID: 2428826482049202802}
+  _boxOffsetWithLocalscale: {x: -4.32, y: 2}
+  spawnPos: {fileID: 1417861548}
   jumping: 0
   flySpeed: 1.5
   jumpElpased: 0
-  projectile: {fileID: 6051686162497438394, guid: 82ffa70bc1a5e274fa1106681c2834ea, type: 3}
+  projectile: {fileID: 2885024734095660474, guid: 90851b419d944401ba85a18fb91f6fa3, type: 3}
   projSpeed: 2
   height: 3
   armLength: 2
-  obj: {fileID: 6333487197581172519, guid: 31536614c52680c48bee4e07003a4774, type: 3}
+  obj: {fileID: 475496889804527432, guid: 98313ffb2b02546728e1eab6208edfca, type: 3}
   summon: {fileID: 4594153606358027972, guid: 988e591de81413c40b6901c0084ae1bb, type: 3}
   canSkill: 0000
   coolDown:
   - 3
   - 10
   lowHealthCoefficient: 1
-  explosionObj: {fileID: 450670474317523963, guid: 7ab321c0ab555a249a07bce66280956a, type: 3}
+  explosionObj: {fileID: 475496889804527432, guid: 98313ffb2b02546728e1eab6208edfca, type: 3}
   explosionDuration: 0.6
   lightningRepeat: 4
   lightningDistanceInterval: 3

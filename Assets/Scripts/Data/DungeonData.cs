@@ -12,4 +12,5 @@ public class DungeonData
     public float respawnTime;
     public int maxMob;
     public int curMob;
+    public int bgmIndex;
 }

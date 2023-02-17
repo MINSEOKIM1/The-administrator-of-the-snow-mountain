@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6333487197581172519
+--- !u!1 &3719509232659231321
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6333487197581172516}
-  - component: {fileID: 6333487197581172517}
-  - component: {fileID: 6333487197581172518}
-  - component: {fileID: 6333487197581172507}
+  - component: {fileID: 3719509232659231322}
+  - component: {fileID: 3719509232659231323}
+  - component: {fileID: 3719509232659231320}
+  - component: {fileID: 134976473172085235}
   m_Layer: 0
-  m_Name: Necromancer_Lightning
+  m_Name: EFFECT_GRAPHIC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6333487197581172516
+--- !u!4 &3719509232659231322
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6333487197581172519}
+  m_GameObject: {fileID: 3719509232659231321}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.499999, y: 0.2, z: -0.050707914}
-  m_LocalScale: {x: 2, y: 1.5, z: 2}
+  m_LocalPosition: {x: 0.32, y: 2.59, z: 0.22708037}
+  m_LocalScale: {x: 1.1503, y: 1.3516024, z: 1.1503}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 3719509233326715343}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6333487197581172517
+--- !u!212 &3719509232659231323
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6333487197581172519}
+  m_GameObject: {fileID: 3719509232659231321}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,28 +75,28 @@ SpriteRenderer:
   m_SortingLayerID: -971651405
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1990666122, guid: fd6d61576287c01498ad189aae87296f, type: 3}
+  m_Sprite: {fileID: 1546936545, guid: 7acc5b974a3e6430fba141271549ce09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8, y: 6}
+  m_Size: {x: 7.09375, y: 7.09375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6333487197581172518
+--- !u!95 &3719509232659231320
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6333487197581172519}
+  m_GameObject: {fileID: 3719509232659231321}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 48d0d9e7e7b216744abbf5701b6fd41c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 462c4d78d6a2f4194802b1d7e12b1961, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -106,20 +106,51 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6333487197581172507
+--- !u!114 &134976473172085235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6333487197581172519}
+  m_GameObject: {fileID: 3719509232659231321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c7c0e4b05e2cb44a883fe637e25a55, type: 3}
+  m_Script: {fileID: 11500000, guid: af24f9a5a94a44b8ea343e8e14976c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxSize: {x: 3, y: 12}
-  boxOffset: {x: 0, y: 0.5}
-  damage: 15
-  atkKnockback: {x: 1, y: 1}
-  atkStunTime: 0
+  boxOffset: {x: -0.31, y: -1.19}
+  boxSize: {x: 0.73, y: 3.16}
+  _boxOffsetWithLocalscale: {x: -0.356593, y: -1.19}
+  power: 0
+--- !u!1 &3719509233326715340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3719509233326715343}
+  m_Layer: 0
+  m_Name: EARTHSAKEEFFECT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3719509233326715343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719509233326715340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.49, y: 4.19, z: -0.22708037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3719509232659231322}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

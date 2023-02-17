@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [Serializable]
-public class VillageData
+public class VillageData : DungeonData
 {
     public string name;
     public int maxMob;

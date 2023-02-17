@@ -15,7 +15,7 @@ public class Zombie : Monster
     public Vector2 dir;
     public float height;
     public GameObject breath;
-    
+
     // from Monster's info... (MonsterInfo class will be made later)
     public Vector2[] attackDetectBoxes => ((MonsterInfo)entityInfo).attackDetectBoxes;
     public Vector2[] attackBoundaryBoxes => ((MonsterInfo)entityInfo).attackBoundaryBoxes;
@@ -146,8 +146,13 @@ public class Zombie : Monster
             else{
                 yield return new WaitForSeconds(delayTime);
             }
-            var shake = Instantiate(projectile[0], transform.position + dir * i, Quaternion.identity);
-            Destroy(shake, shakeDuration);
+            var proj = Instantiate(projectile[0], transform.position + dir * i + Vector3.down, Quaternion.identity);
+            proj.GetComponentInChildren<EffectAttack>().SetInfo(
+                _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
+                _monsterInfo.attackStunTime[0],
+                _monsterInfo.attackKnockback[0],
+                Vector3.one, true);
+            Destroy(proj, shakeDuration);
         }
     }
 

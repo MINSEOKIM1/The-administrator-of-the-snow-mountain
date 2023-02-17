@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709017ace84d04660b280641635e4a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxOffsetWithLocalscale: {x: 0, y: 0}
   boxSize: {x: 0, y: 0}
   boxOffset: {x: 0, y: 0}
   damage: 0
@@ -868,8 +869,9 @@ MonoBehaviour:
   stateChangeElapsed: 0
   hpbar: {fileID: 4594153606693271852}
   mpbar: {fileID: 4594153607242535201}
+  _boxOffsetWithLocalscale: {x: -1.75, y: 0.64}
   projectile:
-  - {fileID: 4230937671496417215, guid: a14dde883411b464788ca54104666124, type: 3}
+  - {fileID: 3719509233326715340, guid: 8536707c1dac340b4a46afcc8e8cc296, type: 3}
   - {fileID: 2583955575905733204, guid: 57fdb9ef2903da944a5d68b318eb4f67, type: 3}
   projSpeed:
   - 5

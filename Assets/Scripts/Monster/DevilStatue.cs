@@ -172,34 +172,4 @@ public class DevilStatue : Monster
                 _monsterInfo.attackStunTime[0], true);
         }
     }
-
-    public IEnumerator SpawnLightening(int count, float time)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            Vector2 pos = _target.transform.position;
-            var aa = Physics2D.RaycastAll(_target.transform.position, Vector2.down, 100);
-            foreach (var a in aa)
-            {
-                if (a.collider.CompareTag("Ground"))
-                {
-                    pos = a.point;
-                    break;
-                }
-            }
-            var j = Instantiate(effects[1], pos, Quaternion.identity);
-            j.GetComponentInChildren<EffectAttack>().SetInfo(
-                _monsterInfo.atk * _monsterInfo.attackCoefficient[1], 
-                _monsterInfo.attackStunTime[1],
-                _monsterInfo.attackKnockback[1]);
-            
-            yield return new WaitForSeconds(time);
-        }
-    }
-    
-    protected override void OnCollisionStay2D(Collision2D col)
-    {
-        base.OnCollisionStay2D(col);
-        
-    }
 }

@@ -19,9 +19,9 @@ MonoBehaviour:
   maxHp: 100
   maxMp: 100
   hpIncRate: 0
-  mpIncRate: 5
+  mpIncRate: 12
   atk: 50
-  def: 20
+  def: 80
   stance: 0
   stateChangeInterval: 2
   boxSize: {x: 15, y: 3}
@@ -30,10 +30,10 @@ MonoBehaviour:
   - {x: 3, y: 3.5}
   - {x: 8, y: 1}
   attackBoundaryBoxes:
-  - {x: 6, y: 2.5}
+  - {x: 1.68, y: 1.08}
   - {x: 2.5, y: 4}
   attackBoundaryOffsets:
-  - {x: 0, y: 0.5}
+  - {x: 0, y: -0.18}
   - {x: 0, y: 1}
   attackCoefficient:
   - 1
@@ -42,11 +42,11 @@ MonoBehaviour:
   - 0.5
   - 0
   attackKnockback:
-  - {x: 1, y: 8}
+  - {x: 3.89, y: 8}
   - {x: 5, y: 5}
   attackMp:
-  - 0
-  - 60
+  - 100
+  - 100
   dropItems:
   - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
   - {fileID: 11400000, guid: c49822574ec0642cf8b9b7c5fd1b2f71, type: 2}

@@ -213,7 +213,7 @@ public class Monster : Entity
         hpbar.value = hp / maxHp;
     }
     
-    public void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
+    public virtual void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
     {
         if (isDie) return;
         base.Hit(damage, GetKnockback(knockback, entityInfo.stance), stunTime);

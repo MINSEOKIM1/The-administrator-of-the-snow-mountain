@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class PlayerDataManager : MonoBehaviour
 {
     public PlayerInfo playerInfo;
@@ -100,7 +101,6 @@ public class PlayerDataManager : MonoBehaviour
         get => 100 * (1 + 0.02f * (level-1));
     }
     
-    
     public int[] attackSkillLevel;
     public int[] utilSkillLevel;
 
@@ -154,8 +154,6 @@ public class PlayerDataManager : MonoBehaviour
         }
         private set => stance = value;
     }
-    
-    public int money;
 
     public bool isDie;
 

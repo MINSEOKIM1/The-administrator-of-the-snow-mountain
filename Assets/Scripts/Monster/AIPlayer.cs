@@ -43,6 +43,16 @@ public class AIPlayer : MonoBehaviour
 
    void Init()
    {
+      Vector2 pos = transform.position;
+      var aa = Physics2D.RaycastAll(transform.position, Vector2.down, 100);
+      foreach (var a in aa)
+      {
+         if (a.collider.CompareTag("Ground"))
+         {
+            transform.position -=  (Vector3) ((Vector2) GetComponent<Monster>().footPos.position - a.point);
+            break;
+         }
+      }
       var mon = GetComponent<Monster>();
       mon._target = null;
       mon.hpbar.value = 1;
