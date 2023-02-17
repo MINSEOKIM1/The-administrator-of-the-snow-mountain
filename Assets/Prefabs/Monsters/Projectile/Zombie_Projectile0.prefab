@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1210730087806101833}
   - component: {fileID: 3050390331004492748}
   - component: {fileID: 4135238844824510372}
-  - component: {fileID: 1094268494259226886}
-  - component: {fileID: -8788483652155662654}
+  - component: {fileID: 2425796123733967334}
+  - component: {fileID: 5879060833154871996}
   m_Layer: 14
   m_Name: Zombie_Projectile0
   m_TagString: Untagged
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &1094268494259226886
+--- !u!58 &2425796123733967334
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.22
---- !u!114 &-8788483652155662654
+--- !u!114 &5879060833154871996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,3 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d75d138be566444989e30dba0c16d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxSize: {x: 0.7, y: 2}
+  boxOffset: {x: 0, y: 0}
+  damage: 20
+  atkKnockback: {x: 2, y: 4}
+  atkStunTime: 0.5
