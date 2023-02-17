@@ -44,7 +44,12 @@ public class EffectAttack : MonoBehaviour
         if (groundEffect)
         {
             Vector2 pos = transform.parent.position;
-            var aa = Physics2D.RaycastAll(transform.parent.position, Vector2.down, 100);
+            while (Physics2D.OverlapPoint(pos).CompareTag("Ground"))
+            {
+                pos.y += 0.1f;
+            }
+            var aa = Physics2D.RaycastAll(pos, Vector2.down, 100);
+            Debug.DrawLine(pos, pos + Vector2.down*100);
             foreach (var a in aa)
             {
                 if (a.collider.CompareTag("Ground"))

@@ -42,7 +42,7 @@ MonoBehaviour:
   - 0.5
   - 0
   attackKnockback:
-  - {x: 1, y: 8}
+  - {x: 3, y: 4}
   - {x: 3, y: 5}
   attackMp:
   - 0

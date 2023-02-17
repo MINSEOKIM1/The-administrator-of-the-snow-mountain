@@ -101,7 +101,7 @@ public class Necromancer : Monster
 
     protected override void AttackInputDetect()
     {
-        if (!_necromancerAttack.canAttack || isDie || _target == null) return;
+        if (!_necromancerAttack.canAttack || isDie) return;
         Collider2D[] tmp;
         for(int i = 0; i<attackDetectBoxes.Length; i++)
         {
