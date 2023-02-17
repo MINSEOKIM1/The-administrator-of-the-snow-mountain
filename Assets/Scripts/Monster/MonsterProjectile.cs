@@ -9,7 +9,9 @@ public class MonsterProjectile : MonoBehaviour
     private Vector2 _velocity, _knockback;
     private float _damage, _stunTime;
     private Rigidbody2D _rigidbody;
+    private Animator _animator;
     private float _time;
+    private bool _explosion;
 
     private void Update()
     {
@@ -34,6 +36,22 @@ public class MonsterProjectile : MonoBehaviour
 
         _time = 10f;
     }
+    public void SetInfo(bool gravity, Vector2 velocity, Vector2 knockback, float damage, float stunTime, bool explosion)
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _gravityEffect = gravity;
+        _velocity = velocity;
+        _knockback = knockback;
+        _damage = damage;
+        _stunTime = stunTime;
+        _explosion = explosion;
+        _animator = GetComponent<Animator>();
+
+        _rigidbody.velocity = _velocity;
+        if (!_gravityEffect) _rigidbody.gravityScale = 0;
+
+        _time = 10f;
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -43,11 +61,34 @@ public class MonsterProjectile : MonoBehaviour
             k.Set(col.transform.position.x < transform.position.x ? -k.x : k.x, k.y);
             col.collider.GetComponent<PlayerBehavior>().Hit(
                 _damage, k, _stunTime, transform.position);
-            
-            Destroy(gameObject);
+
+            if (_explosion)
+            {
+                _animator.SetTrigger("explosion");
+                GetComponent<Collider2D>().isTrigger = true;
+                _rigidbody.bodyType = RigidbodyType2D.Static;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         } else if (col.collider.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            if (_explosion)
+            {
+                _animator.SetTrigger("explosion");
+                GetComponent<Collider2D>().isTrigger = true;
+                _rigidbody.bodyType = RigidbodyType2D.Static;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

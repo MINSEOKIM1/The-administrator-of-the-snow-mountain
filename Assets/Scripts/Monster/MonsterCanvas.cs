@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class MonsterCanvas : MonoBehaviour
 {
-
-
+    public float rate = 1;
     public Transform tf;
     void Update()
     {
-        transform.localScale = tf.localScale * 0.0168f;
+        transform.localScale = tf.localScale * rate;
     }
 }

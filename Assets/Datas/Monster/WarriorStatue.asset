@@ -10,49 +10,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f0cc3f0af58a46a4b22e6fce089368b, type: 3}
-  m_Name: Yeti
+  m_Name: WarriorStatue
   m_EditorClassIdentifier: 
   maxSpeed: 0
-  accel: 0.5
-  jumpPower: 31.9
+  accel: 0
+  jumpPower: 0
   backStepPower: {x: 0, y: 0}
   maxHp: 1000
   maxMp: 100
   hpIncRate: 2
-  mpIncRate: 5
-  atk: 30
+  mpIncRate: 10
+  atk: 1
   def: 120021
   stance: 1
-  stateChangeInterval: 3
-  boxSize: {x: 6.98, y: 6.59}
-  boxOffset: {x: -4.32, y: 0}
+  stateChangeInterval: 1.01010104e+11
+  boxSize: {x: 15.3, y: 11.17}
+  boxOffset: {x: 0, y: 0}
   attackDetectBoxes:
-  - {x: 46.88, y: 4.13}
-  - {x: 36.5, y: 12.38}
+  - {x: 20, y: 16.4}
   attackBoundaryBoxes:
   - {x: 6.69, y: 6.28}
-  - {x: 4.49, y: 5.72}
   attackBoundaryOffsets:
   - {x: -1.27, y: 0.94}
-  - {x: -2, y: 0.81}
   attackCoefficient:
   - 5
-  - 3
   - 2
-  - 0.3
   attackStunTime:
-  - 1
   - 0
-  - 1
   - 1
   attackKnockback:
-  - {x: 6, y: 8}
-  - {x: 4.93, y: 8}
-  - {x: 8, y: 8}
-  - {x: 0, y: 8}
+  - {x: 4, y: 6}
+  - {x: 2, y: 3}
   attackMp:
-  - 0
-  - 0
+  - 100
   - 100
   dropItems:
   - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}

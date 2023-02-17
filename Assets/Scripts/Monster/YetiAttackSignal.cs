@@ -60,6 +60,11 @@ public class YetiAttackSignal : MonoBehaviour
         }
     }
 
+    public void IcicleFall()
+    { 
+        ((Yeti)_monster).IcicleFall();
+    }
+    
     public void Roll()
     {
         isRoll = true;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7d58fc349e39446482f353c901255a6
+guid: f7e09124772d3431bb5e973e0a966c6e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Necromancer_0
+      name: Necro_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,20 +113,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41dc0f046ac1b4e98bc9f5cc441ae4be
-      internalID: -987500066
+      spriteID: 38894e9f662f54d50ae35d018aea5171
+      internalID: -1089629535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_1
+      name: Necro_1
       rect:
         serializedVersion: 2
         x: 256
@@ -134,20 +134,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eee47e19b7af54b5db756205b936f325
-      internalID: 250604479
+      spriteID: 87eeb8f56cf38425891ad749ce827611
+      internalID: -1797406038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_2
+      name: Necro_2
       rect:
         serializedVersion: 2
         x: 512
@@ -155,62 +155,62 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3390999348ce749bb9c407629437122b
-      internalID: 1656967477
+      spriteID: ed3250ce676c249fcbcaad293a3e2a94
+      internalID: 904765695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_3
+      name: Necro_3
       rect:
         serializedVersion: 2
         x: 768
         y: 384
         width: 256
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45732665, y: 0.51852494}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b940edcbf56da4fd9ae3265a8d252d3c
-      internalID: 1660336333
+      spriteID: 6d72cde6023814823968eda8105020d4
+      internalID: -1481157520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_4
+      name: Necro_4
       rect:
         serializedVersion: 2
         x: 1024
         y: 384
         width: 256
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45588732, y: 0.5224063}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50cd6a74a107d47c685d5cc7aabb2ae7
-      internalID: -1985580433
+      spriteID: 9393b91508fcf4441b9441c5a375a93b
+      internalID: 1207673962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_5
+      name: Necro_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -218,20 +218,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db08881a75657427f8d9c0be3519462c
-      internalID: 852227318
+      spriteID: 8eaa2f305ca5d4c14822ca219c4944ce
+      internalID: 289994112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_6
+      name: Necro_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -239,20 +239,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f0aa8cbc7cc24c2f9dbca827dca4ab9
-      internalID: 1763941114
+      spriteID: 39b056995157e4e46b74960d0a6f3696
+      internalID: 469095676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_7
+      name: Necro_7
       rect:
         serializedVersion: 2
         x: 1792
@@ -260,20 +260,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1e7ea398b6db41edb50f02eee4fc364
-      internalID: 1884175037
+      spriteID: 21a67a3ae916f4340b7392f18e99ae25
+      internalID: 1034228652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_8
+      name: Necro_8
       rect:
         serializedVersion: 2
         x: 0
@@ -281,20 +281,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0947303b469dc408c85b6f4ac8223911
-      internalID: -115881084
+      spriteID: 248bb7ec3c3654fddb6fd862abcceeba
+      internalID: 859069474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_9
+      name: Necro_9
       rect:
         serializedVersion: 2
         x: 256
@@ -302,20 +302,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da7ed6aabbc61438aa58f332d981db96
-      internalID: 702102269
+      spriteID: 58e677937712a445f9dfd076acb194a3
+      internalID: 2016498663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_10
+      name: Necro_10
       rect:
         serializedVersion: 2
         x: 512
@@ -323,20 +323,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9393c78610d845c4a15c264dac24cc9
-      internalID: 99505597
+      spriteID: b7373bd7ecac543c8b453d489939f3bb
+      internalID: -1317191720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_11
+      name: Necro_11
       rect:
         serializedVersion: 2
         x: 768
@@ -344,20 +344,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4206e0d4370374ed7b5dc622638eda3a
-      internalID: 823662058
+      spriteID: 55b7fd4b2bbaa4c08aa8f232ed26686e
+      internalID: 941047357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_12
+      name: Necro_12
       rect:
         serializedVersion: 2
         x: 1280
@@ -365,20 +365,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9099dfbde89c4ac096270eb0c409125
-      internalID: 134766020
+      spriteID: 26334c3f712414d2c8c1ec36f7153e92
+      internalID: 1177600958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_13
+      name: Necro_13
       rect:
         serializedVersion: 2
         x: 1536
@@ -386,20 +386,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2e8f0cd222b94aadab1f84e082c2e15
-      internalID: 1819401306
+      spriteID: a055aaa23de6540f0ab0f749d6fc3ef6
+      internalID: 694647284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_14
+      name: Necro_14
       rect:
         serializedVersion: 2
         x: 1792
@@ -407,20 +407,20 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cb41060312904702a4ce0391690808b
-      internalID: 819345880
+      spriteID: e7d40daea80a64f17abd5a15dcf57892
+      internalID: -1904744238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Necromancer_15
+      name: Necro_15
       rect:
         serializedVersion: 2
         x: 0
@@ -428,14 +428,14 @@ TextureImporter:
         width: 256
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25d2494e1654540f5a8f74e2bb70d2b1
-      internalID: 818089049
+      spriteID: df5ffbaaa8d30416a96fe1a4b056ff81
+      internalID: 1641222210
       vertices: []
       indices: 
       edges: []
@@ -451,22 +451,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Necromancer_4: -1985580433
-      Necromancer_5: 852227318
-      Necromancer_11: 823662058
-      Necromancer_3: 1660336333
-      Necromancer_10: 99505597
-      Necromancer_2: 1656967477
-      Necromancer_13: 1819401306
-      Necromancer_12: 134766020
-      Necromancer_0: -987500066
-      Necromancer_1: 250604479
-      Necromancer_8: -115881084
-      Necromancer_6: 1763941114
-      Necromancer_14: 819345880
-      Necromancer_9: 702102269
-      Necromancer_15: 818089049
-      Necromancer_7: 1884175037
+      Necro_13: 694647284
+      Necro_5: 289994112
+      Necro_1: -1797406038
+      Necro_3: -1481157520
+      Necro_9: 2016498663
+      Necro_8: 859069474
+      Necro_7: 1034228652
+      Necro_6: 469095676
+      Necro_0: -1089629535
+      Necro_2: 904765695
+      Necro_11: 941047357
+      Necro_4: 1207673962
+      Necro_15: 1641222210
+      Necro_10: -1317191720
+      Necro_12: 1177600958
+      Necro_14: -1904744238
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

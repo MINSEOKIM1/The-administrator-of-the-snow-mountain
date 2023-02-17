@@ -6,14 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/Yeti/Yeti_Attack0.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/Yeti/Yeti_Attack0.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Yeti.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Yeti.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minseo/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minseo/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/WerewolfAttackSignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/WerewolfAttackSignal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Yongchan/AIPlayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Yongchan/AIPlayer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterCanvas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterCanvas.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/MonsterProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Yeti.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Yeti.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/YetiAttackSignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/YetiAttackSignal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Necromancer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/Necromancer.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +28,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/VillageData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/EffectAttack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/Icicle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/MonsterCanvas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/WarriorStatue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/WizzardStatue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/Yeti.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/YetiAttackSignal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/Zombie.cs" root0="FORCE_HIGHLIGHTING" />

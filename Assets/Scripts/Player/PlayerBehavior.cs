@@ -170,7 +170,7 @@ public class PlayerBehavior : Entity
                         !_isAttack &&
                         hit.collider.gameObject.GetComponent<PlatformEffector2D>() == null &&
                         wallJump <= 0 &&
-                        CanUtilCondition(1, Time.deltaTime) && canWall && !_hitAir)
+                        CanUtilCondition(1, Time.deltaTime) && canWall && !_hitAir && Mathf.Abs(externalSpeed) < 0.1f)
                     {
                         UseUtilSkill(1, Time.deltaTime);
                         if ((int)_playerInputHandler.movement.x == -(int)graphicTransform.localScale.x)
@@ -340,6 +340,8 @@ public class PlayerBehavior : Entity
             _animator.SetTrigger("hit");
             _playerAttack.ResetNormalAttack();
         }
+
+        if (isClimb) isClimb = false;
 
         KnockBack(GetKnockback(knockback, entityInfo.stance));
     }

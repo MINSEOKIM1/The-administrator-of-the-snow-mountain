@@ -11,6 +11,11 @@ public class Yeti : Monster
     private delegate void Attack();
     private Attack[] _attackMethods;
 
+    public Transform icicleZone;
+    public float icicleZoneOffset;
+    public List<Icicle> icicles;
+    public GameObject icicle;
+
     private MonsterAttack _monsterAttack;
     private YetiAttackSignal _yetiAttack;
     [SerializeField] private CinemachineImpulseSource ctx;
@@ -21,7 +26,8 @@ public class Yeti : Monster
     public Vector2[] attackBoundaryOffsets => ((MonsterInfo)entityInfo).attackBoundaryOffsets;
     
     // tmp variable for store current state
-    
+    public float icicleTime;
+    public float icicleTimeElpased;
 
     public float atkDash;
 
@@ -33,6 +39,7 @@ public class Yeti : Monster
     protected override void Start()
     {
         base.Start();
+        icicles = new List<Icicle>();
         _monsterInfo = (MonsterInfo)entityInfo;
         _monsterAttack = GetComponentInChildren<MonsterAttack>();
         _yetiAttack = GetComponentInChildren<YetiAttackSignal>();
@@ -54,8 +61,31 @@ public class Yeti : Monster
             rollPower += Time.deltaTime * rollRate;
             dashSpeed = rollPower * graphicTransform.localScale.x;
         }
-    }
 
+        icicleTimeElpased -= Time.deltaTime;
+        if (icicleTimeElpased < 0)
+        {
+            icicleTimeElpased = icicleTime;
+            
+            if (icicles.Count < 10 && _target != null)
+            {
+                var i = Instantiate(icicle,
+                    new Vector3(_target.transform.position.x + Random.Range(-icicleZoneOffset, icicleZoneOffset), icicleZone.position.y, 0),
+                    Quaternion.identity);
+                bool k = false;
+                for (int j = 0; j < icicles.Count; j++)
+                {
+                    if (icicles[j] == null)
+                    {
+                        icicles[j] = i.GetComponent<Icicle>();
+                        k = true;
+                    }
+                }
+
+                if (!k) icicles.Add(i.GetComponent<Icicle>());
+            }
+        }
+    }
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -202,6 +232,7 @@ public class Yeti : Monster
             
             _capsuleCollider.sharedMaterial = little;
             
+            dashSpeed = -rollRate * graphicTransform.localScale.x;
             ctx.m_DefaultVelocity = Vector3.up * 0.1f;
             rollPower = 0;
             
@@ -239,9 +270,21 @@ public class Yeti : Monster
                     stunTime = 5;
                     stunTimeElapsed = 5;
                     _yetiAttack.CanAttack();
+                    externalSpeed = -graphicTransform.localScale.x * 10;
+                    IcicleFall();
                 }
             }
         }
+    }
+
+    public void IcicleFall()
+    {
+        foreach (var i in icicles)
+        {
+            if (i != null) i.StartFalling();
+        }
+
+        icicles = new List<Icicle>();
     }
 
     protected override void OnCollisionStay2D(Collision2D col)
