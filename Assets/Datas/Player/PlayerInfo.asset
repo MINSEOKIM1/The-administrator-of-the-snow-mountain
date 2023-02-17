@@ -19,7 +19,7 @@ MonoBehaviour:
   maxHp: 10000
   maxMp: 100
   hpIncRate: 100
-  mpIncRate: 1
+  mpIncRate: 49.43
   atk: 0
   def: 30
   stance: 0

@@ -3796,7 +3796,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.15
+  m_Intensity: 0.06
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 000000007de1f7c3715286dcb3c615c6d95109cca324b4c0
@@ -4769,10 +4769,6 @@ PrefabInstance:
     - target: {fileID: 580744856785526356, guid: 2b1376aaf255d4cea91191c2c99b6949, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1045512306075076560, guid: 2b1376aaf255d4cea91191c2c99b6949, type: 3}
-      propertyPath: idName
-      value: DevilStatue
       objectReference: {fileID: 0}
     - target: {fileID: 1045512306075076561, guid: 2b1376aaf255d4cea91191c2c99b6949, type: 3}
       propertyPath: m_RootOrder

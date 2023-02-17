@@ -16,12 +16,12 @@ MonoBehaviour:
   accel: 0
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
-  maxHp: 1000
+  maxHp: 100
   maxMp: 100
   hpIncRate: 2
   mpIncRate: 20
   atk: 30
-  def: 120021
+  def: 50
   stance: 1
   stateChangeInterval: 1.01010104e+11
   boxSize: {x: 15.3, y: 11.17}
