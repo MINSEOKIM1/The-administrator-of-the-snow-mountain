@@ -13,6 +13,10 @@ public class MonsterProjectile : MonoBehaviour
     private float _time;
     private bool _explosion;
 
+    public float Damage => _damage;
+    public float Stun => _stunTime;
+    public Vector2 Knockback => _knockback;
+
     private void Update()
     {
         _time -= Time.deltaTime;

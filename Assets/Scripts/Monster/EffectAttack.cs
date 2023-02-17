@@ -37,6 +37,13 @@ public class EffectAttack : MonoBehaviour
 
     public void AttackCheck()
     {
+        MonsterProjectile ac;
+        if ((ac = GetComponent<MonsterProjectile>()) != null)
+        {
+            damage = ac.Damage;
+            knockback = ac.Knockback;
+            stun = ac.Stun;
+        }
         _boxOffsetWithLocalscale.Set(boxOffset.x * transform.localScale.x, boxOffset.y);
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(
             (Vector2)transform.position + _boxOffsetWithLocalscale, boxSize, 0);
@@ -46,12 +53,15 @@ public class EffectAttack : MonoBehaviour
             if (i.CompareTag("Player"))
             {
                 var k = knockback;
-                k.Set(i.transform.position.x < transform.parent.position.x ? -k.x : k.x, k.y);
+                Vector3 c;
+                if (transform.parent == null) c = transform.position;
+                else c = transform.parent.position;
+                k.Set(i.transform.position.x < c.x ? -k.x : k.x, k.y);
                 i.GetComponent<PlayerBehavior>().Hit(
                     damage,
                     (k), 
                     stun,
-                    transform.parent.position);
+                    c);
             }
         }
     }
@@ -63,6 +73,11 @@ public class EffectAttack : MonoBehaviour
     }
     public void Destroy()
     {
-        Destroy(transform.parent.gameObject);
+        if (transform.parent == null) Destroy(gameObject);
+        else
+        {
+            Destroy(transform.parent.gameObject);
+        }
+        
     }
 }
