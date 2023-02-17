@@ -52,11 +52,12 @@ public class Werewolf : Monster
             StartCoroutine(Dive());
         }
 
-        if (jumping && _isGround)
+        if (jumping && _isGround && diving)
         {
             if (gameObject.layer == 3) gameObject.layer = 8;
             jumping = false;
             _animator.SetTrigger("land");
+            diving = false;
             divingAttack = false;
         }
     }
@@ -184,7 +185,7 @@ public class Werewolf : Monster
             
             _speed = 0;
             _animator.SetTrigger("jump");
-            jumpElpased = 0.2f;
+            jumpElpased = 1f;
             _werewolfAttack.SetCanAttack(false);
             jumping = true;
             diving = false;

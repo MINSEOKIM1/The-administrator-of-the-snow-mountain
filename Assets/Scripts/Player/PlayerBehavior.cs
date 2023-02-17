@@ -442,10 +442,18 @@ public class PlayerBehavior : Entity
     
     public void Dash()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && !_isAttack && CanUtilCondition(2))
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(2))
         {
             UseUtilSkill(2);
             _playerAttack.ResetNormalAttack();
+            
+            if (_isAttack && CanUtilCondition(3))
+            {
+                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                UseUtilSkill(3);
+                _animator.SetTrigger("attackCancel");
+                StartCoroutine(MotionCancel());
+            }
 
             if (_playerInputHandler.movement.x != 0)
             {

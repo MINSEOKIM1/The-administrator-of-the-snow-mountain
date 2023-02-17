@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c332a0dfc870c48875a8cf843b7296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: WarriorStatue
+  idName: WizardStatue
 --- !u!114 &5327493055806951702
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -55,9 +55,9 @@ MonoBehaviour:
   - 0
   - 50
   utilMp:
-  - 20
+  - 5
   - 10
-  - 20
+  - 5
   - 10
   - 10
   invincibilityTime:
