@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Yongchan/MobSpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Yongchan/MobSpawnManager.cs" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +116,7 @@
       <workItem from="1674191707474" duration="3628000" />
       <workItem from="1676284638723" duration="3145000" />
       <workItem from="1676544101387" duration="1159000" />
+      <workItem from="1676619726347" duration="1737000" />
     </task>
     <servers />
   </component>
