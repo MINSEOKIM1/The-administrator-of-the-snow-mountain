@@ -35,6 +35,7 @@ public class MapManager : MonoBehaviour
         if (name.Equals(village.name)) return village;
         if (name.Equals(fork.name)) return fork;
         if (name.Equals(bastion.name)) return bastion;
+        if (name.Equals("MainMenu")) return new DungeonData();
         return null;
     }
 
