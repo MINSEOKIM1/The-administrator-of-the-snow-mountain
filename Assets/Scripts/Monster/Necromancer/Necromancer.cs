@@ -65,6 +65,7 @@ public class Necromancer : Monster
 
         if(!lowHealth && hp < maxHp/2){
             lowHealth = true;
+            _animator.SetFloat("lowHP", 1);
             lowHealthCoefficient = 2;
             Debug.Log("Low Health");
         }
@@ -222,19 +223,6 @@ public class Necromancer : Monster
 
     IEnumerator Fly()
     {
-        float tmp = _rigidbody.gravityScale;
-        _rigidbody.gravityScale = 0;
-        if (_target.transform.position.x < transform.position.x)
-        {
-            _graphicLocalScale.Set(1, 1, 1);
-            graphicTransform.localScale = _graphicLocalScale;
-        }
-        else
-        {
-            _graphicLocalScale.Set(-1, 1, 1);
-            graphicTransform.localScale = _graphicLocalScale;
-        }
-        _rigidbody.gravityScale = tmp;
 
         while (jumpElpased > 3)
         {
@@ -267,7 +255,11 @@ public class Necromancer : Monster
 
     IEnumerator delayLightning(float delayTime, Vector3 pos)
     {
-        for(int i=1; i< lightningRepeat; i++){
+        int repeat = lightningRepeat;
+        if(lowHealth){
+            repeat = lightningRepeat + 2;
+        }
+        for(int i=1; i< repeat; i++){
             yield return new WaitForSeconds(delayTime);
             if(lowHealth && i == 2){
                 Instantiate(summon, pos + Vector3.right * i * lightningDistanceInterval, Quaternion.identity);

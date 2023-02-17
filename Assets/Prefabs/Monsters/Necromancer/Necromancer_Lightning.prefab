@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c7c0e4b05e2cb44a883fe637e25a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxSize: {x: 1.5, y: 6}
+  boxSize: {x: 3, y: 12}
   boxOffset: {x: 0, y: 0.5}
   damage: 15
   atkKnockback: {x: 1, y: 1}

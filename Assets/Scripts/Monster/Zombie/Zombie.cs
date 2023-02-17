@@ -108,6 +108,11 @@ public class Zombie : Monster
         base.Die();
     }
 
+    public int shakeCnt;
+
+    public float shakeDuration;
+    public float shakeDelay;
+
     public void Attack0()
     {
         if (CanAttackLogic())
@@ -117,15 +122,32 @@ public class Zombie : Monster
             _speed = 0;
             _animator.SetFloat("attackNum", 0);
             _animator.SetTrigger("attack");
-            dir = (_target.transform.position - transform.position).normalized;
-            dir.y = 0;
-            dir.x /= Mathf.Abs(dir.x);
             
             _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
             _monsterAttack.SetAttackInfo(
                 _monsterInfo.attackKnockback[0], 
                 _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
                 _monsterInfo.attackStunTime[0]);
+            
+            StartCoroutine(delayShake(shakeDelay));
+        }
+    }
+
+    IEnumerator delayShake(float delayTime)
+    {
+        yield return new WaitForSeconds(0.1f);
+        var dir = (_target.transform.position - transform.position).normalized;
+        dir.y = 0;
+        dir.x /= Mathf.Abs(dir.x);
+        for(int i=1;i<shakeCnt+1;i++){
+            if(i==1){ 
+                yield return new WaitForSeconds(1.0f);
+            }
+            else{
+                yield return new WaitForSeconds(delayTime);
+            }
+            var shake = Instantiate(projectile[0], transform.position + dir * i, Quaternion.identity);
+            Destroy(shake, shakeDuration);
         }
     }
 
@@ -145,25 +167,13 @@ public class Zombie : Monster
     public void CloneProjectile0()
     {
         int attackNum = (int)_animator.GetFloat("attackNum");
-        var proj = attackNum==0 ? Instantiate(projectile[attackNum],transform.position, Quaternion.identity) : Instantiate(projectile[attackNum],transform.position + Vector3.up * height, Quaternion.identity);
-        if(attackNum ==1 ){
-            dir = (_target.transform.position - (transform.position + Vector3.up)).normalized;
-        }
-        if(attackNum == 0){
-            proj.GetComponent<ZombieShake>().SetInfo(
+        var proj = Instantiate(projectile[attackNum],transform.position + Vector3.up * height, Quaternion.identity);
+        var dir = (_target.transform.position - (transform.position + Vector3.up)).normalized;
+        proj.GetComponent<MonsterProjectile>().SetInfo(
             false, 
             dir * projSpeed[attackNum],
             _monsterInfo.attackKnockback[attackNum],
             _monsterInfo.atk * _monsterInfo.attackCoefficient[attackNum],
             _monsterInfo.attackStunTime[attackNum]);
-        }
-        else{
-            proj.GetComponent<MonsterProjectile>().SetInfo(
-            false, 
-            dir * projSpeed[attackNum],
-            _monsterInfo.attackKnockback[attackNum],
-            _monsterInfo.atk * _monsterInfo.attackCoefficient[attackNum],
-            _monsterInfo.attackStunTime[attackNum]);
-        }
     }
 }
