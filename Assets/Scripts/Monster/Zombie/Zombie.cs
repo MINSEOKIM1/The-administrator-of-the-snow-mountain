@@ -27,7 +27,7 @@ public class Zombie : Monster
         _monsterInfo = (MonsterInfo)entityInfo;
         _monsterAttack = GetComponentInChildren<MonsterAttack>();
         _attackMethods = new Attack[2];
-        _attackMethods[0] = Attack1;
+        _attackMethods[0] = Attack0;
         _attackMethods[1] = Attack1;
         _monsterAttack.projectileMethod += (() => CloneProjectile0());
     }

@@ -12,6 +12,8 @@ public class PortalManager : MonoBehaviour
     {
         get => GameManager.Instance.MapManager;
     }
+
+    private GameSceneManager GameSceneManager => GameManager.Instance.GameSceneManager;
     [SerializeField] private GameObject[] portals;
 
     public void ChangeScene(string portalName)
@@ -26,37 +28,37 @@ public class PortalManager : MonoBehaviour
         switch (portalName)
         {
             case "Village":
-                SceneManager.LoadScene("Village");
+                GameSceneManager.LoadScene("Village");
                 break;
             case "Bastion":
-                SceneManager.LoadScene("Bastion");
+                GameSceneManager.LoadScene("Bastion");
                 break;
             case "Fork":
-                SceneManager.LoadScene("Fork");
+                GameSceneManager.LoadScene("Fork");
                 break;
             case "WolfA":
-                SceneManager.LoadScene("WolfA");
+                GameSceneManager.LoadScene("WolfA");
                 break;
             case "WolfB":
-                SceneManager.LoadScene("WolfB");
+                GameSceneManager.LoadScene("WolfB");
                 break;
             case "WhiteA":
-                SceneManager.LoadScene("WhiteA");
+                GameSceneManager.LoadScene("WhiteA");
                 break;
             case "WhiteB":
-                SceneManager.LoadScene("WhiteB");
+                GameSceneManager.LoadScene("WhiteB");
                 break;
             case "StoneA":
-                SceneManager.LoadScene("StoneA");
+                GameSceneManager.LoadScene("StoneA");
                 break;
             case "StoneB":
-                SceneManager.LoadScene("StoneB");
+                GameSceneManager.LoadScene("StoneB");
                 break;
             case "ZombieA":
-                SceneManager.LoadScene("ZombieA");
+                GameSceneManager.LoadScene("ZombieA");
                 break;
             case "ZombieB":
-                SceneManager.LoadScene("ZombieB");
+                GameSceneManager.LoadScene("ZombieB");
                 break;
         }
     }

@@ -10,10 +10,11 @@ public class UIManager : MonoBehaviour
     [field: SerializeField] public ConversationUI ConservationUI { get; private set; }
 
     [field: SerializeField] public MapUI MapUI { get; private set; }
+    [field: SerializeField] public GameObject PlayerDataUI { get; private set; }
 
     public GameObject fadeCanvas;
 
-    [Tooltip("0: inventory\n1: equipment")]
+    [Tooltip("0: inventory\n1: equipment\n2:MapUI")]
     public GameObject[] uiCanvas;
     private void Start()
     {

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public AudioManager AudioManager { get; private set; }
     [field: SerializeField] public EffectManager EffectManager { get; private set; }
     [field: SerializeField] public MapManager MapManager { get; private set; }
+    [field: SerializeField] public DataManager DataManager { get; private set; }
+    [field: SerializeField] public GameSceneManager GameSceneManager { get; private set; }
     /*
     public GameStateManager GameStateManager { get; private set; }
 
@@ -36,5 +38,7 @@ public class GameManager : MonoBehaviour
         if (AudioManager == null) AudioManager = GetComponentInChildren<AudioManager>();
         if (EffectManager == null) EffectManager = GetComponentInChildren<EffectManager>();
         if (MapManager == null) MapManager = GetComponentInChildren<MapManager>();
+        if (DataManager == null) DataManager = GetComponentInChildren<DataManager>();
+        if (GameSceneManager == null) GameSceneManager = GetComponentInChildren<GameSceneManager>();
     }
 }

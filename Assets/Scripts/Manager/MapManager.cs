@@ -5,9 +5,10 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
 public class MapManager : MonoBehaviour
 {
-    private float playTime;
+    public float playTime;
     public MapManager sceneInfo
     {
         get => this;
@@ -20,10 +21,26 @@ public class MapManager : MonoBehaviour
     public ForkData fork;
     public BastionData bastion;
 
+    public float[] spawnRate;
+
     public float globalRate;
+
+    public DungeonData GetMapWithString(string name)
+    {
+        foreach (var i in dungeons)
+        {
+            if (name.Equals(i.name)) return i;
+        }
+
+        if (name.Equals(village.name)) return village;
+        if (name.Equals(fork.name)) return fork;
+        if (name.Equals(bastion.name)) return bastion;
+        return null;
+    }
 
     private void Update()
     {
+        playTime += Time.deltaTime;
         for (int idx = 1; idx < 8; idx += 2)
         {
             sceneInfo.dungeons[idx].time += Time.deltaTime * globalRate;
