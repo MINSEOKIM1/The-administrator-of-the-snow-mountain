@@ -168,7 +168,7 @@ public abstract class Entity : MonoBehaviour
                     _canJump = true;
                 }
                 // available slope
-                else if (Vector2.Angle(Vector2.up, hit.normal) < 45)
+                else if (Vector2.Angle(Vector2.up, hit.normal) < 60)
                 {
                     _inSlope = true;
                     _isGround = true;

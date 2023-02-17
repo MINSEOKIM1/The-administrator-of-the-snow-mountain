@@ -28,6 +28,7 @@ public class PlayerInfo : EntityInfo
      * 3 : attack cancel
      * 4 : wall jump
      */
+    [Tooltip("0:backstep\n1:wall\n2:dash\n3:attackCancel\n4:wallJump")]
     public float[] utilMp;
     
     /*

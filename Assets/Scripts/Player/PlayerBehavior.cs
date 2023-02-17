@@ -170,7 +170,7 @@ public class PlayerBehavior : Entity
                         !_isAttack &&
                         hit.collider.gameObject.GetComponent<PlatformEffector2D>() == null &&
                         wallJump <= 0 &&
-                        CanUtilCondition(1, Time.deltaTime) && canWall && !_hitAir)
+                        CanUtilCondition(1, Time.deltaTime) && canWall && !_hitAir && Mathf.Abs(externalSpeed) < 0.1f)
                     {
                         UseUtilSkill(1, Time.deltaTime);
                         if ((int)_playerInputHandler.movement.x == -(int)graphicTransform.localScale.x)
@@ -341,6 +341,8 @@ public class PlayerBehavior : Entity
             _playerAttack.ResetNormalAttack();
         }
 
+        if (isClimb) isClimb = false;
+
         KnockBack(GetKnockback(knockback, entityInfo.stance));
     }
 
@@ -440,10 +442,18 @@ public class PlayerBehavior : Entity
     
     public void Dash()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && !_isAttack && CanUtilCondition(2))
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(2))
         {
             UseUtilSkill(2);
             _playerAttack.ResetNormalAttack();
+            
+            if (_isAttack && CanUtilCondition(3))
+            {
+                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                UseUtilSkill(3);
+                _animator.SetTrigger("attackCancel");
+                StartCoroutine(MotionCancel());
+            }
 
             if (_playerInputHandler.movement.x != 0)
             {

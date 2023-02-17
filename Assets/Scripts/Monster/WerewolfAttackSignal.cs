@@ -6,6 +6,7 @@ public class WerewolfAttackSignal : MonoBehaviour
 {
     public bool canAttack;
     public int consecutiveAttack;
+    
 
     public void CanAttack()
     {

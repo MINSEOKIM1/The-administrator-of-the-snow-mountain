@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0cc3f0af58a46a4b22e6fce089368b, type: 3}
+  m_Name: Yeti
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  accel: 0.5
+  jumpPower: 31.9
+  backStepPower: {x: 0, y: 0}
+  maxHp: 1000
+  maxMp: 100
+  hpIncRate: 2
+  mpIncRate: 5
+  atk: 30
+  def: 120021
+  stance: 1
+  stateChangeInterval: 3
+  boxSize: {x: 6.98, y: 6.59}
+  boxOffset: {x: -4.32, y: 0}
+  attackDetectBoxes:
+  - {x: 46.88, y: 4.13}
+  - {x: 36.5, y: 12.38}
+  attackBoundaryBoxes:
+  - {x: 6.69, y: 6.28}
+  - {x: 4.49, y: 5.72}
+  attackBoundaryOffsets:
+  - {x: -1.27, y: 0.94}
+  - {x: -2, y: 0.81}
+  attackCoefficient:
+  - 5
+  - 3
+  - 2
+  - 0.3
+  attackStunTime:
+  - 1
+  - 0
+  - 1
+  - 1
+  attackKnockback:
+  - {x: 6, y: 8}
+  - {x: 4.93, y: 8}
+  - {x: 8, y: 8}
+  - {x: 0, y: 8}
+  attackMp:
+  - 0
+  - 0
+  - 100
+  dropItems:
+  - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
+  - {fileID: 11400000, guid: baf2a4da36e6f4b0a8c7ac6317ec7d35, type: 2}
+  - {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
+  - {fileID: 11400000, guid: fa148d41524ee4d198f55c9e0b37c937, type: 2}
+  itemDropProbability:
+  - 0.5
+  - 1
+  - 1
+  - 1
+  itemDropCount: 03000000030000000300000003000000
+  exp: 100
+  perceiveTime: 30

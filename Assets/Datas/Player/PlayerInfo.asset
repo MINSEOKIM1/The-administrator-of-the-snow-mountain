@@ -18,9 +18,9 @@ MonoBehaviour:
   backStepPower: {x: 5, y: 3}
   maxHp: 100
   maxMp: 100
-  hpIncRate: 1
+  hpIncRate: 100
   mpIncRate: 1
-  atk: 100
+  atk: 0
   def: 30
   stance: 0
   attackKnockback:
@@ -55,9 +55,9 @@ MonoBehaviour:
   - 0
   - 50
   utilMp:
-  - 20
+  - 5
   - 10
-  - 20
+  - 5
   - 10
   - 10
   invincibilityTime:
