@@ -15,7 +15,7 @@ public class Zombie : Monster
     public Vector2 dir;
     public float height;
     public GameObject breath;
-    
+
     // from Monster's info... (MonsterInfo class will be made later)
     public Vector2[] attackDetectBoxes => ((MonsterInfo)entityInfo).attackDetectBoxes;
     public Vector2[] attackBoundaryBoxes => ((MonsterInfo)entityInfo).attackBoundaryBoxes;

@@ -11,6 +11,8 @@ public class Necromancer : Monster
     private MonsterAttack _monsterAttack;
     private NecromancerAttackSignal _necromancerAttack;
     
+    public Transform spawnPos;
+    
     // from Monster's info... (MonsterInfo class will be made later)
     public Vector2[] attackDetectBoxes => ((MonsterInfo)entityInfo).attackDetectBoxes;
     public Vector2[] attackBoundaryBoxes => ((MonsterInfo)entityInfo).attackBoundaryBoxes;
@@ -178,17 +180,12 @@ public class Necromancer : Monster
     public void CloneProjectile0()
     {
         var dir = (_target.transform.position - transform.position).normalized;
-        var proj = Instantiate(projectile, transform.position + (Vector3.up * height) + (Vector3.right * dir.x * armLength), Quaternion.identity);
-        dir = (_target.transform.position - (transform.position + (Vector3.up * height) + (Vector3.right * dir.x * armLength))).normalized;
-        proj.GetComponent<NecromancerProjectile>().SetInfo(
-            false, 
-            dir * projSpeed * lowHealthCoefficient,
-            _monsterInfo.attackKnockback[0],
-            lowHealthCoefficient * _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
-            _monsterInfo.attackStunTime[0],
-            explosionObj,
-            explosionDuration
-            );
+        var proj = Instantiate(projectile, spawnPos.position, Quaternion.identity);
+        dir = (_target.transform.position - spawnPos.position).normalized;
+        proj.GetComponentInChildren<MonsterProjectile>().SetInfo(
+            false, dir * projSpeed,
+            _monsterInfo.attackKnockback[0], _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
+            _monsterInfo.attackStunTime[0], true);
     }
 
     
@@ -249,7 +246,6 @@ public class Necromancer : Monster
         pos.y += lightningPosY;
         var _obj = Instantiate(obj, pos, Quaternion.identity);
         Destroy(_obj, lightningDuration);
-        Instantiate(summon, pos, Quaternion.identity);
         StartCoroutine(delayLightning(lightningTimeInterval, pos));
     }
 
@@ -259,8 +255,15 @@ public class Necromancer : Monster
         if(lowHealth){
             repeat = lightningRepeat + 2;
         }
+
+        bool a = false;
         for(int i=1; i< repeat; i++){
             yield return new WaitForSeconds(delayTime);
+            if (!a)
+            {
+                a = true;
+                Instantiate(summon, pos, Quaternion.identity);
+            }
             if(lowHealth && i == 2){
                 Instantiate(summon, pos + Vector3.right * i * lightningDistanceInterval, Quaternion.identity);
                 Instantiate(summon, pos + Vector3.left * i * lightningDistanceInterval, Quaternion.identity);
@@ -277,6 +280,4 @@ public class Necromancer : Monster
         yield return new WaitForSeconds(cooldown);
         canSkill[skillNum] = true;
     }
-
-
 }

@@ -16,6 +16,16 @@ public class Lightning : MonoBehaviour
 
     private void Start() {
         _time = 100.0f;
+        Vector2 pos = transform.parent.position;
+        var aa = Physics2D.RaycastAll(transform.parent.position, Vector2.down, 100);
+        foreach (var a in aa)
+        {
+            if (a.collider.CompareTag("Ground"))
+            {
+                transform.parent.position = a.point;
+                break;
+            }
+        }
     }
     
     private void Update()

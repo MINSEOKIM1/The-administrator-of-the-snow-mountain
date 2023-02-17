@@ -34,6 +34,27 @@ public class EffectAttack : MonoBehaviour
         this.knockback = knockback;
         transform.localScale = localScale;
     }
+    
+    public void SetInfo(float damage, float stun, Vector2 knockback, Vector3 localScale, bool groundEffect)
+    {
+        this.damage = damage;
+        this.stun = stun;
+        this.knockback = knockback;
+
+        if (groundEffect)
+        {
+            Vector2 pos = transform.parent.position;
+            var aa = Physics2D.RaycastAll(transform.parent.position, Vector2.down, 100);
+            foreach (var a in aa)
+            {
+                if (a.collider.CompareTag("Ground"))
+                {
+                    transform.parent.position = a.point;
+                    break;
+                }
+            }
+        }
+    }
 
     public void AttackCheck()
     {

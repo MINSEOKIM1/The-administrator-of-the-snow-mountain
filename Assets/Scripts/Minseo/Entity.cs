@@ -35,7 +35,7 @@ public abstract class Entity : MonoBehaviour
     public float def => entityInfo.def;
     
     // Entity's children gameObjects (player graphic, spawn location, fool position, hand position, etc.)
-    [SerializeField] protected Transform footPos;
+    [SerializeField] public Transform footPos;
     [SerializeField] protected Transform graphicTransform;
     [SerializeField] protected Slider stunEffect;
     
