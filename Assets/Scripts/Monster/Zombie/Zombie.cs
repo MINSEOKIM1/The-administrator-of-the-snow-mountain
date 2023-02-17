@@ -10,8 +10,11 @@ public class Zombie : Monster
 
     private MonsterAttack _monsterAttack;
 
-    public GameObject projectile;
-    public float projSpeed;
+    public GameObject[] projectile;
+    public float[] projSpeed;
+    public Vector2 dir;
+    public float height;
+    public GameObject breath;
     
     // from Monster's info... (MonsterInfo class will be made later)
     public Vector2[] attackDetectBoxes => ((MonsterInfo)entityInfo).attackDetectBoxes;
@@ -114,6 +117,9 @@ public class Zombie : Monster
             _speed = 0;
             _animator.SetFloat("attackNum", 0);
             _animator.SetTrigger("attack");
+            dir = (_target.transform.position - transform.position).normalized;
+            dir.y = 0;
+            dir.x /= Mathf.Abs(dir.x);
             
             _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
             _monsterAttack.SetAttackInfo(
@@ -129,6 +135,7 @@ public class Zombie : Monster
         {
             _capsuleCollider.sharedMaterial = little;
             
+            
             _speed = 0;
             _animator.SetFloat("attackNum", 1);
             _animator.SetTrigger("attack");
@@ -137,14 +144,26 @@ public class Zombie : Monster
 
     public void CloneProjectile0()
     {
-        var proj = Instantiate(projectile, transform.position, Quaternion.identity);
-        var dir = (_target.transform.position - transform.position).normalized;
-        proj.GetComponent<MonsterProjectile>().SetInfo(
+        int attackNum = (int)_animator.GetFloat("attackNum");
+        var proj = attackNum==0 ? Instantiate(projectile[attackNum],transform.position, Quaternion.identity) : Instantiate(projectile[attackNum],transform.position + Vector3.up * height, Quaternion.identity);
+        if(attackNum ==1 ){
+            dir = (_target.transform.position - (transform.position + Vector3.up)).normalized;
+        }
+        if(attackNum == 0){
+            proj.GetComponent<ZombieShake>().SetInfo(
             false, 
-            dir * projSpeed,
-            _monsterInfo.attackKnockback[1],
-            _monsterInfo.atk * _monsterInfo.attackCoefficient[1],
-            _monsterInfo.attackStunTime[1]);
+            dir * projSpeed[attackNum],
+            _monsterInfo.attackKnockback[attackNum],
+            _monsterInfo.atk * _monsterInfo.attackCoefficient[attackNum],
+            _monsterInfo.attackStunTime[attackNum]);
+        }
+        else{
+            proj.GetComponent<MonsterProjectile>().SetInfo(
+            false, 
+            dir * projSpeed[attackNum],
+            _monsterInfo.attackKnockback[attackNum],
+            _monsterInfo.atk * _monsterInfo.attackCoefficient[attackNum],
+            _monsterInfo.attackStunTime[attackNum]);
+        }
     }
-
 }
