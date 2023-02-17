@@ -37399,14 +37399,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 0
   points:
-  - {fileID: 1134199188489114847}
   - {fileID: 1134199190205598946}
   - {fileID: 1134199189884391783}
   - {fileID: 1134199189939776965}
   - {fileID: 1134199189257692449}
+  - {fileID: 1134199188489114847}
   curMobs: 
   maxMobs: 
   mix: 1
+  floorMobs: 
+  floorMax: 
   curMob: 0
 --- !u!4 &1134199190242032669
 Transform:

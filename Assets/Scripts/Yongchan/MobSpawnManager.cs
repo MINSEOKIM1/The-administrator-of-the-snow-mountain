@@ -20,7 +20,9 @@ public class MobSpawnManager : MonoBehaviour
     public int[] curMobs;
     public int[] maxMobs;
     public bool mix;
-
+    public int[] floorMobs;
+    public int[] floorMax;
+    
     private SimplePoolManager pooler;
     public int curMob;
     private void Awake()
@@ -30,6 +32,8 @@ public class MobSpawnManager : MonoBehaviour
         instance = this;
         pooler = GetComponent<SimplePoolManager>();
         count = 0;
+        floorMobs = new int[5];
+        floorMax = new int[] { 5, 3, 3, 3 };
     }
     
     private void Update()
@@ -48,13 +52,14 @@ public class MobSpawnManager : MonoBehaviour
                 {
                     curMobs[index]++;
                     int pos = 0;
-                    if (curMobs[index] < 6)
+                    if (floorMobs[index] < floorMax[index])
                     {
-                        pos = 0;    
+                        pos = index;
+                        floorMobs[index]++;
                     }
                     else
                     {
-                        pos = Random.Range(1, points.Length);
+                        pos = Shuffle(index);
                     }
                     Spawn(index, pos);
                 }
@@ -70,6 +75,72 @@ public class MobSpawnManager : MonoBehaviour
                 Spawn();
             }    
         }
+    }
+
+    private int Shuffle(int index)
+    {
+        int pos = 4;
+        switch (index)
+        {
+            case 0:
+                for (int i = 1; i < 4; i++)
+                {
+                    if (floorMobs[i] < floorMax[i])
+                    {
+                        floorMobs[i]++;
+                        pos = i;
+                        break;
+                    } 
+                }
+                break;
+            case 1:
+                if (floorMobs[0] < floorMax[0])
+                {
+                    floorMobs[0]++;
+                    pos = 0;
+                    break;
+                } 
+                for (int i = 2; i < 4; i++)
+                {
+                    if (floorMobs[i] < floorMax[i])
+                    {
+                        floorMobs[i]++;
+                        pos = i;
+                        break;
+                    } 
+                }
+                break;
+            case 2:
+                for (int i = 0; i < 2; i++)
+                {
+                    if (floorMobs[i] < floorMax[i])
+                    {
+                        floorMobs[i]++;
+                        pos = i;
+                        break;
+                    } 
+                }
+                if (floorMobs[3] < floorMax[3])
+                {
+                    floorMobs[3]++;
+                    pos = 3;
+                    break;
+                } 
+                break;
+            case 3:
+                for (int i = 0; i < 3; i++)
+                {
+                    if (floorMobs[i] < floorMax[i])
+                    {
+                        floorMobs[i]++;
+                        pos = i;
+                        break;
+                    } 
+                }
+                break;
+        }
+
+        return pos;
     }
 
     void Spawn()
