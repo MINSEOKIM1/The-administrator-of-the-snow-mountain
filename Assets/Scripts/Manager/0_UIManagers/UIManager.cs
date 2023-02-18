@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -49,6 +50,14 @@ public class UIManager : MonoBehaviour
             {
                 uiCanvas[i].SetActive(false);
             }
+        }
+    }
+
+    public void OnESC(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            Application.Quit();
         }
     }
 }

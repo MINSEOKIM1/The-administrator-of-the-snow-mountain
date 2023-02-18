@@ -6,70 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Consumable/Meat.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Consumable/Meat.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Consumable/TESTMEAT.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Consumable/TESTMEAT.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/ETC/TestItem2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/Sword.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/Sword.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestBottom.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestBottom.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestHat.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestHat.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestTop.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/TestTop.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/DevilStatue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/DevilStatue.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Necromancer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Necromancer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Stone.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Stone.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/WarriorStatue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/WarriorStatue.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Werewolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Werewolf.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/WizzardStatue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/WizzardStatue.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Yeti.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Yeti.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Zombie.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Zombie.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/GameManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monsters/DevilStatue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monsters/DevilStatue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Icicle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Icicle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Stone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Zombie.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Zombie.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/PlayerTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Bastion.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Bastion.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/DungeonData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/DungeonData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/2_Equipment/EquipmentUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/2_Equipment/EquipmentUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/3_PlayerDataUI/PlayerDataUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/3_PlayerDataUI/PlayerDataUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/SmithyUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/SmithyUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/Player.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/Player.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameSceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameSceneManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/AIPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/AIPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Yongchan/MobSpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Yongchan/MobSpawnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Yongchan/SimplePoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Yongchan/SimplePoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
