@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f61233c4c6814d02aa1dcf4580b30c0, type: 3}
+  m_Name: 20_WolfTeeth
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 20
+  itemName: "\uB291\uB300\uC758 \uC774\uBE68"
+  itemDescription: "\uB291\uB300\uC758 \uC774\uBE68\uC774\uB2E4. \uC591\uCE58\uC9C8\uC744
+    \uC798 \uD55C \uBAA8\uC591\uC774\uB2E4."
+  itemIcon: {fileID: 1658689236, guid: 50dbd6750dede496e88eb6d8ac263873, type: 3}
+  maxCount: 300

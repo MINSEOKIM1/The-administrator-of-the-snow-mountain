@@ -45,6 +45,14 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private GraphicRaycaster graphic;
     [SerializeField] private Image dragImage;
     [SerializeField] private RectTransform dragImagePos;
+    
+    private void Start()
+    {
+        InitSlots();
+        selectedItemImage.sprite = null;
+        selectedItemName.text = "";
+        selectedItemDescription.text = "";
+    }
 
 #if UNITY_EDITOR
     [SerializeField] private bool __showPreview = false;
@@ -61,14 +69,6 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private float __prevAlpha;
     private bool __prevShow = false;
     private bool __prevMouseReversed = false;
-
-    private void Start()
-    {
-        InitSlots();
-        selectedItemImage.sprite = null;
-        selectedItemName.text = "";
-        selectedItemDescription.text = "";
-    }
 
     private void OnValidate()
     {
@@ -369,6 +369,27 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             selectedItemImage.color = new Color(1, 1, 1, 1);
             selectedItemName.text = item.item.itemName;
             selectedItemDescription.text = item.item.itemDescription;
+
+            string total = "\n\n";
+            try
+            {
+                var ii = (EquipmentItemInfo)item.item;
+                if (ii.atk != 0) total += "ATK +" + ii.atk + "\n";
+                if (ii.def != 0) total += "DEF +" + ii.def + "\n";
+                if (ii.hp != 0) total += "HP +" + ii.hp + "\n";
+                if (ii.mp != 0) total += "MP +" + ii.mp + "\n";
+                if (ii.hpIncRate != 0) total += "HP 회복 +" + ii.hpIncRate + "\n";
+                if (ii.mpIncRate != 0) total += "MP 회복 +" + ii.mpIncRate + "\n";
+                if (ii.stance != 0) total += "STANCE +" + (ii.stance * 100) + "%\n";
+                if (ii.atkSpeed != 0) total += "공격속도 :" + ii.atkSpeed + "\n";
+            }
+            catch (Exception e)
+            {
+                total = "";
+            }
+            
+            selectedItemDescription.text = item.item.itemDescription + total;
+
             switch (item.item.GetUseOption())
             {
                 case 0 :

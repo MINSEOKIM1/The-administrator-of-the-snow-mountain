@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Yongchan/MainMenu.unity
-    guid: 7cbaf55b0258b36459d81393837baf20
+    path: Assets/Scenes/Minseo/MainMenu.unity
+    guid: 2e6ab6d274413437688905cbbbc12e9f
   - enabled: 1
     path: Assets/Scenes/Yongchan/Village.unity
     guid: ad67ad293a18cb54da31ea71b37e3ac8
@@ -42,6 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Yongchan/ZombieB.unity
     guid: b8aaa96f9f0516f408bf78552c65fa86
   - enabled: 1
-    path: Assets/Scenes/Yongchan/GameOver.unity
-    guid: 7f6f7a4647551654fbc733b3e7c8659a
+    path: Assets/Scenes/Minseo/GameOverScene.unity
+    guid: c260c4ca9dd644e97a0bf58666edcaae
   m_configObjects: {}

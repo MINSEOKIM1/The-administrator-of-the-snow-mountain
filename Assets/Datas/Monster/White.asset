@@ -38,22 +38,24 @@ MonoBehaviour:
   - 1
   - 1
   attackStunTime:
-  - 1
-  - 1
+  - 0
+  - 0
   attackKnockback:
-  - {x: 1, y: 8}
   - {x: 1, y: 3}
+  - {x: 1, y: 1}
   attackMp:
   - 0
   - 50
   dropItems:
-  - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
-  - {fileID: 11400000, guid: c49822574ec0642cf8b9b7c5fd1b2f71, type: 2}
-  - {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
+  - {fileID: 11400000, guid: 25d10c1d64f904e19906ce39957c65c8, type: 2}
+  - {fileID: 11400000, guid: 2a117c2b7580f409c89bc34cecc15202, type: 2}
+  - {fileID: 11400000, guid: 414f31a5264994f39a7ef3725ef4389a, type: 2}
+  - {fileID: 11400000, guid: ff03d84e45b6d4050b10e2f4feb5557b, type: 2}
   itemDropProbability:
-  - 0.5
   - 1
   - 1
-  itemDropCount: 030000000a00000005000000
+  - 1
+  - 1
+  itemDropCount: 03000000030000000300000001000000
   exp: 10
   perceiveTime: 10

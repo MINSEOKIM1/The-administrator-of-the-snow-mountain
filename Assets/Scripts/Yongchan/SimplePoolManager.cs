@@ -45,6 +45,13 @@ public class SimplePoolManager : MonoBehaviour
             }
         }
 
+        if (select == null)
+        {
+            var c = Instantiate(prefabs[index], roots[index]);
+            c.SetActive(false);
+            pools[index].Add(c);
+        }
+
         return select;
     }
 }

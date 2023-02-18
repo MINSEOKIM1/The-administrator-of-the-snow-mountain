@@ -121,6 +121,7 @@ public class SmithyUI : MonoBehaviour
                 if (GameManager.Instance.PlayerDataManager.inventory.CountItem(i.item) < i.count)
                 {
                     // FAIL! -- there is no sufficient ingredients...
+                    Debug.Log("there is no sufficient ingredients...");
                     throw new NotImplementedException();
                 }
             }
@@ -135,6 +136,7 @@ public class SmithyUI : MonoBehaviour
             else
             {
                 // FAIL! -- there is no space for storing the result item...
+                Debug.Log("there is no space for storing the result item...");
                 throw new NotImplementedException();
             }
         }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerDataUI : MonoBehaviour
 {
     public Slider hpBar, mpBar, fullnessBar, expBar;
-    public TMP_Text hpText, mpText, fullnessText, expText;
+    public TMP_Text hpText, mpText, fullnessText, expText, lvText;
     public float changeRate;
     
     public PlayerDataManager PlayerDataManager
@@ -38,5 +38,6 @@ public class PlayerDataUI : MonoBehaviour
         mpText.text = "" + (int)PlayerDataManager.mp + " / " + (int)PlayerDataManager.maxMp;
         fullnessText.text = "" + (int)PlayerDataManager.saturation + " / " + (int)PlayerDataManager.maxSaturation;
         expText.text = "" + (int)PlayerDataManager.exp + " / " + (int)PlayerDataManager.maxExp;
+        lvText.text = "LEVEL. " + PlayerDataManager.level;
     }
 }

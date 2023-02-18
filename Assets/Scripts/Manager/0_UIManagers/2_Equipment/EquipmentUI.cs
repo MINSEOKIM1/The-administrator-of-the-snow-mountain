@@ -81,7 +81,7 @@ public class EquipmentUI : MonoBehaviour
         total += "MP +" + mp + "\n";
         total += "HP 회복 +" + hpIncRate + "\n";
         total += "MP 회복 +" + mpIncRate + "\n";
-        total += "STANCE +" + stance + "\n";
+        total += "STANCE +" + (stance*100) + "%\n";
 
         totalInfo.text = total;
     }

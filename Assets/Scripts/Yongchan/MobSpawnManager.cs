@@ -22,7 +22,11 @@ public class MobSpawnManager : MonoBehaviour
     public bool mix;
     public int[] floorMobs;
     public int[] floorMax;
-    
+
+    public bool bossOn;
+    public Transform[] bossPoints;
+    public GameObject[] bosses;
+
     private SimplePoolManager pooler;
     public int curMob;
     private void Awake()
@@ -38,7 +42,7 @@ public class MobSpawnManager : MonoBehaviour
     
     private void Update()
     {
-        if (pooler.poolReady == false) return;
+        if (pooler.poolReady == false || GameManager.Instance.GameSceneManager.changing) return;
         if (mix)
         {
             if(sceneinfo.currentSceneName == "Bastion")
@@ -73,7 +77,40 @@ public class MobSpawnManager : MonoBehaviour
             {
                 count++;
                 Spawn();
-            }    
+            }
+
+            if (!bossOn)
+            {
+                switch (sceneinfo.currentSceneName)
+                {
+                    case "WolfB":
+                        bossOn = sceneinfo.dungeons[1].boss;
+                        if (bossOn) BossSpawn();
+                        break;
+                    case "WhiteB":
+                        bossOn = sceneinfo.dungeons[3].boss;
+                        if (bossOn) BossSpawn();
+                        break;
+                    case "StoneB":
+                        bossOn = sceneinfo.dungeons[5].boss;
+                        if (bossOn) BossSpawn();
+                        break;
+                    case "ZombieB":
+                        bossOn = sceneinfo.dungeons[7].boss;
+                        if (bossOn) BossSpawn();
+                        break;
+                }
+            }
+        }
+    }
+
+    public void BossSpawn()
+    {
+        Debug.Log("BOSSSPAWN!");
+        for (int i = 0; i < bosses.Length; i++)
+        {
+            bosses[i].SetActive(true);
+            bosses[i].transform.position = bossPoints[i].position;
         }
     }
 
@@ -146,10 +183,12 @@ public class MobSpawnManager : MonoBehaviour
     void Spawn()
     {
         int index = Random.Range(0, pooler.prefabs.Length);
+        int c = 0;
         while (pooler.Get(index) == null)
         {
             Debug.Log(index);
             index++;
+            c++;
             if (index >= pooler.prefabs.Length)
                 index = 0;
         }
@@ -202,6 +241,14 @@ public class MobSpawnManager : MonoBehaviour
         }
 
         return 0;
+    }
+
+    public void BossDie(String name)
+    {
+        var c = sceneinfo.GetMapWithString(name);
+        c.bossTime = 0;
+        c.boss = false;
+        bossOn = false;
     }
 
     public void MobDie(String name, String idName)

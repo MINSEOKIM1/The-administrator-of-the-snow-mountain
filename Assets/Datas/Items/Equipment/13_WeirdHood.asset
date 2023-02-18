@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7768e07093a40859a7e64b2e40fa4d, type: 3}
+  m_Name: 13_WeirdHood
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 13
+  itemName: "\uC774\uC0C1\uD55C \uD6C4\uB4DC"
+  itemDescription: "\uBB54\uAC00 \uBB54\uAC00\uC778 \uD6C4\uB4DC\uB2E4."
+  itemIcon: {fileID: 1953729763, guid: 2897f0e1ff03443deb7f1d70a7013477, type: 3}
+  maxCount: 1
+  equipmentPart: 0
+  stats:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  atk: 40
+  def: -10
+  hp: -20
+  mp: 70
+  hpIncRate: 0
+  mpIncRate: 5
+  stance: 0
+  atkSpeed: 0
+  IngredientCountPairs:
+  - item: {fileID: 11400000, guid: f902aa817c11a43dfbb8994115de363f, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 84f2b16e3a6cf43d99e7933f2a780c3e, type: 2}
+    count: 3

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f61233c4c6814d02aa1dcf4580b30c0, type: 3}
+  m_Name: 38_UncookedMeat
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 38
+  itemName: "\uC694\uB9AC\uB418\uC9C0 \uC54A\uC740 \uACE0\uAE30"
+  itemDescription: "\uBA39\uC73C\uBA74 \uC548 \uB420 \uAC83 \uAC19\uC740 \uACE0\uAE30\uB2E4.
+    \uC694\uB9AC\uC0AC\uC5D0\uAC8C \uBD80\uD0C1\uD574\uC11C \uB9DB\uC788\uB294 \uACE0\uAE30\uB97C
+    \uBA39\uC790."
+  itemIcon: {fileID: 21300000, guid: ca1c71cffc8cf4579843205645a886ae, type: 3}
+  maxCount: 300

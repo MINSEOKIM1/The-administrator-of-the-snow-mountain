@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f61233c4c6814d02aa1dcf4580b30c0, type: 3}
+  m_Name: 24_BlueGem
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 24
+  itemName: "\uD478\uB978 \uBCF4\uC11D"
+  itemDescription: "\uD478\uB978 \uBCF4\uC11D\uC774\uB2E4. \uB9C8\uBC95\uC758 \uD798\uC774
+    \uB290\uAEF4\uC9C4\uB2E4."
+  itemIcon: {fileID: -1334639596, guid: 50dbd6750dede496e88eb6d8ac263873, type: 3}
+  maxCount: 300

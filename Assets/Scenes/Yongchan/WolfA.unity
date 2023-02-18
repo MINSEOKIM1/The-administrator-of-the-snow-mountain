@@ -30180,7 +30180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.520822
+      value: 7.5157375
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30416,6 +30416,8 @@ MonoBehaviour:
   curMobs: 
   maxMobs: 
   mix: 0
+  floorMobs: 
+  floorMax: 
   curMob: 0
 --- !u!1 &1134199188362677000
 GameObject:
@@ -30523,7 +30525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134199188628449837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.6, y: -25.8, z: 0}
+  m_LocalPosition: {x: 8.6, y: -24.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30554,7 +30556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134199189025383113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.4, y: -25.7, z: 0}
+  m_LocalPosition: {x: 24.4, y: -24.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

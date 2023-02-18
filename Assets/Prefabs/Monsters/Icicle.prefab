@@ -162,5 +162,5 @@ MonoBehaviour:
   ani: {fileID: 4112735895014051342}
   damage: 30
   knockback: {x: 0, y: 0}
-  stunTime: 1
+  stunTime: 2
   isFalling: 0

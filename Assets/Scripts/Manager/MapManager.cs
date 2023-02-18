@@ -9,6 +9,8 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public float playTime;
+    public bool gameStart;
+    public bool gameover;
     public MapManager sceneInfo
     {
         get => this;
@@ -39,16 +41,30 @@ public class MapManager : MonoBehaviour
         return null;
     }
 
+    public bool a;
     private void Update()
     {
+        if (!gameStart) return;
+        globalRate += Time.deltaTime * 0.0001f;
         playTime += Time.deltaTime;
         for (int idx = 1; idx < 8; idx += 2)
         {
-            sceneInfo.dungeons[idx].time += Time.deltaTime * globalRate;
+            if (sceneInfo.dungeons[idx].boss) sceneInfo.spawnRate[idx] = 2;
+            else sceneInfo.spawnRate[idx] = 1;
+            sceneInfo.dungeons[idx].time += Time.deltaTime * globalRate * spawnRate[idx];
+            if (sceneInfo.dungeons[idx].bossRespawnTime != 0 && !sceneInfo.dungeons[idx].boss) 
+                sceneInfo.dungeons[idx].bossTime += Time.deltaTime * globalRate;
             if (sceneInfo.dungeons[idx].time > sceneInfo.dungeons[idx].respawnTime)
             {
                 sceneInfo.dungeons[idx].time = 0;
                 Spawn(idx);
+            }
+            
+            if (sceneInfo.dungeons[idx].bossTime > sceneInfo.dungeons[idx].bossRespawnTime 
+                && !sceneInfo.dungeons[idx].boss)
+            {
+                sceneInfo.dungeons[idx].bossTime = 0;
+                sceneInfo.dungeons[idx].boss = true;
             }
         }
     }
@@ -77,7 +93,13 @@ public class MapManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("GameOver");
+            if (!a)
+            {
+                gameover = true;
+                GameManager.Instance.GameSceneManager.GameOver();
+                Debug.Log("GameOver");
+                a = true;
+            }
         }
     }
     private void Spawn(int idx)

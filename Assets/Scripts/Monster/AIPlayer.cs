@@ -21,19 +21,23 @@ public class AIPlayer : MonoBehaviour
       _mobSpawnManager = MobSpawnManager.instance;
    }
 
-   public void OnTriggerEnter2D(Collider2D col)
+   public void MobDie()
    {
-      if (col.CompareTag("Player"))
+      if (idName.Equals("Boss"))
       {
-         gameObject.SetActive(false);
+         _mobSpawnManager.BossDie(_mobSpawnManager.sceneinfo.currentSceneName);
+         Invoke("SetActiveFalse", 0.2f);
+      }
+      else
+      {
          _mobSpawnManager.MobDie(_mobSpawnManager.sceneinfo.currentSceneName, idName);
+         Invoke("SetActiveFalse", 2);
       }
    }
 
-   public void MobDie()
+   void SetActiveFalse()
    {
       gameObject.SetActive(false);
-      _mobSpawnManager.MobDie(_mobSpawnManager.sceneinfo.currentSceneName, idName);
    }
 
    public void OnEnable()
@@ -53,8 +57,10 @@ public class AIPlayer : MonoBehaviour
             break;
          }
       }
+      
       var mon = GetComponent<Monster>();
       mon._target = null;
+      mon.gameObject.layer = 8;
       mon.hpbar.value = 1;
       mon.mpbar.value = 1;
       mon.hp = mon.entityInfo.maxHp;

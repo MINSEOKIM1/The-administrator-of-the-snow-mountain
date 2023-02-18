@@ -1185,7 +1185,7 @@ MonoBehaviour:
   isDie: 0
   touchMonster: 0
   hitAirTime: 0
-  down: 0.12
+  down: 0.91
   footRadius: 0.12
   knockback: {x: 0, y: 0}
   friction: 5
@@ -1195,8 +1195,8 @@ MonoBehaviour:
   maxSpeed: 0
   _target: {fileID: 0}
   groundCheckLength:
-  - 0.5
-  - 1.5
+  - 1.71
+  - 2.46
   perceivePlayerTimeElapsed: 0
   moveState: 0
   stateChangeElapsed: 0

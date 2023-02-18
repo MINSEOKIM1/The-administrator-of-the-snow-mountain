@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7768e07093a40859a7e64b2e40fa4d, type: 3}
+  m_Name: 3_IronArmor
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 3
+  itemName: "\uC544\uC774\uC5B8 \uC544\uBA38"
+  itemDescription: "\uCCA0\uB85C \uB9CC\uB4E0 \uAC11\uC637\uC774\uB2E4."
+  itemIcon: {fileID: 1219053092, guid: 2897f0e1ff03443deb7f1d70a7013477, type: 3}
+  maxCount: 1
+  equipmentPart: 1
+  stats:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  atk: 0
+  def: 30
+  hp: 50
+  mp: 20
+  hpIncRate: 1
+  mpIncRate: 2
+  stance: 0.1
+  atkSpeed: 0
+  IngredientCountPairs: []

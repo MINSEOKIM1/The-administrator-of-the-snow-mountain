@@ -11,9 +11,29 @@ public class GameSceneManager : MonoBehaviour
 
     public float fadeRate;
 
+    public bool gameover;
+
     public void LoadScene(string name)
     {
         if (changing == false) StartCoroutine(ChangeScene(name));
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine(IGameOver());
+    }
+
+    IEnumerator IGameOver()
+    {
+        gameover = true;
+        GameManager.Instance.UIManager.PlayerDataUI.SetActive(false);
+        while (Time.timeScale > 0.4f)
+        {
+            Time.timeScale -= Time.fixedDeltaTime*2;
+            yield return new WaitForFixedUpdate();
+        }
+        
+        StartCoroutine(ChangeScene("GameOverScene"));
     }
 
     IEnumerator ChangeScene(string name)
@@ -35,8 +55,13 @@ public class GameSceneManager : MonoBehaviour
             fade.color = c;
             yield return new WaitForFixedUpdate();
         }
-        
+
+        if (gameover) Time.timeScale = 1;
         SceneManager.LoadScene(name);
+        if (name.Equals("MainMenu"))
+        {
+            GameManager.Instance.UIManager.TitleUI.gameObject.SetActive(true);
+        }
         
         while (c.a > 0)
         {
@@ -45,6 +70,7 @@ public class GameSceneManager : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
+        gameover = false;
         changing = false;
     }
 }

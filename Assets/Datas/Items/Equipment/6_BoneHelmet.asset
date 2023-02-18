@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7768e07093a40859a7e64b2e40fa4d, type: 3}
+  m_Name: 6_BoneHelmet
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 6
+  itemName: "\uBCF8 \uD5EC\uBA67"
+  itemDescription: "\uBF08\uB85C \uB9CC\uB4E0 \uD5EC\uBA67\uC774\uB2E4. \uC774\uAC78
+    \uC4F0\uBA74 \uBB54\uAC00 \uAC15\uD574\uBCF4\uC778\uB2E4.\n\n"
+  itemIcon: {fileID: 1844733603, guid: 2897f0e1ff03443deb7f1d70a7013477, type: 3}
+  maxCount: 1
+  equipmentPart: 0
+  stats:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  atk: 20
+  def: 30
+  hp: 10
+  mp: 10
+  hpIncRate: 0
+  mpIncRate: 0
+  stance: 0
+  atkSpeed: 0
+  IngredientCountPairs:
+  - item: {fileID: 11400000, guid: 414f31a5264994f39a7ef3725ef4389a, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: f11d2c118c4c3484ebfa5f72c60c6323, type: 2}
+    count: 3

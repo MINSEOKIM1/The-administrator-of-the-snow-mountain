@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
 
     public void AccessUICanvas(int index)
     {
+        if (!GameManager.Instance.MapManager.gameStart) return;
         for (int i = 0; i < uiCanvas.Length; i++)
         {
             if (i == index)

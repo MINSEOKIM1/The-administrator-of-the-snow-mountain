@@ -72,6 +72,7 @@ public class TitleUI : MonoBehaviour
         GameManager.Instance.UIManager.TitleUI.gameObject.SetActive(false);
         GameManager.Instance.UIManager.PlayerDataUI.SetActive(true);
         GameManager.Instance.GameSceneManager.LoadScene(GameManager.Instance.MapManager.currentSceneName);
+        GameManager.Instance.MapManager.gameStart = true;
     }
     public void NewGameStart(int idx)
     {

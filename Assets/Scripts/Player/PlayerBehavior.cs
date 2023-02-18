@@ -348,6 +348,8 @@ public class PlayerBehavior : Entity
 
     public override void Die()
     {
+        _animator.SetTrigger("hit");
+        KnockBack(GetKnockback(new Vector2(5 * graphicTransform.localScale.x, 5), 0));
         isDie = true;
         PlayerDataManager.isDie = true;
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapUI : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class MapUI : MonoBehaviour
     }
     [SerializeField] private GameObject[] points;
     [SerializeField] private TextMeshProUGUI[] texts;
+    [SerializeField] private Image[] bossMarks;
+    [SerializeField] private Image[] spawnTimeMark;
+    [SerializeField] private Image[] bossSpawnTimeMark;
     private void Start()
     {
          // # UI Update
@@ -22,6 +26,14 @@ public class MapUI : MonoBehaviour
         MopNumUpdate();
         TurnOnPoint(sceneInfo.currentSceneName);
         TurnOffPoint(sceneInfo.beforeSceneName);
+        for (int i = 0; i < 4; i++)
+        {
+            bossMarks[i].gameObject.SetActive(sceneInfo.dungeons[1+2*i].boss);
+            spawnTimeMark[i].fillAmount =
+                sceneInfo.dungeons[1 + 2 * i].time / sceneInfo.dungeons[1 + 2 * i].respawnTime;
+            bossSpawnTimeMark[i].fillAmount =
+                sceneInfo.dungeons[1 + 2 * i].bossTime / sceneInfo.dungeons[1 + 2 * i].bossRespawnTime;
+        }
     }
 
     private void TurnOnPoint(string state)

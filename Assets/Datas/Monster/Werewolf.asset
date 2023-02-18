@@ -16,11 +16,11 @@ MonoBehaviour:
   accel: 0.5
   jumpPower: 31.9
   backStepPower: {x: 0, y: 0}
-  maxHp: 100
+  maxHp: 500
   maxMp: 100
   hpIncRate: 2
   mpIncRate: 5
-  atk: 30
+  atk: 60
   def: 20
   stance: 1
   stateChangeInterval: 0.3
@@ -51,15 +51,17 @@ MonoBehaviour:
   - 0
   - 30
   dropItems:
-  - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
-  - {fileID: 11400000, guid: baf2a4da36e6f4b0a8c7ac6317ec7d35, type: 2}
-  - {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
-  - {fileID: 11400000, guid: fa148d41524ee4d198f55c9e0b37c937, type: 2}
+  - {fileID: 11400000, guid: 25d10c1d64f904e19906ce39957c65c8, type: 2}
+  - {fileID: 11400000, guid: f11d2c118c4c3484ebfa5f72c60c6323, type: 2}
+  - {fileID: 11400000, guid: e09edf01b9f0e4d38a2e7061b65f6ccb, type: 2}
+  - {fileID: 11400000, guid: a55f0ebb2850a4071aa099b0e7ce7fad, type: 2}
+  - {fileID: 11400000, guid: 98596365bc9cb459f818e3fbcdcf2076, type: 2}
   itemDropProbability:
-  - 0.5
   - 1
   - 1
   - 1
-  itemDropCount: 03000000030000000300000003000000
+  - 1
+  - 1
+  itemDropCount: 0a0000000a000000050000000a0000000a000000
   exp: 100
   perceiveTime: 30

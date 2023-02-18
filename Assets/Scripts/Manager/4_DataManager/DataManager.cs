@@ -59,6 +59,7 @@ public class DataManager : MonoBehaviour
 
         
         dataPacks[index].equipment = GameManager.Instance.PlayerDataManager.equipment.items;
+        dataPacks[index].inventory = GameManager.Instance.PlayerDataManager.inventory.items;
         dataPacks[index].exp = GameManager.Instance.PlayerDataManager.exp;
         dataPacks[index].hp = GameManager.Instance.PlayerDataManager.hp;
         dataPacks[index].mp = GameManager.Instance.PlayerDataManager.mp;
@@ -89,6 +90,7 @@ public class DataManager : MonoBehaviour
 
 
         GameManager.Instance.PlayerDataManager.equipment.items = dataPacks[index].equipment;
+        GameManager.Instance.PlayerDataManager.inventory.items = dataPacks[index].inventory;
         GameManager.Instance.PlayerDataManager.exp = dataPacks[index].exp;
         GameManager.Instance.PlayerDataManager.hp = dataPacks[index].hp;
         GameManager.Instance.PlayerDataManager.mp = dataPacks[index].mp;

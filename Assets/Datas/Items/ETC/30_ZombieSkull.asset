@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f61233c4c6814d02aa1dcf4580b30c0, type: 3}
+  m_Name: 30_ZombieSkull
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 30
+  itemName: "\uC880\uBE44 \uB450\uAC1C\uACE8"
+  itemDescription: "\uC880\uBE44\uC758 \uB450\uAC1C\uACE8\uC774\uB2E4. \uAE68\uC838\uC788\uB2E4."
+  itemIcon: {fileID: 1772478427, guid: 50dbd6750dede496e88eb6d8ac263873, type: 3}
+  maxCount: 300

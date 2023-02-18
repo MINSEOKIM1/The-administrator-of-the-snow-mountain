@@ -965,6 +965,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fdacf757-f059-48ff-9150-405e3d44e01c
     m_ActionName: UIManager/MapUI[/Keyboard/m]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0fd8964b-827d-4bf2-8787-84b85caf3a22
+    m_ActionName: TitleUI/Select[/Keyboard/enter,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -989,7 +993,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 39449985f66524b3aa6c7eeea3c58ca8, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &6430485222588318212
 CapsuleCollider2D:

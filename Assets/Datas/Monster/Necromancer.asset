@@ -48,15 +48,17 @@ MonoBehaviour:
   - 0
   - 30
   dropItems:
-  - {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
-  - {fileID: 11400000, guid: baf2a4da36e6f4b0a8c7ac6317ec7d35, type: 2}
-  - {fileID: 11400000, guid: 459deacdd778f474582cb117821e31b6, type: 2}
-  - {fileID: 11400000, guid: fa148d41524ee4d198f55c9e0b37c937, type: 2}
+  - {fileID: 11400000, guid: 25d10c1d64f904e19906ce39957c65c8, type: 2}
+  - {fileID: 11400000, guid: f902aa817c11a43dfbb8994115de363f, type: 2}
+  - {fileID: 11400000, guid: 84f2b16e3a6cf43d99e7933f2a780c3e, type: 2}
+  - {fileID: 11400000, guid: af187db7442224551a44eb3940ae6254, type: 2}
+  - {fileID: 11400000, guid: 6a4d972f178214209bfc11877a5268fe, type: 2}
   itemDropProbability:
   - 0.5
   - 1
   - 1
   - 1
-  itemDropCount: 03000000030000000300000003000000
-  exp: 100
+  - 1
+  itemDropCount: 0500000001000000010000000a00000005000000
+  exp: 220
   perceiveTime: 30

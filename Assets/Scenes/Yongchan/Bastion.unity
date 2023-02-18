@@ -884,11 +884,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.576902
+      value: 9.571817
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.817052
+      value: 0.817062
       objectReference: {fileID: 0}
     - target: {fileID: 636892049920472848, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_BoundingShape2D
@@ -21248,6 +21248,10 @@ PrefabInstance:
       propertyPath: portalManager
       value: 
       objectReference: {fileID: 451614420}
+    - target: {fileID: 6430485222588318235, guid: 3d803f0a6949a431691402dccf68d716, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6430485222588318238, guid: 3d803f0a6949a431691402dccf68d716, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -21503,6 +21507,8 @@ MonoBehaviour:
   curMobs: 
   maxMobs: 
   mix: 1
+  floorMobs: 
+  floorMax: 
   curMob: 0
 --- !u!114 &1982361489184400206
 MonoBehaviour:

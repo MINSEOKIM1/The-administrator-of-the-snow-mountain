@@ -63,6 +63,7 @@ public class Monster : Entity
     protected override void Update()
     {
         base.Update();
+        hpbar.value = hp / maxHp;
         mpbar.value = mp / maxMp;
         hp += Time.deltaTime * entityInfo.hpIncRate;
         hp = Mathf.Clamp(hp, 0, entityInfo.maxHp);

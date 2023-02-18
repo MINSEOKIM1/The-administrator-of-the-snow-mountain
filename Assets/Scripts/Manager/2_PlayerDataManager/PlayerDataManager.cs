@@ -98,7 +98,7 @@ public class PlayerDataManager : MonoBehaviour
 
     public float maxExp
     {
-        get => 100 * (1 + 0.02f * (level-1));
+        get => 100 * (1 + 0.2f * (level-1));
     }
     
     public int[] attackSkillLevel;
@@ -110,7 +110,7 @@ public class PlayerDataManager : MonoBehaviour
 
     public bool canControl
     {
-        get => !GameManager.Instance.UIManager.ConservationUI.gameObject.activeSelf;
+        get => !GameManager.Instance.UIManager.ConservationUI.gameObject.activeSelf || GameManager.Instance.GameSceneManager.gameover;
         set => canControl = value;
     }
 
@@ -123,7 +123,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].atk;
             }
-            return playerInfo.atk + level * 0.1f + total;
+            return playerInfo.atk + level * 2f + total;
         }
         private set => atk = value;
     }
@@ -169,6 +169,8 @@ public class PlayerDataManager : MonoBehaviour
         saturation = maxSaturation;
     }
 
+    private bool a;
+
     private void Update()
     {
         hp = Mathf.Clamp(hp, 0, maxHp);
@@ -187,12 +189,23 @@ public class PlayerDataManager : MonoBehaviour
         {
             LevelUP();
         }
+
+        if (hp <= 0 || GameManager.Instance.MapManager.gameover)
+        {
+            if (!a)
+            {
+                a = true;
+                GameManager.Instance.GameSceneManager.GameOver();
+            }
+        }
     }
     
 
     private void LevelUP()
     {
         level++;
+        hp = maxHp;
+        mp = maxMp;
         exp = 0;
     }
 }
