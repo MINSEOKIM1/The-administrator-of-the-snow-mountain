@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0cc3f0af58a46a4b22e6fce089368b, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  maxSpeed: 2.5
+  maxSpeed: 2.2
   accel: 1
   jumpPower: 4
   backStepPower: {x: 0, y: 0}
@@ -20,7 +20,7 @@ MonoBehaviour:
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 5
-  atk: 50
+  atk: 30
   def: 20
   stance: 0
   stateChangeInterval: 2
@@ -42,8 +42,8 @@ MonoBehaviour:
   - 0.5
   - 0
   attackKnockback:
-  - {x: 3, y: 4}
-  - {x: 3, y: 5}
+  - {x: 1, y: 2}
+  - {x: 2, y: 2}
   attackMp:
   - 0
   - 60

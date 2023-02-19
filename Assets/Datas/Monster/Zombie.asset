@@ -16,7 +16,7 @@ MonoBehaviour:
   accel: 0.3
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
-  maxHp: 300
+  maxHp: 500
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 5

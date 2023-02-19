@@ -20,7 +20,7 @@ MonoBehaviour:
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 5
-  atk: 50
+  atk: 30
   def: 20
   stance: 0
   stateChangeInterval: 2
@@ -39,7 +39,7 @@ MonoBehaviour:
   - 1
   attackStunTime:
   - 0
-  - 0
+  - 0.5
   attackKnockback:
   - {x: 1, y: 3}
   - {x: 1, y: 1}

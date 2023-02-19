@@ -16,11 +16,11 @@ MonoBehaviour:
   accel: 0.5
   jumpPower: 31.9
   backStepPower: {x: 0, y: 0}
-  maxHp: 500
+  maxHp: 1000
   maxMp: 100
   hpIncRate: 2
   mpIncRate: 5
-  atk: 60
+  atk: 20
   def: 20
   stance: 1
   stateChangeInterval: 0.3
