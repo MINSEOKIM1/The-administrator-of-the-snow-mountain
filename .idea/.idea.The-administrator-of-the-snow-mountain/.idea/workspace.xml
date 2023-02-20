@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/Player.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/Player.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/10_BeginnerHat.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/10_BeginnerHat.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/TutorialScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/TutorialScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +17,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Camera/BackGroundMoving.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/VillageData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameOverScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapPointUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/GameSceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/DevilStatue.cs" root0="FORCE_HIGHLIGHTING" />

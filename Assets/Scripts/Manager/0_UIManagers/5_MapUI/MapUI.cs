@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,14 @@ public class MapUI : MonoBehaviour
     [SerializeField] private Image[] bossMarks;
     [SerializeField] private Image[] spawnTimeMark;
     [SerializeField] private Image[] bossSpawnTimeMark;
+    
+    [SerializeField] private GraphicRaycaster graphic;
+
+    public GameObject selectedMapInfo;
+    public TMP_Text selectedMapInfoText;
+    public Slider[] selectedMapInfoSliders;
+
+    public string selectedMapName;
     private void Start()
     {
          // # UI Update
@@ -34,6 +43,82 @@ public class MapUI : MonoBehaviour
             bossSpawnTimeMark[i].fillAmount =
                 sceneInfo.dungeons[1 + 2 * i].bossTime / sceneInfo.dungeons[1 + 2 * i].bossRespawnTime;
         }
+
+        if (selectedMapName.Equals(""))
+        {
+            selectedMapInfo.SetActive(false);
+        }
+        else
+        {
+            selectedMapInfo.SetActive(true);
+            if (GameManager.Instance.MapManager.GetMapWithString(selectedMapName).respawnTime != 0)
+            {
+                float rate;
+                switch (selectedMapName)
+                {
+                    case "WolfB" :
+                        rate = GameManager.Instance.MapManager.globalRate *
+                               GameManager.Instance.MapManager.spawnRate[1];
+                        break;
+                    case "WhiteB" :
+                        rate = GameManager.Instance.MapManager.globalRate *
+                               GameManager.Instance.MapManager.spawnRate[3];
+                        break;
+                    case "StoneB" :
+                        rate = GameManager.Instance.MapManager.globalRate *
+                               GameManager.Instance.MapManager.spawnRate[5];
+                        break;
+                    case "ZombieB" :
+                        rate = GameManager.Instance.MapManager.globalRate *
+                               GameManager.Instance.MapManager.spawnRate[7];
+                        break;
+                    default:
+                        rate = 1;
+                        break;
+                }
+
+                float RoundTo(float c, int a)
+                {
+                    return Mathf.Round(c * Mathf.Pow(10, a)) / Mathf.Pow(10, a);
+                }
+                selectedMapInfoText.text = String.Format(
+                    "{0}\n몬스터 수 - {5} / {6}\n다음 몬스터 생성까지..\n{1,8} / {2} (초)\n\n다음 보스 생성까지.. \n{3,8} / {4} (초)",
+                    selectedMapName,
+                    RoundTo(GameManager.Instance.MapManager.GetMapWithString(selectedMapName).time / rate, 2),
+                    RoundTo(GameManager.Instance.MapManager.GetMapWithString(selectedMapName).respawnTime / rate, 2),
+                    RoundTo(GameManager.Instance.MapManager.GetMapWithString(selectedMapName).bossTime / GameManager.Instance.MapManager.globalRate, 2),
+                    RoundTo(GameManager.Instance.MapManager.GetMapWithString(selectedMapName).bossRespawnTime / GameManager.Instance.MapManager.globalRate, 2),
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).curMob,
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).maxMob);
+
+                selectedMapInfoSliders[0].gameObject.SetActive(true);
+                selectedMapInfoSliders[1].gameObject.SetActive(true);
+                
+                selectedMapInfoSliders[0].value =
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).time /
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName)
+                        .respawnTime;
+                selectedMapInfoSliders[1].value =
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).bossTime /
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName)
+                        .bossRespawnTime;
+            }
+            else
+            {
+                selectedMapInfoText.text = String.Format(
+                    "{0}\n몬스터 수 - {1} / {2}\n",
+                    selectedMapName,
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).curMob,
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).maxMob);
+                selectedMapInfoSliders[0].gameObject.SetActive(false);
+                selectedMapInfoSliders[1].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void SelectMap(string name)
+    {
+        selectedMapName = name;
     }
 
     private void TurnOnPoint(string state)
