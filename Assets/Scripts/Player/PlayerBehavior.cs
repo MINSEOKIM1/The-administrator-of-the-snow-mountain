@@ -486,6 +486,15 @@ public class PlayerBehavior : Entity
                 GameManager.Instance.UIManager.ConservationUI.SetCurrentConservationArray(
                     npc.conversationClips, 
                     npc.GetConversationStart());
+                try
+                {
+                    var an = (AgentNPC)npc;
+                    GameManager.Instance.UIManager.MapUI.currentAllocatedAgent = an.agentData;
+                }
+                catch (Exception e)
+                {
+                    
+                }
             }
         }
     }

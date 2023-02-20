@@ -76,6 +76,12 @@ public class ConversationUI : MonoBehaviour
             {
                 conversationWindow.SetActive(false);
                 smithyWindow.SetActive(true);
+            } else if (currentClip.nextClipIndex == -4)
+            {
+                conversationWindow.SetActive(false);
+                gameObject.SetActive(false);
+                GameManager.Instance.UIManager.MapUI.isAllocating = true;
+                GameManager.Instance.UIManager.AccessUICanvas(2);
             }
             else
             {

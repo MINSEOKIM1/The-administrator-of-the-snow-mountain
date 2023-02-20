@@ -19,6 +19,7 @@ public class PlayerSpawn : MonoBehaviour
     {
         Debug.Log(transform.position);
         Debug.Log(portalManager);
+        if (portalManager != null)
         gameObject.transform.position =
             portalManager.SpawnPosition(sceneInfo.currentSceneName, sceneInfo.beforeSceneName);
     }

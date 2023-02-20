@@ -51,6 +51,11 @@ public class UIManager : MonoBehaviour
                 uiCanvas[i].SetActive(false);
             }
         }
+
+        if (MapUI.gameObject.activeSelf == false)
+        {
+            MapUI.isAllocating = false;
+        }
     }
 
     public void OnESC(InputAction.CallbackContext value)

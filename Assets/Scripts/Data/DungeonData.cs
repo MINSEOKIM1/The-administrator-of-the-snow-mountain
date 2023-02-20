@@ -16,4 +16,5 @@ public class DungeonData
     public float bossTime;
     public float bossRespawnTime;
     public bool boss;
+    public AgentData agent;
 }

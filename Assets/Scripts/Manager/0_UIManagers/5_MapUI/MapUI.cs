@@ -23,13 +23,28 @@ public class MapUI : MonoBehaviour
     public TMP_Text selectedMapInfoText;
     public Slider[] selectedMapInfoSliders;
 
+    public GameObject agentInfo;
+    public Button agentAllocateButton;
+
+    public bool isAllocating;
+    public AgentData currentAllocatedAgent;
+
     public string selectedMapName;
+
+    public delegate void AgentNPCdelegate();
+
+    public event AgentNPCdelegate agentNPCEvent;
     private void Start()
     {
          // # UI Update
          
     }
 
+    float RoundTo(float c, int a)
+    {
+        return Mathf.Round(c * Mathf.Pow(10, a)) / Mathf.Pow(10, a);
+    }
+    
     private void Update()
     {
         MopNumUpdate();
@@ -43,7 +58,7 @@ public class MapUI : MonoBehaviour
             bossSpawnTimeMark[i].fillAmount =
                 sceneInfo.dungeons[1 + 2 * i].bossTime / sceneInfo.dungeons[1 + 2 * i].bossRespawnTime;
         }
-
+        
         if (selectedMapName.Equals(""))
         {
             selectedMapInfo.SetActive(false);
@@ -51,6 +66,24 @@ public class MapUI : MonoBehaviour
         else
         {
             selectedMapInfo.SetActive(true);
+            var map = GameManager.Instance.MapManager.GetMapWithString(selectedMapName);
+            if (isAllocating)
+            {
+                agentAllocateButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                agentAllocateButton.gameObject.SetActive(false);
+            }
+            if (map.agent.timeTakenToHunt != 0)
+            {
+                agentInfo.SetActive(true);
+                agentInfo.GetComponent<AgentUI>().SetAgent(map.agent);
+            }
+            else
+            {
+                agentInfo.SetActive(false);
+            }
             if (GameManager.Instance.MapManager.GetMapWithString(selectedMapName).respawnTime != 0)
             {
                 float rate;
@@ -77,10 +110,7 @@ public class MapUI : MonoBehaviour
                         break;
                 }
 
-                float RoundTo(float c, int a)
-                {
-                    return Mathf.Round(c * Mathf.Pow(10, a)) / Mathf.Pow(10, a);
-                }
+                
                 selectedMapInfoText.text = String.Format(
                     "{0}\n몬스터 수 - {5} / {6}\n다음 몬스터 생성까지..\n{1,8} / {2} (초)\n\n다음 보스 생성까지.. \n{3,8} / {4} (초)",
                     selectedMapName,
@@ -113,6 +143,24 @@ public class MapUI : MonoBehaviour
                 selectedMapInfoSliders[0].gameObject.SetActive(false);
                 selectedMapInfoSliders[1].gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void AllocateAgent()
+    {
+        var goToMap = GameManager.Instance.MapManager.GetMapWithString(selectedMapName);
+        var curMap = GameManager.Instance.MapManager.GetMapWithString(GameManager.Instance.MapManager.currentSceneName);
+        if (goToMap.agent.timeTakenToHunt != 0)
+        {
+            Debug.Log("안돼요~");
+        }
+        else
+        {
+            isAllocating = false;
+            currentAllocatedAgent.currentMapName = goToMap.name;
+            goToMap.agent = currentAllocatedAgent;
+            curMap.agent = new AgentData();
+            agentNPCEvent.Invoke();
         }
     }
 

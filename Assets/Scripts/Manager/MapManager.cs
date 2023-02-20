@@ -47,6 +47,22 @@ public class MapManager : MonoBehaviour
         if (!gameStart) return;
         globalRate += Time.deltaTime * 0.0001f;
         playTime += Time.deltaTime;
+        for (int idx = 0; idx < dungeons.Length; idx++)
+        {
+            if (dungeons[idx].agent.timeTakenToHunt != 0)
+            {
+                var agent = dungeons[idx].agent;
+                if (agent.timeElapsed < agent.timeTakenToHunt * agent.timeRate)
+                {
+                    agent.timeElapsed += Time.deltaTime;
+                }
+                else if (dungeons[idx].curMob > 0 && !GameManager.Instance.MapManager.currentSceneName.Equals(dungeons[idx].name))
+                {
+                    dungeons[idx].curMob--;
+                    agent.timeElapsed = 0;
+                }
+            }
+        }
         for (int idx = 1; idx < 8; idx += 2)
         {
             if (sceneInfo.dungeons[idx].boss) sceneInfo.spawnRate[idx] = 2;

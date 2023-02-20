@@ -8,4 +8,7 @@ public class AgentData
 {
     public string agentName;
     public float timeElapsed, timeTakenToHunt;
+    public Sprite agentImage;
+    public float timeRate; // 맵에 따라 달라짐.
+    public string currentMapName;
 }
