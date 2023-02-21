@@ -13,6 +13,13 @@ public class EffectManager : MonoBehaviour
         var effect = Instantiate(effects[index], position, rotation);
         return effect;
     }
+    
+    public GameObject CreateEffect(int index, int localScale, Vector3 position, Quaternion rotation)
+    {
+        var effect = Instantiate(effects[index], position, rotation);
+        effect.transform.localScale = new Vector3(localScale, 1, 1);
+        return effect;
+    }
 
     public GameObject CreateItem(ItemInfo itemInfo, int count, Vector3 position, Quaternion rotation)
     {

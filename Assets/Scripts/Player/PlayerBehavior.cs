@@ -35,6 +35,10 @@ public class PlayerBehavior : Entity
     public float wallTime;
     public float hitTimeElapsed;
     public bool isHitMotion;
+    public bool isRolling;
+
+    public int dashTrailCount;
+    public float dashTrailInterval;
 
     public float invincibilityTimeElapsed;
 
@@ -101,6 +105,7 @@ public class PlayerBehavior : Entity
         base.Update();
         AttackCheck();
         _animator.SetFloat("attackSpeed", PlayerDataManager.attackSpeed);
+        
     }
 
     // Physics logic...
@@ -123,6 +128,7 @@ public class PlayerBehavior : Entity
     {
         _isAttack = _animator.GetCurrentAnimatorStateInfo(0).IsTag("attack");
         isHitMotion = _animator.GetCurrentAnimatorStateInfo(0).IsTag("hit");
+        isRolling = _animator.GetCurrentAnimatorStateInfo(0).IsTag("roll");
     }
 
     protected override void ApplyAnimation()
@@ -212,7 +218,7 @@ public class PlayerBehavior : Entity
     {
         if (touchMonster) _capsuleCollider.sharedMaterial = zero;
         // if condition (!_inSlope) is omitted... player slide down a slope...
-        if (!_inSlope || (_inSlope && Mathf.Abs(dashSpeed) > 1))
+        if (!_inSlope || (_inSlope && Mathf.Abs(dashSpeed) > 1) || isRolling)
         {
             if (wallJump<0) _speed = _rigidbody.velocity.x;
         }
@@ -361,7 +367,7 @@ public class PlayerBehavior : Entity
 
     public override void Jump()
     {
-        if (stunTimeElapsed > 0) return;
+        if (stunTimeElapsed > 0 || isRolling) return;
         if (!isClimb)
         {
             if (isHitMotion && CanUtilCondition(3) && stunTimeElapsed <= 0)
@@ -427,6 +433,7 @@ public class PlayerBehavior : Entity
                 _animator.SetTrigger("attackCancel");
                 StartCoroutine(MotionCancel());
             }
+            GameManager.Instance.EffectManager.CreateEffect(2,  (int) -graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             
             _playerAttack.ResetNormalAttack();
 
@@ -439,6 +446,42 @@ public class PlayerBehavior : Entity
             _canJump = false;
             _rigidbody.AddForce(backStepPower.y * Vector2.up, ForceMode2D.Impulse);
             dashSpeed = backStepPower.x * _playerAttack.transform.localScale.x;
+        }
+    }
+    
+    public void Roll()
+    {
+        if (_isGround && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0) && !isRolling)
+        {
+            invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
+            if (_isAttack && CanUtilCondition(3))
+            {
+                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                UseUtilSkill(3);
+                _animator.SetTrigger("attackCancel");
+                StartCoroutine(MotionCancel());
+            }
+            
+            _playerAttack.ResetNormalAttack();
+            GameManager.Instance.EffectManager.CreateEffect(2,  (int) graphicTransform.localScale.x, footPos.position, Quaternion.identity);
+            
+            dashElapsed = 1;
+            gameObject.layer = 9;
+            _speed = 0;
+            externalSpeed = 0;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+            _isGround = false;
+            _canJump = false;
+            dashSpeed = entityInfo.rollPower * _playerInputHandler.movement.x * 1.4f;
+            if (_playerInputHandler.movement.x < 0)
+            {
+                graphicTransform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                graphicTransform.localScale = new Vector3(-1, 1, 1);
+            }
+            _animator.SetTrigger("roll");
         }
     }
     
@@ -463,6 +506,9 @@ public class PlayerBehavior : Entity
                 graphicTransform.localScale = _graphicLocalScale;
             }
 
+            StartCoroutine(DashTrail());
+
+            GameManager.Instance.EffectManager.CreateEffect(2,  (int) graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             dashElapsed = 1;
             gameObject.layer = 9;
             _speed = 0;
@@ -470,13 +516,13 @@ public class PlayerBehavior : Entity
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _isGround = false;
             _canJump = false;
-            dashSpeed = -backStepPower.x * _playerAttack.transform.localScale.x;
+            dashSpeed = -entityInfo.dashPower * _playerAttack.transform.localScale.x;
         }
     }
 
     public void Interaction()
     {
-        if (!canControl) return;
+        if (!canControl || GameManager.Instance.UIManager.MapUI.gameObject.activeSelf) return;
         var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.one * 2, 0);
         foreach (var i in tmp)
         {
@@ -505,6 +551,42 @@ public class PlayerBehavior : Entity
         yield return new WaitForSecondsRealtime(0.01f);
 
         Time.timeScale = 1;
+    }
+
+    IEnumerator DashTrail()
+    {
+        for (int i = 0; i < dashTrailCount; i++)
+        {
+            yield return new WaitForSeconds(dashTrailInterval);
+            SpawnTrail();
+        }
+    }
+    private void SpawnTrail()
+    {
+        GameObject trailPart = new GameObject();
+        SpriteRenderer tpr = trailPart.AddComponent<SpriteRenderer>();
+        if (_sprite.sprite != null)
+        {
+            tpr.transform.localScale = graphicTransform.localScale;
+            tpr.sprite = GetComponentInChildren<SpriteRenderer>().sprite;
+        }
+
+        tpr.sortingLayerName = "Player";
+        tpr.flipX = _sprite.flipX;
+        trailPart.transform.position = transform.position;
+        Destroy(trailPart, 0.5f);
+        
+        StartCoroutine("FadeTrailPart", tpr);
+    }
+    IEnumerator FadeTrailPart(SpriteRenderer trailPartRenderer)
+    {
+        Color color = trailPartRenderer.color;
+        while (color.a > 0)
+        {
+            color.a -= Time.deltaTime*3; 
+            trailPartRenderer.color = color;
+            yield return new WaitForFixedUpdate();
+        }
     }
     
     protected override void OnCollisionStay2D(Collision2D col)

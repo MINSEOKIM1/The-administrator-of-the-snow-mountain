@@ -136,6 +136,7 @@ public class Zombie : Monster
     IEnumerator delayShake(float delayTime)
     {
         yield return new WaitForSeconds(0.1f);
+        Vector3 pos = transform.position;
         var dir = (_target.transform.position - transform.position).normalized;
         dir.y = 0;
         dir.x /= Mathf.Abs(dir.x);
@@ -146,7 +147,7 @@ public class Zombie : Monster
             else{
                 yield return new WaitForSeconds(delayTime);
             }
-            var proj = Instantiate(projectile[0], transform.position + dir * i + Vector3.down, Quaternion.identity);
+            var proj = Instantiate(projectile[0], pos + dir * i + Vector3.down, Quaternion.identity);
             proj.GetComponentInChildren<EffectAttack>().SetInfo(
                 _monsterInfo.atk * _monsterInfo.attackCoefficient[0],
                 _monsterInfo.attackStunTime[0],

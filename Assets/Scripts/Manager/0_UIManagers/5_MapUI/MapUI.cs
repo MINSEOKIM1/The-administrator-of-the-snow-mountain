@@ -254,7 +254,7 @@ public class MapUI : MonoBehaviour
         texts[0].text = "" + sceneInfo.village.curMob + "/" + sceneInfo.village.maxMob;
         texts[1].text = "" + sceneInfo.bastion.curMob + "/" + sceneInfo.bastion.maxMob;
         texts[2].text = "" + sceneInfo.fork.curMob + "/" + sceneInfo.fork.maxMob;
-        for (int index = 0; index < sceneInfo.dungeons.Length; index++)
+        for (int index = 0; index < 8; index++)
         {
             texts[index+3].text = "" + sceneInfo.dungeons[index].curMob + "/" + sceneInfo.dungeons[index].maxMob;
         }

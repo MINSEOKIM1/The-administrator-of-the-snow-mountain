@@ -16,12 +16,14 @@ MonoBehaviour:
   accel: 0.3
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
-  maxHp: 500
+  dashPower: 0
+  rollPower: 0
+  maxHp: 700
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 5
-  atk: 50
-  def: 20
+  atk: 100
+  def: 80
   stance: 0
   stateChangeInterval: 2
   boxSize: {x: 3.53, y: 2.5}
@@ -39,9 +41,9 @@ MonoBehaviour:
   - 1
   attackStunTime:
   - 0
-  - 0
+  - 2
   attackKnockback:
-  - {x: 1, y: 3}
+  - {x: 0.5, y: 6}
   - {x: 1, y: 2}
   attackMp:
   - 0

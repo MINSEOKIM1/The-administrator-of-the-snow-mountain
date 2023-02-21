@@ -123,7 +123,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].atk;
             }
-            return playerInfo.atk + level * 2f + total;
+            return playerInfo.atk + level * 5f + total;
         }
         private set => atk = value;
     }
@@ -150,7 +150,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].stance;
             }
-            return playerInfo.stance + level * 0.1f + total;
+            return playerInfo.stance + total;
         }
         private set => stance = value;
     }

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,12 +16,20 @@ public class UIManager : MonoBehaviour
     [field: SerializeField] public GameObject PlayerDataUI { get; private set; }
 
     public GameObject fadeCanvas;
+    public float fps;
+    public TMP_Text fpsTEXT;
 
     [Tooltip("0: inventory\n1: equipment\n2:MapUI")]
     public GameObject[] uiCanvas;
     private void Start()
     {
         // ToEquipmentUI();
+    }
+
+    private void Update()
+    {
+        fps += (Time.deltaTime - fps) * 0.1f;
+        fpsTEXT.text = "fps : " + 1 / fps;
     }
 
     public void ToInventoryUI()

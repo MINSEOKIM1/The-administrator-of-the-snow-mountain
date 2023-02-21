@@ -41,12 +41,19 @@ public class MapManager : MonoBehaviour
         return null;
     }
 
+    private void Start()
+    {
+        dungeons[8] = fork;
+        dungeons[9] = bastion;
+    }
+
     public bool a;
     private void Update()
     {
         if (!gameStart) return;
         globalRate += Time.deltaTime * 0.0001f;
         playTime += Time.deltaTime;
+        
         for (int idx = 0; idx < dungeons.Length; idx++)
         {
             if (dungeons[idx].agent.timeTakenToHunt != 0)

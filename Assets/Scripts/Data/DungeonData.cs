@@ -8,6 +8,7 @@ public class DungeonData
 {
     public int id;
     public string name;
+    public string explicitName;
     public float time;
     public float respawnTime;
     public int maxMob;

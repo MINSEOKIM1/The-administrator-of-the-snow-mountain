@@ -238,7 +238,7 @@ public class Monster : Entity
         _capsuleCollider.sharedMaterial = little;
         for (int i = 0; i < ((MonsterInfo)entityInfo).dropItems.Length; i++)
         {
-            if (Random.Range(0, 1) < ((MonsterInfo)entityInfo).itemDropProbability[i])
+            if (Random.Range(0, 1f) < ((MonsterInfo)entityInfo).itemDropProbability[i])
             {
                 GameManager.Instance.EffectManager.CreateItem(
                     ((MonsterInfo)entityInfo).dropItems[i],

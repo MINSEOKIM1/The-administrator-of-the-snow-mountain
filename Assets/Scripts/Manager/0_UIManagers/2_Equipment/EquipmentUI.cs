@@ -59,29 +59,15 @@ public class EquipmentUI : MonoBehaviour
         float hpIncRate = 0;
         float mpIncRate = 0;
         float stance = 0;
-        
-        for (int i = 0; i < Equipment.items.Length; i++)
-        {
 
-            if (Equipment.items[i] != null)
-            {
-                atk += Equipment.items[i].atk;
-                def += Equipment.items[i].def;
-                hp += Equipment.items[i].hp;
-                mp += Equipment.items[i].mp;
-                hpIncRate += Equipment.items[i].hpIncRate;
-                mpIncRate += Equipment.items[i].mpIncRate;
-                stance += Equipment.items[i].stance;
-            }
-        }
-
-        total += "ATK +" + atk + "\n";
-        total += "DEF +" + def + "\n";
-        total += "HP +" + hp + "\n";
-        total += "MP +" + mp + "\n";
-        total += "HP 회복 +" + hpIncRate + "\n";
-        total += "MP 회복 +" + mpIncRate + "\n";
-        total += "STANCE +" + (stance*100) + "%\n";
+        total += "ATK : " + GameManager.Instance.PlayerDataManager.atk + "\n";
+        total += "DEF : " + GameManager.Instance.PlayerDataManager.def + "\n";
+        total += "HP : " + GameManager.Instance.PlayerDataManager.maxHp + "\n";
+        total += "MP : " + GameManager.Instance.PlayerDataManager.maxMp + "\n";
+        total += "HP 회복 : " + GameManager.Instance.PlayerDataManager.hpIncRate + "\n";
+        total += "MP 회복 : " + GameManager.Instance.PlayerDataManager.mpIncRate + "\n";
+        total += "STANCE : " + (GameManager.Instance.PlayerDataManager.stance*100) + "%\n";
+        total += "공격속도 : " + (GameManager.Instance.PlayerDataManager.attackSpeed) + "\n";
 
         totalInfo.text = total;
     }
