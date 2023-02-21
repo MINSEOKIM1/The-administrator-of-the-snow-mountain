@@ -10,6 +10,7 @@ public class TutorialSign : MonoBehaviour
     public TMP_Text text;
     [Multiline(7)] public string textContents;
     public SpriteRenderer _sprite;
+    public int tutorialIndex;
 
     private void Start()
     {
@@ -32,7 +33,8 @@ public class TutorialSign : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && a.a < 1 && !GameManager.Instance.UIManager.ConservationUI.gameObject.activeSelf)
+        if (other.CompareTag("Player") && a.a < 1 && !GameManager.Instance.UIManager.ConservationUI.gameObject.activeSelf 
+            && ((tutorialIndex != 0 && GameManager.Instance.PlayerDataManager.tutorial == tutorialIndex)|| tutorialIndex == 0))
         {
             a.a += Time.deltaTime * 2;
             _sprite.color = a;

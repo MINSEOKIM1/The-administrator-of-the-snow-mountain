@@ -27,11 +27,6 @@ public class Inventory : MonoBehaviour
         {
             items.Add(null);
         }
-
-        for (int i = 0; i < test.Length; i++)
-        {
-            AddItem(test[i],1);
-        }
     }
 
     public void UpdateInventoryState()

@@ -113,7 +113,7 @@ public class MapUI : MonoBehaviour
                 
                 selectedMapInfoText.text = String.Format(
                     "{0}\n몬스터 수 - {5} / {6}\n다음 몬스터 생성까지..\n{1,8} / {2} (초)\n\n다음 보스 생성까지.. \n{3,8} / {4} (초)",
-                    selectedMapName,
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).explicitName,
                     RoundTo(GameManager.Instance.MapManager.GetMapWithString(selectedMapName).time / rate, 2),
                     RoundTo(GameManager.Instance.MapManager.GetMapWithString(selectedMapName).respawnTime / rate, 2),
                     RoundTo(GameManager.Instance.MapManager.GetMapWithString(selectedMapName).bossTime / GameManager.Instance.MapManager.globalRate, 2),
@@ -137,7 +137,7 @@ public class MapUI : MonoBehaviour
             {
                 selectedMapInfoText.text = String.Format(
                     "{0}\n몬스터 수 - {1} / {2}\n",
-                    selectedMapName,
+                    GameManager.Instance.MapManager.GetMapWithString(selectedMapName).explicitName,
                     GameManager.Instance.MapManager.GetMapWithString(selectedMapName).curMob,
                     GameManager.Instance.MapManager.GetMapWithString(selectedMapName).maxMob);
                 selectedMapInfoSliders[0].gameObject.SetActive(false);

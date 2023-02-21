@@ -437,6 +437,12 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         
         if (item != null && item.count > 0 && item.item != null)
         {
+            if (GameManager.Instance.PlayerDataManager.tutorial == 0)
+            {
+                GameManager.Instance.PlayerDataManager.tutorial++;
+                GameManager.Instance.UIManager.ConservationUI.currentNpc.conversationStart = 4;
+            } 
+            
             int part = ((EquipmentItemInfo)item.item).equipmentPart;
             var equipment = GameManager.Instance.PlayerDataManager.equipment.items[part];
             if (equipment == null)
@@ -466,6 +472,11 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (item != null && item.count > 0 && item.item != null)
         {
             Debug.Log("!!");
+            if (GameManager.Instance.PlayerDataManager.tutorial == 1)
+            {
+                GameManager.Instance.PlayerDataManager.tutorial++;
+                GameManager.Instance.UIManager.ConservationUI.currentNpc.conversationStart = 7;
+            }
             var consumable = (ConsumableItemInfo)item.item;
             float hp = consumable.hpRecovery;
             float mp = consumable.mpRecovery;

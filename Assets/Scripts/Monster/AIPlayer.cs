@@ -23,15 +23,18 @@ public class AIPlayer : MonoBehaviour
 
    public void MobDie()
    {
-      if (idName.Equals("Boss"))
+      if (_mobSpawnManager != null)
       {
-         _mobSpawnManager.BossDie(_mobSpawnManager.sceneinfo.currentSceneName);
-         Invoke("SetActiveFalse", 0.2f);
-      }
-      else
-      {
-         _mobSpawnManager.MobDie(_mobSpawnManager.sceneinfo.currentSceneName, idName);
-         Invoke("SetActiveFalse", 2);
+         if (idName.Equals("Boss"))
+         {
+            _mobSpawnManager.BossDie(_mobSpawnManager.sceneinfo.currentSceneName);
+            Invoke("SetActiveFalse", 0.2f);
+         }
+         else
+         {
+            _mobSpawnManager.MobDie(_mobSpawnManager.sceneinfo.currentSceneName, idName);
+            Invoke("SetActiveFalse", 2);
+         }
       }
    }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    private int conversationStart;
+    public int conversationStart;
     public ConversationClip[] conversationClips;
 
     public int GetConversationStart()

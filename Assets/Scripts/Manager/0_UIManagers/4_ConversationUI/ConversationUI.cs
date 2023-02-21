@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,6 +19,11 @@ public class ConversationUI : MonoBehaviour
     public GameObject cookWindow;
     public GameObject smithyWindow;
 
+    public NPC currentNpc;
+
+    public EquipmentItemInfo woodSword;
+    public ItemInfo monsterMeat;
+
     public void UIUpdate()
     {
         if (currentClip == null) return;
@@ -30,10 +36,11 @@ public class ConversationUI : MonoBehaviour
         conversationKind = currentClip.conservationKind;
     }
 
-    public void SetCurrentConservationArray(ConversationClip[] ctx, int index)
+    public void SetCurrentConservationArray(ConversationClip[] ctx, int index, NPC npc)
     {
         currentConversationArray = ctx;
         currentClip = currentConversationArray[index];
+        currentNpc = npc;
         
         UIUpdate();
     }
@@ -63,6 +70,34 @@ public class ConversationUI : MonoBehaviour
         else
         {
             if (currentClip == null || currentConversationArray == null) return;
+            if (currentClip.eventIndex == -1)
+            {
+                GameManager.Instance.PlayerDataManager.inventory.AddItem(woodSword, 1);
+            } else if (currentClip.eventIndex == -2)
+            {
+                GameManager.Instance.PlayerDataManager.inventory.AddItem(monsterMeat, 1);
+                GameManager.Instance.PlayerDataManager.hp -= GameManager.Instance.PlayerDataManager.maxHp / 2;
+            } else if (currentClip.eventIndex == -3)
+            {
+                TutorialManager.Instance.tutorialNpc.transform.position = TutorialManager.Instance.npcPos[0].position;
+                TutorialManager.Instance.confiners[0].SetActive(false);
+                TutorialManager.Instance.cam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D =
+                    TutorialManager.Instance.camConfiners[1];
+            } else if (currentClip.eventIndex == -4)
+            {
+                TutorialManager.Instance.SpawnMonster(0);
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            } else if (currentClip.eventIndex == -5)
+            {
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            } else if (currentClip.eventIndex == -6)
+            {
+                TutorialManager.Instance.SpawnMonster(1);
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            }
+
+            if (currentNpc.conversationStart < currentClip.nextStartIndex) currentNpc.conversationStart = currentClip.nextStartIndex;
+            
             if (currentClip.nextClipIndex == -1)
             {
                 gameObject.SetActive(false);
@@ -82,7 +117,8 @@ public class ConversationUI : MonoBehaviour
                 gameObject.SetActive(false);
                 GameManager.Instance.UIManager.MapUI.isAllocating = true;
                 GameManager.Instance.UIManager.AccessUICanvas(2);
-            }
+            } 
+            
             else
             {
                 currentClip = currentConversationArray[currentClip.nextClipIndex];

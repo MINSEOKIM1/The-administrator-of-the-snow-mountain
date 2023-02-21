@@ -229,6 +229,11 @@ public class Monster : Entity
     public override void Die()
     {
         if (isDie) return;
+        if (GameManager.Instance.PlayerDataManager.tutorial == 3 || GameManager.Instance.PlayerDataManager.tutorial == 15)
+        {
+            GameManager.Instance.PlayerDataManager.tutorial++;
+            TutorialManager.Instance.tutorialNpc.conversationStart++;
+        }
         GameManager.Instance.PlayerDataManager.exp += ((MonsterInfo)entityInfo).exp;
         GetComponent<AIPlayer>().MobDie();
         _animator.SetTrigger("die");

@@ -114,6 +114,8 @@ public class PlayerDataManager : MonoBehaviour
         set => canControl = value;
     }
 
+    public int tutorial;
+
     public float atk 
     {
         get

@@ -53,6 +53,8 @@ public class PlayerBehavior : Entity
     // input detect variable
     public bool _normalAttackDetect;
 
+    private int tutorialSignal;
+
     public bool canControl
     {
         get => GameManager.Instance.PlayerDataManager.canControl;
@@ -111,6 +113,19 @@ public class PlayerBehavior : Entity
     // Physics logic...
     protected override void FixedUpdate()
     {
+        if (GameManager.Instance.PlayerDataManager.tutorial % 2 == 0)
+        {
+            tutorialSignal = 0;
+            if (GameManager.Instance.PlayerDataManager.tutorial >= 5 &&
+                GameManager.Instance.PlayerDataManager.tutorial <= 13)
+            {
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            } else if (GameManager.Instance.PlayerDataManager.tutorial == 14)
+            {
+                if (TutorialManager.Instance.tutorialNpc.conversationStart == 15)
+                    TutorialManager.Instance.tutorialNpc.conversationStart++;
+            }
+        }
         hitTimeElapsed -= Time.fixedDeltaTime;
         invincibilityTimeElapsed -= Time.fixedDeltaTime;
         if (stunTimeElapsed > 0) stunTimeElapsed -= Time.fixedDeltaTime;
@@ -255,11 +270,6 @@ public class PlayerBehavior : Entity
             
             // player stop moving (_speed = 0), and dash while attacking (in _playerAttack.NormalAttack);
             _speed = 0;
-            if (_playerInputHandler.movement.y > 0)
-            {
-                _playerAttack._normalAttackNumber = 1;
-                _animator.SetInteger("normalAttack", 1);
-            }
 
             if (_playerInputHandler.dashCheck < 2)
             {
@@ -267,6 +277,14 @@ public class PlayerBehavior : Entity
             }
             else
             {
+                if (GameManager.Instance.PlayerDataManager.tutorial == 11)
+                {
+                    tutorialSignal++;
+                    if (tutorialSignal == 2)
+                    {
+                        GameManager.Instance.PlayerDataManager.tutorial++;
+                    }
+                }
                 _playerAttack.DashAttack();
                 _playerInputHandler.dashCheck = 0;
             }
@@ -411,6 +429,7 @@ public class PlayerBehavior : Entity
     {
         if (isHitMotion && CanUtilCondition(3) && stunTimeElapsed <= 0)
         {
+            
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[2];
             externalSpeed = 0;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
@@ -424,6 +443,14 @@ public class PlayerBehavior : Entity
         }
         else if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
         {
+            if (GameManager.Instance.PlayerDataManager.tutorial == 7)
+            {
+                tutorialSignal++;
+                if (tutorialSignal == 2)
+                {
+                    GameManager.Instance.PlayerDataManager.tutorial++;
+                }
+            }
             UseUtilSkill(0);
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
             if (_isAttack && CanUtilCondition(3))
@@ -453,6 +480,14 @@ public class PlayerBehavior : Entity
     {
         if (_isGround && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0) && !isRolling)
         {
+            if (GameManager.Instance.PlayerDataManager.tutorial == 5)
+            {
+                tutorialSignal++;
+                if (tutorialSignal == 2)
+                {
+                    GameManager.Instance.PlayerDataManager.tutorial++;
+                }
+            }
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
             if (_isAttack && CanUtilCondition(3))
             {
@@ -489,6 +524,14 @@ public class PlayerBehavior : Entity
     {
         if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(2))
         {
+            if (GameManager.Instance.PlayerDataManager.tutorial == 9)
+            {
+                tutorialSignal++;
+                if (tutorialSignal == 2)
+                {
+                    GameManager.Instance.PlayerDataManager.tutorial++;
+                }
+            }
             UseUtilSkill(2);
             _playerAttack.ResetNormalAttack();
             
@@ -531,7 +574,8 @@ public class PlayerBehavior : Entity
                 var npc = i.GetComponent<NPC>();
                 GameManager.Instance.UIManager.ConservationUI.SetCurrentConservationArray(
                     npc.conversationClips, 
-                    npc.GetConversationStart());
+                    npc.GetConversationStart(),
+                    npc);
                 try
                 {
                     var an = (AgentNPC)npc;
@@ -547,6 +591,14 @@ public class PlayerBehavior : Entity
 
     IEnumerator MotionCancel()
     {
+        if (GameManager.Instance.PlayerDataManager.tutorial == 13)
+        {
+            tutorialSignal++;
+            if (tutorialSignal == 3)
+            {
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            }
+        }
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(0.01f);
 

@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
 
     public void AccessUICanvas(int index)
     {
-        if (!GameManager.Instance.MapManager.gameStart) return;
+        if (!GameManager.Instance.MapManager.gameStart || !GameManager.Instance.PlayerDataManager.canControl) return;
         for (int i = 0; i < uiCanvas.Length; i++)
         {
             if (i == index)
