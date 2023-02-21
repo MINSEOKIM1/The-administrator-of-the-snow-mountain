@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager_modif
       objectReference: {fileID: 0}
+    - target: {fileID: 4647755710641124358, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: changeRate
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4647755710641124361, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -482,6 +486,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4647755711714210407, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: woodSword
+      value: 
+      objectReference: {fileID: 11400000, guid: b8e03c14daa1c4ab5bac995a374a5dbd, type: 2}
+    - target: {fileID: 4647755711714210407, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: monsterMeat
+      value: 
+      objectReference: {fileID: 11400000, guid: 193647b99451140ef89373268f497100, type: 2}
     - target: {fileID: 4647755711831582013, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.58
@@ -498,6 +510,86 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: fork.bgmIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: bastion.bgmIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: currentSceneName
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: village.bgmIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[8].name
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[9].name
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[10].name
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[10].maxMob
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[8].bgmIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[9].bgmIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[10].bgmIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[10].respawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: dungeons.Array.data[10].bossRespawnTime
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711999174704, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: bgmClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711999174704, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: bgmClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 38e0fdc7dd8894580a49b15f2fb70279, type: 3}
+    - target: {fileID: 4647755711999174704, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: bgmClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 513dd4973f27d407bb1342e7034aceb6, type: 3}
+    - target: {fileID: 4647755711999174704, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: bgmClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 851b54167deca488981df3a6dfe10195, type: 3}
+    - target: {fileID: 4647755711999174704, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: bgmClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: a272aac30db634ae08b76968b4b1632d, type: 3}
+    - target: {fileID: 4647755711999174704, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: bgmClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 076d59eaa0a914e7db03e1d1ee234771, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
 --- !u!1 &1546567089

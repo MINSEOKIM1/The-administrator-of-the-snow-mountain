@@ -257,7 +257,7 @@ public class PlayerBehavior : Entity
     
     protected override void AttackInputDetect()
     {
-        if (PlayerDataManager.attackSpeed == 0 || isHitMotion || isDie)
+        if (PlayerDataManager.attackSpeed == 0 || isHitMotion || isDie || isRolling)
         {
             _normalAttackDetect = false;
             return;

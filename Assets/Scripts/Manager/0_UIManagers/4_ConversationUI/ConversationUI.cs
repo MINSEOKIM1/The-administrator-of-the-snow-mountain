@@ -30,6 +30,18 @@ public class ConversationUI : MonoBehaviour
 
         gameObject.SetActive(true);
         conversationWindow.SetActive(true);
+        if (currentNpc != null)
+        {
+            if (currentNpc.transform.position.x < GameObject.FindWithTag("Player").transform.position.x)
+            {
+                currentNpc.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                currentNpc.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+
         speakerImage.sprite = currentClip.speakerImage;
         speakerName.text = currentClip.speakerName;
         contents.text = currentClip.contents;
@@ -93,6 +105,11 @@ public class ConversationUI : MonoBehaviour
             } else if (currentClip.eventIndex == -6)
             {
                 TutorialManager.Instance.SpawnMonster(1);
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            }
+            else if (currentClip.eventIndex == -7)
+            {
+                TutorialManager.Instance.monsters[2].SetActive(true);
                 GameManager.Instance.PlayerDataManager.tutorial++;
             }
 
