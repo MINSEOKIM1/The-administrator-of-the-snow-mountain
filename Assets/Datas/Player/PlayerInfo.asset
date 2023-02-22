@@ -20,7 +20,7 @@ MonoBehaviour:
   rollPower: 7
   maxHp: 262.5
   maxMp: 332.9
-  hpIncRate: 1
+  hpIncRate: 100
   mpIncRate: 93.1
   atk: 108.1
   def: 30

@@ -123,11 +123,16 @@ public class White : Monster
         }
     }
 
+    private Vector3 dir0;
+    private float dir0X;
     public void Attack1()
     {
         if (CanAttackLogic())
         {
             _capsuleCollider.sharedMaterial = little;
+            dir0 = (_target.transform.position - (transform.position + Vector3.up)).normalized;
+            dir0X = dir0.x;
+            dir0.x = dir0.x / Mathf.Abs(dir0.x);
             
             _speed = 0;
             _animator.SetFloat("attackNum", 1);
@@ -138,7 +143,9 @@ public class White : Monster
     public void CloneProjectile0()
     {
         var proj = Instantiate(projectile, transform.position, Quaternion.identity);
-        var dir = (_target.transform.position - transform.position).normalized;
+        var dir = (_target.transform.position - (transform.position + Vector3.up)).normalized;
+        dir.x = Mathf.Clamp(dir.x, dir0.x, dir0X);
+        dir.y = Mathf.Clamp(dir.y, 0f, Mathf.Abs(dir.y));
         proj.GetComponent<MonsterProjectile>().SetInfo(
             false, 
             dir * projSpeed,

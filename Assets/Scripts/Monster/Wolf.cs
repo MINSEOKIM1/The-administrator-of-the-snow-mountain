@@ -131,7 +131,7 @@ public class Wolf : Monster
             _animator.SetTrigger("attack");
             
             
-            var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.one*50, 0);
+            var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.right*50 + Vector2.up, 0);
             foreach (var j in tmp)
             {
                 Wolf c;
