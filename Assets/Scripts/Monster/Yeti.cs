@@ -288,6 +288,7 @@ public class Yeti : Monster
                     _yetiAttack.CanAttack();
                     externalSpeed = -graphicTransform.localScale.x * 10;
                     IcicleFall();
+                    GameManager.Instance.AudioManager.PlaySfx(35);
                 }
             }
         }

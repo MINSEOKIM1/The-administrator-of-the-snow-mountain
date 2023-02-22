@@ -54,17 +54,20 @@ public class Icicle : MonoBehaviour
             if (col.collider.CompareTag("Player"))
             {
                 col.gameObject.GetComponent<PlayerBehavior>().Hit(damage, knockback, stunTime, transform.position);
+                GameManager.Instance.AudioManager.PlaySfx(36);
                 ani.SetTrigger("explosion");
                 rigidbody.bodyType = RigidbodyType2D.Static;
             }
             else if (col.collider.CompareTag("Ground") && col.contacts[0].normal.y > 0.9)
             {
                 ani.SetTrigger("explosion");
+                GameManager.Instance.AudioManager.PlaySfx(33);
                 rigidbody.bodyType = RigidbodyType2D.Static;
             }
             else if (!col.collider.CompareTag("Icicle"))
             {
                 ani.SetTrigger("explosion");
+                GameManager.Instance.AudioManager.PlaySfx(33);
                 rigidbody.bodyType = RigidbodyType2D.Static;
             }
         }

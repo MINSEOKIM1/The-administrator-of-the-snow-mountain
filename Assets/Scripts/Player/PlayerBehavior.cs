@@ -473,6 +473,7 @@ public class PlayerBehavior : Entity
             UseUtilSkill(0);
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
             
+            GameManager.Instance.AudioManager.PlaySfx(5);
             GameManager.Instance.EffectManager.CreateEffect(2,  (int) -graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             
             _playerAttack.ResetNormalAttack();
@@ -521,6 +522,7 @@ public class PlayerBehavior : Entity
             _playerAttack.ResetNormalAttack();
             GameManager.Instance.EffectManager.CreateEffect(2,  (int) graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             
+            GameManager.Instance.AudioManager.PlaySfx(8);
             dashElapsed = 1;
             gameObject.layer = 9;
             _speed = 0;
@@ -578,7 +580,8 @@ public class PlayerBehavior : Entity
             }
 
             StartCoroutine(DashTrail());
-
+            
+            GameManager.Instance.AudioManager.PlaySfx(8);
             GameManager.Instance.EffectManager.CreateEffect(2,  (int) graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             dashElapsed = 1;
             gameObject.layer = 9;

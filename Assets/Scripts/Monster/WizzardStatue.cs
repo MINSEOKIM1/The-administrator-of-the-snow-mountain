@@ -122,6 +122,7 @@ public class WizzardStatue : Monster
            
             _animator.SetTrigger("attack");
             StartCoroutine(SpawnBullets(bulletCount, bulletSpawner.position, 1f));
+            GameManager.Instance.AudioManager.PlaySfx(40);
 
             _monsterAttack.SetAttackBox(attackBoundaryBoxes[0], attackBoundaryOffsets[0]);
             _monsterAttack.SetAttackInfo(

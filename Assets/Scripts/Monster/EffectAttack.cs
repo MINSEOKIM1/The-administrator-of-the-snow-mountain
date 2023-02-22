@@ -106,4 +106,8 @@ public class EffectAttack : MonoBehaviour
         }
         
     }
+    public void PlaySFX(int index)
+    {
+        GameManager.Instance.AudioManager.PlaySfx(index);
+    }
 }
