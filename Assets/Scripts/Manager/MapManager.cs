@@ -72,8 +72,30 @@ public class MapManager : MonoBehaviour
                 }
                 else if (dungeons[idx].curMob > 0 && !GameManager.Instance.MapManager.currentSceneName.Equals(dungeons[idx].name))
                 {
-                    dungeons[idx].curMob--;
-                    agent.timeElapsed = 0;
+                    
+                    
+                    if (dungeons[idx].name.Equals("Fork"))
+                    {
+                        fork.curMob--;
+                        if (fork.white > 0) fork.white--;
+                        else if (fork.wolf > 0) fork.wolf--;
+                        else if (fork.stone > 0) fork.stone--;
+                        else fork.zombie--;
+                        agent.timeElapsed = 0;
+                    } else if (dungeons[idx].name.Equals("Bastion"))
+                    {
+                        bastion.curMob--;
+                        if (fork.white > 0) fork.white--;
+                        else if (fork.wolf > 0) fork.wolf--;
+                        else if (fork.stone > 0) fork.stone--;
+                        else fork.zombie--;
+                        agent.timeElapsed = 0;
+                    }
+                    else
+                    {
+                        dungeons[idx].curMob--;
+                        agent.timeElapsed = 0;
+                    }
                 }
             }
         }

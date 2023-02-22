@@ -67,7 +67,8 @@ public class DataManager : MonoBehaviour
             dataPacks[index].position = Vector3.zero;
         }
 
-        
+
+        dataPacks[index].agentAvailable = GameManager.Instance.PlayerDataManager.agentAvailable;
         dataPacks[index].equipment = GameManager.Instance.PlayerDataManager.equipment.GameToDataPack();
         dataPacks[index].inventory = GameManager.Instance.PlayerDataManager.inventory.GameToDataPack();
         dataPacks[index].SetInvenIndexCount();
@@ -101,7 +102,8 @@ public class DataManager : MonoBehaviour
 
         GameManager.Instance.PlayerDataManager.loadPos = dataPacks[index].position;
         GameManager.Instance.PlayerDataManager.loadPosFromData = true;
-
+        
+        GameManager.Instance.PlayerDataManager.agentAvailable = dataPacks[index].agentAvailable;
         GameManager.Instance.PlayerDataManager.equipment.SetFromDataPack(dataPacks[index].equipment);
         GameManager.Instance.PlayerDataManager.inventory.SetFromDataPack(dataPacks[index].GetInvenSaveData());
         GameManager.Instance.PlayerDataManager.exp = dataPacks[index].exp;

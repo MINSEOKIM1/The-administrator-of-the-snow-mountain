@@ -71,6 +71,14 @@ public class MapUI : MonoBehaviour
         TurnOnPoint(sceneInfo.currentSceneName);
     }
 
+    private void OnEnable()
+    {
+        if (GameManager.Instance.PlayerDataManager.tutorial < 18)
+        {
+            GameManager.Instance.UIManager.PopMessage("맵의 각 포인트를 클릭해 상세 정보를 알 수 있습니다.", 3);
+        }
+    }
+
     private void OnDisable()
     {
         isTeleporting = false;

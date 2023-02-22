@@ -21,9 +21,9 @@ MonoBehaviour:
   maxHp: 100
   maxMp: 100
   hpIncRate: 0
-  mpIncRate: 0
+  mpIncRate: 4
   atk: 0
-  def: 55.41
+  def: 0
   stance: 0
   attackKnockback:
   - {x: 2, y: 2}

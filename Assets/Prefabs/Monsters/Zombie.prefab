@@ -880,7 +880,7 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   height: 1
   breath: {fileID: 0}
-  shakeCnt: 6
+  shakeCnt: 3
   shakeDuration: 0.3
   shakeDelay: 0.4
 --- !u!114 &4594153606358027975
@@ -896,6 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idName: Zombie
+  agentIndex: 0
 --- !u!1 &4594153606361165036
 GameObject:
   m_ObjectHideFlags: 0

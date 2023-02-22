@@ -78,11 +78,6 @@ public class PlayerDataManager : MonoBehaviour
                 if (equipment.items[i] != null) total += equipment.items[i].hpIncRate;
             }
             float to = playerInfo.hpIncRate + level * 0.1f + total;
-            if (saturation > 0) to *= (saturation / maxSaturation);
-            else
-            {
-                return -hpDecRate;
-            }
             return to;
         }
         private set => hpIncRate = value;
@@ -98,11 +93,6 @@ public class PlayerDataManager : MonoBehaviour
                 if (equipment.items[i] != null) total += equipment.items[i].mpIncRate;
             }
             float to = playerInfo.mpIncRate + level * 0.1f + total;
-            if (saturation > 0) to *= (saturation / maxSaturation);
-            else
-            {
-                return -mpDecRate;
-            }
             return to;
         }
         private set => mpIncRate = value;
@@ -116,7 +106,7 @@ public class PlayerDataManager : MonoBehaviour
 
     public float maxExp
     {
-        get => 100 * (1 + 0.2f * (level-1));
+        get => 50 * (1 + 1.2f * (level-1));
     }
     
     public int[] attackSkillLevel;
@@ -143,7 +133,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].atk;
             }
-            return playerInfo.atk + level * 10f + total;
+            return playerInfo.atk + level * 3f + total;
         }
         private set => atk = value;
     }
@@ -237,13 +227,22 @@ public class PlayerDataManager : MonoBehaviour
 
         if (!isDie)
         {
-            hp += hpIncRate * Time.deltaTime;
-            mp += mpIncRate * Time.deltaTime;
+            if (saturation > 0)
+            {
+                hp += hpIncRate * (saturation / maxSaturation) * Time.deltaTime;
+                mp += mpIncRate * (saturation / maxSaturation) * Time.deltaTime;
+            }
+            else
+            {
+                hp -= hpDecRate * Time.deltaTime;
+                mp -= mpDecRate * Time.deltaTime; 
+            }
         }
 
         if (exp >= maxExp)
         {
             LevelUP();
+            GameManager.Instance.UIManager.PopMessage("레벨 업!", 3);
         }
         
 
@@ -260,9 +259,9 @@ public class PlayerDataManager : MonoBehaviour
 
     private void LevelUP()
     {
-        level++;
         hp = maxHp;
         mp = maxMp;
-        exp = 0;
+        exp -= maxExp;
+        level++;
     }
 }

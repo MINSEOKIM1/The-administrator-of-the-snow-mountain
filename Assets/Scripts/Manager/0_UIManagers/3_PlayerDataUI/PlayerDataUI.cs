@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,7 +10,17 @@ public class PlayerDataUI : MonoBehaviour
     public Slider hpBar, mpBar, fullnessBar, expBar;
     public TMP_Text hpText, mpText, fullnessText, expText, lvText;
     public float changeRate;
-    
+
+    public GameObject guide;
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance.PlayerDataManager.tutorial < 3)
+        {
+            guide.SetActive(true);
+        }
+    }
+
     public PlayerDataManager PlayerDataManager
     {
         get => GameManager.Instance.PlayerDataManager;
@@ -17,6 +28,10 @@ public class PlayerDataUI : MonoBehaviour
     }
     public void Update()
     {
+        if (guide.activeSelf && GameManager.Instance.PlayerDataManager.tutorial >= 3)
+        {
+            guide.SetActive(false);
+        }
         hpBar.value = Mathf.Lerp(
             hpBar.value, 
             PlayerDataManager.hp / PlayerDataManager.maxHp, 

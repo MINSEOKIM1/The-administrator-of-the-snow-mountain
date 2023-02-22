@@ -29,10 +29,13 @@ MonoBehaviour:
   - 0
   atk: 0
   def: 10
-  hp: 10
-  mp: 10
+  hp: 20
+  mp: 20
   hpIncRate: 0
   mpIncRate: 0
   stance: 0
   atkSpeed: 0
-  IngredientCountPairs: []
+  weaponImage: {fileID: 0}
+  IngredientCountPairs:
+  - item: {fileID: 11400000, guid: 11d4d3be5cf1d4ffb8a913a67d41f9dc, type: 2}
+    count: 3
