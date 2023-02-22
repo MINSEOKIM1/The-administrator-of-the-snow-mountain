@@ -34,6 +34,8 @@ public class ConversationUI : MonoBehaviour
         {
             gameObject.SetActive(false);
             conversationWindow.SetActive(false);
+            cookWindow.SetActive(false);
+            smithyWindow.SetActive(false);
         };
         if (currentNpc != null)
         {
@@ -139,8 +141,14 @@ public class ConversationUI : MonoBehaviour
                 gameObject.SetActive(false);
                 GameManager.Instance.UIManager.MapUI.isAllocating = true;
                 GameManager.Instance.UIManager.AccessUICanvas(2);
-            } 
-            
+            } else if (currentClip.nextClipIndex == -5)
+            {
+                // SAVE
+                conversationWindow.SetActive(false);
+                GameManager.Instance.DataManager.SaveCurrentState();
+                gameObject.SetActive(false);
+                GameManager.Instance.UIManager.PopMessage("저장되었습니다!", 3);
+            }
             else
             {
                 currentClip = currentConversationArray[currentClip.nextClipIndex];

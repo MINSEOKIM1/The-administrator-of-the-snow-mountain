@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -25,19 +28,71 @@ public class UIManager : MonoBehaviour
     public TMP_Text[] messageText;
     public float[] messageTime;
 
+    public GameObject optionWindow;
+    public Slider[] soundSlider;
+
+    public void SetVolume(int idx)
+    {
+        if (idx == 0) GameManager.Instance.AudioManager.bgmPlayer.volume = soundSlider[idx].value;
+        if (idx == 1) GameManager.Instance.AudioManager.sfxPlayer.volume = soundSlider[idx].value;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void GotoMain()
+    {
+        Time.timeScale = 1;
+        optionWindow.SetActive(false);
+        GameManager.Instance.MapManager.gameStart = false;
+        GameManager.Instance.GameSceneManager.LoadScene("LogoScene");
+    }
+
     public delegate void ESCAction();
 
     public event ESCAction ESCEvents;
+
+    public Volume tmpa;
+    public DepthOfField tmpb;
     
     private void Start()
     {
+        tmpa.profile.TryGet<DepthOfField>(out tmpb);
+        soundSlider[0].value = GameManager.Instance.AudioManager.bgmPlayer.volume;
+        soundSlider[1].value = GameManager.Instance.AudioManager.sfxPlayer.volume;
+        optionWindow.SetActive(false);
         // ToEquipmentUI();
         GameManager.Instance.UIManager.ESCEvents += () =>
         {
+            bool ok = false;
             for (int i = 0; i < uiCanvas.Length; i++)
             {
-                if (uiCanvas[i].activeSelf) uiCanvas[i].SetActive(false);
+                if (uiCanvas[i].activeSelf)
+                {
+                    ok = true;
+                    uiCanvas[i].SetActive(false);
+                }
             }
+
+            if (!ok && !ConservationUI.gameObject.activeSelf && GameManager.Instance.MapManager.gameStart)
+            {
+                if (optionWindow.activeSelf)
+                {
+                    optionWindow.SetActive(false);
+                    tmpb.active = false;
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    optionWindow.SetActive(true);
+                    tmpb.active = true;
+                    Time.timeScale = 0;
+                }
+            }
+            
+            
         };
     }
 
@@ -45,6 +100,7 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < messageText.Length; i++)
         {
+            messageTime[i] -= Time.deltaTime;
             if (messageTime[i] < 0) messageText[i].alpha -= Time.deltaTime;
         }
     }

@@ -20,6 +20,8 @@ public class PlayerDataManager : MonoBehaviour
     public ConsumableItemInfo[] quickSlotItems;
     public bool[] agentAvailable;
 
+    public bool loadPosFromData;
+    public Vector3 loadPos;
     [field: SerializeField] public float attackSpeed
     {
         get

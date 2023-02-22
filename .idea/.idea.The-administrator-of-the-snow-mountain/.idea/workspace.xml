@@ -6,44 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Attack0.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Attack0.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Attack1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Attack1.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Die.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Die.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Monster/White/White_Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Graphic.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Graphic.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/16_WoodSword.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/16_WoodSword.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/GameManager_modif.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/GameManager_modif.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Bastion.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Bastion.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Village.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Village.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/2_Equipment/EquipmentUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/2_Equipment/EquipmentUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/CookUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/CookUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/SmithyUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/SmithyUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/1_AudioManagers/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/1_AudioManagers/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Equipment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Equipment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/3_EffectManager/EffectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/3_EffectManager/EffectManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Monster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Minseo/White_remake.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Minseo/White_remake.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataPack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataPack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/ScriptableObjectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/ScriptableObjectManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/VillageData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameOverScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LogoScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/AgentUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapPointUI.cs" root0="FORCE_HIGHLIGHTING" />

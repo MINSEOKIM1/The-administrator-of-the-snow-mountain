@@ -164,7 +164,8 @@ public class Inventory : MonoBehaviour
         Tuple<int, int>[] tmp = new Tuple<int, int>[InventoryCapacity];
         for (int i = 0; i < tmp.Length; i++)
         {
-            tmp[i] = new Tuple<int, int>(items[i].item.itemNum, items[i].count);
+            if (items[i] != null && items[i].item != null) tmp[i] = new Tuple<int, int>(items[i].item.itemNum, items[i].count);
+            else tmp[i] = new Tuple<int, int>(-1, 0);
         }
 
         return tmp;
@@ -172,6 +173,11 @@ public class Inventory : MonoBehaviour
 
     public void SetFromDataPack(Tuple<int, int>[] tmp)
     {
-        
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            if (tmp[i] != null)
+            items[i] = new ItemSlot(GameManager.Instance.ScriptableObjectManager.GetWithIndex(tmp[i].Item1),
+                tmp[i].Item2);
+        }
     }
 }

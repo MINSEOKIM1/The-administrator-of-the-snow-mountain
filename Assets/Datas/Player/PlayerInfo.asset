@@ -20,10 +20,10 @@ MonoBehaviour:
   rollPower: 7
   maxHp: 262.5
   maxMp: 332.9
-  hpIncRate: 70.87
+  hpIncRate: 1
   mpIncRate: 93.1
   atk: 108.1
-  def: 107.5
+  def: 30
   stance: 0
   attackKnockback:
   - {x: 2, y: 2}

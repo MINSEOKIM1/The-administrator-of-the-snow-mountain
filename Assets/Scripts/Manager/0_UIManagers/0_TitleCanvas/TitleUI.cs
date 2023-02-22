@@ -84,9 +84,16 @@ public class TitleUI : MonoBehaviour
 
     public void LoadGameStart(int idx)
     {
-        GameManager.Instance.DataManager.LoadToGame(idx);
-        GameManager.Instance.DataManager.currentDataSlot = idx;
-        GameStart();
+        try
+        {
+            GameManager.Instance.DataManager.LoadToGame(idx);
+            GameManager.Instance.DataManager.currentDataSlot = idx;
+            GameStart();
+        }
+        catch (Exception e)
+        {
+            
+        }
     }
 
     public void GoMain()

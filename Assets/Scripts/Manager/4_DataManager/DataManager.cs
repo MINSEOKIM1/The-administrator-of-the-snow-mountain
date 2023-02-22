@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -57,9 +58,19 @@ public class DataManager : MonoBehaviour
         dataPacks[index].spawnRate = GameManager.Instance.MapManager.spawnRate;
         dataPacks[index].playTime = GameManager.Instance.MapManager.playTime;
 
+        try
+        {
+            dataPacks[index].position = GameObject.FindWithTag("Player").transform.position;
+        }
+        catch (Exception e)
+        {
+            dataPacks[index].position = Vector3.zero;
+        }
+
         
-        dataPacks[index].equipment = GameManager.Instance.PlayerDataManager.equipment.items;
-        dataPacks[index].inventory = GameManager.Instance.PlayerDataManager.inventory.items;
+        dataPacks[index].equipment = GameManager.Instance.PlayerDataManager.equipment.GameToDataPack();
+        dataPacks[index].inventory = GameManager.Instance.PlayerDataManager.inventory.GameToDataPack();
+        dataPacks[index].SetInvenIndexCount();
         dataPacks[index].exp = GameManager.Instance.PlayerDataManager.exp;
         dataPacks[index].hp = GameManager.Instance.PlayerDataManager.hp;
         dataPacks[index].mp = GameManager.Instance.PlayerDataManager.mp;
@@ -88,9 +99,11 @@ public class DataManager : MonoBehaviour
         GameManager.Instance.MapManager.spawnRate = dataPacks[index].spawnRate;
         GameManager.Instance.MapManager.playTime = dataPacks[index].playTime;
 
+        GameManager.Instance.PlayerDataManager.loadPos = dataPacks[index].position;
+        GameManager.Instance.PlayerDataManager.loadPosFromData = true;
 
-        GameManager.Instance.PlayerDataManager.equipment.items = dataPacks[index].equipment;
-        GameManager.Instance.PlayerDataManager.inventory.items = dataPacks[index].inventory;
+        GameManager.Instance.PlayerDataManager.equipment.SetFromDataPack(dataPacks[index].equipment);
+        GameManager.Instance.PlayerDataManager.inventory.SetFromDataPack(dataPacks[index].GetInvenSaveData());
         GameManager.Instance.PlayerDataManager.exp = dataPacks[index].exp;
         GameManager.Instance.PlayerDataManager.hp = dataPacks[index].hp;
         GameManager.Instance.PlayerDataManager.mp = dataPacks[index].mp;
