@@ -17,13 +17,13 @@ MonoBehaviour:
   jumpPower: 9
   backStepPower: {x: 3, y: 3}
   dashPower: 12
-  rollPower: 6
-  maxHp: 100
-  maxMp: 100
-  hpIncRate: 0.2
-  mpIncRate: 124
-  atk: 0
-  def: 0
+  rollPower: 7
+  maxHp: 262.5
+  maxMp: 332.9
+  hpIncRate: 70.87
+  mpIncRate: 93.1
+  atk: 108.1
+  def: 107.5
   stance: 0
   attackKnockback:
   - {x: 2, y: 2}

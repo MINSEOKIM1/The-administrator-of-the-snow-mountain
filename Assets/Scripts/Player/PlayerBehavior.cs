@@ -106,6 +106,7 @@ public class PlayerBehavior : Entity
     {
         base.Update();
         AttackCheck();
+        
         _animator.SetFloat("attackSpeed", PlayerDataManager.attackSpeed);
         
     }
@@ -280,9 +281,12 @@ public class PlayerBehavior : Entity
                 if (GameManager.Instance.PlayerDataManager.tutorial == 11)
                 {
                     tutorialSignal++;
-                    if (tutorialSignal == 2)
+                    if (_playerAttack.canAttack && CanAttackCondition(3))
                     {
-                        GameManager.Instance.PlayerDataManager.tutorial++;
+                        if (tutorialSignal == 2)
+                        {
+                            GameManager.Instance.PlayerDataManager.tutorial++;
+                        }
                     }
                 }
                 _playerAttack.DashAttack();
@@ -443,6 +447,20 @@ public class PlayerBehavior : Entity
         }
         else if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
         {
+            if (_isAttack)
+            {
+                if (CanUtilCondition(3))
+                {
+                    GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                    UseUtilSkill(3);
+                    _animator.SetTrigger("attackCancel");
+                    StartCoroutine(MotionCancel());
+                }
+                else
+                {
+                    return;
+                }
+            }
             if (GameManager.Instance.PlayerDataManager.tutorial == 7)
             {
                 tutorialSignal++;
@@ -453,13 +471,7 @@ public class PlayerBehavior : Entity
             }
             UseUtilSkill(0);
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
-            if (_isAttack && CanUtilCondition(3))
-            {
-                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
-                UseUtilSkill(3);
-                _animator.SetTrigger("attackCancel");
-                StartCoroutine(MotionCancel());
-            }
+            
             GameManager.Instance.EffectManager.CreateEffect(2,  (int) -graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             
             _playerAttack.ResetNormalAttack();
@@ -480,6 +492,19 @@ public class PlayerBehavior : Entity
     {
         if (_isGround && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0) && !isRolling)
         {
+            if (_isAttack )
+            {
+                if (CanUtilCondition(3)){
+                    GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                    UseUtilSkill(3);
+                    _animator.SetTrigger("attackCancel");
+                    StartCoroutine(MotionCancel());
+                }
+                else
+                {
+                    return;
+                }
+            }
             if (GameManager.Instance.PlayerDataManager.tutorial == 5)
             {
                 tutorialSignal++;
@@ -489,14 +514,9 @@ public class PlayerBehavior : Entity
                 }
             }
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
-            if (_isAttack && CanUtilCondition(3))
-            {
-                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
-                UseUtilSkill(3);
-                _animator.SetTrigger("attackCancel");
-                StartCoroutine(MotionCancel());
-            }
             
+            
+            UseUtilSkill(0);
             _playerAttack.ResetNormalAttack();
             GameManager.Instance.EffectManager.CreateEffect(2,  (int) graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             
@@ -524,6 +544,19 @@ public class PlayerBehavior : Entity
     {
         if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(2))
         {
+            if (_isAttack)
+            {
+                if (CanUtilCondition(3)) {
+                    GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                    UseUtilSkill(3);
+                    _animator.SetTrigger("attackCancel");
+                    StartCoroutine(MotionCancel());
+                }
+                else
+                {
+                    return;
+                }
+            }
             if (GameManager.Instance.PlayerDataManager.tutorial == 9)
             {
                 tutorialSignal++;
@@ -535,13 +568,7 @@ public class PlayerBehavior : Entity
             UseUtilSkill(2);
             _playerAttack.ResetNormalAttack();
             
-            if (_isAttack && CanUtilCondition(3))
-            {
-                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
-                UseUtilSkill(3);
-                _animator.SetTrigger("attackCancel");
-                StartCoroutine(MotionCancel());
-            }
+            
 
             if (_playerInputHandler.movement.x != 0)
             {

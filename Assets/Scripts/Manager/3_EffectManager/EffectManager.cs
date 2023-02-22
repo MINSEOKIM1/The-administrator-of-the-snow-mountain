@@ -25,6 +25,7 @@ public class EffectManager : MonoBehaviour
     {
         var item = Instantiate(dropItem, position, rotation);
         var itemDropped = item.GetComponent<ItemDropped>();
+        item.GetComponent<Rigidbody2D>().AddForce(Random.Range(-3, 3) * Vector2.left + Vector2.up * 3, ForceMode2D.Impulse);
         itemDropped.SetItem(itemInfo, count);
         return item;
     }

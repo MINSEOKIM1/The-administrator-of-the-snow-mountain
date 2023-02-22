@@ -21,16 +21,34 @@ public class UIManager : MonoBehaviour
 
     [Tooltip("0: inventory\n1: equipment\n2:MapUI")]
     public GameObject[] uiCanvas;
+
+    public TMP_Text[] messageText;
+    public float[] messageTime;
+
+    public delegate void ESCAction();
+
+    public event ESCAction ESCEvents;
+    
     private void Start()
     {
         // ToEquipmentUI();
+        GameManager.Instance.UIManager.ESCEvents += () =>
+        {
+            for (int i = 0; i < uiCanvas.Length; i++)
+            {
+                if (uiCanvas[i].activeSelf) uiCanvas[i].SetActive(false);
+            }
+        };
     }
 
     private void Update()
     {
-        fps += (Time.deltaTime - fps) * 0.1f;
-        fpsTEXT.text = "fps : " + 1 / fps;
+        for (int i = 0; i < messageText.Length; i++)
+        {
+            if (messageTime[i] < 0) messageText[i].alpha -= Time.deltaTime;
+        }
     }
+
 
     public void ToInventoryUI()
     {
@@ -72,7 +90,20 @@ public class UIManager : MonoBehaviour
     {
         if (value.started)
         {
-            Application.Quit();
+            ESCEvents.Invoke();
+            Debug.Log(ESCEvents.Target);
+        }
+    }
+
+    public void PopMessage(String message, float time)
+    {
+        for (int i = 0; i < messageText.Length; i++)
+        {
+            if (messageText[i].alpha > 0) continue;
+            messageText[i].alpha = 1;
+            messageTime[i] = time;
+            messageText[i].text = message;
+            return;
         }
     }
 }

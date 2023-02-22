@@ -152,7 +152,7 @@ public class MapUI : MonoBehaviour
         var curMap = GameManager.Instance.MapManager.GetMapWithString(GameManager.Instance.MapManager.currentSceneName);
         if (goToMap.agent.timeTakenToHunt != 0)
         {
-            Debug.Log("안돼요~");
+            GameManager.Instance.UIManager.PopMessage("이미 대리인이 있습니다.", 3);
         }
         else
         {

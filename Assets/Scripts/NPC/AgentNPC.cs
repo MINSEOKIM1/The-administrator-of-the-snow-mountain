@@ -6,6 +6,7 @@ using UnityEngine;
 public class AgentNPC : NPC
 {
     public AgentData agentData;
+    public int agentIndex;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class AgentNPC : NPC
 
     private void SetActiveWithCondition()
     {
-        gameObject.SetActive(agentData.currentMapName.Equals(GameManager.Instance.MapManager.currentSceneName));
+        gameObject.SetActive(agentData.currentMapName.Equals(GameManager.Instance.MapManager.currentSceneName) 
+                             && GameManager.Instance.PlayerDataManager.agentAvailable[agentIndex]);
     }
 }

@@ -158,4 +158,20 @@ public class Inventory : MonoBehaviour
     {
         (items[index0], items[index1]) = (items[index1], items[index0]);
     }
+
+    public Tuple<int, int>[] GameToDataPack()
+    {
+        Tuple<int, int>[] tmp = new Tuple<int, int>[InventoryCapacity];
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            tmp[i] = new Tuple<int, int>(items[i].item.itemNum, items[i].count);
+        }
+
+        return tmp;
+    }
+
+    public void SetFromDataPack(Tuple<int, int>[] tmp)
+    {
+        
+    }
 }

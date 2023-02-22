@@ -30,6 +30,11 @@ public class ConversationUI : MonoBehaviour
 
         gameObject.SetActive(true);
         conversationWindow.SetActive(true);
+        GameManager.Instance.UIManager.ESCEvents += () =>
+        {
+            gameObject.SetActive(false);
+            conversationWindow.SetActive(false);
+        };
         if (currentNpc != null)
         {
             if (currentNpc.transform.position.x < GameObject.FindWithTag("Player").transform.position.x)

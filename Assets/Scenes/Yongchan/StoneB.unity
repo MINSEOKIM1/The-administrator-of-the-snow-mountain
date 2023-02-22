@@ -265,6 +265,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8399505581249671388, guid: 5bc67569e38a94483977441e5076cad2, type: 3}
+      propertyPath: m_Mass
+      value: 10139.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399505581249671388, guid: 5bc67569e38a94483977441e5076cad2, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8399505581249671390, guid: 5bc67569e38a94483977441e5076cad2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -384,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.396374
+      value: 51.39641
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.y
@@ -835,7 +843,7 @@ CompositeCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -1508,6 +1516,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5327493055806951691, guid: 140318b5f525e4c968fa23445b5586a7, type: 3}
+      propertyPath: m_Mass
+      value: 10139.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327493055806951691, guid: 140318b5f525e4c968fa23445b5586a7, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5327493055806951695, guid: 140318b5f525e4c968fa23445b5586a7, type: 3}
       propertyPath: m_Name
       value: WizardStatue
@@ -1849,6 +1865,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8399505581249671388, guid: 5bc67569e38a94483977441e5076cad2, type: 3}
+      propertyPath: m_Mass
+      value: 10139.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399505581249671388, guid: 5bc67569e38a94483977441e5076cad2, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8399505581249671390, guid: 5bc67569e38a94483977441e5076cad2, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1960,6 +1984,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1045512306075076561, guid: 2b1376aaf255d4cea91191c2c99b6949, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045512306075076563, guid: 2b1376aaf255d4cea91191c2c99b6949, type: 3}
+      propertyPath: m_Mass
+      value: 10139.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045512306075076563, guid: 2b1376aaf255d4cea91191c2c99b6949, type: 3}
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1045512306075076567, guid: 2b1376aaf255d4cea91191c2c99b6949, type: 3}
@@ -2301,6 +2333,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327493055806951689, guid: 140318b5f525e4c968fa23445b5586a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327493055806951691, guid: 140318b5f525e4c968fa23445b5586a7, type: 3}
+      propertyPath: m_Mass
+      value: 10139.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327493055806951691, guid: 140318b5f525e4c968fa23445b5586a7, type: 3}
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327493055806951695, guid: 140318b5f525e4c968fa23445b5586a7, type: 3}
@@ -35200,7 +35240,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -36449,7 +36489,7 @@ CompositeCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -37765,7 +37805,7 @@ CompositeCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

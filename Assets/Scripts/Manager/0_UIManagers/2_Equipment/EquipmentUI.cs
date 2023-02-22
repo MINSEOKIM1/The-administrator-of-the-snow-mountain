@@ -93,7 +93,17 @@ public class EquipmentUI : MonoBehaviour
             selectedItemImage.color = new Color(1, 1, 1, 1);
             selectedItemImage.sprite = selectedItem.itemIcon;
             selectedItemName.text = selectedItem.itemName;
-            selectedItemDescription.text = selectedItem.itemDescription;
+            var ii = selectedItem;
+            string total = "\n\n";
+            if (ii.atk != 0) total += "ATK +" + ii.atk + "\n";
+            if (ii.def != 0) total += "DEF +" + ii.def + "\n";
+            if (ii.hp != 0) total += "HP +" + ii.hp + "\n";
+            if (ii.mp != 0) total += "MP +" + ii.mp + "\n";
+            if (ii.hpIncRate != 0) total += "HP 회복 +" + ii.hpIncRate + "\n";
+            if (ii.mpIncRate != 0) total += "MP 회복 +" + ii.mpIncRate + "\n";
+            if (ii.stance != 0) total += "STANCE +" + (ii.stance * 100) + "%\n";
+            if (ii.atkSpeed != 0) total += "공격속도 :" + ii.atkSpeed + "\n";
+            selectedItemDescription.text = selectedItem.itemDescription + total;
         }
     }
 }

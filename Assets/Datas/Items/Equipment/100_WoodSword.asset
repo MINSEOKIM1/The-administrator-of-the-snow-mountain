@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7768e07093a40859a7e64b2e40fa4d, type: 3}
+  m_Name: 100_WoodSword
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 100
+  itemName: "\uBAA9\uAC80"
+  itemDescription: "\uC774 \uAC8C\uC784 \uB0B4\uC758 \uCD5C\uC57D\uCCB4 \uBB34\uAE30\uB2E4."
+  itemIcon: {fileID: -2019258707, guid: e9220fed3a84d47888becce108377d34, type: 3}
+  maxCount: 1
+  equipmentPart: 3
+  stats:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  atk: 3
+  def: 0
+  hp: 0
+  mp: 0
+  hpIncRate: 0
+  mpIncRate: 0
+  stance: 0
+  atkSpeed: 1
+  weaponImage: {fileID: 929641368, guid: e9220fed3a84d47888becce108377d34, type: 3}
+  IngredientCountPairs: []

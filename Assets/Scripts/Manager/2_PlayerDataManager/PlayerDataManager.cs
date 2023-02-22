@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 [Serializable]
 public class PlayerDataManager : MonoBehaviour
@@ -16,8 +18,9 @@ public class PlayerDataManager : MonoBehaviour
     public float exp;
 
     public ConsumableItemInfo[] quickSlotItems;
+    public bool[] agentAvailable;
 
-    public float attackSpeed
+    [field: SerializeField] public float attackSpeed
     {
         get
         {
@@ -169,17 +172,38 @@ public class PlayerDataManager : MonoBehaviour
         hp = maxHp;
         mp = maxMp;
         saturation = maxSaturation;
+        volume.profile.TryGet<Vignette>(out tmp);
     }
 
     private bool a;
+    public Volume volume;
+    private Vignette tmp;
+    private float _vignetteIntensity;
+    public float vignettePulseInterval;
+    public float vignetteAmplitude;
 
     private void Update()
     {
         hp = Mathf.Clamp(hp, 0, maxHp);
         mp = Mathf.Clamp(mp, 0, maxMp);
         saturation = Mathf.Clamp(saturation, 0, maxSaturation);
+        _vignetteIntensity += Time.deltaTime * vignettePulseInterval;
 
-        saturation -= Time.deltaTime * playerInfo.saturationDecrementRate;
+        if (hp < maxHp / 3)
+        {
+            if (tmp)
+            {
+                tmp.intensity.Interp(tmp.intensity.value, vignetteAmplitude * Mathf.Sin(_vignetteIntensity) + vignetteAmplitude * 1.1f, Time.deltaTime);
+            }
+        }
+        else
+        {
+            if (tmp)
+            {
+                tmp.intensity.Interp(tmp.intensity.value, 0, Time.deltaTime);
+            }
+        }
+        if (tutorial >= 18) saturation -= Time.deltaTime * playerInfo.saturationDecrementRate;
 
         if (!isDie)
         {
