@@ -52,6 +52,7 @@ public class NecromancerProjectile : MonoBehaviour
                 _damage, k, _stunTime, transform.position);
             Destroy(gameObject);
             Destroy(obj, _objDuration);
+            GameManager.Instance.AudioManager.PlaySfx(42);
         } else if (col.collider.CompareTag("Ground"))
         {
             Destroy(gameObject);

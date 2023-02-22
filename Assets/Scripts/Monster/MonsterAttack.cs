@@ -64,4 +64,9 @@ public class MonsterAttack : MonoBehaviour
     {
         transform.parent.gameObject.SetActive(false);
     }
+    
+    public void PlaySFX(int index)
+    {
+        GameManager.Instance.AudioManager.PlaySfx(index);
+    }
 }

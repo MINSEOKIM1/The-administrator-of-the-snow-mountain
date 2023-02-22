@@ -263,10 +263,13 @@ public class Necromancer : Monster
             {
                 a = true;
                 Instantiate(summon, pos, Quaternion.identity);
+                GameManager.Instance.AudioManager.PlaySfx(45);
             }
             if(lowHealth && i == 2){
                 Instantiate(summon, pos + Vector3.right * i * lightningDistanceInterval, Quaternion.identity);
+                GameManager.Instance.AudioManager.PlaySfx(45);
                 Instantiate(summon, pos + Vector3.left * i * lightningDistanceInterval, Quaternion.identity);
+                GameManager.Instance.AudioManager.PlaySfx(45);
             }
             var _objR = Instantiate(obj, pos + Vector3.right * i * lightningDistanceInterval, Quaternion.identity);
             var _objL = Instantiate(obj, pos + Vector3.left * i * lightningDistanceInterval, Quaternion.identity);
