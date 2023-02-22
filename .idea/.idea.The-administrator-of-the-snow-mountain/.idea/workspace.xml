@@ -6,22 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Village.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Village.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/1_AudioManagers/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/1_AudioManagers/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Equipment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Equipment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/Tutorial.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataPack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataPack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/ScriptableObjectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/ScriptableObjectManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPortal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPortal.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,5 +163,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs</url>
+          <line>143</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" initialLine="138" containingFunctionPresentation="method 'NewGame'">
+            <startOffsets>
+              <option value="3522" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3523" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

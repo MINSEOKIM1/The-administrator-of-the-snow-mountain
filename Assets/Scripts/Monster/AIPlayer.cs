@@ -10,6 +10,8 @@ public class AIPlayer : MonoBehaviour
 {
    public string idName;
 
+   public int agentIndex;
+   
    public MapManager sceneinfo
    {
       get => GameManager.Instance.MapManager;
@@ -29,6 +31,7 @@ public class AIPlayer : MonoBehaviour
          {
             _mobSpawnManager.BossDie(_mobSpawnManager.sceneinfo.currentSceneName);
             Invoke("SetActiveFalse", 0.2f);
+            GameManager.Instance.PlayerDataManager.agentAvailable[agentIndex] = true;
          }
          else
          {

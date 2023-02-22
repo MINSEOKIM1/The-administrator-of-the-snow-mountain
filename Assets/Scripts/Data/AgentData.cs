@@ -11,4 +11,5 @@ public class AgentData
     public Sprite agentImage;
     public float timeRate; // 맵에 따라 달라짐.
     public string currentMapName;
+    public bool atVillage;
 }

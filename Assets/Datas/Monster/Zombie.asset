@@ -41,7 +41,7 @@ MonoBehaviour:
   - 1
   attackStunTime:
   - 0
-  - 2
+  - 1
   attackKnockback:
   - {x: 0.5, y: 6}
   - {x: 1, y: 2}
@@ -58,6 +58,6 @@ MonoBehaviour:
   - 1
   - 0.5
   - 0.3
-  itemDropCount: 06000000010000000500000001000000
+  itemDropCount: 06000000070000000500000005000000
   exp: 50
   perceiveTime: 10

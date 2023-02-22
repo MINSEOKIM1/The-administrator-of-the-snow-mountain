@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b541bd72cc54489b66d979cf6af74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversationStart: 0
   conversationClips:
   - speakerImage: {fileID: 946211210, guid: 823497eda8ece4fe98cf1992eccef32a, type: 3}
     speakerName: "\uCD08\uBCF4 \uC0AC\uB0E5\uAFBC"
@@ -106,6 +107,8 @@ MonoBehaviour:
       \uBB38\uC81C\uC57C."
     nextClipIndex: 1
     prevClipIndex: -1
+    eventIndex: 0
+    nextStartIndex: 0
     conservationKind: 1
   - speakerImage: {fileID: 946211210, guid: 823497eda8ece4fe98cf1992eccef32a, type: 3}
     speakerName: "\uCD08\uBCF4 \uC0AC\uB0E5\uAFBC"
@@ -115,12 +118,16 @@ MonoBehaviour:
       \uC548\uC804\uD558\uC9C0..."
     nextClipIndex: 2
     prevClipIndex: 0
+    eventIndex: 0
+    nextStartIndex: 0
     conservationKind: 2
   - speakerImage: {fileID: 946211210, guid: 823497eda8ece4fe98cf1992eccef32a, type: 3}
     speakerName: "\uCD08\uBCF4 \uC0AC\uB0E5\uAFBC"
     contents: "\uC544\uBB34\uD2BC \uB0B4\uAC00 \uC5B4\uB514\uB85C \uAC00\uBA74 \uB420\uAE4C?"
     nextClipIndex: -4
     prevClipIndex: 1
+    eventIndex: 0
+    nextStartIndex: 0
     conservationKind: -4
   agentData:
     agentName: "\uCD08\uBCF4 \uC0AC\uB0E5\uAFBC"
@@ -129,6 +136,7 @@ MonoBehaviour:
     agentImage: {fileID: 946211210, guid: 823497eda8ece4fe98cf1992eccef32a, type: 3}
     timeRate: 1
     currentMapName: Village
+  agentIndex: 0
 --- !u!61 &2321220769890906727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -229,7 +237,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e60718119cec31e4190849292fcde068, type: 3}
-  m_Color: {r: 0.17319274, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.9788537, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

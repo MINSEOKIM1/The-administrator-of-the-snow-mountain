@@ -94,6 +94,7 @@ public class PlayerBehavior : Entity
 
     protected override void Start()
     {
+        GameManager.Instance.UIManager.MapUI.UpdateMapPoint();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
         _playerInputHandler = GetComponent<PlayerInputHandler>();
@@ -283,7 +284,7 @@ public class PlayerBehavior : Entity
                     tutorialSignal++;
                     if (_playerAttack.canAttack && CanAttackCondition(3))
                     {
-                        if (tutorialSignal == 2)
+                        if (tutorialSignal == 1)
                         {
                             GameManager.Instance.PlayerDataManager.tutorial++;
                         }
