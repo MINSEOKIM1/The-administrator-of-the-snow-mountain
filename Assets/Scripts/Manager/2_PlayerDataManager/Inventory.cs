@@ -35,6 +35,10 @@ public class Inventory : MonoBehaviour
             {
                 AddItem(test[i], 99);
             }
+            if (test[i].itemNum == 200)
+            {
+                AddItem(test[i], 49);
+            }
         }
     }
 

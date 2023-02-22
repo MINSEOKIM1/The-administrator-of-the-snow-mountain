@@ -31,6 +31,9 @@ public class MapUI : MonoBehaviour
 
     public string selectedMapName;
 
+    public bool isTeleporting;
+    public Button teleportButton;
+
     public delegate void AgentNPCdelegate();
 
     public event AgentNPCdelegate agentNPCEvent;
@@ -38,6 +41,15 @@ public class MapUI : MonoBehaviour
     {
          // # UI Update
          
+    }
+
+    public void TeleportToMap()
+    {
+        GameManager.Instance.GameSceneManager.LoadScene(selectedMapName);
+        gameObject.SetActive(false);
+        GameManager.Instance.PlayerDataManager.inventory.DeleteItem(
+            GameManager.Instance.ScriptableObjectManager.GetWithIndex(200), 1);
+        GameManager.Instance.UIManager.MapUI.UpdateMapPoint();
     }
 
     float RoundTo(float c, int a)
@@ -58,9 +70,23 @@ public class MapUI : MonoBehaviour
         TurnOffPoint("Village");
         TurnOnPoint(sceneInfo.currentSceneName);
     }
-    
+
+    private void OnDisable()
+    {
+        isTeleporting = false;
+    }
+
     private void Update()
     {
+        if (!gameObject.activeSelf) isTeleporting = false;
+        if (isTeleporting)
+        {
+            teleportButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            teleportButton.gameObject.SetActive(false);
+        }
         MopNumUpdate();
         TurnOnPoint(sceneInfo.currentSceneName);
         TurnOffPoint(sceneInfo.beforeSceneName);

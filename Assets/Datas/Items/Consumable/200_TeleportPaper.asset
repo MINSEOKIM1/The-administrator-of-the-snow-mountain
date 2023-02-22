@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a094311ccfae4d3a9b245f18ae3c598, type: 3}
+  m_Name: 200_TeleportPaper
+  m_EditorClassIdentifier: 
+  useOption: 1
+  itemNum: 200
+  itemName: "\uC21C\uAC04\uC774\uB3D9 \uC885\uC774"
+  itemDescription: "\uC6D0\uD558\uB294 \uACF3\uC73C\uB85C \uD154\uB808\uD3EC\uD2B8
+    \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  itemIcon: {fileID: 21300000, guid: 3cfc43408de7c41338c7581a11d31935, type: 3}
+  maxCount: 300
+  hpRecovery: 0
+  mpRecovery: 0
+  saturationRecovery: 0
+  IngredientCountPairs:
+  - item: {fileID: 11400000, guid: 7d068b84a2d6f40ce95da11695f3f636, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 0699af48ed35e430b832810a35c59334, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: ebe298e5be107403aa777310e8e348d5, type: 2}
+    count: 1

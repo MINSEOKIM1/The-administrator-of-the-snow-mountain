@@ -131,7 +131,7 @@ public class UIManager : MonoBehaviour
 
     public void AccessUICanvas(int index)
     {
-        if (!GameManager.Instance.MapManager.gameStart || !GameManager.Instance.PlayerDataManager.canControl) return;
+        if (!GameManager.Instance.MapManager.gameStart || !GameManager.Instance.PlayerDataManager.canControl || optionWindow.activeSelf) return;
         for (int i = 0; i < uiCanvas.Length; i++)
         {
             if (i == index)

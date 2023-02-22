@@ -302,8 +302,12 @@ public abstract class Entity : MonoBehaviour
         _isGround = false;
         _canJump = false;
         _hitAir = true;
-        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-        _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
+        if (knockback.magnitude > 1)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+            _rigidbody.AddForce(knockback.y * Vector2.up, ForceMode2D.Impulse);
+        }
+
         externalSpeed = knockback.x;
         hitAirTime = 0.1f;
     }

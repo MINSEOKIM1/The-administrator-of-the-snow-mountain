@@ -328,14 +328,14 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     SelectItem(isui.item, isui.index);
                 }
             }
-        }
+        } 
     }
 
     public void OnPointerUp(PointerEventData pt)
     {
         List<RaycastResult> results = new List<RaycastResult>();
         graphic.Raycast(pt, results);
-        
+
         foreach (var i in results)
         {
             var isui = i.gameObject.GetComponent<ItemSlotUI>();
@@ -347,8 +347,55 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
         }
         
+        GameManager.Instance.UIManager.PlayerDataUI.GetComponent<GraphicRaycaster>().Raycast(pt, results);
+        
+        foreach (var i in results)
+        {
+            var isquickslot = i.gameObject.GetComponent<QuickSlotUI>();
+            if (isquickslot != null && _isItemDragging)
+            {
+                Debug.Log("!");
+                try
+                {
+                    isquickslot.SetItem(
+                        (ConsumableItemInfo)GameManager.Instance.PlayerDataManager.inventory.items[_dragBeginSlotIndex]
+                            .item);
+                }
+                catch (Exception e)
+                {
+                    
+                }
+            }
+        }
+        
         _isItemDragging = false;
         dragImage.gameObject.SetActive(false);
+    }
+
+    public void SelectItem(ItemInfo item)
+    {
+        for(int i = 0; i<GameManager.Instance.PlayerDataManager.inventory.items.Count; i++)
+        {
+            if (GameManager.Instance.PlayerDataManager.inventory.items[i] != null 
+                && item == GameManager.Instance.PlayerDataManager.inventory.items[i].item)
+            {
+                SelectItem(GameManager.Instance.PlayerDataManager.inventory.items[i], i);
+            }
+        }
+    }
+    
+    public int GetSelectedItemIndex(ItemInfo item)
+    {
+        for(int i = 0; i<GameManager.Instance.PlayerDataManager.inventory.items.Count; i++)
+        {
+            if (GameManager.Instance.PlayerDataManager.inventory.items[i] != null 
+                && item == GameManager.Instance.PlayerDataManager.inventory.items[i].item)
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public void SelectItem(ItemSlot item, int index)
@@ -557,8 +604,16 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             GameManager.Instance.PlayerDataManager.mp += mp;
             GameManager.Instance.PlayerDataManager.saturation += saturation;
 
-            GameManager.Instance.PlayerDataManager.inventory.DeleteItem(selectedItemIndex, 1);
-            SelectItem(item, selectedItemIndex);
+            if (item.item.itemNum == 200)
+            {
+                GameManager.Instance.UIManager.AccessUICanvas(2);
+                GameManager.Instance.UIManager.MapUI.isTeleporting = true;
+            }
+            else
+            {
+                GameManager.Instance.PlayerDataManager.inventory.DeleteItem(selectedItemIndex, 1);
+                SelectItem(item, selectedItemIndex);
+            }
         }
     }
 

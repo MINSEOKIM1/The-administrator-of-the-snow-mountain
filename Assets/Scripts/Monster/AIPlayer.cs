@@ -31,7 +31,24 @@ public class AIPlayer : MonoBehaviour
          {
             _mobSpawnManager.BossDie(_mobSpawnManager.sceneinfo.currentSceneName);
             Invoke("SetActiveFalse", 0.2f);
-            GameManager.Instance.PlayerDataManager.agentAvailable[agentIndex] = true;
+            if (!GameManager.Instance.PlayerDataManager.agentAvailable[agentIndex])
+            {
+               GameManager.Instance.PlayerDataManager.agentAvailable[agentIndex] = true;
+               switch (agentIndex)
+               {
+                  case 1:
+                     GameManager.Instance.UIManager.PopMessage("초급 사냥꾼이 구출되어 마을로 귀환했습니다.", 3);
+                     break;
+                  case 2:
+                     GameManager.Instance.UIManager.PopMessage("중급 사냥꾼이 구출되어 마을로 귀환했습니다.", 3);
+                     break;
+                  case 3:
+                     GameManager.Instance.UIManager.PopMessage("고급 사냥꾼이 구출되어 마을로 귀환했습니다.", 3);
+                     break;
+                  default:
+                     break;
+               }
+            }
          }
          else
          {
