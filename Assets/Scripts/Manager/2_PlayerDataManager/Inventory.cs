@@ -30,7 +30,11 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < test.Length; i++)
         {
-            AddItem(test[i],1);
+            AddItem(test[i], 1);
+            if (test[i].itemNum == 8)
+            {
+                AddItem(test[i], 99);
+            }
         }
     }
 
@@ -162,5 +166,27 @@ public class Inventory : MonoBehaviour
     public void Swap(int index0, int index1)
     {
         (items[index0], items[index1]) = (items[index1], items[index0]);
+    }
+
+    public Tuple<int, int>[] GameToDataPack()
+    {
+        Tuple<int, int>[] tmp = new Tuple<int, int>[InventoryCapacity];
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            if (items[i] != null && items[i].item != null) tmp[i] = new Tuple<int, int>(items[i].item.itemNum, items[i].count);
+            else tmp[i] = new Tuple<int, int>(-1, 0);
+        }
+
+        return tmp;
+    }
+
+    public void SetFromDataPack(Tuple<int, int>[] tmp)
+    {
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            if (tmp[i] != null)
+            items[i] = new ItemSlot(GameManager.Instance.ScriptableObjectManager.GetWithIndex(tmp[i].Item1),
+                tmp[i].Item2);
+        }
     }
 }

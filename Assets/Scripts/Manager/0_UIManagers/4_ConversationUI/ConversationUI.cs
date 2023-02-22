@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,22 +19,47 @@ public class ConversationUI : MonoBehaviour
     public GameObject cookWindow;
     public GameObject smithyWindow;
 
+    public NPC currentNpc;
+
+    public EquipmentItemInfo woodSword;
+    public ItemInfo monsterMeat;
+
     public void UIUpdate()
     {
         if (currentClip == null) return;
 
         gameObject.SetActive(true);
         conversationWindow.SetActive(true);
+        GameManager.Instance.UIManager.ESCEvents += () =>
+        {
+            gameObject.SetActive(false);
+            conversationWindow.SetActive(false);
+            cookWindow.SetActive(false);
+            smithyWindow.SetActive(false);
+        };
+        if (currentNpc != null)
+        {
+            if (currentNpc.transform.position.x < GameObject.FindWithTag("Player").transform.position.x)
+            {
+                currentNpc.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                currentNpc.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+
         speakerImage.sprite = currentClip.speakerImage;
         speakerName.text = currentClip.speakerName;
         contents.text = currentClip.contents;
         conversationKind = currentClip.conservationKind;
     }
 
-    public void SetCurrentConservationArray(ConversationClip[] ctx, int index)
+    public void SetCurrentConservationArray(ConversationClip[] ctx, int index, NPC npc)
     {
         currentConversationArray = ctx;
         currentClip = currentConversationArray[index];
+        currentNpc = npc;
         
         UIUpdate();
     }
@@ -63,6 +89,40 @@ public class ConversationUI : MonoBehaviour
         else
         {
             if (currentClip == null || currentConversationArray == null) return;
+            if (currentClip.eventIndex == -1)
+            {
+                GameManager.Instance.PlayerDataManager.inventory.AddItem(woodSword, 1);
+            } else if (currentClip.eventIndex == -2)
+            {
+                GameManager.Instance.PlayerDataManager.inventory.AddItem(monsterMeat, 1);
+                GameManager.Instance.PlayerDataManager.hp -= GameManager.Instance.PlayerDataManager.maxHp / 3;
+            } else if (currentClip.eventIndex == -3)
+            {
+                TutorialManager.Instance.tutorialNpc.transform.position = TutorialManager.Instance.npcPos[0].position;
+                TutorialManager.Instance.confiners[0].SetActive(false);
+                TutorialManager.Instance.cam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D =
+                    TutorialManager.Instance.camConfiners[1];
+            } else if (currentClip.eventIndex == -4)
+            {
+                TutorialManager.Instance.SpawnMonster(0);
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            } else if (currentClip.eventIndex == -5)
+            {
+                GameManager.Instance.PlayerDataManager.mp = GameManager.Instance.PlayerDataManager.maxMp;
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            } else if (currentClip.eventIndex == -6)
+            {
+                TutorialManager.Instance.SpawnMonster(1);
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            }
+            else if (currentClip.eventIndex == -7)
+            {
+                TutorialManager.Instance.monsters[2].SetActive(true);
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            }
+
+            if (currentNpc.conversationStart < currentClip.nextStartIndex) currentNpc.conversationStart = currentClip.nextStartIndex;
+            
             if (currentClip.nextClipIndex == -1)
             {
                 gameObject.SetActive(false);
@@ -76,6 +136,21 @@ public class ConversationUI : MonoBehaviour
             {
                 conversationWindow.SetActive(false);
                 smithyWindow.SetActive(true);
+            } else if (currentClip.nextClipIndex == -4)
+            {
+                conversationWindow.SetActive(false);
+                gameObject.SetActive(false);
+                GameManager.Instance.UIManager.MapUI.isAllocating = true;
+                GameManager.Instance.UIManager.AccessUICanvas(2);
+            } else if (currentClip.nextClipIndex == -5)
+            {
+                // SAVE
+                conversationWindow.SetActive(false);
+                GameManager.Instance.DataManager.SaveCurrentState();
+                GameManager.Instance.PlayerDataManager.hp = GameManager.Instance.PlayerDataManager.maxHp;
+                GameManager.Instance.PlayerDataManager.mp = GameManager.Instance.PlayerDataManager.maxMp;
+                gameObject.SetActive(false);
+                GameManager.Instance.UIManager.PopMessage("저장되었습니다!", 3);
             }
             else
             {

@@ -35,4 +35,5 @@ MonoBehaviour:
   mpIncRate: 0
   stance: 0
   atkSpeed: 1
+  weaponImage: {fileID: 1578499741, guid: 9f3d84446920c4cf38d38e23dd036791, type: 3}
   IngredientCountPairs: []

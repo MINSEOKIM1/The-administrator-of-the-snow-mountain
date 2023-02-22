@@ -1,0 +1,1355 @@
+fileFormatVersion: 2
+guid: 1e45abdc19e56428a920523527a9b19b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: motionCancelTutorial_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2310
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02379f5cb9ee34138ad78b6b8e036099
+      internalID: 1733001603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_1
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 2310
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e2ce698980e474893fb7243ce483da
+      internalID: -207123548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_2
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2310
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5511fa1dd29364aea82bbd4325776bb3
+      internalID: -317249828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_3
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 2310
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06bca65e0bf8544d3b09b6af90c92fab
+      internalID: 1868781774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_4
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 2310
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836ac668464e14cc2a5bac55b19887db
+      internalID: -261895091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_5
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 2310
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a1fa1a2170144049034b629d5f4139
+      internalID: 2112254028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_6
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 2310
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a35f39f6dfe4f51ac595eb59bac4b4
+      internalID: 1761939047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1980
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24f264485bdab4389923a4f95051eaab
+      internalID: -742397705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_8
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 1980
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308a8bcdf812448b694dde0cfe921fdf
+      internalID: 191333865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_9
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1980
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4d669456a9c4806accee7512cbd76d
+      internalID: -109593343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_10
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 1980
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b5bb86712c2949a0ba33707849fcfd0
+      internalID: 1390567567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_11
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1980
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c898cc5ec3de14535bd22821d9fb760f
+      internalID: -70791668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_12
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 1980
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6995ecbb151c404694fb105eeb702b6
+      internalID: 1730342306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_13
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 1980
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f37e628c8c24d3bbb9f120c35b495c
+      internalID: 477500043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1650
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325fb5beefb7d4bb8951d292087183bf
+      internalID: -1063091367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_15
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 1650
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f82d381bf94498aab294dbc46b8ef9
+      internalID: -503990894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_16
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1650
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272b59c3c73054bd7a77ec36d111e640
+      internalID: 801031256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_17
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 1650
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcbf9e9b054b4c5399391480cbfcaba
+      internalID: 1783678411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_18
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1650
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36514b383979845ada4d4372f3f51503
+      internalID: 1173380394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_19
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 1650
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a96058f5de54e45b0a2463108feab421
+      internalID: 267599759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_20
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 1650
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b8ae113aff14ba58bb4c68db3932fb
+      internalID: -165298256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1320
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f455deeb918a4efcbb0dd96d5bed150
+      internalID: 824864682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_22
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 1320
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6bb924062294b2092ec02029bd0aee
+      internalID: 986493167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_23
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1320
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf86591b18f6450f83a5a8ebe700173
+      internalID: 993247343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_24
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 1320
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8c47f009b7e417cb73228541427fe3
+      internalID: -2081094957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_25
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1320
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cead0590b685f4522a94962e1304237d
+      internalID: -718843836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_26
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 1320
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dde89f0a1d454be2ab3cfae60d4de61
+      internalID: 1567049048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_27
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 1320
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9fdb1cf46b5488daef29a70b2d89ad
+      internalID: -1719446567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 990
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3af4d2af9d01416d86abf9a0611f651
+      internalID: 147824413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_29
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 990
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19187b84169f64276854827a3443b4db
+      internalID: -791265855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_30
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 990
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04245fa75e3c248c2b7271872fde4e93
+      internalID: -2010892475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_31
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 990
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d517a70edaa4a19931a3dfb798c23f
+      internalID: 325944281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_32
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 990
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 022c98b189da54826ba74360869a0764
+      internalID: -1728054786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_33
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 990
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5855f162558694d699b1729c60e95664
+      internalID: 1168338559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_34
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 990
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4ca958fd0ab4391a99608de472d75f
+      internalID: -431450669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 660
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e85b688acef2a4d67a66f639ac08bd92
+      internalID: -1571390853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_36
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 660
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0196da81bb01f446897a494be6b0e1ef
+      internalID: -517163291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_37
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 660
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196c0426cb23346568d5825d1616ffa4
+      internalID: -729833970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_38
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 660
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4368730ef3a634a17b89a02e7b88b5a6
+      internalID: 1547619199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_39
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 660
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a5affeeeb88f48c89f394be47588cf9
+      internalID: 173175021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_40
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 660
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2566e645b11e54ef593fa5a05bb3e7db
+      internalID: 98590461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_41
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 660
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0f330a4f7b84082be13e58f003b814
+      internalID: -711449536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 330
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9df0892760d4e40a1750e9bca87b41
+      internalID: -235357314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_43
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 330
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 865be5495b21040babffc1407a7e2e8c
+      internalID: -2077799264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_44
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 330
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908cf644516814bd4a91f98820f43c53
+      internalID: 1615450614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_45
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 330
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d9d6e3c08e2d4d3a82305b5e2a38cf1
+      internalID: -795747896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_46
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 330
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2691ae8ae1a444fc910a6fc55a9aee2
+      internalID: -848754063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_47
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 330
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 681158a9ac53643929494aa872b44ab7
+      internalID: 2103713609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_48
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 330
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2a8158fa658480995979821ce1bd95
+      internalID: 48362746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7472bd20850ce4309b20c27a8ab5d501
+      internalID: -1014289298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_50
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a142209f3554c68a662b4460084a81
+      internalID: 825809366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_51
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e40464f3758a24f73be453ac03b77a93
+      internalID: -1145703754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_52
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 0
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd598f9bd439b49d084e6334d780b967
+      internalID: -1375355469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_53
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d699289076ca4ee182beb56b1b7fcd7
+      internalID: -845169670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_54
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 0
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52077fbc987634442bb8dbe0542de4be
+      internalID: -1400829577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: motionCancelTutorial_55
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 0
+        width: 450
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3525f79760305470cba7d7de7d75464e
+      internalID: -1223674982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      motionCancelTutorial_46: -848754063
+      motionCancelTutorial_25: -718843836
+      motionCancelTutorial_50: 825809366
+      motionCancelTutorial_9: -109593343
+      motionCancelTutorial_15: -503990894
+      motionCancelTutorial_5: 2112254028
+      motionCancelTutorial_21: 824864682
+      motionCancelTutorial_11: -70791668
+      motionCancelTutorial_29: -791265855
+      motionCancelTutorial_42: -235357314
+      motionCancelTutorial_39: 173175021
+      motionCancelTutorial_36: -517163291
+      motionCancelTutorial_40: 98590461
+      motionCancelTutorial_14: -1063091367
+      motionCancelTutorial_23: 993247343
+      motionCancelTutorial_41: -711449536
+      motionCancelTutorial_16: 801031256
+      motionCancelTutorial_48: 48362746
+      motionCancelTutorial_55: -1223674982
+      motionCancelTutorial_1: -207123548
+      motionCancelTutorial_52: -1375355469
+      motionCancelTutorial_22: 986493167
+      motionCancelTutorial_37: -729833970
+      motionCancelTutorial_4: -261895091
+      motionCancelTutorial_20: -165298256
+      motionCancelTutorial_3: 1868781774
+      motionCancelTutorial_0: 1733001603
+      motionCancelTutorial_7: -742397705
+      motionCancelTutorial_27: -1719446567
+      motionCancelTutorial_32: -1728054786
+      motionCancelTutorial_28: 147824413
+      motionCancelTutorial_8: 191333865
+      motionCancelTutorial_17: 1783678411
+      motionCancelTutorial_6: 1761939047
+      motionCancelTutorial_38: 1547619199
+      motionCancelTutorial_30: -2010892475
+      motionCancelTutorial_12: 1730342306
+      motionCancelTutorial_43: -2077799264
+      motionCancelTutorial_51: -1145703754
+      motionCancelTutorial_10: 1390567567
+      motionCancelTutorial_53: -845169670
+      motionCancelTutorial_13: 477500043
+      motionCancelTutorial_26: 1567049048
+      motionCancelTutorial_34: -431450669
+      motionCancelTutorial_19: 267599759
+      motionCancelTutorial_35: -1571390853
+      motionCancelTutorial_18: 1173380394
+      motionCancelTutorial_44: 1615450614
+      motionCancelTutorial_54: -1400829577
+      motionCancelTutorial_45: -795747896
+      motionCancelTutorial_31: 325944281
+      motionCancelTutorial_47: 2103713609
+      motionCancelTutorial_2: -317249828
+      motionCancelTutorial_24: -2081094957
+      motionCancelTutorial_33: 1168338559
+      motionCancelTutorial_49: -1014289298
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

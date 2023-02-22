@@ -21,6 +21,8 @@ public class EquipmentItemInfo : ItemInfo
     public float stance;
 
     public float atkSpeed;
+
+    public Sprite weaponImage;
     
     [Serializable]
     public class IngredientCountPair

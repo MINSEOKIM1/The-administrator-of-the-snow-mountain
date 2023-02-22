@@ -16,6 +16,8 @@ MonoBehaviour:
   accel: 0.5
   jumpPower: 0
   backStepPower: {x: 0, y: 0}
+  dashPower: 0
+  rollPower: 0
   maxHp: 100
   maxMp: 100
   hpIncRate: 0
@@ -56,6 +58,6 @@ MonoBehaviour:
   - 1
   - 1
   - 1
-  itemDropCount: 03000000030000000300000001000000
+  itemDropCount: 08000000070000000700000001000000
   exp: 10
   perceiveTime: 10

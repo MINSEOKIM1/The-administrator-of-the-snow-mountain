@@ -8,6 +8,7 @@ public class DungeonData
 {
     public int id;
     public string name;
+    public string explicitName;
     public float time;
     public float respawnTime;
     public int maxMob;
@@ -16,4 +17,6 @@ public class DungeonData
     public float bossTime;
     public float bossRespawnTime;
     public bool boss;
+    public AgentData agent;
+    public float agentTimeRate;
 }

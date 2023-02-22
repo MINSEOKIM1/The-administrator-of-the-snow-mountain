@@ -837,6 +837,7 @@ MonoBehaviour:
   footPos: {fileID: 4594153607103308857}
   graphicTransform: {fileID: 4594153607028577259}
   stunEffect: {fileID: 4594153607197999082}
+  _rigidbody: {fileID: 0}
   _speed: 0
   _isGround: 0
   _canJump: 0
@@ -881,7 +882,7 @@ MonoBehaviour:
   breath: {fileID: 0}
   shakeCnt: 6
   shakeDuration: 0.3
-  shakeDelay: 0.2
+  shakeDelay: 0.4
 --- !u!114 &4594153606358027975
 MonoBehaviour:
   m_ObjectHideFlags: 0

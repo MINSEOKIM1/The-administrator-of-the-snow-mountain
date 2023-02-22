@@ -64,12 +64,30 @@ public class PlayerAttack : MonoBehaviour
         {
             if (i.CompareTag("Monster"))
             {
+                float hammerStunTime = 0;
+                try
+                {
+                    if (GameManager.Instance.PlayerDataManager.equipment.items[3].itemNum == 101)
+                    {
+                        hammerStunTime = 0.5f;
+                    }
+                    else
+                    {
+                        hammerStunTime = 0;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("ASD");
+                }
+                
+
                 var k = atkKnockback;
                 k.Set(i.transform.position.x < transform.parent.position.x ? -k.x : k.x, k.y);
                 i.GetComponent<Monster>().Hit(
                     _playerBehavior.PlayerDataManager.atk * atkCoefficient
                     , k, 
-                    atkStunTime,
+                    atkStunTime + hammerStunTime,
                     transform.parent.position);
             }
         }

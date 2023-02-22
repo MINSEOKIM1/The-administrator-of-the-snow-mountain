@@ -34,11 +34,16 @@ public class TitleUI : MonoBehaviour
 
     private String _loadScene;
 
+    float RoundTo(float value, int to)
+    {
+        return Mathf.Round(value * Mathf.Pow(10, to)) / Mathf.Pow(10, to);
+    }
+
     public void DataTextUpdate()
     {
         for(int i = 0; i<dataTexts.Length; i++)
         {
-            dataTexts[i].text = "PLAYTIME. " + GameManager.Instance.DataManager.dataPacks[i].playTime;
+            dataTexts[i].text = "PLAYTIME. " + RoundTo(GameManager.Instance.DataManager.dataPacks[i].playTime, 2);
         }
     }
 
@@ -84,9 +89,16 @@ public class TitleUI : MonoBehaviour
 
     public void LoadGameStart(int idx)
     {
-        GameManager.Instance.DataManager.LoadToGame(idx);
-        GameManager.Instance.DataManager.currentDataSlot = idx;
-        GameStart();
+        try
+        {
+            GameManager.Instance.DataManager.LoadToGame(idx);
+            GameManager.Instance.DataManager.currentDataSlot = idx;
+            GameStart();
+        }
+        catch (Exception e)
+        {
+            NewGameStart(idx);
+        }
     }
 
     public void GoMain()

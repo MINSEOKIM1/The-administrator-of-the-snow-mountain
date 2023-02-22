@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public MapManager MapManager { get; private set; }
     [field: SerializeField] public DataManager DataManager { get; private set; }
     [field: SerializeField] public GameSceneManager GameSceneManager { get; private set; }
+    [field: SerializeField] public ScriptableObjectManager ScriptableObjectManager { get; private set; }
     /*
     public GameStateManager GameStateManager { get; private set; }
 
@@ -40,5 +41,6 @@ public class GameManager : MonoBehaviour
         if (MapManager == null) MapManager = GetComponentInChildren<MapManager>();
         if (DataManager == null) DataManager = GetComponentInChildren<DataManager>();
         if (GameSceneManager == null) GameSceneManager = GetComponentInChildren<GameSceneManager>();
+        if (ScriptableObjectManager == null) ScriptableObjectManager = GetComponentInChildren<ScriptableObjectManager>();
     }
 }

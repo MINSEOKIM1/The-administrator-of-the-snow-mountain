@@ -40,7 +40,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected Slider stunEffect;
     
     // Entity gameObject's components
-    protected Rigidbody2D _rigidbody;
+    public Rigidbody2D _rigidbody;
     protected Animator _animator;
     protected CapsuleCollider2D _capsuleCollider;
     protected SpriteRenderer _sprite;

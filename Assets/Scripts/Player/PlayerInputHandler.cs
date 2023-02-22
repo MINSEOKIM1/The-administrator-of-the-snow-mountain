@@ -73,7 +73,8 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (value.started && _playerBehavior.canControl)
         {
-            _playerBehavior.Backstep();
+            if (movement.x == 0) _playerBehavior.Backstep();
+            else _playerBehavior.Roll();
         }
     }
 
@@ -84,4 +85,5 @@ public class PlayerInputHandler : MonoBehaviour
             _playerBehavior.Interaction();
         }
     }
+    
 }

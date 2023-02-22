@@ -109,6 +109,8 @@ public class PortalManager : MonoBehaviour
                 return prevScene == "Fork" ? portals[0].transform.position : portals[1].transform.position;
             case "ZombieB":
                 return portals[0].transform.position;
+            case "Tutorial":
+                return portals[0].transform.position;
             default:
                 return new Vector3(0, 0, 0);
         }

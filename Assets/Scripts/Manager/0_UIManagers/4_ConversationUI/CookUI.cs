@@ -24,6 +24,8 @@ public class CookUI : MonoBehaviour
     public float ingredientBeginHeight;
     public float slotMargin;
 
+    public TMP_Text progressText;
+
     private void Start()
     {
         selectedItemImage.color = new Color(1, 1, 1, 0);
@@ -121,12 +123,16 @@ public class CookUI : MonoBehaviour
                 if (GameManager.Instance.PlayerDataManager.inventory.CountItem(i.item) < i.count)
                 {
                     // FAIL! -- there is no sufficient ingredients...
+                    StopCoroutine("PopMessage");
+                    StartCoroutine(PopMessage("충분한 재료가 없습니다..."));
                     throw new NotImplementedException();
                 }
             }
 
             if (GameManager.Instance.PlayerDataManager.inventory.AddItem(selectedItem, 1))
             {
+                StopCoroutine("PopMessage");
+                StartCoroutine(PopMessage(selectedItem.itemName + " 제작 완료!"));
                 foreach (var i in ((ConsumableItemInfo)selectedItem).IngredientCountPairs)
                 {
                     GameManager.Instance.PlayerDataManager.inventory.DeleteItem(i.item, i.count);
@@ -135,6 +141,8 @@ public class CookUI : MonoBehaviour
             else
             {
                 // FAIL! -- there is no space for storing the result item...
+                StopCoroutine("PopMessage");
+                StartCoroutine(PopMessage("인벤토리에 남은 공간이 없습니다..."));
                 throw new NotImplementedException();
             }
         }
@@ -144,5 +152,16 @@ public class CookUI : MonoBehaviour
     {
         GameManager.Instance.UIManager.ConservationUI.gameObject.SetActive(false);
         gameObject.SetActive(false);
+    }
+    
+    IEnumerator PopMessage(string message)
+    {
+        progressText.text = message;
+        progressText.alpha = 1;
+        while (progressText.alpha > 0)
+        {
+            progressText.alpha -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

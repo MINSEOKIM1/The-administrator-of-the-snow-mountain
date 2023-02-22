@@ -7,11 +7,11 @@ public class AudioManager : MonoBehaviour
     public float bgmVolume;
     public float changeSpeed;
     
-    [SerializeField] private AudioSource bgmPlayer;
-    [SerializeField] private AudioSource sfxPlayer;
+    [SerializeField] public AudioSource bgmPlayer;
+    [SerializeField] public AudioSource sfxPlayer;
 
-    [SerializeField] private AudioClip[] bgmClips;
-    [SerializeField] private AudioClip[] sfxClips;
+    [SerializeField] public AudioClip[] bgmClips;
+    [SerializeField] public AudioClip[] sfxClips;
 
     private void Awake()
     {

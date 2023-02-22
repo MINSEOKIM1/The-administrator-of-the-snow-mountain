@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7768e07093a40859a7e64b2e40fa4d, type: 3}
+  m_Name: 101_Hammer
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 101
+  itemName: "\uB9DD\uCE58"
+  itemDescription: "\uBAAC\uC2A4\uD130 \uB450\uAC1C\uACE8\uC744 \uBD84\uC1C4\uD560
+    \uAC83\uB9CC \uAC19\uC740 \uB9DD\uCE58.\n<color=yellow>\uD2B9\uC218 \uB2A5\uB825
+    - \uC801\uC744 0.5\uCD08 \uAE30\uC808 \uC2DC\uD0B5\uB2C8\uB2E4.</color>"
+  itemIcon: {fileID: -1032551920, guid: 9f3d84446920c4cf38d38e23dd036791, type: 3}
+  maxCount: 1
+  equipmentPart: 3
+  stats:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  atk: 20
+  def: 0
+  hp: 0
+  mp: 0
+  hpIncRate: 0
+  mpIncRate: 0
+  stance: 0
+  atkSpeed: 0.7
+  weaponImage: {fileID: 1039945258, guid: 9f3d84446920c4cf38d38e23dd036791, type: 3}
+  IngredientCountPairs: []

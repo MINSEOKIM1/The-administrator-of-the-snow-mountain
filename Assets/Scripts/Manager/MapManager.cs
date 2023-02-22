@@ -41,12 +41,42 @@ public class MapManager : MonoBehaviour
         return null;
     }
 
+    private void Start()
+    {
+        dungeons[8] = fork;
+        dungeons[9] = bastion;
+    }
+
     public bool a;
     private void Update()
     {
         if (!gameStart) return;
-        globalRate += Time.deltaTime * 0.0001f;
         playTime += Time.deltaTime;
+
+        if (currentSceneName.Equals("Village") && GameManager.Instance.PlayerDataManager.tutorial < 18)
+        {
+            GameManager.Instance.PlayerDataManager.tutorial++;
+        }
+
+        if (GameManager.Instance.PlayerDataManager.tutorial < 18) return;
+        globalRate += Time.deltaTime * 0.0001f;
+        
+        for (int idx = 0; idx < dungeons.Length; idx++)
+        {
+            if (dungeons[idx].agent.timeTakenToHunt != 0)
+            {
+                var agent = dungeons[idx].agent;
+                if (agent.timeElapsed < agent.timeTakenToHunt * agent.timeRate)
+                {
+                    agent.timeElapsed += Time.deltaTime;
+                }
+                else if (dungeons[idx].curMob > 0 && !GameManager.Instance.MapManager.currentSceneName.Equals(dungeons[idx].name))
+                {
+                    dungeons[idx].curMob--;
+                    agent.timeElapsed = 0;
+                }
+            }
+        }
         for (int idx = 1; idx < 8; idx += 2)
         {
             if (sceneInfo.dungeons[idx].boss) sceneInfo.spawnRate[idx] = 2;
@@ -65,6 +95,8 @@ public class MapManager : MonoBehaviour
             {
                 sceneInfo.dungeons[idx].bossTime = 0;
                 sceneInfo.dungeons[idx].boss = true;
+                GameManager.Instance.UIManager.PopMessage("<#818AFF>" + sceneInfo.dungeons[idx].explicitName +
+                                                          "</color> 에 보스 몬스터가 출현했습니다.", 3);
             }
         }
     }
@@ -143,6 +175,11 @@ public class MapManager : MonoBehaviour
 
     private void SpawnFork(int id)
     {
+        if (fork.curMob == 10)
+        {
+            GameManager.Instance.UIManager.PopMessage("<#FF7F7F>" + fork.explicitName +
+                                                      " 에 몬스터 개체 수가 10 마리가 되었습니다. 관리가 필요합니다.</color>", 3);
+        } 
         if (sceneInfo.fork.maxMob > sceneInfo.fork.curMob)
         {
             sceneInfo.fork.curMob++;
@@ -171,6 +208,15 @@ public class MapManager : MonoBehaviour
     
     private void SpawnBastion(int id)
     {
+        if (bastion.curMob == 1)
+        {
+            GameManager.Instance.UIManager.PopMessage("<#FF7F7F>" + bastion.explicitName +
+                                                      " 에 몬스터가 출현했습니다. 관리가 필요합니다. </color>", 3);
+        } else if (bastion.curMob >= 6)
+        {
+            GameManager.Instance.UIManager.PopMessage("<#FF7F7F>" + bastion.explicitName +
+                                                      " 에 몬스터가 가득 차고 있습니다. 신속히 관리가 필요합니다.</color>", 3);
+        }
         if (sceneInfo.bastion.maxMob > sceneInfo.bastion.curMob)
         {
             sceneInfo.bastion.curMob++;

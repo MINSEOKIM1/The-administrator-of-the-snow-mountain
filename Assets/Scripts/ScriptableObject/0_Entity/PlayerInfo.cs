@@ -27,6 +27,7 @@ public class PlayerInfo : EntityInfo
      * 2 : dash
      * 3 : attack cancel
      * 4 : wall jump
+     * 5 : roll
      */
     [Tooltip("0:backstep\n1:wall\n2:dash\n3:attackCancel\n4:wallJump")]
     public float[] utilMp;
@@ -36,6 +37,8 @@ public class PlayerInfo : EntityInfo
      *  1 : dash Attack
      *  2 : motion cancel
      *  3 : hit
+     *  4 : roll
+     *  5 : dash
      */
     [Tooltip("0:backstep\n1:dashAttack\n2:motionCancel\n3:hit")]
     public float[] invincibilityTime;

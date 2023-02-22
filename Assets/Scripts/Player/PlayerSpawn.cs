@@ -19,8 +19,14 @@ public class PlayerSpawn : MonoBehaviour
     {
         Debug.Log(transform.position);
         Debug.Log(portalManager);
+        if (portalManager != null)
         gameObject.transform.position =
             portalManager.SpawnPosition(sceneInfo.currentSceneName, sceneInfo.beforeSceneName);
+        if (GameManager.Instance.PlayerDataManager.loadPosFromData)
+        {
+            GameManager.Instance.PlayerDataManager.loadPosFromData = false;
+            transform.position = GameManager.Instance.PlayerDataManager.loadPos;
+        }
     }
     private void OnTriggerStay2D(Collider2D col)
     {

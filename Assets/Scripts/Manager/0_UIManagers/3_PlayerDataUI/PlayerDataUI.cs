@@ -20,19 +20,19 @@ public class PlayerDataUI : MonoBehaviour
         hpBar.value = Mathf.Lerp(
             hpBar.value, 
             PlayerDataManager.hp / PlayerDataManager.maxHp, 
-            changeRate);
+            changeRate * Time.deltaTime);
         mpBar.value = Mathf.Lerp(
             mpBar.value, 
             PlayerDataManager.mp / PlayerDataManager.maxMp, 
-            changeRate);
+            changeRate* Time.deltaTime);
         fullnessBar.value = Mathf.Lerp(
             fullnessBar.value, 
             PlayerDataManager.saturation / PlayerDataManager.maxSaturation, 
-            changeRate);
+            changeRate* Time.deltaTime);
         expBar.value = Mathf.Lerp(
             expBar.value, 
             PlayerDataManager.exp / PlayerDataManager.maxExp, 
-            changeRate);
+            changeRate* Time.deltaTime);
 
         hpText.text = "" + (int)PlayerDataManager.hp + " / " + (int)PlayerDataManager.maxHp;
         mpText.text = "" + (int)PlayerDataManager.mp + " / " + (int)PlayerDataManager.maxMp;

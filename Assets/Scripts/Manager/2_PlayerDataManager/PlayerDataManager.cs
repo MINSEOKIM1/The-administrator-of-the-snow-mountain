@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 [Serializable]
 public class PlayerDataManager : MonoBehaviour
@@ -16,8 +18,11 @@ public class PlayerDataManager : MonoBehaviour
     public float exp;
 
     public ConsumableItemInfo[] quickSlotItems;
+    public bool[] agentAvailable;
 
-    public float attackSpeed
+    public bool loadPosFromData;
+    public Vector3 loadPos;
+    [field: SerializeField] public float attackSpeed
     {
         get
         {
@@ -43,11 +48,12 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].hp;
             }
-            return playerInfo.maxHp + level * 10 + total;
+            return playerInfo.maxHp + level * 30 + total;
         }
         set => maxHp = value;
     }
 
+    public float hpDecRate, mpDecRate;
     public float maxMp
     {
         get
@@ -71,7 +77,13 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].hpIncRate;
             }
-            return playerInfo.hpIncRate + level * 0.1f + total;
+            float to = playerInfo.hpIncRate + level * 0.1f + total;
+            if (saturation > 0) to *= (saturation / maxSaturation);
+            else
+            {
+                return -hpDecRate;
+            }
+            return to;
         }
         private set => hpIncRate = value;
     }
@@ -85,7 +97,13 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].mpIncRate;
             }
-            return playerInfo.mpIncRate + level * 0.1f + total;
+            float to = playerInfo.mpIncRate + level * 0.1f + total;
+            if (saturation > 0) to *= (saturation / maxSaturation);
+            else
+            {
+                return -mpDecRate;
+            }
+            return to;
         }
         private set => mpIncRate = value;
     }
@@ -114,6 +132,8 @@ public class PlayerDataManager : MonoBehaviour
         set => canControl = value;
     }
 
+    public int tutorial;
+
     public float atk 
     {
         get
@@ -123,7 +143,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].atk;
             }
-            return playerInfo.atk + level * 2f + total;
+            return playerInfo.atk + level * 10f + total;
         }
         private set => atk = value;
     }
@@ -150,7 +170,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].stance;
             }
-            return playerInfo.stance + level * 0.1f + total;
+            return playerInfo.stance + total;
         }
         private set => stance = value;
     }
@@ -167,17 +187,53 @@ public class PlayerDataManager : MonoBehaviour
         hp = maxHp;
         mp = maxMp;
         saturation = maxSaturation;
+        volume.profile.TryGet<Vignette>(out tmp);
     }
 
     private bool a;
+    public Volume volume;
+    private Vignette tmp;
+    private float _vignetteIntensity;
+    public float vignettePulseInterval;
+    public float vignetteAmplitude;
+
+    private bool satOk;
 
     private void Update()
     {
         hp = Mathf.Clamp(hp, 0, maxHp);
         mp = Mathf.Clamp(mp, 0, maxMp);
         saturation = Mathf.Clamp(saturation, 0, maxSaturation);
+        _vignetteIntensity += Time.deltaTime * vignettePulseInterval;
 
-        saturation -= Time.deltaTime * playerInfo.saturationDecrementRate;
+        if (hp < maxHp / 3)
+        {
+            if (tmp)
+            {
+                tmp.intensity.Interp(tmp.intensity.value, vignetteAmplitude * Mathf.Sin(_vignetteIntensity) + vignetteAmplitude * 1.1f, Time.deltaTime);
+            }
+        }
+        else
+        {
+            if (tmp)
+            {
+                tmp.intensity.Interp(tmp.intensity.value, 0, Time.deltaTime);
+            }
+        }
+        if (tutorial >= 18) saturation -= Time.deltaTime * playerInfo.saturationDecrementRate;
+        if (saturation <= 0)
+        {
+            if (satOk)
+            {
+                satOk = false;
+                GameManager.Instance.UIManager.PopMessage("포만감이 0이 되어 HP와 MP가 감소합니다.", 3);
+                GameManager.Instance.UIManager.PopMessage("음식을 먹어 포만감을 채우세요.", 3);
+            }
+        }
+        else
+        {
+            satOk = true;
+        }
 
         if (!isDie)
         {
@@ -189,6 +245,7 @@ public class PlayerDataManager : MonoBehaviour
         {
             LevelUP();
         }
+        
 
         if (hp <= 0 || GameManager.Instance.MapManager.gameover)
         {

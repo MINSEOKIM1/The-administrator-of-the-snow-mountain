@@ -35,6 +35,10 @@ public class PlayerBehavior : Entity
     public float wallTime;
     public float hitTimeElapsed;
     public bool isHitMotion;
+    public bool isRolling;
+
+    public int dashTrailCount;
+    public float dashTrailInterval;
 
     public float invincibilityTimeElapsed;
 
@@ -48,6 +52,8 @@ public class PlayerBehavior : Entity
 
     // input detect variable
     public bool _normalAttackDetect;
+
+    private int tutorialSignal;
 
     public bool canControl
     {
@@ -88,6 +94,7 @@ public class PlayerBehavior : Entity
 
     protected override void Start()
     {
+        GameManager.Instance.UIManager.MapUI.UpdateMapPoint();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
         _playerInputHandler = GetComponent<PlayerInputHandler>();
@@ -100,12 +107,27 @@ public class PlayerBehavior : Entity
     {
         base.Update();
         AttackCheck();
+        
         _animator.SetFloat("attackSpeed", PlayerDataManager.attackSpeed);
+        
     }
 
     // Physics logic...
     protected override void FixedUpdate()
     {
+        if (GameManager.Instance.PlayerDataManager.tutorial % 2 == 0)
+        {
+            tutorialSignal = 0;
+            if (GameManager.Instance.PlayerDataManager.tutorial >= 5 &&
+                GameManager.Instance.PlayerDataManager.tutorial <= 13)
+            {
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            } else if (GameManager.Instance.PlayerDataManager.tutorial == 14)
+            {
+                if (TutorialManager.Instance.tutorialNpc.conversationStart == 15)
+                    TutorialManager.Instance.tutorialNpc.conversationStart++;
+            }
+        }
         hitTimeElapsed -= Time.fixedDeltaTime;
         invincibilityTimeElapsed -= Time.fixedDeltaTime;
         if (stunTimeElapsed > 0) stunTimeElapsed -= Time.fixedDeltaTime;
@@ -123,6 +145,7 @@ public class PlayerBehavior : Entity
     {
         _isAttack = _animator.GetCurrentAnimatorStateInfo(0).IsTag("attack");
         isHitMotion = _animator.GetCurrentAnimatorStateInfo(0).IsTag("hit");
+        isRolling = _animator.GetCurrentAnimatorStateInfo(0).IsTag("roll");
     }
 
     protected override void ApplyAnimation()
@@ -212,7 +235,7 @@ public class PlayerBehavior : Entity
     {
         if (touchMonster) _capsuleCollider.sharedMaterial = zero;
         // if condition (!_inSlope) is omitted... player slide down a slope...
-        if (!_inSlope || (_inSlope && Mathf.Abs(dashSpeed) > 1))
+        if (!_inSlope || (_inSlope && Mathf.Abs(dashSpeed) > 1) || isRolling)
         {
             if (wallJump<0) _speed = _rigidbody.velocity.x;
         }
@@ -236,7 +259,7 @@ public class PlayerBehavior : Entity
     
     protected override void AttackInputDetect()
     {
-        if (PlayerDataManager.attackSpeed == 0 || isHitMotion || isDie)
+        if (PlayerDataManager.attackSpeed == 0 || isHitMotion || isDie || isRolling)
         {
             _normalAttackDetect = false;
             return;
@@ -249,11 +272,6 @@ public class PlayerBehavior : Entity
             
             // player stop moving (_speed = 0), and dash while attacking (in _playerAttack.NormalAttack);
             _speed = 0;
-            if (_playerInputHandler.movement.y > 0)
-            {
-                _playerAttack._normalAttackNumber = 1;
-                _animator.SetInteger("normalAttack", 1);
-            }
 
             if (_playerInputHandler.dashCheck < 2)
             {
@@ -261,6 +279,17 @@ public class PlayerBehavior : Entity
             }
             else
             {
+                if (GameManager.Instance.PlayerDataManager.tutorial == 11)
+                {
+                    tutorialSignal++;
+                    if (_playerAttack.canAttack && CanAttackCondition(3))
+                    {
+                        if (tutorialSignal == 1)
+                        {
+                            GameManager.Instance.PlayerDataManager.tutorial++;
+                        }
+                    }
+                }
                 _playerAttack.DashAttack();
                 _playerInputHandler.dashCheck = 0;
             }
@@ -361,7 +390,7 @@ public class PlayerBehavior : Entity
 
     public override void Jump()
     {
-        if (stunTimeElapsed > 0) return;
+        if (stunTimeElapsed > 0 || isRolling) return;
         if (!isClimb)
         {
             if (isHitMotion && CanUtilCondition(3) && stunTimeElapsed <= 0)
@@ -405,6 +434,7 @@ public class PlayerBehavior : Entity
     {
         if (isHitMotion && CanUtilCondition(3) && stunTimeElapsed <= 0)
         {
+            
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[2];
             externalSpeed = 0;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
@@ -418,15 +448,32 @@ public class PlayerBehavior : Entity
         }
         else if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0))
         {
+            if (_isAttack)
+            {
+                if (CanUtilCondition(3))
+                {
+                    GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                    UseUtilSkill(3);
+                    _animator.SetTrigger("attackCancel");
+                    StartCoroutine(MotionCancel());
+                }
+                else
+                {
+                    return;
+                }
+            }
+            if (GameManager.Instance.PlayerDataManager.tutorial == 7)
+            {
+                tutorialSignal++;
+                if (tutorialSignal == 2)
+                {
+                    GameManager.Instance.PlayerDataManager.tutorial++;
+                }
+            }
             UseUtilSkill(0);
             invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
-            if (_isAttack && CanUtilCondition(3))
-            {
-                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
-                UseUtilSkill(3);
-                _animator.SetTrigger("attackCancel");
-                StartCoroutine(MotionCancel());
-            }
+            
+            GameManager.Instance.EffectManager.CreateEffect(2,  (int) -graphicTransform.localScale.x, footPos.position, Quaternion.identity);
             
             _playerAttack.ResetNormalAttack();
 
@@ -442,27 +489,38 @@ public class PlayerBehavior : Entity
         }
     }
     
-    public void Dash()
+    public void Roll()
     {
-        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(2))
+        if (_isGround && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(0) && !isRolling)
         {
-            UseUtilSkill(2);
-            _playerAttack.ResetNormalAttack();
+            if (_isAttack )
+            {
+                if (CanUtilCondition(3)){
+                    GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                    UseUtilSkill(3);
+                    _animator.SetTrigger("attackCancel");
+                    StartCoroutine(MotionCancel());
+                }
+                else
+                {
+                    return;
+                }
+            }
+            if (GameManager.Instance.PlayerDataManager.tutorial == 5)
+            {
+                tutorialSignal++;
+                if (tutorialSignal == 2)
+                {
+                    GameManager.Instance.PlayerDataManager.tutorial++;
+                }
+            }
+            invincibilityTimeElapsed = EntityInfo.invincibilityTime[0];
             
-            if (_isAttack && CanUtilCondition(3))
-            {
-                GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
-                UseUtilSkill(3);
-                _animator.SetTrigger("attackCancel");
-                StartCoroutine(MotionCancel());
-            }
-
-            if (_playerInputHandler.movement.x != 0)
-            {
-                _graphicLocalScale.Set(-_playerInputHandler.movement.x, 1, 1);
-                graphicTransform.localScale = _graphicLocalScale;
-            }
-
+            
+            UseUtilSkill(0);
+            _playerAttack.ResetNormalAttack();
+            GameManager.Instance.EffectManager.CreateEffect(2,  (int) graphicTransform.localScale.x, footPos.position, Quaternion.identity);
+            
             dashElapsed = 1;
             gameObject.layer = 9;
             _speed = 0;
@@ -470,13 +528,72 @@ public class PlayerBehavior : Entity
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _isGround = false;
             _canJump = false;
-            dashSpeed = -backStepPower.x * _playerAttack.transform.localScale.x;
+            dashSpeed = entityInfo.rollPower * _playerInputHandler.movement.x * 1.4f;
+            if (_playerInputHandler.movement.x < 0)
+            {
+                graphicTransform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                graphicTransform.localScale = new Vector3(-1, 1, 1);
+            }
+            _animator.SetTrigger("roll");
+        }
+    }
+    
+    public void Dash()
+    {
+        if (_canJump && Mathf.Abs(externalSpeed) < 1 && stunTimeElapsed <= 0 && CanUtilCondition(2))
+        {
+            if (_isAttack)
+            {
+                if (CanUtilCondition(3)) {
+                    GameManager.Instance.EffectManager.CreateEffect(0, transform.position, Quaternion.identity);
+                    UseUtilSkill(3);
+                    _animator.SetTrigger("attackCancel");
+                    StartCoroutine(MotionCancel());
+                }
+                else
+                {
+                    return;
+                }
+            }
+            if (GameManager.Instance.PlayerDataManager.tutorial == 9)
+            {
+                tutorialSignal++;
+                if (tutorialSignal == 2)
+                {
+                    GameManager.Instance.PlayerDataManager.tutorial++;
+                }
+            }
+            UseUtilSkill(2);
+            _playerAttack.ResetNormalAttack();
+            
+            
+
+            if (_playerInputHandler.movement.x != 0)
+            {
+                _graphicLocalScale.Set(-_playerInputHandler.movement.x, 1, 1);
+                graphicTransform.localScale = _graphicLocalScale;
+            }
+
+            StartCoroutine(DashTrail());
+
+            GameManager.Instance.EffectManager.CreateEffect(2,  (int) graphicTransform.localScale.x, footPos.position, Quaternion.identity);
+            dashElapsed = 1;
+            gameObject.layer = 9;
+            _speed = 0;
+            externalSpeed = 0;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+            _isGround = false;
+            _canJump = false;
+            dashSpeed = -entityInfo.dashPower * _playerAttack.transform.localScale.x;
         }
     }
 
     public void Interaction()
     {
-        if (!canControl) return;
+        if (!canControl || GameManager.Instance.UIManager.MapUI.gameObject.activeSelf) return;
         var tmp = Physics2D.OverlapBoxAll(transform.position, Vector2.one * 2, 0);
         foreach (var i in tmp)
         {
@@ -485,17 +602,71 @@ public class PlayerBehavior : Entity
                 var npc = i.GetComponent<NPC>();
                 GameManager.Instance.UIManager.ConservationUI.SetCurrentConservationArray(
                     npc.conversationClips, 
-                    npc.GetConversationStart());
+                    npc.GetConversationStart(),
+                    npc);
+                try
+                {
+                    var an = (AgentNPC)npc;
+                    GameManager.Instance.UIManager.MapUI.currentAllocatedAgent = an.agentData;
+                }
+                catch (Exception e)
+                {
+                    
+                }
             }
         }
     }
 
     IEnumerator MotionCancel()
     {
+        if (GameManager.Instance.PlayerDataManager.tutorial == 13)
+        {
+            tutorialSignal++;
+            if (tutorialSignal == 3)
+            {
+                GameManager.Instance.PlayerDataManager.tutorial++;
+            }
+        }
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(0.01f);
 
         Time.timeScale = 1;
+    }
+
+    IEnumerator DashTrail()
+    {
+        for (int i = 0; i < dashTrailCount; i++)
+        {
+            yield return new WaitForSeconds(dashTrailInterval);
+            SpawnTrail();
+        }
+    }
+    private void SpawnTrail()
+    {
+        GameObject trailPart = new GameObject();
+        SpriteRenderer tpr = trailPart.AddComponent<SpriteRenderer>();
+        if (_sprite.sprite != null)
+        {
+            tpr.transform.localScale = graphicTransform.localScale;
+            tpr.sprite = GetComponentInChildren<SpriteRenderer>().sprite;
+        }
+
+        tpr.sortingLayerName = "Player";
+        tpr.flipX = _sprite.flipX;
+        trailPart.transform.position = transform.position;
+        Destroy(trailPart, 0.5f);
+        
+        StartCoroutine("FadeTrailPart", tpr);
+    }
+    IEnumerator FadeTrailPart(SpriteRenderer trailPartRenderer)
+    {
+        Color color = trailPartRenderer.color;
+        while (color.a > 0)
+        {
+            color.a -= Time.deltaTime*3; 
+            trailPartRenderer.color = color;
+            yield return new WaitForFixedUpdate();
+        }
     }
     
     protected override void OnCollisionStay2D(Collision2D col)

@@ -229,6 +229,11 @@ public class Monster : Entity
     public override void Die()
     {
         if (isDie) return;
+        if (GameManager.Instance.PlayerDataManager.tutorial == 3 || GameManager.Instance.PlayerDataManager.tutorial == 15)
+        {
+            GameManager.Instance.PlayerDataManager.tutorial++;
+            TutorialManager.Instance.tutorialNpc.conversationStart++;
+        }
         GameManager.Instance.PlayerDataManager.exp += ((MonsterInfo)entityInfo).exp;
         GetComponent<AIPlayer>().MobDie();
         _animator.SetTrigger("die");
@@ -238,11 +243,11 @@ public class Monster : Entity
         _capsuleCollider.sharedMaterial = little;
         for (int i = 0; i < ((MonsterInfo)entityInfo).dropItems.Length; i++)
         {
-            if (Random.Range(0, 1) < ((MonsterInfo)entityInfo).itemDropProbability[i])
+            if (Random.Range(0f, 1f) < ((MonsterInfo)entityInfo).itemDropProbability[i])
             {
                 GameManager.Instance.EffectManager.CreateItem(
                     ((MonsterInfo)entityInfo).dropItems[i],
-                    ((MonsterInfo)entityInfo).itemDropCount[i],
+                    (int) Mathf.Round((Random.Range(0.5f, 1f)*((MonsterInfo)entityInfo).itemDropCount[i])),
                     transform.position,
                     Quaternion.identity);
             }
