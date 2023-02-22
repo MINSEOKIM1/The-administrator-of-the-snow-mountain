@@ -18,11 +18,11 @@ MonoBehaviour:
   backStepPower: {x: 0, y: 0}
   dashPower: 0
   rollPower: 0
-  maxHp: 100
+  maxHp: 200
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 5
-  atk: 30
+  atk: 70
   def: 20
   stance: 0
   stateChangeInterval: 2
@@ -53,11 +53,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a117c2b7580f409c89bc34cecc15202, type: 2}
   - {fileID: 11400000, guid: 414f31a5264994f39a7ef3725ef4389a, type: 2}
   - {fileID: 11400000, guid: ff03d84e45b6d4050b10e2f4feb5557b, type: 2}
+  - {fileID: 11400000, guid: b54a98cd3872c497181fc2e653dca8da, type: 2}
+  - {fileID: 11400000, guid: 11d4d3be5cf1d4ffb8a913a67d41f9dc, type: 2}
+  - {fileID: 11400000, guid: 7f913633609664c4baabcd2fdfa55b67, type: 2}
   itemDropProbability:
   - 1
   - 1
   - 1
   - 1
-  itemDropCount: 08000000070000000700000001000000
+  - 0.05
+  - 0.5
+  - 0.5
+  itemDropCount: 08000000070000000700000001000000010000000500000009000000
   exp: 10
   perceiveTime: 10

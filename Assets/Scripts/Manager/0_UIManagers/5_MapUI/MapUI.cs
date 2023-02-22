@@ -31,6 +31,9 @@ public class MapUI : MonoBehaviour
 
     public string selectedMapName;
 
+    public bool isTeleporting;
+    public Button teleportButton;
+
     public delegate void AgentNPCdelegate();
 
     public event AgentNPCdelegate agentNPCEvent;
@@ -38,6 +41,15 @@ public class MapUI : MonoBehaviour
     {
          // # UI Update
          
+    }
+
+    public void TeleportToMap()
+    {
+        GameManager.Instance.GameSceneManager.LoadScene(selectedMapName);
+        gameObject.SetActive(false);
+        GameManager.Instance.PlayerDataManager.inventory.DeleteItem(
+            GameManager.Instance.ScriptableObjectManager.GetWithIndex(200), 1);
+        GameManager.Instance.UIManager.MapUI.UpdateMapPoint();
     }
 
     float RoundTo(float c, int a)
@@ -58,9 +70,31 @@ public class MapUI : MonoBehaviour
         TurnOffPoint("Village");
         TurnOnPoint(sceneInfo.currentSceneName);
     }
-    
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance.PlayerDataManager.tutorial < 18)
+        {
+            GameManager.Instance.UIManager.PopMessage("맵의 각 포인트를 클릭해 상세 정보를 알 수 있습니다.", 3);
+        }
+    }
+
+    private void OnDisable()
+    {
+        isTeleporting = false;
+    }
+
     private void Update()
     {
+        if (!gameObject.activeSelf) isTeleporting = false;
+        if (isTeleporting)
+        {
+            teleportButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            teleportButton.gameObject.SetActive(false);
+        }
         MopNumUpdate();
         TurnOnPoint(sceneInfo.currentSceneName);
         TurnOffPoint(sceneInfo.beforeSceneName);

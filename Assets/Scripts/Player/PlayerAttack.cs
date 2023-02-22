@@ -65,6 +65,7 @@ public class PlayerAttack : MonoBehaviour
             if (i.CompareTag("Monster"))
             {
                 float hammerStunTime = 0;
+                float hpRecovery = 0;
                 try
                 {
                     if (GameManager.Instance.PlayerDataManager.equipment.items[3].itemNum == 101)

@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735666280476369769, guid: 9a09405f69d4949e8936a59171d19a9e, type: 3}
       propertyPath: agentIndex
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5735666280476369774, guid: 9a09405f69d4949e8936a59171d19a9e, type: 3}
       propertyPath: m_Name

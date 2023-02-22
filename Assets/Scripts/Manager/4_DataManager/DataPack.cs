@@ -22,6 +22,8 @@ public class DataPack
     public float exp;
 
     public Vector3 position;
+
+    public bool[] agentAvailable;
     
     public string beforeSceneName;
     public string currentSceneName;

@@ -33,7 +33,11 @@ public class Inventory : MonoBehaviour
             AddItem(test[i], 1);
             if (test[i].itemNum == 8)
             {
-                AddItem(test[i], 99);
+                AddItem(test[i], 9);
+            }
+            if (test[i].itemNum == 200)
+            {
+                AddItem(test[i], 4);
             }
         }
     }

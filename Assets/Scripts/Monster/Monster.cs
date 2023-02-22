@@ -113,8 +113,16 @@ public class Monster : Entity
             {
                 if (i.CompareTag("Player"))
                 {
-                    _target = i.gameObject;
-                    perceivePlayerTimeElapsed = ((MonsterInfo)entityInfo).perceiveTime;
+                    if (GameManager.Instance.PlayerDataManager.equipment.items[2] != null &&
+                        GameManager.Instance.PlayerDataManager.equipment.items[2].itemNum == 107)
+                    {
+                        // Dont set player as target
+                    }
+                    else
+                    {
+                        _target = i.gameObject;
+                        perceivePlayerTimeElapsed = ((MonsterInfo)entityInfo).perceiveTime;
+                    }
                 }
             }
         }
@@ -217,6 +225,11 @@ public class Monster : Entity
     public virtual void Hit(float damage, Vector2 knockback, float stunTime, Vector3 opponent)
     {
         if (isDie) return;
+        if (GameManager.Instance.PlayerDataManager.equipment.items[3] != null &&
+            GameManager.Instance.PlayerDataManager.equipment.items[3].itemNum == 106)
+        {
+            GameManager.Instance.PlayerDataManager.hp += CalculateDamage(damage, def) * 0.1f;
+        }
         base.Hit(damage, GetKnockback(knockback, entityInfo.stance), stunTime);
         GameManager.Instance.AudioManager.PlaySfx(4);
         GameManager.Instance.EffectManager.CreateEffect(1, transform.position,

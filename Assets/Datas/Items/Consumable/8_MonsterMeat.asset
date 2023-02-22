@@ -21,7 +21,7 @@ MonoBehaviour:
   maxCount: 300
   hpRecovery: 40
   mpRecovery: 50
-  saturationRecovery: 10
+  saturationRecovery: 30
   IngredientCountPairs:
   - item: {fileID: 11400000, guid: 25d10c1d64f904e19906ce39957c65c8, type: 2}
     count: 1

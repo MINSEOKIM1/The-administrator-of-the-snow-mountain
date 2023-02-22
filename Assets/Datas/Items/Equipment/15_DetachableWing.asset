@@ -28,16 +28,21 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  atk: 20
-  def: 50
-  hp: 30
-  mp: 100
+  atk: 50
+  def: 70
+  hp: 100
+  mp: 200
   hpIncRate: 0
   mpIncRate: 5
   stance: 0.2
   atkSpeed: 0
+  weaponImage: {fileID: 0}
   IngredientCountPairs:
   - item: {fileID: 11400000, guid: aa8cda379ae724fe38f2d525f067bf05, type: 2}
-    count: 3
+    count: 20
   - item: {fileID: 11400000, guid: cfbbf141ecf80463ba0f21ca4bfe4d56, type: 2}
     count: 1
+  - item: {fileID: 11400000, guid: af187db7442224551a44eb3940ae6254, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: 6a4d972f178214209bfc11877a5268fe, type: 2}
+    count: 5

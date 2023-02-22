@@ -22,7 +22,7 @@ MonoBehaviour:
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 5
-  atk: 100
+  atk: 200
   def: 80
   stance: 0
   stateChangeInterval: 2
@@ -53,11 +53,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da174722de9ec4b8b8aa578e73922715, type: 2}
   - {fileID: 11400000, guid: af187db7442224551a44eb3940ae6254, type: 2}
   - {fileID: 11400000, guid: 6a4d972f178214209bfc11877a5268fe, type: 2}
+  - {fileID: 11400000, guid: b54a98cd3872c497181fc2e653dca8da, type: 2}
+  - {fileID: 11400000, guid: 7f913633609664c4baabcd2fdfa55b67, type: 2}
+  - {fileID: 11400000, guid: 11d4d3be5cf1d4ffb8a913a67d41f9dc, type: 2}
   itemDropProbability:
   - 0.5
   - 1
   - 0.5
   - 0.3
-  itemDropCount: 06000000070000000500000005000000
+  - 0.05
+  - 0.5
+  - 0.5
+  itemDropCount: 06000000070000000500000005000000010000000500000005000000
   exp: 50
   perceiveTime: 10

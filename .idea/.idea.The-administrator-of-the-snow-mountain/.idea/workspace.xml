@@ -6,16 +6,50 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/100_WoodSword.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/100_WoodSword.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/101_Hammer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/101_Hammer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/102_WolfHat.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/102_WolfHat.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/103_WolfShoes.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/103_WolfShoes.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/104_WhiteHat.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/104_WhiteHat.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/105_HolySword.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/105_HolySword.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/106_DevilSword.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/106_DevilSword.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/107_ZombieSmelledClothes.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/107_ZombieSmelledClothes.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/13_WeirdHood.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/13_WeirdHood.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/14_StoneArmor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/14_StoneArmor.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/15_DetachableWing.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/15_DetachableWing.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/2_IronHelmet.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/2_IronHelmet.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/3_IronArmor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/3_IronArmor.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/4_IronShoes.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/4_IronShoes.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/5_Sword.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/5_Sword.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/6_BoneHelmet.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/6_BoneHelmet.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/7_FurArmor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/7_FurArmor.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/9_FurShoes.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Items/Equipment/9_FurShoes.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/DevilStatue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/DevilStatue.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Necromancer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Necromancer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/PracticeMonster.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/PracticeMonster.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Stone.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Stone.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/TutorialWhite.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/TutorialWhite.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/WarriorStatue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/WarriorStatue.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Werewolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Werewolf.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/White.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/WizzardStatue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/WizzardStatue.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Yeti.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Yeti.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Zombie.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Zombie.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Zombie.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monsters/Zombie.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/Tutorial.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Fork.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/1_Inventory/InventoryUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/3_PlayerDataUI/PlayerDataUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/3_PlayerDataUI/PlayerDataUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/SmithyUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/SmithyUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPortal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPortal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataPack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/4_DataManager/DataPack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/MapManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Yeti.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Yeti.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +63,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameOverScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LogoScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/3_PlayerDataUI/QuickSlotUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/AgentUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapPointUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/GameSceneManager.cs" root0="FORCE_HIGHLIGHTING" />

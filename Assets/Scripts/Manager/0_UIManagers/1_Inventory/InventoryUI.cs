@@ -328,14 +328,14 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     SelectItem(isui.item, isui.index);
                 }
             }
-        }
+        } 
     }
 
     public void OnPointerUp(PointerEventData pt)
     {
         List<RaycastResult> results = new List<RaycastResult>();
         graphic.Raycast(pt, results);
-        
+
         foreach (var i in results)
         {
             var isui = i.gameObject.GetComponent<ItemSlotUI>();
@@ -347,8 +347,55 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
         }
         
+        GameManager.Instance.UIManager.PlayerDataUI.GetComponent<GraphicRaycaster>().Raycast(pt, results);
+        
+        foreach (var i in results)
+        {
+            var isquickslot = i.gameObject.GetComponent<QuickSlotUI>();
+            if (isquickslot != null && _isItemDragging)
+            {
+                Debug.Log("!");
+                try
+                {
+                    isquickslot.SetItem(
+                        (ConsumableItemInfo)GameManager.Instance.PlayerDataManager.inventory.items[_dragBeginSlotIndex]
+                            .item);
+                }
+                catch (Exception e)
+                {
+                    
+                }
+            }
+        }
+        
         _isItemDragging = false;
         dragImage.gameObject.SetActive(false);
+    }
+
+    public void SelectItem(ItemInfo item)
+    {
+        for(int i = 0; i<GameManager.Instance.PlayerDataManager.inventory.items.Count; i++)
+        {
+            if (GameManager.Instance.PlayerDataManager.inventory.items[i] != null 
+                && item == GameManager.Instance.PlayerDataManager.inventory.items[i].item)
+            {
+                SelectItem(GameManager.Instance.PlayerDataManager.inventory.items[i], i);
+            }
+        }
+    }
+    
+    public int GetSelectedItemIndex(ItemInfo item)
+    {
+        for(int i = 0; i<GameManager.Instance.PlayerDataManager.inventory.items.Count; i++)
+        {
+            if (GameManager.Instance.PlayerDataManager.inventory.items[i] != null 
+                && item == GameManager.Instance.PlayerDataManager.inventory.items[i].item)
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public void SelectItem(ItemSlot item, int index)
@@ -377,42 +424,42 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
                 if (GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart] != null)
                 {
-                    if (ii.atk != 0)
+                    
                         total += "ATK " + GameManager.Instance.PlayerDataManager.atk + "->" +
                                  (GameManager.Instance.PlayerDataManager.atk
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].atk
                                   + ii.atk) + "\n";
-                    if (ii.def != 0)
+                    
                         total += "DEF " + GameManager.Instance.PlayerDataManager.def + "->" +
                                  (GameManager.Instance.PlayerDataManager.def
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].def
                                   + ii.def) + "\n";
-                    if (ii.hp != 0)
+                    
                         total += "HP " + GameManager.Instance.PlayerDataManager.maxHp + "->" +
                                  (GameManager.Instance.PlayerDataManager.maxHp
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].hp
                                   + ii.hp) + "\n";
-                    if (ii.mp != 0)
+                    
                         total += "MP " + GameManager.Instance.PlayerDataManager.maxMp + "->" +
                                  (GameManager.Instance.PlayerDataManager.maxMp
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].mp
                                   + ii.mp) + "\n";
-                    if (ii.hpIncRate != 0)
+                    
                         total += "HP 회복 " + GameManager.Instance.PlayerDataManager.hpIncRate + "->" +
                                  (GameManager.Instance.PlayerDataManager.hpIncRate
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].hpIncRate
                                   + ii.hpIncRate) + "\n";
-                    if (ii.mpIncRate != 0)
+                    
                         total += "MP 회복 " + GameManager.Instance.PlayerDataManager.mpIncRate + "->" +
                                  (GameManager.Instance.PlayerDataManager.mpIncRate
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].mpIncRate
                                   + ii.mpIncRate) + "\n";
-                    if (ii.stance != 0)
+                    
                         total += "STANCE " + GameManager.Instance.PlayerDataManager.stance + "->" +
                                  (GameManager.Instance.PlayerDataManager.stance
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].stance
                                   + ii.stance) + "\n";
-                    if (ii.atkSpeed != 0)
+                    
                         total += "공격속도 " + GameManager.Instance.PlayerDataManager.attackSpeed + "->" +
                                  (GameManager.Instance.PlayerDataManager.attackSpeed
                                   - GameManager.Instance.PlayerDataManager.equipment.items[ii.equipmentPart].atkSpeed
@@ -420,35 +467,35 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 }
                 else
                 {
-                    if (ii.atk != 0)
+                    
                         total += "ATK " + GameManager.Instance.PlayerDataManager.atk + "->" +
                                  (GameManager.Instance.PlayerDataManager.atk
                                   + ii.atk) + "\n";
-                    if (ii.def != 0)
+                    
                         total += "DEF " + GameManager.Instance.PlayerDataManager.def + "->" +
                                  (GameManager.Instance.PlayerDataManager.def
                                   + ii.def) + "\n";
-                    if (ii.hp != 0)
+                    
                         total += "HP " + GameManager.Instance.PlayerDataManager.maxHp + "->" +
                                  (GameManager.Instance.PlayerDataManager.maxHp
                                   + ii.hp) + "\n";
-                    if (ii.mp != 0)
+                    
                         total += "MP " + GameManager.Instance.PlayerDataManager.maxMp + "->" +
                                  (GameManager.Instance.PlayerDataManager.maxMp
                                   + ii.mp) + "\n";
-                    if (ii.hpIncRate != 0)
+                    
                         total += "HP 회복 " + GameManager.Instance.PlayerDataManager.hpIncRate + "->" +
                                  (GameManager.Instance.PlayerDataManager.hpIncRate
                                   + ii.hpIncRate) + "\n";
-                    if (ii.mpIncRate != 0)
+                    
                         total += "MP 회복 " + GameManager.Instance.PlayerDataManager.mpIncRate + "->" +
                                  (GameManager.Instance.PlayerDataManager.mpIncRate
                                   + ii.mpIncRate) + "\n";
-                    if (ii.stance != 0)
+                    
                         total += "STANCE " + GameManager.Instance.PlayerDataManager.stance + "->" +
                                  (GameManager.Instance.PlayerDataManager.stance
                                   + ii.stance) + "\n";
-                    if (ii.atkSpeed != 0)
+                    
                         total += "공격속도 " + GameManager.Instance.PlayerDataManager.attackSpeed + "->" +
                                  (GameManager.Instance.PlayerDataManager.attackSpeed
                                   + ii.atkSpeed) + "\n";
@@ -508,7 +555,7 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         
         if (item != null && item.count > 0 && item.item != null)
         {
-            if (GameManager.Instance.PlayerDataManager.tutorial == 0)
+            if (GameManager.Instance.PlayerDataManager.tutorial == 0 && item.item.itemNum == 100)
             {
                 GameManager.Instance.PlayerDataManager.tutorial++;
                 GameManager.Instance.UIManager.ConservationUI.currentNpc.conversationStart = 4;
@@ -557,8 +604,16 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             GameManager.Instance.PlayerDataManager.mp += mp;
             GameManager.Instance.PlayerDataManager.saturation += saturation;
 
-            GameManager.Instance.PlayerDataManager.inventory.DeleteItem(selectedItemIndex, 1);
-            SelectItem(item, selectedItemIndex);
+            if (item.item.itemNum == 200)
+            {
+                GameManager.Instance.UIManager.AccessUICanvas(2);
+                GameManager.Instance.UIManager.MapUI.isTeleporting = true;
+            }
+            else
+            {
+                GameManager.Instance.PlayerDataManager.inventory.DeleteItem(selectedItemIndex, 1);
+                SelectItem(item, selectedItemIndex);
+            }
         }
     }
 

@@ -36,6 +36,8 @@ public class Yeti : Monster
 
     public bool isRolling;
 
+    public float rollTimeElapsed;
+
     protected override void Start()
     {
         base.Start();
@@ -55,11 +57,24 @@ public class Yeti : Monster
         base.Update();
         AttackCheck();
         _animator.SetFloat("speed", _speed);
-
+        
         if (_yetiAttack.isRoll)
         {
             rollPower += Time.deltaTime * rollRate;
             dashSpeed = rollPower * graphicTransform.localScale.x;
+            rollTimeElapsed -= Time.deltaTime;
+            if (rollTimeElapsed < 0)
+            {
+                _yetiAttack.isRoll = false;
+                _animator.SetTrigger("rollout");
+                ctx.m_DefaultVelocity = Vector3.up * 1f;
+                ctx.GenerateImpulse();
+                stunTime = 5;
+                stunTimeElapsed = 5;
+                _yetiAttack.CanAttack();
+                externalSpeed = -graphicTransform.localScale.x * 10;
+                IcicleFall();
+            }
         }
 
         icicleTimeElpased -= Time.deltaTime;
@@ -238,6 +253,7 @@ public class Yeti : Monster
             
             _speed = 0;
             _animator.SetTrigger("roll");
+            rollTimeElapsed = 10;
             _yetiAttack.SetCanAttack(false);
         }
     }

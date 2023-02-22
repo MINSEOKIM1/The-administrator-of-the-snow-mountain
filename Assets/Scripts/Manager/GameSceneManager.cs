@@ -42,6 +42,8 @@ public class GameSceneManager : MonoBehaviour
         Color c = fade.color;
         var a = GameManager.Instance.MapManager.GetMapWithString(name);
         var b = GameManager.Instance.MapManager.GetMapWithString(SceneManager.GetActiveScene().name);
+        GameManager.Instance.MapManager.currentSceneName = name;
+        GameManager.Instance.MapManager.beforeSceneName = b.name;
         if (a != null && b != null)
         {
             if (a.bgmIndex != b.bgmIndex)

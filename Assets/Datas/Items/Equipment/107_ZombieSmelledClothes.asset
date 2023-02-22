@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7768e07093a40859a7e64b2e40fa4d, type: 3}
+  m_Name: 107_ZombieSmelledClothes
+  m_EditorClassIdentifier: 
+  useOption: 0
+  itemNum: 107
+  itemName: "\uC880\uBE44 \uB0C4\uC0C8\uAC00 \uB098\uB294 \uC637"
+  itemDescription: "\uC880\uBE44\uAC00 \uC785\uB358 \uC637\uC774\uB2E4."
+  itemIcon: {fileID: -806428747, guid: 050a3c6eea1884feb9ecaebe51028dc3, type: 3}
+  maxCount: 1
+  equipmentPart: 2
+  stats:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  atk: 0
+  def: 70
+  hp: 100
+  mp: 100
+  hpIncRate: 0
+  mpIncRate: 0
+  stance: 0
+  atkSpeed: 1.1
+  weaponImage: {fileID: 1029804397, guid: 9f3d84446920c4cf38d38e23dd036791, type: 3}
+  IngredientCountPairs:
+  - item: {fileID: 11400000, guid: 5dc196a1b77494ea1a624c526640ea24, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: da174722de9ec4b8b8aa578e73922715, type: 2}
+    count: 1

@@ -47,7 +47,7 @@ public class Werewolf : Monster
 
         jumpElpased -= Time.deltaTime;
         
-        if (jumping && _rigidbody.velocity.y < 0 && !diving && jumpElpased < 0)
+        if (jumping && _rigidbody.velocity.y <= 0 && !diving && jumpElpased < 0)
         {
             StartCoroutine(Dive());
         }
