@@ -94,6 +94,7 @@ public class PlayerBehavior : Entity
 
     protected override void Start()
     {
+        GameManager.Instance.UIManager.MapUI.UpdateMapPoint();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
         _playerInputHandler = GetComponent<PlayerInputHandler>();

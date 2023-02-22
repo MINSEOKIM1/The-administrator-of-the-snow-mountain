@@ -6,35 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="12097222-b229-46dc-bb84-2c8672710858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-administrator-of-the-snow-mountain/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Wolf.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Monster/Zombie.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Monster/Zombie.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Datas/Player/PlayerInfo.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentA.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentA.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentB.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentB.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentC.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentC.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentD.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NPC/AgentD.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Portal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Portal.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minseo/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minseo/Tutorial.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/StoneB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Village.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/Village.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WhiteB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/WolfB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Yongchan/ZombieB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/DungeonData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/DungeonData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/0_TitleCanvas/TitleUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/4_ConversationUI/ConversationUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/AgentData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/5_MapUI/MapUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/0_UIManagers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/Inventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/2_PlayerDataManager/PlayerDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/AIPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/AIPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/DevilStatue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/DevilStatue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPC/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPC/NPC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPC/AgentNPC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPortal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPortal.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

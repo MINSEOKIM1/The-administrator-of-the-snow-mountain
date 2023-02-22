@@ -44,6 +44,20 @@ public class MapUI : MonoBehaviour
     {
         return Mathf.Round(c * Mathf.Pow(10, a)) / Mathf.Pow(10, a);
     }
+
+    public void UpdateMapPoint()
+    {
+        for (int i = 0; i < GameManager.Instance.MapManager.dungeons.Length; i++)
+        {
+            if (i < GameManager.Instance.MapManager.dungeons.Length)
+            {
+                TurnOffPoint(GameManager.Instance.MapManager.dungeons[i].name);
+            }
+        }
+        
+        TurnOffPoint("Village");
+        TurnOnPoint(sceneInfo.currentSceneName);
+    }
     
     private void Update()
     {

@@ -197,6 +197,8 @@ public class PlayerDataManager : MonoBehaviour
     public float vignettePulseInterval;
     public float vignetteAmplitude;
 
+    private bool satOk;
+
     private void Update()
     {
         hp = Mathf.Clamp(hp, 0, maxHp);
@@ -219,6 +221,19 @@ public class PlayerDataManager : MonoBehaviour
             }
         }
         if (tutorial >= 18) saturation -= Time.deltaTime * playerInfo.saturationDecrementRate;
+        if (saturation <= 0)
+        {
+            if (satOk)
+            {
+                satOk = false;
+                GameManager.Instance.UIManager.PopMessage("포만감이 0이 되어 HP와 MP가 감소합니다.", 3);
+                GameManager.Instance.UIManager.PopMessage("음식을 먹어 포만감을 채우세요.", 3);
+            }
+        }
+        else
+        {
+            satOk = true;
+        }
 
         if (!isDie)
         {
@@ -230,6 +245,7 @@ public class PlayerDataManager : MonoBehaviour
         {
             LevelUP();
         }
+        
 
         if (hp <= 0 || GameManager.Instance.MapManager.gameover)
         {

@@ -14,6 +14,7 @@ public class PlayerPortal : MonoBehaviour
             if (portal != null)
             {
                 _portalManager.ChangeScene(portal.gameObject.name);
+                GameManager.Instance.UIManager.MapUI.UpdateMapPoint();
             }
         }
     }

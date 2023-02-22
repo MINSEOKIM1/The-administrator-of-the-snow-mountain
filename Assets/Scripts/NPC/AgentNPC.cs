@@ -10,11 +10,30 @@ public class AgentNPC : NPC
 
     private void Start()
     {
+        try
+        {
+            for (int i = 0; i < GameManager.Instance.MapManager.dungeons.Length; i++)
+            {
+                if (agentData.agentName.Equals(GameManager.Instance.MapManager.dungeons[i].agent.agentName))
+                {
+                    agentData = GameManager.Instance.MapManager.dungeons[i].agent;
+                }
+            }
+        }
+        catch
+        {
+
+        }
+
         SetActiveWithCondition();
-        GameManager.Instance.UIManager.MapUI.agentNPCEvent += () => SetActiveWithCondition();
     }
 
-    private void SetActiveWithCondition()
+    private void FixedUpdate()
+    {
+        SetActiveWithCondition();
+    }
+
+    public void SetActiveWithCondition()
     {
         gameObject.SetActive(agentData.currentMapName.Equals(GameManager.Instance.MapManager.currentSceneName) 
                              && GameManager.Instance.PlayerDataManager.agentAvailable[agentIndex]);

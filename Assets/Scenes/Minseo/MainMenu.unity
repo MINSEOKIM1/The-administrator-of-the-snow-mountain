@@ -2454,6 +2454,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: fork.white
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
+      propertyPath: globalRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
       propertyPath: fork.curMob
       value: 3
       objectReference: {fileID: 0}
@@ -2475,7 +2483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
       propertyPath: currentSceneName
-      value: Tutorial
+      value: Village
       objectReference: {fileID: 0}
     - target: {fileID: 4647755711934551917, guid: 118faab977cf345caa04099eec9b8fb2, type: 3}
       propertyPath: village.bgmIndex
