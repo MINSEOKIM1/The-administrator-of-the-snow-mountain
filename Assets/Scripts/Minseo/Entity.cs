@@ -287,6 +287,7 @@ public abstract class Entity : MonoBehaviour
     {
         if (_canJump && Mathf.Abs(externalSpeed) < 1 && !_isAttack)
         {
+            GameManager.Instance.AudioManager.PlaySfx(5);
             externalSpeed = 0;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _isGround = false;

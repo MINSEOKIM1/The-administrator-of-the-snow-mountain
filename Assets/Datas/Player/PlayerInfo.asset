@@ -20,8 +20,8 @@ MonoBehaviour:
   rollPower: 7
   maxHp: 100
   maxMp: 100
-  hpIncRate: 0
-  mpIncRate: 4
+  hpIncRate: 1
+  mpIncRate: 1
   atk: 0
   def: 0
   stance: 0
