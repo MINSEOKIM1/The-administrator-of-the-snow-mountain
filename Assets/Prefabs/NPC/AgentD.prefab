@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e60718119cec31e4190849292fcde068, type: 3}
-  m_Color: {r: 0.17319274, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.9761739, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -201,6 +201,14 @@ MonoBehaviour:
       \uB3FC."
     nextClipIndex: -4
     prevClipIndex: 0
+    eventIndex: 0
+    nextStartIndex: 2
+    conservationKind: 1
+  - speakerImage: {fileID: 1689297031, guid: 39dcde32b424247d8a150ca60d62217a, type: 3}
+    speakerName: "\uCE7C\uC7A1\uC774"
+    contents: "\uC5B4\uB514\uB85C \uAC00\uC904\uAE4C?"
+    nextClipIndex: -4
+    prevClipIndex: -1
     eventIndex: 0
     nextStartIndex: 2
     conservationKind: 1

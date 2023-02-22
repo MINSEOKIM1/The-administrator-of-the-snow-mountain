@@ -95,7 +95,7 @@ public class ConversationUI : MonoBehaviour
             } else if (currentClip.eventIndex == -2)
             {
                 GameManager.Instance.PlayerDataManager.inventory.AddItem(monsterMeat, 1);
-                GameManager.Instance.PlayerDataManager.hp -= GameManager.Instance.PlayerDataManager.maxHp / 2;
+                GameManager.Instance.PlayerDataManager.hp -= GameManager.Instance.PlayerDataManager.maxHp / 3;
             } else if (currentClip.eventIndex == -3)
             {
                 TutorialManager.Instance.tutorialNpc.transform.position = TutorialManager.Instance.npcPos[0].position;
@@ -108,6 +108,7 @@ public class ConversationUI : MonoBehaviour
                 GameManager.Instance.PlayerDataManager.tutorial++;
             } else if (currentClip.eventIndex == -5)
             {
+                GameManager.Instance.PlayerDataManager.mp = GameManager.Instance.PlayerDataManager.maxMp;
                 GameManager.Instance.PlayerDataManager.tutorial++;
             } else if (currentClip.eventIndex == -6)
             {
@@ -146,6 +147,8 @@ public class ConversationUI : MonoBehaviour
                 // SAVE
                 conversationWindow.SetActive(false);
                 GameManager.Instance.DataManager.SaveCurrentState();
+                GameManager.Instance.PlayerDataManager.hp = GameManager.Instance.PlayerDataManager.maxHp;
+                GameManager.Instance.PlayerDataManager.mp = GameManager.Instance.PlayerDataManager.maxMp;
                 gameObject.SetActive(false);
                 GameManager.Instance.UIManager.PopMessage("저장되었습니다!", 3);
             }

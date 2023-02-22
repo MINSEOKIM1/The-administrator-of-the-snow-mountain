@@ -50,6 +50,14 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.GameSceneManager.LoadScene("LogoScene");
     }
 
+    public void LoadCurrentScene()
+    {
+        GameManager.Instance.GameSceneManager.LoadScene(GameManager.Instance.MapManager.currentSceneName);
+        Time.timeScale = 1;
+        tmpb.active = false;
+        optionWindow.SetActive(false);
+    }
+
     public delegate void ESCAction();
 
     public event ESCAction ESCEvents;

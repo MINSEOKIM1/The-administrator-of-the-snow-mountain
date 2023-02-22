@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Minseo/LogoScene.unity
+    guid: 5c62705e8a9564d279b7db545bbfd3a5
+  - enabled: 1
     path: Assets/Scenes/Minseo/MainMenu.unity
     guid: 2e6ab6d274413437688905cbbbc12e9f
   - enabled: 1
@@ -47,7 +50,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minseo/Tutorial.unity
     guid: abd34e400e4284e2f88dabe65bb2e175
-  - enabled: 1
-    path: Assets/Scenes/Minseo/LogoScene.unity
-    guid: 5c62705e8a9564d279b7db545bbfd3a5
   m_configObjects: {}

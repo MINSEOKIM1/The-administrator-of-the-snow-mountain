@@ -14,6 +14,8 @@ public class DevilStatue : Monster
     public Vector2[] attackDetectBoxes => ((MonsterInfo)entityInfo).attackDetectBoxes;
     public Vector2[] attackBoundaryBoxes => ((MonsterInfo)entityInfo).attackBoundaryBoxes;
     public Vector2[] attackBoundaryOffsets => ((MonsterInfo)entityInfo).attackBoundaryOffsets;
+
+    public GameObject[] monsters;
     
     // tmp variable for store current state
     public GameObject[] effects;
@@ -37,6 +39,14 @@ public class DevilStatue : Monster
     {
         base.Update();
         AttackCheck();
+
+        bool ok = false;
+        foreach (var i in monsters)
+        {
+            if (i.activeSelf) ok = true;
+        }
+
+        if (ok) hp = maxHp;
     }
 
     protected override void OnDrawGizmos()

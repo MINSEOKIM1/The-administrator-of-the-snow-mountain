@@ -158,6 +158,7 @@ public class MapUI : MonoBehaviour
         {
             isAllocating = false;
             currentAllocatedAgent.currentMapName = goToMap.name;
+            currentAllocatedAgent.timeRate = goToMap.agentTimeRate;
             goToMap.agent = currentAllocatedAgent;
             curMap.agent = new AgentData();
             agentNPCEvent.Invoke();

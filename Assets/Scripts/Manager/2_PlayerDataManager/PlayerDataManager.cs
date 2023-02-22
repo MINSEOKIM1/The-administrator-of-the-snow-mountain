@@ -48,11 +48,12 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].hp;
             }
-            return playerInfo.maxHp + level * 10 + total;
+            return playerInfo.maxHp + level * 30 + total;
         }
         set => maxHp = value;
     }
 
+    public float hpDecRate, mpDecRate;
     public float maxMp
     {
         get
@@ -76,7 +77,13 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].hpIncRate;
             }
-            return playerInfo.hpIncRate + level * 0.1f + total;
+            float to = playerInfo.hpIncRate + level * 0.1f + total;
+            if (saturation > 0) to *= (saturation / maxSaturation);
+            else
+            {
+                return -hpDecRate;
+            }
+            return to;
         }
         private set => hpIncRate = value;
     }
@@ -90,7 +97,13 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].mpIncRate;
             }
-            return playerInfo.mpIncRate + level * 0.1f + total;
+            float to = playerInfo.mpIncRate + level * 0.1f + total;
+            if (saturation > 0) to *= (saturation / maxSaturation);
+            else
+            {
+                return -mpDecRate;
+            }
+            return to;
         }
         private set => mpIncRate = value;
     }
@@ -130,7 +143,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].atk;
             }
-            return playerInfo.atk + level * 5f + total;
+            return playerInfo.atk + level * 10f + total;
         }
         private set => atk = value;
     }

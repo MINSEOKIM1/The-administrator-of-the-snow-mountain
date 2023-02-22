@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour
     public Transform[] monsterPos;
     private void Start()
     {
+        GameManager.Instance.DataManager.SaveCurrentState();
         GameManager.Instance.UIManager.ConservationUI.SetCurrentConservationArray(
             conversationClips, 
             0,

@@ -247,11 +247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.83979
+      value: 8.833405
       objectReference: {fileID: 0}
     - target: {fileID: 636892048508641787, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.193112
+      value: 5.193062
       objectReference: {fileID: 0}
     - target: {fileID: 636892049920472848, guid: 073ec82a0ed344e79b1055fe6d64d808, type: 3}
       propertyPath: m_BoundingShape2D
@@ -393,7 +393,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &244236852
 PrefabInstance:
@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647223714182033797, guid: 546a8ad5c61e44de69345141d9e1f13a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.49
+      value: 25.11
       objectReference: {fileID: 0}
     - target: {fileID: 647223714182033797, guid: 546a8ad5c61e44de69345141d9e1f13a, type: 3}
       propertyPath: m_LocalPosition.z

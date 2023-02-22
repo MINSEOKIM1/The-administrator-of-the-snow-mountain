@@ -283,7 +283,7 @@ public class PlayerBehavior : Entity
                     tutorialSignal++;
                     if (_playerAttack.canAttack && CanAttackCondition(3))
                     {
-                        if (tutorialSignal == 2)
+                        if (tutorialSignal == 1)
                         {
                             GameManager.Instance.PlayerDataManager.tutorial++;
                         }
