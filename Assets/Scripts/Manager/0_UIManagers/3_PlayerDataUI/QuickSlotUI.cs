@@ -19,7 +19,6 @@ public class QuickSlotUI : MonoBehaviour
 
     private void Update()
     {
-        /**
         int a = GameManager.Instance.PlayerDataManager.inventory.CountItem(item);
         if (item != null)
         {
@@ -28,7 +27,6 @@ public class QuickSlotUI : MonoBehaviour
             else
                 textt.text = "";
         }
-        */
     }
 
     public void OnValidate()
