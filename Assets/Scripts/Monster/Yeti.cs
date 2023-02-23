@@ -85,7 +85,7 @@ public class Yeti : Monster
             if (icicles.Count < 10 && _target != null)
             {
                 var i = Instantiate(icicle,
-                    new Vector3(_target.transform.position.x + Random.Range(-icicleZoneOffset, icicleZoneOffset), icicleZone.position.y, 0),
+                    new Vector3(Mathf.Clamp(_target.transform.position.x + Random.Range(-icicleZoneOffset, icicleZoneOffset), 36, 73), icicleZone.position.y, 0),
                     Quaternion.identity);
                 bool k = false;
                 for (int j = 0; j < icicles.Count; j++)
@@ -253,7 +253,7 @@ public class Yeti : Monster
             
             _speed = 0;
             _animator.SetTrigger("roll");
-            rollTimeElapsed = 10;
+            rollTimeElapsed = 4;
             _yetiAttack.SetCanAttack(false);
         }
     }
