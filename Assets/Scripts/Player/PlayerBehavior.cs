@@ -287,6 +287,7 @@ public class PlayerBehavior : Entity
                         if (tutorialSignal == 1)
                         {
                             GameManager.Instance.PlayerDataManager.tutorial++;
+                            GameManager.Instance.UIManager.PopMessage("대쉬 어택 "+tutorialSignal + "/1", 3);
                         }
                     }
                 }
@@ -465,9 +466,11 @@ public class PlayerBehavior : Entity
             if (GameManager.Instance.PlayerDataManager.tutorial == 7)
             {
                 tutorialSignal++;
+                GameManager.Instance.UIManager.PopMessage("백스텝 "+tutorialSignal + "/2", 3);
                 if (tutorialSignal == 2)
                 {
                     GameManager.Instance.PlayerDataManager.tutorial++;
+                    
                 }
             }
             UseUtilSkill(0);
@@ -510,6 +513,7 @@ public class PlayerBehavior : Entity
             if (GameManager.Instance.PlayerDataManager.tutorial == 5)
             {
                 tutorialSignal++;
+                GameManager.Instance.UIManager.PopMessage("구르기 "+tutorialSignal + "/2", 3);
                 if (tutorialSignal == 2)
                 {
                     GameManager.Instance.PlayerDataManager.tutorial++;
@@ -563,6 +567,7 @@ public class PlayerBehavior : Entity
             if (GameManager.Instance.PlayerDataManager.tutorial == 9)
             {
                 tutorialSignal++;
+                GameManager.Instance.UIManager.PopMessage("대쉬 "+tutorialSignal + "/2", 3);
                 if (tutorialSignal == 2)
                 {
                     GameManager.Instance.PlayerDataManager.tutorial++;
@@ -625,6 +630,7 @@ public class PlayerBehavior : Entity
         if (GameManager.Instance.PlayerDataManager.tutorial == 13)
         {
             tutorialSignal++;
+            GameManager.Instance.UIManager.PopMessage("모션캔슬 "+tutorialSignal + "/3", 3);
             if (tutorialSignal == 3)
             {
                 GameManager.Instance.PlayerDataManager.tutorial++;
