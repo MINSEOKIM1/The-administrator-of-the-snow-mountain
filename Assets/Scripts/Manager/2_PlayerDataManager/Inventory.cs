@@ -101,17 +101,36 @@ public class Inventory : MonoBehaviour
 
         for (int j = 0; j < count; j++)
         {
+            ItemSlot ia = null, vin = null;
+            int aindex = -1;
+            
+            for (int i = 0; i < InventoryCapacity; i++)
+            {
+                if (items[i] != null && items[i].count > 0)
+                {
+                    if (items[i].item.itemNum == item.itemNum && items[i].count < items[i].item.maxCount)
+                    {
+                        ia = items[i];
+                        break;
+                    }
+                }
+            }
             for (int i = 0; i < InventoryCapacity; i++)
             {
                 if (items[i] == null || items[i].count == 0)
                 {
-                    items[i] = new ItemSlot(item, 1);
-                    break;
-                } else if (items[i].item.itemNum == item.itemNum && items[i].count < items[i].item.maxCount)
-                {
-                    items[i].count++;
+                    aindex = i;
                     break;
                 }
+            }
+            Debug.Log(ia);
+            if (ia == null || ia.count == 0)
+            {
+                items[aindex] = new ItemSlot(item, 1);
+            }
+            else
+            {
+                ia.count++;
             }
         }
 
