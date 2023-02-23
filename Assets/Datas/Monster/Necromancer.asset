@@ -22,8 +22,8 @@ MonoBehaviour:
   maxMp: 100
   hpIncRate: 2
   mpIncRate: 5
-  atk: 40
-  def: 20
+  atk: 50
+  def: 100
   stance: 1
   stateChangeInterval: 2
   boxSize: {x: 8.5, y: 6.5}
