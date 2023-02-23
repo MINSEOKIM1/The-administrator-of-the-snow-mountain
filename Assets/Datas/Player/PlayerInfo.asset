@@ -18,12 +18,12 @@ MonoBehaviour:
   backStepPower: {x: 3, y: 3}
   dashPower: 12
   rollPower: 7
-  maxHp: 100
+  maxHp: 200
   maxMp: 100
-  hpIncRate: 1
-  mpIncRate: 1
-  atk: 0
-  def: 0
+  hpIncRate: 5
+  mpIncRate: 10
+  atk: 30
+  def: 30
   stance: 0
   attackKnockback:
   - {x: 2, y: 2}
