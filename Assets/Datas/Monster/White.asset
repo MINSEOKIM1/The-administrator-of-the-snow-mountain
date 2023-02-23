@@ -18,11 +18,11 @@ MonoBehaviour:
   backStepPower: {x: 0, y: 0}
   dashPower: 0
   rollPower: 0
-  maxHp: 200
+  maxHp: 150
   maxMp: 100
   hpIncRate: 0
   mpIncRate: 5
-  atk: 70
+  atk: 50
   def: 20
   stance: 0
   stateChangeInterval: 2
@@ -62,8 +62,8 @@ MonoBehaviour:
   - 1
   - 1
   - 0.05
-  - 0.5
-  - 0.5
+  - 1
+  - 1
   itemDropCount: 08000000070000000700000001000000010000000500000009000000
   exp: 10
   perceiveTime: 10

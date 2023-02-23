@@ -24,6 +24,8 @@ public class DataPack
     public Vector3 position;
 
     public bool[] agentAvailable;
+
+    public int tutorial;
     
     public string beforeSceneName;
     public string currentSceneName;
@@ -52,6 +54,8 @@ public class DataPack
         mp = 100;
         saturation = 100;
         exp = 0;
+
+        tutorial = 0;
         
         position = Vector3.zero;
 

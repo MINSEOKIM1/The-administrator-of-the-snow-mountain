@@ -62,7 +62,7 @@ MonoBehaviour:
   - 0.4
   - 0.4
   - 0.05
-  - 0.5
+  - 1
   itemDropCount: 03000000030000001e000000050000000100000006000000
   exp: 20
   perceiveTime: 10

@@ -133,7 +133,7 @@ public class PlayerDataManager : MonoBehaviour
             {
                 if (equipment.items[i] != null) total += equipment.items[i].atk;
             }
-            return playerInfo.atk + level * 3f + total;
+            return playerInfo.atk + level * 10f + total;
         }
         private set => atk = value;
     }
