@@ -52,6 +52,7 @@ public class AudioManager : MonoBehaviour
     
     IEnumerator ChangeBGM(int index)
     {
+        float tmp = bgmPlayer.volume;
         while (bgmPlayer.volume > 0)
         {
             bgmPlayer.volume -= Time.fixedDeltaTime * changeSpeed;
@@ -61,6 +62,6 @@ public class AudioManager : MonoBehaviour
         StopBGM();
         SetBGM(index);
         PlayBGM();
-        bgmPlayer.volume = bgmVolume;
+        bgmPlayer.volume = tmp;
     }
 }

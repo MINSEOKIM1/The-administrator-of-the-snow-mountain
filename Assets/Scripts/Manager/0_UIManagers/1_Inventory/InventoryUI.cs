@@ -606,8 +606,11 @@ public class InventoryUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (item.item.itemNum == 200)
             {
-                GameManager.Instance.UIManager.AccessUICanvas(2);
-                GameManager.Instance.UIManager.MapUI.isTeleporting = true;
+                if (GameManager.Instance.PlayerDataManager.tutorial >= 18)
+                {
+                    GameManager.Instance.UIManager.AccessUICanvas(2);
+                    GameManager.Instance.UIManager.MapUI.isTeleporting = true;
+                }
             }
             else
             {
